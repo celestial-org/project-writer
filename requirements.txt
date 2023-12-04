@@ -1,0 +1,8 @@
+flask
+pyrogram
+deta
+gunicorn
+requests
+tgcrypto
+uvloop
+psutil

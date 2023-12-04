@@ -1,0 +1,5 @@
+from pyrogram import Client, filters
+
+@Client.on_message(filters.command("debug"))
+def debugger(c,m):
+  m.reply(f"`{m}`")
