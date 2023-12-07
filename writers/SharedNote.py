@@ -106,4 +106,4 @@ def get_all_urls(c, m):
 @Client.on_message(filters.command("shared"))
 def get_urls(c, m):
   config_url = f"{v2tool}/config/share"
-  m.reply_text(f"*Liên kết chứa cấu hình được chia sẻ là:\n\n{v2tool}/share/get*\n\n Để thay đổi sni, hãy thêm tham số `sni=` vào liên kết này\n Tham số `ua=` để thay đổi User-Agent\n Tham số `proxy=<true/false>` để sử dụng proxy khi lấy thông tin từ subscribe")
+  m.reply_text(f"*Liên kết chứa cấu hình được chia sẻ là:\n\n{v2tool}/share/get*\n\n Để thay đổi sni, hãy thêm tham số `sni=` vào liên kết này")
