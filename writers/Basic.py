@@ -125,4 +125,4 @@ def get_all_urls(c, m):
 def get_urls(c, m):
   user_id = m.from_user.id
   filename = f'{user_id}'
-  m.reply_text(f"Liên kết của bạn là:\n\n{v2tool}/config/{filename}")
+  m.reply_text(f"Liên kết của bạn là:\n\n{v2tool}/{filename}/get")
