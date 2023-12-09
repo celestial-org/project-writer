@@ -1,7 +1,8 @@
 import requests, os
 from deta import Deta
+from utils import deta_key
 
-deta = Deta(os.getenv("DETA_KEY"))
+deta = Deta(deta_key)
 db = deta.Base("v2ray-notes")
 
 

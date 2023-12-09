@@ -1,13 +1,11 @@
 import os, re, time
 from pyrogram import Client, filters, idle, enums
 from database import save_url, remove_url, get_all, check_all
-
-v2tool = os.getenv('V2TOOL')
-
+from utils import config_tool
 
 @Client.on_message(filters.command(["start", "help"]))
 def send_welcome(c, m):
-  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\nCông cụ: {v2tool}")
+  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\nCông cụ: {config_tool}")
 
 
 @Client.on_message(filters.command("add"))
@@ -125,4 +123,4 @@ def get_all_urls(c, m):
 def get_urls(c, m):
   user_id = m.from_user.id
   filename = f'{user_id}'
-  m.reply_text(f"Liên kết của bạn là:\n\n{v2tool}/{filename}/get")
+  m.reply_text(f"Liên kết của bạn là:\n\n{config_tool}/{filename}/get")

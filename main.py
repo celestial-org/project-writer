@@ -1,16 +1,16 @@
-import uvloop, logging 
+import uvloop, logging, os
 
 uvloop.install()
 from pyrogram import Client, idle
-import os
+from utils import api_id, api_hash, bot_token
 
 bot = Client("note_bot",
-             os.getenv('API_ID'),
-             os.getenv('API_HASH'),
-             bot_token=os.getenv("NW_TOKEN"),
+             api_id,
+             apo!,
+             bot_token=bot_token,
              in_memory=True,
-             plugins={"root": "writers"})
+             plugins={"root": "plugins"})
 
 bot.start()
-logging.critical('V2Writer')
+os.system('echo V2Writer')
 idle()

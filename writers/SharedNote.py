@@ -1,8 +1,7 @@
 import os, re, time
 from pyrogram import Client, filters, idle, enums
 from database import save_url, remove_url, get_all, check_all
-
-v2tool = os.getenv('V2TOOL')
+from utils import config_tool
 
 
 @Client.on_message(filters.command("share"))
@@ -105,5 +104,5 @@ def get_all_urls(c, m):
 
 @Client.on_message(filters.command("shared"))
 def get_urls(c, m):
-  config_url = f"{v2tool}/config/share"
-  m.reply_text(f"**Liên kết chứa cấu hình được chia sẻ là:\n\n{v2tool}/share/get **\n\n Để thay đổi sni, hãy thêm tham số `sni=` vào liên kết này")
+  config_url = f"{config_tool}/get/share"
+  m.reply_text(f"**Liên kết chứa cấu hình được chia sẻ là:\n\n{config_url} **\n\n Để thay đổi sni, hãy thêm tham số `sni=` vào liên kết này")
