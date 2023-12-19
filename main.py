@@ -1,13 +1,13 @@
-import uvloop, logging, os
+import uvloop, os
 
 uvloop.install()
 from pyrogram import Client, idle
-from utils import api_id, api_hash, bot_token
+from utils import tokens
 
 bot = Client("note_bot",
-             api_id,
-             apo!,
-             bot_token=bot_token,
+             tokens()[0],
+             tokens()[1],
+             bot_token=tokens()[2],
              in_memory=True,
              plugins={"root": "plugins"})
 
