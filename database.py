@@ -56,7 +56,7 @@ def check_all(filename):
     removed_urls = []
     for url in existing_entry['urls']:
       response = requests.get(f"https://convert.v2ray-subscribe.workers.dev/?url={url}")
-      if response.status_code != 200:
+      if response.status_code != 200 or response.text is None:
           removed_urls.append(url)
     updated_urls = [u for u in existing_entry['urls'] if u not in removed_urls]
     db.update({'urls': updated_urls}, filename)

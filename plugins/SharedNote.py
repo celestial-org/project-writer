@@ -3,17 +3,9 @@ from pyrogram import Client, filters, idle, enums
 from database import save_url, remove_url, get_all, check_all
 from utils import config_tool
 
-@Client.on_message(filters.command(["start", "help"]))
-def send_welcome(c, m):
-  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\nCông cụ: {config_tool}")
 
-
-@Client.on_message(filters.command("add"))
+@Client.on_message(filters.command("share"))
 def add_url(c, m):
-  user_id = m.from_user.id
-  filename = f'{user_id}'
-  if m.from_user.id == 5665225938:
-    filename = "v2ray"
   text = m.text
   if m.reply_to_message:
     text = m.reply_to_message.text
@@ -28,7 +20,7 @@ def add_url(c, m):
     return
   for url in urls:
     try:
-      save_url(filename, url)
+      save_url("share", url)
     except Exception as e:
       err = m.reply_text(f'Error: {e}')
       time.sleep(5)
@@ -40,12 +32,8 @@ def add_url(c, m):
   m.delete()
 
 
-@Client.on_message(filters.command("delete"))
+@Client.on_message(filters.command("dishare"))
 def delete_url(c, m):
-  user_id = m.from_user.id
-  filename = f'{user_id}'
-  if user_id == 5665225938:
-    filename = "v2ray"
   text = m.text
   if m.reply_to_message:
     text = m.reply_to_message.text
@@ -61,7 +49,7 @@ def delete_url(c, m):
   for url in urls:
     worked = False
     try:
-      remove_url(filename, url)
+      remove_url("share", url)
       worked = True
     except Exception as e:
       err = m.reply_text(f'Error: {e}')
@@ -74,14 +62,13 @@ def delete_url(c, m):
   m.delete()
 
 
-@Client.on_message(filters.command("checkpri"))
+@Client.on_message(filters.command("checkshare"))
 def check_all_urls(c, m):
-  user_id = m.from_user.id
-  filename = f'{user_id}'
-  if m.from_user.id == 5665225938:
-    filename = "v2ray"
+  if m.from_user.id != 5665225938:
+    m.reply('`Forbidden`', quote=True)
+    return
   try:
-    removed_urls = check_all(filename)
+    removed_urls = check_all("share")
     if removed_urls:
       removed_urls_str = '\n'.join(removed_urls)
       m.reply_text(f' Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}')
@@ -95,17 +82,13 @@ def check_all_urls(c, m):
     c.delete_messages(m.chat.id, err.id)
 
 
-@Client.on_message(filters.command("list"))
+@Client.on_message(filters.command("sharelist"))
 def get_all_urls(c, m):
-  if m.chat.type != enums.ChatType.PRIVATE:
-    m.reply("Vui lòng thực hiện thao tác này ở khu vực riêng tư!", quote=True)
+  if m.from_user.id != 5665225938:
+    m.reply("`Forbidden`", quote=True)
     return
-  user_id = m.from_user.id
-  filename = f'{user_id}'
-  if m.from_user.id == 5665225938:
-    filename = "v2ray"
   try:
-    urls = get_all(filename)
+    urls = get_all("share")
     if urls:
       urls_str = '\n'.join(urls)
       m.reply_text(f'Tìm thấy {len(urls)} URL:\n{urls_str}')
@@ -119,8 +102,7 @@ def get_all_urls(c, m):
     c.delete_messages(m.chat.id, err.id)
 
 
-@Client.on_message(filters.command("get"))
+@Client.on_message(filters.command("getshare"))
 def get_urls(c, m):
-  user_id = m.from_user.id
-  filename = f'{user_id}'
-  m.reply_text(f"Liên kết của bạn là:\n\n{config_tool}/{filename}/get")
+  config_url = f"{config_tool}/get/share"
+  m.reply_text(f"**Liên kết chứa cấu hình được chia sẻ là:\n\n{config_url} **\n\n Để thay đổi sni, hãy thêm tham số `sni=` vào liên kết này")
