@@ -33,7 +33,6 @@ def add_url(c, m):
       l += 1
     except Exception as e:
       err = m.reply_text(f'Error: {e}')
-      time.sleep(5)
       c.delete_messages(m.chat.id, err.id)
       m.delete()
   done = m.reply_text(f'Đã thêm {l} URL')
