@@ -18,21 +18,23 @@ def add_url(c, m):
     c.delete_messages(m.chat.id, err.id)
     m.delete()
     return
+  l = 0
   for url in urls:
     try:
       save_url("share", url)
+      l += 1
     except Exception as e:
       err = m.reply_text(f'Error: {e}')
       time.sleep(5)
       c.delete_messages(m.chat.id, err.id)
       m.delete()
-  done = m.reply_text(f'Đã thêm {len(urls)} URL')
+  done = m.reply_text(f'Đã thêm {l} URL')
   time.sleep(10)
   c.delete_messages(m.chat.id, done.id)
   m.delete()
 
 
-@Client.on_message(filters.command("dishare"))
+@Client.on_message(filters.command("rmshare"))
 def delete_url(c, m):
   text = m.text
   if m.reply_to_message:
