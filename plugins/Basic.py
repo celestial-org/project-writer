@@ -33,6 +33,11 @@ def add_url(c, m):
       l += 1
     except Exception as e:
       pass
+  if l != len(urls):
+    x = len(urls) - l 
+    temp = m.reply(f"{x} URL trùng lặp sẽ không được thêm lại")
+    time.sleep(5)
+    c.delete_messages(m.chat.id, temp.id)
   done = m.reply_text(f'Đã thêm {l} URL')
   time.sleep(10)
   c.delete_messages(m.chat.id, done.id)
