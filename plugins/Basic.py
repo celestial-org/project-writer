@@ -32,9 +32,7 @@ def add_url(c, m):
       save_url(filename, url)
       l += 1
     except Exception as e:
-      err = m.reply_text(f'Error: {e}')
-      c.delete_messages(m.chat.id, err.id)
-      m.delete()
+      pass
   done = m.reply_text(f'Đã thêm {l} URL')
   time.sleep(10)
   c.delete_messages(m.chat.id, done.id)
