@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 import base64, time, requests, re
 
 def checks(url):
-  r = requests.get(url, headers={'User-Agent':'shadowrocket'}, params={'flag':'shadowrocket'})
+  r = requests.get(url, headers={'User-Agent':'shadowrocket'})
   if not any(proto in r.text for proto in["vmess:", "trojan:", "vless:", "ss:"]):
     res = base64.b64decode(r.text).decode('utf-8')
   else:
