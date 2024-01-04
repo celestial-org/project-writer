@@ -6,7 +6,6 @@ bot = Client("writer",
              tokens()[0],
              tokens()[1],
              bot_token=tokens()[2],
-             in_memory=True,
              plugins={"root": "plugins"})
 
 bot.start()
