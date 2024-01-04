@@ -104,9 +104,3 @@ def get_all_urls(c, m):
     err = m.reply_text(f'Error: {e}')
     time.sleep(10)
     c.delete_messages(m.chat.id, err.id)
-
-
-@Client.on_message(filters.command("getshare"))
-def get_urls(c, m):
-  config_url = f"{config_tool}/get/share"
-  m.reply_text(f"**Liên kết chứa cấu hình được chia sẻ là:\n\n{config_url} **\n\n Để thay đổi sni, hãy thêm tham số `sni=` vào liên kết này")
