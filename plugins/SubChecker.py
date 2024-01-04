@@ -34,6 +34,6 @@ def check_sub(c,m):
   for url in urls:
     try:
       info, count = checks(url)
-      m.reply(f'{url}\n**Trạng thái:** `Tốt!`\n**Số lượng cấu hình:** `{count}`\n**{info}**\n\n`Checked by` **{m.from_user.first_name}**')
+      m.reply(f'{url}\n**Số lượng cấu hình:** `{count}`\n**{info}**\n**{m.from_user.first_name}**')
     except:
-      m.reply(f'{url}\n**Trạng thái:** `Lỗi!`\n\n`Checked by` **{m.from_user.first_name}**')
+      m.reply(f'{url}\n **Lỗi!**\n**{m.from_user.first_name}**')
