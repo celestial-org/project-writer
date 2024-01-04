@@ -5,7 +5,7 @@ from utils import config_tool
 
 @Client.on_message(filters.command(["start", "help"]))
 def send_welcome(c, m):
-  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\nCông cụ: {config_tool}")
+  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\nCông cụ: {config_tool}```tài trợ bởi Tran Han Thang```")
 
 
 @Client.on_message(filters.command("add"))
@@ -123,8 +123,8 @@ def get_all_urls(c, m):
     c.delete_messages(m.chat.id, err.id)
 
 
-@Client.on_message(filters.command("getmine"))
+@Client.on_message(filters.command("get"))
 def get_urls(c, m):
   user_id = m.from_user.id
   filename = f'{user_id}'
-  m.reply_text(f"Liên kết của bạn là:\n\n{config_tool}/{filename}/get")
+  m.reply_text(f"Liên kết của bạn là:\n{config_tool}/get/{filename}\n\nLiên kết chung là:\n{config_tool}/get/share")
