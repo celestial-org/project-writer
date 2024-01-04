@@ -18,9 +18,9 @@ def send_request(c, m):
     try:
       response = requests.request(method, url)
       response_text = response.text
-      m.reply_text(f"Response from {url}:")
+      m.reply_text(f"**{url}:**")
       for i in range(0, len(response_text), 4096):
         m.reply_text(f"`{response_text[i:i+4096]}`",
                      parse_mode=ParseMode.MARKDOWN)
     except Exception as e:
-      m.reply_text(f"Error sending request to {url}: {e}")
+      m.reply_text(f"Error: {e}")
