@@ -1,6 +1,6 @@
 import os
 from pyrogram import Client, idle
-from utils import tokens
+from env import tokens
 
 bot = Client("writer",
              tokens()[0],
