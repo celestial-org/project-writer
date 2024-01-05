@@ -16,7 +16,6 @@ def add_url(c, m):
     err = m.reply_text("Vui lòng cung cấp URL")
     time.sleep(10)
     c.delete_messages(m.chat.id, err.id)
-    m.delete()
     return
   l = 0
   for url in urls:
@@ -32,8 +31,7 @@ def add_url(c, m):
     c.delete_messages(m.chat.id, temp.id)
   done = m.reply_text(f'Đã thêm {l} URL')
   time.sleep(10)
-  c.delete_messages(m.chat.id, done.id)
-  m.delete()
+  done.delete()
 
 
 @Client.on_message(filters.command("rmshare"))
