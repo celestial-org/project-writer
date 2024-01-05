@@ -8,7 +8,7 @@ def list_endpoints(c, m):
   save.save(m.from_user)
   tests = ep.get_list()
   endpoints = "\n".join(tests)
-  echo = f"```hướng dẫn:\nsử dụng lệnh /test với tiền tố của điểm cuối để sử dụng điểm cuối đó\n```\n**Danh sách: (lệnh - người đóng góp)**\n\n"
+  echo = f"```hướng dẫn:\nsử dụng lệnh /test với tiền tố của điểm cuối để kiểm tra ở cuối đó\n```\n**Danh sách: (lệnh - người đóng góp)**\n\n"
   text = f"{echo}{endpoints}"
   m.reply(text, quote=True)
   
