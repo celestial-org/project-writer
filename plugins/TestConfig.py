@@ -40,7 +40,7 @@ def run_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới kiểm tra với **{count}** cấu hình từ {url}', quote=True)
+    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới kiểm tra liên kết {url} với **{count}** cấu hình', quote=True)
     cmd = f"./lite -ping 1 -test {test_url}"
     os.system(cmd)
     m.reply_photo(photo='out.png', quote=True, caption=f"{url} \nKiểm tra bởi **{m.from_user.first_name}**```tài trợ bởi Tran Han Thang```")
