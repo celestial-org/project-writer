@@ -60,7 +60,7 @@ def run_lite_command(c, m):
     cmd = f"./lite -ping {ping} -test {test_url}"
     os.system(cmd)
     path = os.getcwd()
-    m.reply_photo(photo=f'{path}/out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
+    m.reply_photo(photo=f'{path}out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
     [[InlineKeyboardButton("Subscription", url=url)]]))
     os.system('rm out.png')
     time.sleep(5)
