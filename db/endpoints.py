@@ -17,7 +17,7 @@ def get_list():
   items = db.fetch().items
   results = []
   for item in items:
-    prefix = item["prefix"]
+    prefix = item["key"]
     sponsor = item["sponsor"]
     result = f"/test{prefix} - **{sponsor}**"
     results.append(result)
