@@ -8,7 +8,7 @@ def get(prefix):
   sponsor = item["sponsor"]
   sponsor_id = item["sponsor_id"]
   endpoint = item["endpoint"]
-  return sponsor, sponsor_id, endpoint
+  return sponsor, int(sponsor_id), endpoint
   
 def rm(prefix):
   db.delete(prefix)
