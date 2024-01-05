@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/
 
-gunicorn -b 0.0.0.0:8080 --log-level critical web:app &
+gunicorn -b 0.0.0.0:8080 web:app &
 python3 main.py
