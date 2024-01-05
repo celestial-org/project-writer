@@ -20,7 +20,7 @@ def add_endpoint(c, m):
     return
   try:
     prefix = m.command[1]
-    if prefix > 5:
+    if len(prefix) > 5:
       m.reply("Tiền tố tối đa là 5 ký tự. Vui lòng thừ lại", quote=True)
     endpoint = m.command[2]
     if not endpoint.startswith("http"):
