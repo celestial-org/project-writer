@@ -9,7 +9,7 @@ def list_endpoints(c, m):
   endpoints = "\n".join(tests)
   echo = f"```hướng dẫn:\nsử dụng lệnh /test với tiền tố của điểm cuối để sử dụng điểm cuối đó\n```\n**Danh sách: (tiền tố + nhà tài trợ)**\n"
   text = echo + endpoints
-  m.reply(text, quote=True)
+  m.reply(str(text), quote=True)
   
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
