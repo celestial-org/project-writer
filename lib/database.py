@@ -1,6 +1,6 @@
 import requests, os
 from deta import Deta
-from utils import deta_key
+from lib.utils import deta_key
 
 deta = Deta(deta_key)
 db = deta.Base("v2ray-notes")
