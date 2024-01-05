@@ -1,5 +1,4 @@
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from lib.lite import get_config, local_test, endpoint_test
 import subprocess
 import time
@@ -46,8 +45,7 @@ def run_lite_command(c, m):
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\n```Lưu ý:\nQuá nhiều cấu hình có thể gây ra lỗi và không trả về kết quả\n```', quote=True)
     if test_mode == "local":
       local_test(test_url)
-      m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
-    [[InlineKeyboardButton("Subscription", url=url)]]))
+      m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**")
       os.system('rm out.png')
     elif test_mode == "endpoint":
       endpoint_url = os.getenv("ENDPOINT")
@@ -55,8 +53,7 @@ def run_lite_command(c, m):
         m.reply("Chưa thiết lập điểm cuối", quote=True)
         return
       photo, city, country, org = endpoint_test(test_url, endpoint_url)
-      m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**\n{city}-{country}\n{org}", reply_markup=InlineKeyboardMarkup(
-    [[InlineKeyboardButton("Subscription", url=url)]]))
+      m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**\n{city}-{country}\n{org}")
     time.sleep(5)
     stt.delete()
     
@@ -93,8 +90,7 @@ def run_lite_command_ping(c, m):
       return
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra độ trễ với **{count}** cấu hình từ liên kết {url}\n```Lưu ý:\nQuá nhiều cấu hình có thể gây ra lỗi và không trả về kết quả\n```', quote=True)
     local_test(test_url, pingonly=True)
-    m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
-    [[InlineKeyboardButton("Subscription", url=url)]]))
+    m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**")
     os.system('rm out.png')
     time.sleep(5)
     stt.delete()
