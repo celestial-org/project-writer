@@ -31,7 +31,7 @@ def add_endpoint(c, m):
     ep.add(sponsor, sponsor_id, prefix, endpoint)
     m.reply(f"**{sponsor}** đã đóng góp vào hệ thống một điểm cuối với tiền tố {prefix}. Lệnh /test{prefix} đã có sẵn", quote=True)
   except Exception as e:
-    m.reply(f"**Lỗi:** \n{e}\n\n\nVui lòng làm theo mẫu để thêm điểm cuối\n```guide\n/addpoint + tiền tố + url điểm cuối\nví dụ: /addpoint vn http://103.0.0.0:80\n```", quote=True)
+    m.reply(f"```Lỗi:\n{e}\n```", quote=True)
   
 @Client.on_message(filters.command("killpoint"))
 def remove_endpoint(c, m):
