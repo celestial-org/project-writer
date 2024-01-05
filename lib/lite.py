@@ -14,7 +14,7 @@ def endpoint_test(test_url, test_endpoint, pingonly=False):
     data = {"url": test_url, "mode": "ping", "re": 1}
   else:
     data = {"url": test_url, "mode": "all", "re": 1}
-  r = requests.post(test_endpoint, data=data)
+  r = requests.post(test_endpoint, json=data)
   res = r.json()
   city = res['city']
   country = res['country']
