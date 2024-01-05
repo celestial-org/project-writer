@@ -36,14 +36,14 @@ def run_command(c, m):
   text = m.text
   urls = re.findall(url_pattern, text)
   for url in urls:
-    url, count = get_config(urls)
+    test_url, count = get_config(urls)
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra kiểm tra với **{count}** cấu hình', quote=True)
-    cmd = f"./lite -ping 1 -test {url}"
+    cmd = f"./lite -ping 1 -test {test_url}"
     os.system(cmd)
-    m.reply_photo(photo='out.png', quote=True, caption=f"{urls} \nby **{m.from_user.first_name}**```tài trợ bởi Tran Han Thang```")
+    m.reply_photo(photo='out.png', quote=True, caption=f"{url} \nKiểm tra bởi **{m.from_user.first_name}**```tài trợ bởi Tran Han Thang```")
     os.system('rm out.png')
     time.sleep(5)
     stt.delete()
