@@ -56,7 +56,7 @@ def run_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến iên kết {url}\nSố lượng cấu hình: **{count}**\nSố lần kiểm tra: **{ping}**\n```Lưu ý:\nSố lần kiểm tra cao có thể gây quá tải hệ thống và không trả về kết quả như mong đợi\n```', quote=True)
+    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url}\nSố lượng cấu hình: **{count}**\nSố lần kiểm tra: **{ping}**\n```Lưu ý:\nSố lần kiểm tra cao có thể gây quá tải hệ thống và không trả về kết quả như mong đợi\n```', quote=True)
     cmd = f"./lite -ping {ping} -test {test_url}"
     os.system(cmd)
     m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
