@@ -1,6 +1,7 @@
 import requests
 import base64
 import os
+import io
 
 def local_test(test_url, pingonly=False):
   if pingonly:
@@ -19,7 +20,9 @@ def endpoint_test(test_url, endpoint_url, pingonly=False):
   city = res['city']
   country = res['country']
   org = res['org']
-  result = res['result']
+  result = requests.get(res['result']).content
+  result = io.BytesIO(result)
+  result.name = "out.png"
   return result, city, country, org
   
 
