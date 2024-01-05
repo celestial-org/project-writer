@@ -48,3 +48,5 @@ def remove_endpoint(c, m):
       return
     ep.rm(prefix)
     m.reply("Đã xoá điểm cuối", quote=True)
+  except:
+    m.reply("Vui lòng cung cấp tiền tố điểm cuối cần xoá", quote=True)
