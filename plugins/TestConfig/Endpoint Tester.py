@@ -6,14 +6,17 @@ import re
 
 url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
 
-@Client.on_message(filters.regex("/test"))
+@Client.on_message(filters.regex("/test"), group=2)
 def regex_lite_command(c, m):
   if not m.text.startswith("/test"):
     return
   save.save(m.from_user)
   command = m.text.split(' ')[0]
   prefix = command.replace("/test", "")
-  sponsor, _, endpoint = ep.get(prefix)
+  try:
+    sponsor, _, endpoint = ep.get(prefix)
+  except:
+    pass
   if endpoint is None:
     return
   if m.reply_to_message:
