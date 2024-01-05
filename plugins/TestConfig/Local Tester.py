@@ -36,14 +36,20 @@ def run_lite_command(c, m):
     m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
     return
   for url in urls:
-    test_url, count = get_config(url)
+    try:
+      test_url, count = get_config(url)
+    except:
+      uvl = m.reply("Liên kết không khả dụng", quote=True)
+      time.sleep(10)
+      uvl.delete()
+      return
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\n```Lưu ý:\nQuá nhiều cấu hình có thể gây ra lỗi và không trả về kết quả\n```', quote=True)
     if endpoint:
       photo, city, country, org = endpoint_test(test_url, endpoint)
-      m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**{city}-{country}\n{org}**\ntester: **{m.from_user.first_name}**")
+      m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**{city}-{country}\n{org}**\n\n**{m.from_user.first_name}**")
     else:
       local_test(test_url)
       m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**")
