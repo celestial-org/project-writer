@@ -1,7 +1,7 @@
 import os, re, time
 from pyrogram import Client, filters, idle, enums
-from lib.database import save_url, remove_url, get_all, check_all
-from lib.utils import config_tool
+from db.note import save_url, remove_url, get_all, check_all
+from lib.env import config_tool
 
 
 @Client.on_message(filters.command("share"))
