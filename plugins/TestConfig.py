@@ -8,9 +8,9 @@ import os
 import re
 
 def get_config(url):
-  if any(url.startswith(sche) for sche in ["vmess://", "trojan://", "vless://", "ss://"]):
-    res = [url]
-    url = requests.post("https://paste.rs/", data=res).text
+  if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
+    res = url
+    url = requests.post("https://paste.rs/", data=url).text
   else:
     res = requests.get(url, headers={"User-Agent": "v2rayNG"})
     if res.text is None:
@@ -22,29 +22,41 @@ def get_config(url):
   count = len(res.splitlines())
   return url, count
 
-@Client.on_message(filters.command(["test"]))
-def run_command(c, m):
-  pattern = re.compile(r'https?://|vmess://|trojan://|vless://|ss://\S+')
+@Client.on_message(filters.command("test"))
+def run_lite_command(c, m):
+  url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
   if m.reply_to_message:
-    if not m.reply_to_message.text:
-      m.reply("Không tìm thấy tin nhắn", quote=True)
-      return
-    text = m.reply_to_message.text
+    try:
+      text = m.reply_to_message.text
+    except:
+      try:
+        text = m.reply_to_message.caption
+      except:
+        m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+        return
   else:
-    if not m.text:
-      m.reply("Không tìm thấy tin nhắn", quote=True)
-      return
-  text = m.text
-  urls = re.findall(url_pattern, text)
+    try:
+     text = m.text
+    except:
+      try:
+        text = m.caption
+      except:
+        m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+        return
+  matches = re.findall(url_pattern, text)
+  urls = [match[0] for match in matches]
+  if not urls:
+    m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
+    return
   for url in urls:
-    test_url, count = get_config(urls)
+    test_url, count = get_config(url)
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới kiểm tra liên kết {url} với **{count}** cấu hình', quote=True)
+    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình', quote=True)
     cmd = f"./lite -ping 1 -test {test_url}"
     os.system(cmd)
-    m.reply_photo(photo='out.png', quote=True, caption=f"Kiểm tra bởi **{m.from_user.first_name}**```tài trợ bởi Tran Han Thang```", reply_markup=InlineKeyboardMarkup(
+    m.reply_photo(photo='out.png', quote=True, caption=f"**{m.from_user.first_name}**\n```tai tro boi Tran Han Thang```", reply_markup=InlineKeyboardMarkup(
     [[InlineKeyboardButton("Subscription", url=url)]]))
     os.system('rm out.png')
     time.sleep(5)
