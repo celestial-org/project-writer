@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 
-@Client.on_message(filters.command("help") & (filters.mentioned|filters.private))
+@Client.on_message(filters.command("helps") & (filters.mentioned|filters.private))
 def help_list(c, m):
   m.reply(f"""Xin chào **{m.from_user.first_name}**(`{m.from_user.id}`), dưới đây là danh sách lệnh khả dụng:
 /get - Lấy liên kết tổng hợp subscribe
@@ -25,3 +25,8 @@ def ext_command_list(c, m):
 /future - ....
 """, quote=True
 )
+
+
+@Client.on_message(filters.command(["start","help"]))
+def send_welcome(c, m):
+  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\n```Công cụ:\n{config_tool}```\nDùng lệnh /helps để biết thêm chi tiết", quote=True)
