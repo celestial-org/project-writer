@@ -5,5 +5,5 @@ def save(user):
   name = user.first_name
   user_id = user.id
   username = user.username
-  data = {"username": username, "user_id": user_id}
-  db.put(data=data, key=name)
+  data = {"username": username, "name": name}
+  db.put(data=data, key=user_id)
