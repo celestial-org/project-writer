@@ -1,4 +1,5 @@
 from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import subprocess
 import time
 import requests
@@ -43,7 +44,8 @@ def run_command(c, m):
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới kiểm tra liên kết {url} với **{count}** cấu hình', quote=True)
     cmd = f"./lite -ping 1 -test {test_url}"
     os.system(cmd)
-    m.reply_photo(photo='out.png', quote=True, caption=f"{url} \nKiểm tra bởi **{m.from_user.first_name}**```tài trợ bởi Tran Han Thang```")
+    m.reply_photo(photo='out.png', quote=True, caption=f"Kiểm tra bởi **{m.from_user.first_name}**```tài trợ bởi Tran Han Thang```", reply_markup=InlineKeyboardMarkup(
+    [[InlineKeyboardButton("Subscription", url=url)]]))
     os.system('rm out.png')
     time.sleep(5)
     stt.delete()
