@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
-from lib.lite import get_config, local_test
+from lib.lite import get_config, local_test, endpoint_test
+from db import endpoints as eps
 import subprocess
 import time
 import requests
@@ -9,6 +10,7 @@ import re
 
 @Client.on_message(filters.command("test"))
 def run_lite_command(c, m):
+  endpoint = os.getenv("ENDPOINT")
   url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
   if m.reply_to_message:
     try:
@@ -39,9 +41,13 @@ def run_lite_command(c, m):
       m.reply("Liên kết bị lỗi", quote=True)
       return
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\n```Lưu ý:\nQuá nhiều cấu hình có thể gây ra lỗi và không trả về kết quả\n```', quote=True)
-    local_test(test_url)
-    m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**")
-    os.system('rm out.png')
+    if endpoint:
+      photo, city, country, org = endpoint_test(test_url, endpoint)
+      m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**{city}-{country}\n{org}**\ntester: **{m.from_user.first_name}**")
+    else:
+      local_test(test_url)
+      m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**")
+      os.system('rm out.png')
     time.sleep(5)
     stt.delete()
     
