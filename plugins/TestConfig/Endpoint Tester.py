@@ -18,7 +18,7 @@ def regex_lite_command(c, m):
   try:
     sponsor, _, endpoint = ep.get(prefix)
   except:
-    pass
+    return
   if endpoint is None:
     return
   if m.reply_to_message:
