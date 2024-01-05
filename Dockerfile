@@ -9,5 +9,5 @@ RUN chown -R user:user /home/user
 RUN chmod +x ./start.sh && chmod +x ./lite
 
 USER user
-#EXPOSE 8080
+EXPOSE 8080
 ENTRYPOINT ["./start.sh"]
