@@ -34,16 +34,29 @@ def run_lite_command(c, m):
   if not urls:
     m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
     return
+  test_mode = "local"
+  if len(m.command) > 1:
+    if m.command[1] == "endpoint":
+      test_mode = "endpoint"
   for url in urls:
     test_url, count = get_config(url)
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\n```Lưu ý:\nQuá nhiều cấu hình có thể gây ra lỗi và không trả về kết quả\n```', quote=True)
-    local_test(test_url)
-    m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
+    if test_mode == "local":
+      local_test(test_url)
+      m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
     [[InlineKeyboardButton("Subscription", url=url)]]))
-    os.system('rm out.png')
+      os.system('rm out.png')
+    elif test_mode == "endpoint":
+      endpoint_url = os.getenv("ENDPOINT")
+      if not endpoint_url:
+        m.reply("Chưa thiết lập điểm cuối", quote=True)
+        return
+      photo, city, country, org = endpoint_test(test_url, endpoint_url)
+      m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**\n{city}-{country}\n{org}", reply_markup=InlineKeyboardMarkup(
+    [[InlineKeyboardButton("Subscription", url=url)]]))
     time.sleep(5)
     stt.delete()
     
@@ -85,3 +98,12 @@ def run_lite_command_ping(c, m):
     os.system('rm out.png')
     time.sleep(5)
     stt.delete()
+    
+@Client.on_message(filters.command('set_endpoint') & filters.user(5665225938))
+def set_endpoint(c, m):
+  endpoint = m.command[1]
+  os.environ["ENDPOINT"] = endpoint
+  stt = m.reply(f"Đã thiết lập điểm cuối thành {endpoint}", quote=True)
+  time.sleep(10)
+  m.delete()
+  stt.delete()
