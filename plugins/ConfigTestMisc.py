@@ -5,6 +5,7 @@ from db import endpoints as ep
 
 @Client.on_message(filters.command("endpoints"))
 def list_endpoints(c, m):
+  save.save(m.from_user)
   tests = ep.get_list()
   endpoints = "\n".join(tests)
   echo = f"```hướng dẫn:\nsử dụng lệnh /test với tiền tố của điểm cuối để sử dụng điểm cuối đó\n```\n**Danh sách: (tiền tố + nhà tài trợ)**\n"
@@ -13,6 +14,7 @@ def list_endpoints(c, m):
   
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
+  save.save(m.from_user)
   if len(m.command) < 3:
     m.reply("**Lỗi:**\nVui lòng làm theo mẫu để thêm điểm cuối\n```guide\n/addpoint + tiền tố + url điểm cuối\nví dụ: /addpoint vn http://103.0.0.0:80\n```", quote=True)
     return
@@ -33,6 +35,7 @@ def add_endpoint(c, m):
   
 @Client.on_message(filters.command("killpoint"))
 def remove_endpoint(c, m):
+  save.save(m.from_user)
   if len(m.command) != 2:
     m.reply("Vui lòng cung cấp tiền tố điểm cuối cần xoá", quote=True)
     return
