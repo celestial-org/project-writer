@@ -25,6 +25,9 @@ def get_config(url):
 @Client.on_message(filters.command("test"))
 def run_lite_command(c, m):
   url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
+  ping = 1
+  if len(m.command) > 1 and m.command[1].isdigit():
+    ping = 2
   if m.reply_to_message:
     try:
       text = m.reply_to_message.text
@@ -53,10 +56,10 @@ def run_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình', quote=True)
-    cmd = f"./lite -ping 1 -test {test_url}"
+    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình với số lần thử là {ping}', quote=True)
+    cmd = f"./lite -ping {ping} -test {test_url}"
     os.system(cmd)
-    m.reply_photo(photo='out.png', quote=True, caption=f"**{m.from_user.first_name}**\n```tai tro boi Tran Han Thang```", reply_markup=InlineKeyboardMarkup(
+    m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
     [[InlineKeyboardButton("Subscription", url=url)]]))
     os.system('rm out.png')
     time.sleep(5)
