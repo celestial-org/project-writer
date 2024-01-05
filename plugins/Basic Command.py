@@ -1,4 +1,5 @@
 from pyrogram import Client, filters
+from lib.env import config_tool
 
 @Client.on_message(filters.command("helps") & (filters.mentioned|filters.private))
 def help_list(c, m):
