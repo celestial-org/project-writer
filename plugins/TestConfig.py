@@ -27,7 +27,7 @@ def run_lite_command(c, m):
   url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
   ping = 1
   if len(m.command) > 1 and m.command[1].isdigit():
-    ping = 2
+    ping = int(m.command[1])
   if m.reply_to_message:
     try:
       text = m.reply_to_message.text
@@ -56,7 +56,7 @@ def run_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới\n**Liên kết:** {url}\nSố lượng cấu hình: **{count}**\nSố lần kiểm tra: **{ping}**', quote=True)
+    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến iên kết {url}\nSố lượng cấu hình: **{count}**\nSố lần kiểm tra: **{ping}**', quote=True)
     cmd = f"./lite -ping {ping} -test {test_url}"
     os.system(cmd)
     m.reply_photo(photo='out.png', quote=True, caption=f"```sponsor\nTran Han Thang\n```\n**{m.from_user.first_name}**", reply_markup=InlineKeyboardMarkup(
