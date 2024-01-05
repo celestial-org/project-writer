@@ -1,10 +1,6 @@
-import requests, os
-from deta import Deta
-from lib.utils import deta_key
-
-deta = Deta(deta_key)
-db = deta.Base("v2ray-notes")
-
+import requests
+import os
+from db.base import v2ray_notes as db
 
 class DatabaseNotFoundError(Exception):
   pass
