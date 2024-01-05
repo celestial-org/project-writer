@@ -15,13 +15,13 @@ def list_endpoints(c, m):
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
   save.save(m.from_user)
-  if len(m.command) < 3:
+  if len(m.command) < 5:
     m.reply("**Lỗi:**\nVui lòng làm theo mẫu để thêm điểm cuối\n```guide\n/addpoint + tiền tố + url điểm cuối\nví dụ: /addpoint vn http://103.0.0.0:80\n```", quote=True)
     return
   try:
     prefix = m.command[1]
-    if prefix > 3:
-      m.reply("Tiền tố tối đa là 3 ký tự. Vui lòng thừ lại", quote=True)
+    if prefix > 5:
+      m.reply("Tiền tố tối đa là 5 ký tự. Vui lòng thừ lại", quote=True)
     endpoint = m.command[2]
     if not endpoint.startswith("http"):
       m.reply("Chỉ chấp nhận giao thức http/https", quote=True)
