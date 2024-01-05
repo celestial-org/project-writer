@@ -1,6 +1,6 @@
 import re, time
 from pyrogram import Client, filters, enums
-from lib.database import save_url, remove_url, get_all, check_all
+from db.note import save_url, remove_url, get_all, check_all
 from lib.env import config_tool
 
 @Client.on_message(filters.command("add"))
