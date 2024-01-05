@@ -8,6 +8,9 @@ def local_test(test_url, pingonly=False):
   else:
     cmd = f"./lite -config ./config/config.json -test {test_url}"
   os.system(cmd)
+  
+def endpoint_test(test_url, pingonly=False):
+  r = requests.post(test_url)
 
 def get_config(url):
   if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
