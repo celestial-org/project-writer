@@ -4,9 +4,9 @@ import os
 
 def local_test(test_url, pingonly=False):
   if pingonly:
-    cmd = f"./lite -config ./config/ping.json -test {test_url}"
+    cmd = f"./lite -ping 1 -config ./config/ping.json -test {test_url}"
   else:
-    cmd = f"./lite -config ./config/config.json -test {test_url}"
+    cmd = f"./lite -ping 1 -config ./config/config.json -test {test_url}"
   os.system(cmd)
   
 def endpoint_test(test_url, pingonly=False):
