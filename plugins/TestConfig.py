@@ -95,8 +95,11 @@ def run_lite_command_ping(c, m):
     time.sleep(5)
     stt.delete()
     
-@Client.on_message(filters.command('set_endpoint') & filters.user(5665225938))
+@Client.on_message(filters.command('set_endpoint'))
 def set_endpoint(c, m):
+  if len(m.command) < 2:
+    m.reply("Vui lòng cung cấp điểm cuối ```ví dụ\nhttps://hostname\nhttp://--ip--:80\n```", quote=True)
+    return
   endpoint = m.command[1]
   os.environ["ENDPOINT"] = endpoint
   stt = m.reply(f"Đã thiết lập điểm cuối thành {endpoint}", quote=True)
