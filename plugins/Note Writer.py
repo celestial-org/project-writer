@@ -1,12 +1,7 @@
 import re, time
 from pyrogram import Client, filters, enums
 from lib.database import save_url, remove_url, get_all, check_all
-from lib.utils import config_tool
-
-@Client.on_message(filters.command(["start", "help"]))
-def send_welcome(c, m):
-  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\n```Công cụ:\n{config_tool}```")
-
+from lib.env import config_tool
 
 @Client.on_message(filters.command("add"))
 def add_url(c, m):
