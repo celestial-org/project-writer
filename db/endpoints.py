@@ -1,7 +1,7 @@
 from db.base import endpoints as db
 
 def add(sponsor, sponsor_id, prefix, endpoint):
-  db.put(data={"sponsor": sponsor, "sponsor_id": sponsor_id,  "endpoint": endpoint}, key=prefix)
+  db.put(data={"sponsor": sponsor, "sponsor_id": str(sponsor_id),  "endpoint": endpoint}, key=prefix)
  
 def get(prefix):
   item = get(prefix)
