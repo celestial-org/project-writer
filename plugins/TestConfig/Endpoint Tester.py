@@ -45,7 +45,13 @@ def regex_lite_command(c, m):
     m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
     return
   for url in urls:
-    test_url, count = get_config(url)
+    try:
+      test_url, count = get_config(url)
+    except:
+      uvl = m.reply("Liên kết không khả dụng", quote=True)
+      time.sleep(10)
+      uvl.delete()
+      return
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
