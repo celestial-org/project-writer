@@ -4,7 +4,7 @@ def add(sponsor, sponsor_id, prefix, endpoint):
   db.put(data={"sponsor": sponsor, "sponsor_id": str(sponsor_id),  "endpoint": endpoint}, key=prefix)
  
 def get(prefix):
-  item = get(prefix)
+  item = db.get(prefix)
   sponsor = item["sponsor"]
   sponsor_id = item["sponsor_id"]
   endpoint = item["endpoint"]
