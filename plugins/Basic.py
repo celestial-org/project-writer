@@ -5,7 +5,7 @@ from lib.utils import config_tool
 
 @Client.on_message(filters.command(["start", "help"]))
 def send_welcome(c, m):
-  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\nCông cụ: {config_tool}```sponsor\nTran Han Thang\n```")
+  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\n```Công cụ:\n{config_tool}```")
 
 
 @Client.on_message(filters.command("add"))
@@ -127,4 +127,4 @@ def get_all_urls(c, m):
 def get_urls(c, m):
   user_id = m.from_user.id
   filename = f'{user_id}'
-  m.reply_text(f"Liên kết của bạn là:\n{config_tool}/get/{filename}\n\nLiên kết chung là:\n{config_tool}/get/share\n```sponsor\nTran Han Thang\n```")
+  m.reply_text(f"Liên kết của bạn là:\n{config_tool}/get/{filename}\n\n```Liên kết chung là:\n{config_tool}/get/share\n```")
