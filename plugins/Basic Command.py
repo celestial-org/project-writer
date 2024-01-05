@@ -22,5 +22,6 @@ def ext_command_list(c, m):
 /addpoint + `prefix` + `endpoint url` - Thêm điểm cuối cho thử nghiệm
 /endpoints - Lấy danh sách điểm cuối và lệnh gọi
 /killpoint + `prefix` - Xoá điểm cuối nếu nó thuộc về bạn
+/future - ....
 """, quote=True
 )
