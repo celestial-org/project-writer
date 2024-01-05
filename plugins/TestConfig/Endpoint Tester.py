@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from db import endpoints as ep
 from lib.lite import get_config, endpoint_test
+from db import save
 import re 
 
 url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
@@ -9,6 +10,7 @@ url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]
 def regex_lite_command(c, m):
   if not m.text.startswith("/test"):
     return
+  save.save(m.from_user)
   command = m.text.split(' ')[0]
   prefix = command.replace("/test", "")
   sponsor, _, endpoint = ep.get(prefix)
