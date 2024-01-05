@@ -9,7 +9,7 @@ def get(prefix):
   endpoint = item["endpoint"]
   return sponsor, endpoint
   
-def all():
+def get_list():
   items = db.fetch().items
   results = []
   for item in items:
