@@ -9,8 +9,19 @@ def local_test(test_url, pingonly=False):
     cmd = f"./lite -ping 1 -config ./config/config.json -test {test_url}"
   os.system(cmd)
   
-def endpoint_test(test_url, pingonly=False):
-  r = requests.post(test_url)
+def endpoint_test(test_url, test_endpoint, pingonly=False):
+  if pingonly:
+    data = {"url": test_url, "mode": "ping" }
+  else:
+    data = {"url": test_url}
+  r = requests.post(test_endpoint, data=data)
+  res = r.json()
+  city = res['city']
+  country = res['country']
+  org = res['org']
+  result = res['result']
+  return result, city, country, org
+  
 
 def get_config(url):
   if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
