@@ -15,6 +15,6 @@ def get_list():
   for item in items:
     prefix = item["prefix"]
     sponsor = item["sponsor"]
-    result = f"{prefix} - **{sponsor}**"
+    result = f"`{prefix}` - **{sponsor}**"
     results.append(result)
   return results
