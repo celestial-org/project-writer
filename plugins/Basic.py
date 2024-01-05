@@ -1,7 +1,7 @@
 import re, time
 from pyrogram import Client, filters, enums
-from database import save_url, remove_url, get_all, check_all
-from utils import config_tool
+from lib.database import save_url, remove_url, get_all, check_all
+from lib.utils import config_tool
 
 @Client.on_message(filters.command(["start", "help"]))
 def send_welcome(c, m):
