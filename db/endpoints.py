@@ -1,13 +1,14 @@
 from db.base import endpoints as db
 
-def add(sponsor, prefix, endpoint):
-  db.put(data={"sponsor": sponsor, "endpoint": endpoint}, key=prefix)
+def add(sponsor, sponsor_id, prefix, endpoint):
+  db.put(data={"sponsor": sponsor, "sponsor_id": sponsor_id,  "endpoint": endpoint}, key=prefix)
  
 def get(prefix):
   item = get(prefix)
   sponsor = item["sponsor"]
+  sponsor_id = item["sponsor_id"]
   endpoint = item["endpoint"]
-  return sponsor, endpoint
+  return sponsor, sponsor_id, endpoint
   
 def rm(prefix):
   db.delete(prefix)
