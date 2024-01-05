@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from lib.env import config_tool
 
-@Client.on_message(filters.command("helps") & (filters.mentioned|filters.private))
+@Client.on_message(filters.command("helps"))
 def help_list(c, m):
   m.reply(f"""Xin chào **{m.from_user.first_name}**(`{m.from_user.id}`), dưới đây là danh sách lệnh khả dụng:
 /get - Lấy liên kết tổng hợp subscribe
