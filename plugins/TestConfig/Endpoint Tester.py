@@ -12,6 +12,8 @@ def regex_lite_command(c, m):
     return
   save.save(m.from_user)
   command = m.text.split(' ')[0]
+  if "@v2writer_bot" in command:
+    command = command.replace("@v2writer_bot", "")
   prefix = command.replace("/test", "")
   try:
     sponsor, _, endpoint = ep.get(prefix)
