@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from lib.lite import get_config, local_test
+from lib.lite import get_config, local_test, endpoint_test
 import subprocess
 import time
 import requests
