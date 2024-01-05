@@ -36,7 +36,7 @@ def add_endpoint(c, m):
 @Client.on_message(filters.command("killpoint"))
 def remove_endpoint(c, m):
   save.save(m.from_user)
-  if len(m.command) != 2:
+  if len(m.command) < 2:
     m.reply("Vui lòng cung cấp tiền tố điểm cuối cần xoá", quote=True)
     return
   prefix = m.command[1]
