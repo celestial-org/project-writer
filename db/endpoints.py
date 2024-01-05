@@ -9,6 +9,9 @@ def get(prefix):
   endpoint = item["endpoint"]
   return sponsor, endpoint
   
+def rm(prefix):
+  db.delete(prefix)
+  
 def get_list():
   items = db.fetch().items
   results = []
