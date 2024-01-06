@@ -31,8 +31,9 @@ def setup_server(c, m):
   http_port = params.get('http', 80)
   handle, code = run_server(hostname, username, password, ssh_port, http_port)
   if code == 200:
-    r = requests.get(f"http://{hostname}:{http_port}/")
-    if r.status_code != 200:
+    try:
+      r = requests.get(f"http://{hostname}:{http_port}/")
+    except:
       m.reply("Có lỗi khi kết nối đến endpoint, vui lòng thực hiện cài đặt lại", quote=True)
       return
     m.reply(handle, quote=True)
