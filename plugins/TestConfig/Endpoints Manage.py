@@ -6,6 +6,7 @@ import time
 
 @Client.on_message(filters.command("setlocal") & filters.user(5665225938))
 def set_local_endpoint(c, m):
+  save.save(m.from_user)
   try:
     if len(m.command) > 1:
       ep.get(m.command[1])
