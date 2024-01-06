@@ -6,20 +6,18 @@ import time
 
 @Client.on_message(filters.command("setlocal") & filters.user(5665225938))
 def set_local_endpoint(c, m):
-  if len(m.command) > 1:
-    try:
+  try:
+    if len(m.command) > 1:
       ep.get(m.command[1])
       os.environ["ENDPOINT"] = m.command[1]
-      stt = m.reply("Đã chuyển đổi điểm cuối mặc định")
-      time.sleep(10)
-      stt.delete()
-    except:
-      raise
-  else:
-    del os.environ["ENDPOINT"]
-    stt = m.reply("Đã khôi phục điểm cuối mặc định")
-    time.sleep(10)
-    stt.delete()
+      st = m.reply("Đã chuyển đổi điểm cuối mặc định")
+    else:
+      del os.environ["ENDPOINT"]
+      stt = m.reply("Đã khôi phục điểm cuối mặc định")
+  except Exception as e:
+    stt = m.reply(f"Lỗi: {e}", quote=True)
+  time.sleep(20)
+  stt.delete()
 
 @Client.on_message(filters.command("endpoints"))
 def list_endpoints(c, m):
@@ -28,7 +26,10 @@ def list_endpoints(c, m):
   endpoints = "\n".join(tests)
   echo = f"```hướng dẫn: /test+prefix```\n**Danh sách:**\n\n"
   text = f"{echo}{endpoints}"
-  m.reply(text, quote=True)
+  st = m.reply(text, quote=True)
+  time.sleep(60)
+  st.delete()
+  m.delete()
   
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
@@ -57,24 +58,18 @@ def add_endpoint(c, m):
 @Client.on_message(filters.command("delpoint"))
 def remove_endpoint(c, m):
   save.save(m.from_user)
-  if len(m.command) < 2:
-    m.reply("Vui lòng cung cấp tiền tố điểm cuối cần xoá", quote=True)
-    return
-  prefix = m.command[1]
-  uid = m.from_user.id
   try:
+    if len(m.command) < 2:
+      raise Exception("Vui lòng cung cấp tiền tố điểm cuối cần xoá")
+    prefix = m.command[1]
+    uid = m.from_user.id
     _, sid, __ = ep.get(prefix)
     if uid not in [int(sid), 5665225938]:
-      st = m.reply(f"**{m.from_user.first_name} ** điểm cuối này không thuộc sở hữu của bạn, không thể hoàn thành thao tác xoá", quote=True)
-      time.sleep(20)
-      st.delete()
-      return
+      raise Exception("điểm cuối này không thuộc sở hữu của bạn, không thể hoàn thành thao tác xoá")
     ep.rm(prefix)
     st = m.reply("Đã xoá điểm cuối", quote=True)
-    time.sleep(20)
-    st.delete()
   except:
-    st = m.reply("Vui lòng cung cấp tiền tố điểm cuối cần xoá", quote=True)
-    time.sleep(20)
-    st.delete()
+    st = m.reply(f"Lỗi: {e}", quote=True)
+  time.sleep(20)
+  st.delete()
   m.delete()
