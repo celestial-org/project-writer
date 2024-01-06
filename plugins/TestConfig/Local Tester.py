@@ -51,7 +51,7 @@ def run_lite_command(c, m):
       if not prefix:
         raise
       try:
-        sponsor, _, endpoint = ep.get(prefix)
+        sponsor, _, endpoint = eps.get(prefix)
       except:
         stt = m.reply("Điểm cuối không khả dụng", quote=True)
         time.sleep(10)
