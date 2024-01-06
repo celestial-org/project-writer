@@ -39,17 +39,20 @@ def add_endpoint(c, m):
   try:
     prefix = m.command[1]
     if len(prefix) > 5:
-      m.reply("Tiền tố tối đa là 5 ký tự. Vui lòng thừ lại", quote=True)
+      raise Exception("Tiền tố tối đa là 5 ký tự. Vui lòng thừ lại")
     endpoint = m.command[2]
     if not endpoint.startswith("http"):
-      m.reply("Chỉ chấp nhận giao thức http/https", quote=True)
+      raise Exception("Chỉ chấp nhận giao thức http/https")
       return
     sponsor = m.from_user.first_name
     sponsor_id = m.from_user.id
     ep.add(sponsor, sponsor_id, prefix, endpoint)
-    m.reply(f"**{sponsor}** đã đóng góp vào hệ thống một điểm cuối với tiền tố {prefix}. Lệnh /test{prefix} đã có sẵn", quote=True)
+    st = m.reply(f"**{sponsor}** đã đóng góp vào hệ thống một điểm cuối với tiền tố {prefix}. Lệnh /test{prefix} đã có sẵn", quote=True)
   except Exception as e:
-    m.reply(f"```Lỗi:\n{e}\n```", quote=True)
+    st = m.reply(f"```Lỗi:\n{e}\n```", quote=True)
+  time.sleep(20)
+  st.delete
+  m.delete()
   
 @Client.on_message(filters.command("delpoint"))
 def remove_endpoint(c, m):
@@ -62,9 +65,16 @@ def remove_endpoint(c, m):
   try:
     _, sid, __ = ep.get(prefix)
     if uid not in [int(sid), 5665225938]:
-      m.reply(f"**{m.from_user.first_name} ** điểm cuối này không thuộc sở hữu của bạn, không thể hoàn thành thao tác xoá", quote=True)
+      st = m.reply(f"**{m.from_user.first_name} ** điểm cuối này không thuộc sở hữu của bạn, không thể hoàn thành thao tác xoá", quote=True)
+      time.sleep(20)
+      st.delete()
       return
     ep.rm(prefix)
-    m.reply("Đã xoá điểm cuối", quote=True)
+    st = m.reply("Đã xoá điểm cuối", quote=True)
+    time.sleep(20)
+    st.delete()
   except:
-    m.reply("Vui lòng cung cấp tiền tố điểm cuối cần xoá", quote=True)
+    st = m.reply("Vui lòng cung cấp tiền tố điểm cuối cần xoá", quote=True)
+    time.sleep(20)
+    st.delete()
+  m.delete()
