@@ -5,3 +5,4 @@ gunicorn
 requests
 tgcrypto
 psutil
+paramiko
