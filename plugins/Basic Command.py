@@ -24,6 +24,7 @@ def ext_command_list(c, m):
 /endpoints - Lấy danh sách điểm cuối và lệnh gọi
 /killpoint + `prefix` - Xoá điểm cuối nếu nó thuộc về bạn
 /install - Hướng dẫn cài điểm cuối 
+/setupserver - Cài đặt điểm cuối tự động
 """, quote=True
 )
 
