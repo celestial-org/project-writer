@@ -51,7 +51,7 @@ def run_lite_command(c, m):
       if not endpoint:
         raise
       try:
-        sponsor, _, endpoint = ep.get(prefix)
+        sponsor, _, endpoint = ep.get(endpoint)
       except:
         stt = m.reply("Điểm cuối không khả dụng", quote=True)
         time.sleep(10)
