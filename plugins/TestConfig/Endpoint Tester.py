@@ -3,6 +3,7 @@ from db import endpoints as ep
 from lib.lite import get_config, endpoint_test
 from db import save
 import re 
+import time
 
 url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
 
