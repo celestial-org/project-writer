@@ -29,29 +29,20 @@ def setup_server(c, m):
     m.reply("cổng kết nối là bắt buộc! Vui lòng thực hiện lại", quote=True)
     return
   http_port = params.get('http', 80)
-  handle, code = run_server(hostname, username, password, ssh_port, http_port)
-  if code == 200:
-    try:
-      r = requests.get(f"http://{hostname}:{http_port}/")
-    except:
-      m.reply("Có lỗi khi kết nối đến endpoint, vui lòng thực hiện cài đặt lại", quote=True)
-      return
-    m.reply(handle, quote=True)
-    m.reply(f"Endpoint của bạn là: http://{hostname}:{http_port}\nHãy dùng lệnh /addpoint để thêm điểm cuối", quote=True)
-  else:
-    m.reply(handle)
+  handle = run_server(hostname, username, password, ssh_port, http_port)
+  m.reply(handle, quote=True)
   
 def run_server(hostname, username, password, ssh_port, http_port):
   try:
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(hostname, ssh_port, username, password)
-    docker_command = f'docker run -d -p {http_port}:8989 ghcr.io/mymaking/config-writer:main'
+    docker_command = f'docker run -d -p {http_port}:8989 ghcr.io/mymaking/test-endpoint:main'
     stdin, stdout, stderr = ssh.exec_command(docker_command)
     print(stdout.read().decode('utf-8'))
     while not stdout.channel.exit_status_ready():
         time.sleep(1)
         ssh.close()
-        return f"Docker command completed with exit status: {stdout.channel.recv_exit_status()}", 200
+        return f"Docker command completed with exit status: {stdout.channel.recv_exit_status()}"
   except Exception as e:
-      return f"Error: {e}", 400
+      return f"Error: {e}"
