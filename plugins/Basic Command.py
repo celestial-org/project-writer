@@ -23,10 +23,15 @@ def ext_command_list(c, m):
 /addpoint + `prefix` + `endpoint url` - Thêm điểm cuối cho thử nghiệm
 /endpoints - Lấy danh sách điểm cuối và lệnh gọi
 /killpoint + `prefix` - Xoá điểm cuối nếu nó thuộc về bạn
-/future - ....
+/install - Hướng dẫn cài điểm cuối 
 """, quote=True
 )
 
+@Client.on_message(filters.command("install"))
+def help_install_endpoint(c, m):
+  m.reply("""
+Yêu cầu: Docker runtime(Máy tính, VPS...), cổng HTTP mở
+Cài đặt: Sử dụng lệnh ```bash docker run -p 80:8989 ghcr.io/mymaking/test-endpoint:main ```. Có thể thay cổng 80 bằng cổng bất kỳ.""", quote=True)
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
