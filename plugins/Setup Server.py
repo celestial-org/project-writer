@@ -43,7 +43,7 @@ def run_server(hostname, username, password, ssh_port, http_port):
   try:
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname, ssh_port, username, password)
+    ssh.connect(hostname, ssh_port, username, password)
     docker_command = f'docker run -p {http_port}:8989 ghcr.io/mymaking/config-writer:main'
     stdin, stdout, stderr = ssh.exec_command(docker_command)
     print(stdout.read().decode('utf-8'))
