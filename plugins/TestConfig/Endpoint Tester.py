@@ -56,7 +56,10 @@ def regex_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình tại điểm cuối **{prefix.upper()}**\n```Lưu ý:\nQuá nhiều cấu hình có thể gây ra lỗi và không trả về kết quả\n```', quote=True)
+    if url.startswith("http"):
+      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình', quote=True)
+    else:
+      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}', quote=True)
     photo, city, country, org = endpoint_test(test_url, endpoint)
     m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**{city}-{country}\n{org}**\ntester: **{m.from_user.first_name}**")
     time.sleep(5)
