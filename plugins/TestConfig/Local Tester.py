@@ -10,7 +10,7 @@ import re
 
 @Client.on_message(filters.command("test"))
 def run_lite_command(c, m):
-  endpoint = os.getenv("ENDPOINT")
+  prefix = os.getenv("ENDPOINT")
   url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
   if m.reply_to_message:
     try:
@@ -48,15 +48,15 @@ def run_lite_command(c, m):
       return
     stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\n```Lưu ý:\nQuá nhiều cấu hình có thể gây ra lỗi và không trả về kết quả\n```', quote=True)
     try:
-      if not endpoint:
+      if not prefix:
         raise
       try:
-        sponsor, _, endpoint = ep.get(endpoint)
+        sponsor, _, endpoint = ep.get(prefix)
       except:
         stt = m.reply("Điểm cuối không khả dụng", quote=True)
         time.sleep(10)
         stt.delete()
-        return
+        raise
       photo, city, country, org = endpoint_test(test_url, endpoint)
       m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**{city}-{country}\n{org}**\n\n**{m.from_user.first_name}**")
     except:
