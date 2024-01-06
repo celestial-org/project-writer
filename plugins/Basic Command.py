@@ -32,7 +32,7 @@ def ext_command_list(c, m):
 def help_install_endpoint(c, m):
   m.reply("""
 Yêu cầu: Docker runtime(Máy tính, VPS...), cổng HTTP mở
-Cài đặt: Sử dụng lệnh ```bash docker run -p 80:8989 ghcr.io/mymaking/test-endpoint:main ```. Có thể thay cổng 80 bằng cổng bất kỳ.""", quote=True)
+Cài đặt: Sử dụng lệnh <pre> docker run -p 80:8989 ghcr.io/mymaking/test-endpoint:main </pre>. Có thể thay cổng 80 bằng cổng bất kỳ.""", quote=True)
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
