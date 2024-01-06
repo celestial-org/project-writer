@@ -14,7 +14,12 @@ def set_local_endpoint(c, m):
       time.sleep(10)
       stt.delete()
     except:
-      return
+      raise
+  else:
+    del os.environ["ENDPOINT"]
+    stt = m.reply("Đã khôi phục điểm cuối mặc định")
+    time.sleep(10)
+    stt.delete()
 
 @Client.on_message(filters.command("endpoints"))
 def list_endpoints(c, m):
