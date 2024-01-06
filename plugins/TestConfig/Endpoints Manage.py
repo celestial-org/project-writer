@@ -1,7 +1,20 @@
 from pyrogram import Client, filters
 from db import save
 from db import endpoints as ep
+import os 
+import time
 
+@Client.on_message(filters.command("setlocal") & filters.user(5665225938))
+def set_local_endpoint(c, m):
+  if len(m.command) > 1:
+    try:
+      ep.get(m.command[1])
+      os.environ["ENDPOINT"] = m.command[1]
+      stt = m.reply("Đã chuyển đổi điểm cuối mặc định")
+      time.sleep(10)
+      stt.delete()
+    except:
+      return
 
 @Client.on_message(filters.command("endpoints"))
 def list_endpoints(c, m):
