@@ -22,7 +22,7 @@ def ext_command_list(c, m):
   m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), dưới đây là danh sách lệnh cấp cao:
 /addpoint + `prefix` + `endpoint url` - Thêm điểm cuối cho thử nghiệm
 /endpoints - Lấy danh sách điểm cuối và lệnh gọi
-/killpoint + `prefix` - Xoá điểm cuối nếu nó thuộc về bạn
+/delpoint + `prefix` - Xoá điểm cuối nếu nó thuộc về bạn
 /install - Hướng dẫn cài điểm cuối 
 /setupserver - Cài đặt điểm cuối tự động
 """, quote=True
