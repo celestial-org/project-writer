@@ -51,7 +51,7 @@ def add_endpoint(c, m):
   except Exception as e:
     m.reply(f"```Lỗi:\n{e}\n```", quote=True)
   
-@Client.on_message(filters.command("killpoint"))
+@Client.on_message(filters.command("delpoint"))
 def remove_endpoint(c, m):
   save.save(m.from_user)
   if len(m.command) < 2:
