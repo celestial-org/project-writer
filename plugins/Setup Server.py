@@ -6,7 +6,7 @@ import requests
 @Client.on_message(filters.command("setupserver"))
 def setup_server(c, m):
   if len(m.command) < 5:
-    m.reply('Để thiết lập điểm cuối tự động, vui lòng cung thực hiện theo mẫu: ```command /setupserver h="hostname" u="login user" pw="login password" ssh="cổng SSH" http="cổng cài đặt endpoint, mặc định là 80" ```', quote=True)
+    m.reply('Để thiết lập điểm cuối tự động, vui lòng cung thực hiện theo mẫu: ```command /setupserver h=\"hostname\" u=\"login user\" pw=\"login password\" ssh=\"cổng SSH\" http=\"cổng cài đặt endpoint, mặc định là 80\" ```', quote=True)
     return
   pattern = re.compile(r'(\w+)="([^"]*)"')
   matches = pattern.findall(m.text)
