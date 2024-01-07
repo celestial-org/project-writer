@@ -56,7 +56,7 @@ def check_all(filename):
         response = requests.get(url, headers={"User-Agent":"v2rayNG/1.8.12"}, timeout=5)
       except:
         try:
-          response = requests.get(prox1, params={"url": url}, timeout=10)
+          response = requests.get(prox1, params={"url": url}, timeout=5)
         except:
           response = requests.get(prox2, params={"url": url})
       if response.status_code != 200 or response.text is None:
