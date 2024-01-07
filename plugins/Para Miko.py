@@ -23,7 +23,7 @@ def save_ssh_login(c, m):
     time.sleep(10)
   except Exception as e:
     st = m.reply(str(e), quote=True)
-  time.sleep(20)
+  time.sleep(60)
   st.delete()
   m.delete()
   
