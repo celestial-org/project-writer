@@ -24,6 +24,16 @@ def fill(user_id, machine):
   else:
     raise Exception("Bạn chưa lưu máy chủ nào!")
     
+def delete(user_id, machine):
+    user_data = db.get(str(user_id))
+    if user_data:
+        data_list = user_data.get("data", [])
+        updated_data_list = [entry for entry in data_list if entry.get("machine") != machine]
+        db.update({"data": updated_data_list}, key=str(user_id))
+        return "OK"
+    else:
+      raise Exception("Bạn chưa lưu máy chủ nào!")
+    
 def mymachine(user_id):
     user_data = db.get(str(user_id))
     if user_data:
