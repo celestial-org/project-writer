@@ -12,9 +12,10 @@ def install_endpoint(hostname, username, password, ssh_port, http_port):
     while not stdout.channel.exit_status_ready():
         time.sleep(1)
         ssh.close()
-        return f"Docker command completed with exit status: {stdout.channel.recv_exit_status()}"
+        return f"Docker đã chạy thành công với mã: {stdout.channel.recv_exit_status()}"
+        
   except Exception as e:
-      return f"Error: {e}"
+    raise Exception(str(e))
     
 def run_cmd(hostname, username, password, ssh_port, cmd):
     try:
