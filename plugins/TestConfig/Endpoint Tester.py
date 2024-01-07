@@ -57,7 +57,11 @@ def regex_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    location = requests.get(endpoint).text
+    try:
+      location = requests.get(endpoint, timeout=15).text
+    except:
+      m.reply("Máy chủ test không hoạt động", quote=True)
+      return
     if url.startswith("http"):
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\nMáy chủ test: **{location}**', quote=True)
     else:
