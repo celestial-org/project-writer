@@ -4,7 +4,7 @@ from db import endpoints as ep
 import os 
 import time
 
-@Client.on_message(filters.command("setlocal") & filters.user(5665225938))
+@Client.on_message(filters.command("setpoint") & filters.user(5665225938))
 def set_local_endpoint(c, m):
   save.save(m.from_user)
   try:
@@ -13,7 +13,7 @@ def set_local_endpoint(c, m):
       os.environ["ENDPOINT"] = m.command[1]
       st = m.reply("Đã chuyển đổi máy chủ test mặc định")
     else:
-      os.environ["ENDPOINT"] = "vncmc"
+      os.environ["ENDPOINT"] = "hkg"
       st = m.reply("Đã khôi phục máy chủ test")
   except Exception as e:
     st = m.reply(f"Lỗi: {e}", quote=True)
