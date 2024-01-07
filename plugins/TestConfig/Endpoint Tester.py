@@ -4,6 +4,7 @@ from lib.lite import get_config, endpoint_test
 from db import save
 import re 
 import time
+import requests
 
 url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
 
@@ -56,8 +57,9 @@ def regex_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
+    location = requests.get(endpoint).text
     if url.startswith("http"):
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\nMáy chủ test: **{prefix.upper()}**', quote=True)
+      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\nMáy chủ test: **{location}**', quote=True)
     else:
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}\nMáy chủ test: **{prefix.upper()}**', quote=True)
     photo, city, region, country, org = endpoint_test(test_url, endpoint)
