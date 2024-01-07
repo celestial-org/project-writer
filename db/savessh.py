@@ -34,7 +34,7 @@ def delete(user_id, machine):
     else:
       raise Exception("Bạn chưa lưu máy chủ nào!")
     
-def mymachines(user_id):
+def machines(user_id):
     user_data = db.get(str(user_id))
     if user_data:
         data_list = user_data.get("data", [])
