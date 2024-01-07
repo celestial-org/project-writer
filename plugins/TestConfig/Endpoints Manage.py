@@ -37,7 +37,7 @@ def add_endpoint(c, m):
   save.save(m.from_user)
   try:
     if len(m.command) < 3:
-      raise Exception("Vui lòng làm theo mẫu để thêm máy chủ test\n```guide\n/addpoint + tiền tố + url\nví dụ: /addpoint vn http://103.0.0.0:80\n```")
+      raise Exception("Vui lòng làm theo mẫu để thêm máy chủ test\n```guide\n/addpoint + prefix + url\nví dụ: /addpoint vn http://103.0.0.0:80\n```")
     prefix = m.command[1]
     if len(prefix) > 20:
       raise Exception("Tiền tố tối đa là 20 ký tự. Vui lòng thử lại")
@@ -48,7 +48,7 @@ def add_endpoint(c, m):
     sponsor = m.from_user.first_name
     sponsor_id = m.from_user.id
     ep.add(sponsor, sponsor_id, prefix, endpoint)
-    st = m.reply(f"**{sponsor}** đã đóng góp máy chủ test mới với tiền tố {prefix}. Lệnh /test{prefix} đã có thể sử dụng", quote=True)
+    st = m.reply(f"**{sponsor}** đã đóng góp máy chủ test mới với prefix {prefix}. Lệnh /test{prefix} đã có thể sử dụng", quote=True)
   except Exception as e:
     st = m.reply(f"```Lỗi:\n{e}\n```", quote=True)
   time.sleep(20)
