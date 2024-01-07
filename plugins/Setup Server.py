@@ -48,7 +48,7 @@ def run_server(hostname, username, password, ssh_port, http_port):
       return f"Error: {e}"
       
 @Client.on_message(filters.command("runssh"))
-def setup_server(c, m):
+def runssh_server(c, m):
   if len(m.command) < 5:
     m.reply('Để chạy lệnh ssh vui lòng cung thực hiện theo mẫu:\n\n /runssh h=\"hostname\" u=\"login user\" pw=\"login password\" ssh=\"cổng SSH\" cmd=\"lệnh shell\"', quote=True)
     return
