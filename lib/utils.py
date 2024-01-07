@@ -1,13 +1,23 @@
-import os
-from deta import Deta
+import paramiko
+import time
 
-config_tool = os.getenv("CONFIG_TOOL")
-deta_key = os.getenv("DETA_KEY")
+def run_cmd(hostname, username, password, ssh_port, cmd):
+    try:
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(hostname, ssh_port, username, password)
+        stdin, stdout, stderr = ssh.exec_command(cmd)
 
-deta = Deta(deta_key)
-base = deta.Base('telegram-sessions')
-def tokens():
-  api_id = base.get('API_ID')
-  api_hash = base.get('API_HASH')
-  bot_token = base.get('V2W_TOKEN')
-  return api_id['value'], api_hash['value'], bot_token['value']
+        output = stdout.read().decode('utf-8')
+        errors = stderr.read().decode('utf-8')
+
+        exit_status = stdout.channel.recv_exit_status()
+        ssh.close()
+
+        if exit_status == 0:
+            return output
+        else:
+            raise Exception(f"Command execution failed with error: {errors}")
+
+    except Exception as e:
+        raise Exception(f"Error: {e}")
