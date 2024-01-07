@@ -5,7 +5,7 @@ import io
 from lib.env import prox1, prox2
   
 def endpoint_test(test_url, endpoint_url, pingonly=False):
-  data = {"url": test_url, "mode": "all", "re": 1}
+  data = {"url": test_url}
   r = requests.post(endpoint_url, json=data, timeout=10000)
   res = r.json()
   city = res['city']
