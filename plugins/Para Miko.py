@@ -62,7 +62,7 @@ def get_list_machines(c, m):
 def run_shell_command(c, m):
   try:
     if len(m.command) < 3:
-      raise Exception("Thiếu tham số")
+      raise Exception("Thiếu tham số\n\n/cmd + `tên máy` + `lệnh shell`")
     user_id = m.from_user.id
     machine = m.command[1]
     shell_cmd = m.command[2]
