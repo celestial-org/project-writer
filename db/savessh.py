@@ -13,7 +13,7 @@ def add(user_id, machine, host, user, passwd, port):
     return "OK"
 
   
-def fill(user_id, machine):
+def get(user_id, machine):
   user_data = db.get(str(user_id))
   if user_data:
     data_list = user_data.get("data", [])
@@ -34,7 +34,7 @@ def delete(user_id, machine):
     else:
       raise Exception("Bạn chưa lưu máy chủ nào!")
     
-def mymachine(user_id):
+def mymachines(user_id):
     user_data = db.get(str(user_id))
     if user_data:
         data_list = user_data.get("data", [])
