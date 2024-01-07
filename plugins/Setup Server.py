@@ -19,7 +19,7 @@ def setup_server(c, m):
     st = m.reply(handle, quote=True)
   except Exception as e:
     st = m.reply(str(e), quote=True)
-  time.sleep(20)
+  time.sleep(60)
   st.delete()
   m.delete()
   
