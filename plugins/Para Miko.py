@@ -1,6 +1,6 @@
 from pyrogram import Client, filters, enums
 import re
-import paramiko
+from lib.utils import run_cmd
 import requests
 import time 
 from db import savessh
@@ -44,5 +44,40 @@ def delete_machine_server(c, m):
   time.sleep(20)
   st.delete()
   m.delete()
-      
+
+@Client.on_message(filters.command("machines"))
+def get_list_machines(c, m):
+  try:
+    user_id = m.from_user.id
+    user = m.from_user.first_name
+    list_machines = savessh.machines(user_id)
+    list_machines = "  ".join(list_machines)
+    m.reply(f"Danh sách máy chủ SSH của **{user}**:```Machines\n{list_machines}\n```", quote=True)
+  except Exception as e:
+    st = m.reply(str(e), quote=True)
+    time.sleep(10)
+    st.delete()
+    
+@Client.on_message(filters.command("cmd"))
+def run_shell_command(c, m):
+  try:
+    if len(m.command) < 3:
+      raise Exception("Thiếu tham số")
+    user_id = m.from_user.id
+    machine = m.command[1]
+    shell_cmd = m.command[2]
+    host, sshuser, passwd, port = savessh.get(user_id, machine)
+    result = run_cmd(host, sshuser, passwd, port, shell_cmd)
+    max_length = 4000
+    if len(result) > max_length:
+      parts = [text[i:i+max_length] for i in range(0, len(text), max_length)]
+      for i, part in enumerate(parts, start=1):
+        m.reply(f"{i}```bash\n{part}\n```", quote=True)
+    else:
+      m.reply(f"```bash\n{result}\n```", quote=True)
+  except Exception as e:
+    st = m.reply(str(e), quote=True)
+    time.sleep(20)
+    st.delete()
+    m.delete()
     
