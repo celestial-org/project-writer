@@ -24,7 +24,7 @@ def get_config(url):
   else:
     try:
       res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=5)
-      if res.text is None:
+      if res.text is None or res.status_code != 200:
         raise
     except:
       try:
