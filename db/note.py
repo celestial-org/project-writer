@@ -58,7 +58,7 @@ def check_all(filename):
         try:
           response = requests.get(prox1, params={"url": url}, timeout=10)
         except:
-          response = requests.get(prox2, params={"url": url}, timeout=20)
+          response = requests.get(prox2, params={"url": url})
       if response.status_code != 200 or response.text is None:
           removed_urls.append(url)
     updated_urls = [u for u in existing_entry['urls'] if u not in removed_urls]
