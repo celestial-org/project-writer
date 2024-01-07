@@ -46,10 +46,6 @@ def run_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    if url.startswith("http"):
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình', quote=True)
-    else:
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}', quote=True)
     if not prefix:
         prefix == "us"
     try:
@@ -59,6 +55,10 @@ def run_lite_command(c, m):
       time.sleep(10)
       stt.delete()
       return
+    if url.startswith("http"):
+      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\nĐiểm cuối: **{prefix.upper()}**', quote=True)
+    else:
+      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}', quote=True)
     photo, city, country, org = endpoint_test(test_url, endpoint)
     m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**{city}-{country}\n{org}**\n\n**{m.from_user.first_name}**")
     time.sleep(5)
