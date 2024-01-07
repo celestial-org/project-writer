@@ -76,7 +76,7 @@ def run_shell_command(c, m):
     else:
       m.reply(f"```bash\n{result}\n```", quote=True)
   except Exception as e:
-    st = m.reply(str(e), quote=True)
+    st = m.reply(f"```bash\n{e}\n```"), quote=True)
     time.sleep(20)
     st.delete()
     m.delete()
