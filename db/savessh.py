@@ -16,7 +16,7 @@ def add(user_id, machine, host, user, passwd, port):
 def get(user_id, machine):
   user_data = db.get(str(user_id))
   if user_data:
-    data_list = user_data.get("data", [])
+    data_list = user_data.get("value", [])
     for entry in data_list:
        if entry.get("machine") == machine:
            return entry["host"], entry["user"], entry["passwd"], entry["port"]
