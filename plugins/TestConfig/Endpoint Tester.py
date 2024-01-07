@@ -61,6 +61,6 @@ def regex_lite_command(c, m):
     else:
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}\nMáy chủ test: **{prefix.upper()}**', quote=True)
     photo, city, region, country, org = endpoint_test(test_url, endpoint)
-    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\nThành phố: **{city}\n{region}-{country}\n{org}**\nTester: **{m.from_user.first_name}**")
+    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**Thành phố {city}\n{region}-{country}\n{org}**\n**{m.from_user.first_name}**")
     time.sleep(5)
     stt.delete()
