@@ -8,11 +8,11 @@ def install_endpoint(hostname, username, password, ssh_port, http_port):
     ssh.connect(hostname, ssh_port, username, password)
     docker_command = f'docker run -d -p {http_port}:8080 ghcr.io/mymaking/test-endpoint:main'
     stdin, stdout, stderr = ssh.exec_command(docker_command)
-    print(stdout.read().decode('utf-8'))
+    result = stdout.read().decode('utf-8')
     while not stdout.channel.exit_status_ready():
         time.sleep(1)
         ssh.close()
-        return f"Docker đã chạy thành công với mã: {stdout.channel.recv_exit_status()}"
+        return f"Docker đã chạy thành công với mã: {stdout.channel.recv_exit_status()}```shell\n{result}\n```"
         
   except Exception as e:
     raise Exception(str(e))
