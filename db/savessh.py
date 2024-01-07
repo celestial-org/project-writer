@@ -23,4 +23,12 @@ def fill(user_id, machine):
        raise Exception("Không tìm thấy thông tin máy chủ của bạn")
   else:
     raise Exception("Bạn chưa lưu máy chủ nào!")
-  
+    
+def mymachine(user_id):
+    user_data = db.get(str(user_id))
+    if user_data:
+        data_list = user_data.get("data", [])
+        machine_names = [entry.get("machine") for entry in data_list]
+        return machine_names
+    else:
+      raise Exception("Bạn chưa lưu máy chủ nào!")
