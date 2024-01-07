@@ -9,12 +9,13 @@ def endpoint_test(test_url, endpoint_url, pingonly=False):
   r = requests.post(endpoint_url, json=data, timeout=10000)
   res = r.json()
   city = res['city']
+  region = res['region']
   country = res['country']
   org = res['org']
   result = requests.get(res['result']).content
   result = io.BytesIO(result)
   result.name = "out.png"
-  return result, city, country, org
+  return result, city, region, country, org
   
 
 def get_config(url):
