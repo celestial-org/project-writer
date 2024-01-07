@@ -27,10 +27,7 @@ def list_endpoints(c, m):
   endpoints = "\n".join(tests)
   echo = f"```hướng dẫn: /test+prefix```\n**Danh sách:**\n\n"
   text = f"{echo}{endpoints}"
-  st = m.reply(text, quote=True)
-  time.sleep(60)
-  st.delete()
-  m.delete()
+  m.reply(text, quote=True)
   
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
