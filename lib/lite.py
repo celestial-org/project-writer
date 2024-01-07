@@ -23,15 +23,15 @@ def get_config(url):
     url = requests.post("https://paste.rs/", data=url).text
   else:
     try:
-      res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=10)
+      res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=5)
       if res.text is None:
         raise
-      res = res.text
     except:
       try:
         res = requests.get(prox1, params={"url":url}, timeout=10)
       except:
         res = requests.get(prox2, params={"url":url})
+    res = res.text
     if not any(res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]):
       res = base64.b64decode(res.encode('utf-8')).decode('utf-8')
       url = requests.post("https://paste.rs/", data=res).text
