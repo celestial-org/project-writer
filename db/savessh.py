@@ -1,6 +1,6 @@
 from db.base import savessh as db
 
-def save(user_id, machine, host, user, passwd, port):
+def add(user_id, machine, host, user, passwd, port):
     existing_data = db.get(str(user_id))
     if existing_data:
         existing_list = existing_data.get("data", [])
