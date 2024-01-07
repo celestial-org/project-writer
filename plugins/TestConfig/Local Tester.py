@@ -56,7 +56,7 @@ def run_lite_command(c, m):
       stt.delete()
       return
     try:
-      location = requests.get(endpoint, timeout=15).text
+      location = requests.get(endpoint).text
     except:
       m.reply("Máy chủ test không hoạt động", quote=True)
       return
