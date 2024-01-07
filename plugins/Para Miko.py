@@ -11,7 +11,7 @@ def save_ssh_login(c, m):
     if m.chat.type != enums.ChatType.PRIVATE:
       raise Exception("Để bảo mật, vui lòng thực hiện thao tác này ở chat riêng tư")
     if len(m.command) < 5:
-      raise Exception("Không đủ tham số")
+      raise Exception("Không đủ tham số\nVui lòng thực hiện theo mẫu:\n/addserver + `machine name` + `hostname/ip` + `ssh user` + `ssh password` + `ssh port(nếu là 22 thì không cần nhập)`")
     if len(m.command) == 5:
       _, machine, host, sshuser, passwd = m.command
       port = 22
