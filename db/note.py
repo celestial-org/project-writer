@@ -1,6 +1,7 @@
 import requests
 import os
 from db.base import v2ray_notes as db
+from lib.env import prox1, prox2
 
 class DatabaseNotFoundError(Exception):
   pass
@@ -51,7 +52,13 @@ def check_all(filename):
   if existing_entry:
     removed_urls = []
     for url in existing_entry['urls']:
-      response = requests.get(url, headers={"User-Agent":"v2rayNG/1.8.12"})
+      try:
+        response = requests.get(url, headers={"User-Agent":"v2rayNG/1.8.12"}, timeout=5)
+      except:
+        try:
+          response = requests.get(prox1, params={"url": url}, timeout=10)
+        except:
+          response = requests.get(prox2, params={"url": url}, timeout=20)
       if response.status_code != 200 or response.text is None:
           removed_urls.append(url)
     updated_urls = [u for u in existing_entry['urls'] if u not in removed_urls]
