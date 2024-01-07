@@ -53,12 +53,9 @@ def check_all(filename):
     removed_urls = []
     for url in existing_entry['urls']:
       try:
-        response = requests.get(url, headers={"User-Agent":"v2rayNG/1.8.12"}, timeout=5)
+        response = requests.get(prox1, params={"url": url}, timeout=5)
       except:
-        try:
-          response = requests.get(prox1, params={"url": url}, timeout=5)
-        except:
-          response = requests.get(prox2, params={"url": url})
+        response = requests.get(prox2, params={"url": url})
       if response.status_code != 200 or response.text is None:
           removed_urls.append(url)
     updated_urls = [u for u in existing_entry['urls'] if u not in removed_urls]
