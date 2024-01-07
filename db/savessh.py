@@ -17,9 +17,9 @@ def get(user_id, machine):
   user_data = db.get(str(user_id))
   if user_data:
     data_list = user_data.get("data", [])
-    for e in data_list:
-       if e.get("machine") == machine:
-           return e["host"], e["user"], e["passwd"], e["port"]
+    for entry in data_list:
+       if entry.get("machine") == machine:
+           return entry["host"], entry["user"], entry["passwd"], entry["port"]
        raise Exception("Không tìm thấy thông tin máy chủ của bạn")
   else:
     raise Exception("Bạn chưa lưu máy chủ nào!")
