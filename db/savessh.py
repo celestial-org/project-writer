@@ -3,7 +3,7 @@ from db.base import savessh as db
 def add(user_id, machine, host, user, passwd, port):
     existing_data = db.get(str(user_id))
     if existing_data:
-        existing_list = existing_data.get("data", [])
+        existing_list = existing_data.get("value", [])
         new_data = {"machine": machine, "host": host, "user": user, "passwd": passwd, "port": port}
         existing_list.append(new_data)
         db.update({"data": existing_list}, key=str(user_id))
@@ -27,7 +27,7 @@ def get(user_id, machine):
 def delete(user_id, machine):
     user_data = db.get(str(user_id))
     if user_data:
-        data_list = user_data.get("data", [])
+        data_list = user_data.get("value", [])
         updated_data_list = [entry for entry in data_list if entry.get("machine") != machine]
         db.update({"data": updated_data_list}, key=str(user_id))
         return "OK"
@@ -37,7 +37,7 @@ def delete(user_id, machine):
 def machines(user_id):
     user_data = db.get(str(user_id))
     if user_data:
-        data_list = user_data.get("data", [])
+        data_list = user_data.get("value", [])
         machine_names = [entry.get("machine") for entry in data_list]
         return machine_names
     else:
