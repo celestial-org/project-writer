@@ -55,8 +55,9 @@ def run_lite_command(c, m):
       time.sleep(10)
       stt.delete()
       return
+    location = requests.get(endpoint).text
     if url.startswith("http"):
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\nMáy chủ test: **{prefix.upper()}**', quote=True)
+      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\nMáy chủ test: **{location}**', quote=True)
     else:
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}.\nMáy chủ test: **{prefix.upper()}**', quote=True)
     photo, city, region, country, org = endpoint_test(test_url, endpoint)
