@@ -25,6 +25,10 @@ def ext_command_list(c, m):
 /delpoint + `prefix` - Xoá điểm cuối nếu nó thuộc về bạn
 /install - Hướng dẫn cài điểm cuối 
 /setupserver - Cài đặt điểm cuối tự động
+/addserver - Thêm máy chủ SHH
+/delserver - Xoá máy chủ SSH 
+/machines - Danh sách máy chủ SSH đã thêm 
+/cmd - Chạy lệnh shell trên máy chủ SSH
 """, quote=True
 )
 
