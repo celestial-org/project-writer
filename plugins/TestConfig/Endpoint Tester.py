@@ -58,7 +58,7 @@ def regex_lite_command(c, m):
       m.reply("Liên kết bị lỗi", quote=True)
       return
     try:
-      location = requests.get(endpoint, timeout=15).text
+      location = requests.get(endpoint).text
     except:
       m.reply("Máy chủ test không hoạt động", quote=True)
       return
