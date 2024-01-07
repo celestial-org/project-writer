@@ -6,7 +6,7 @@ def add(user_id, machine, host, user, passwd, port):
         existing_list = existing_data.get("value", [])
         new_data = {"machine": machine, "host": host, "user": user, "passwd": passwd, "port": port}
         existing_list.append(new_data)
-        db.update({"data": existing_list}, key=str(user_id))
+        db.update({"value": existing_list}, key=str(user_id))
     else:
         data = [{"machine": machine, "host": host, "user": user, "passwd": passwd, "port": port}]
         db.put(data=data, key=str(user_id))
@@ -18,9 +18,13 @@ def get(user_id, machine):
   if user_data:
     data_list = user_data.get("value", [])
     for entry in data_list:
-       if entry.get("machine") == machine:
-           return entry["host"], entry["user"], entry["passwd"], entry["port"]
-       raise Exception("Không tìm thấy thông tin máy chủ của bạn")
+      if entry["machine"] == str(machine):
+         match = entry
+         break
+    try:
+      return match["host"], entry["user"], match["passwd"], match["port"]
+    except Exception as e:
+      raise Exception(f"Không tìm thấy thông tin máy chủ của bạn\n{e}")
   else:
     raise Exception("Bạn chưa lưu máy chủ nào!")
     
@@ -28,8 +32,8 @@ def delete(user_id, machine):
     user_data = db.get(str(user_id))
     if user_data:
         data_list = user_data.get("value", [])
-        updated_data_list = [entry for entry in data_list if entry.get("machine") != machine]
-        db.update({"data": updated_data_list}, key=str(user_id))
+        updated_data_list = [entry for entry in data_list if entry["machine"] != machine]
+        db.update({"value": updated_data_list}, key=str(user_id))
         return "OK"
     else:
       raise Exception("Bạn chưa lưu máy chủ nào!")
