@@ -60,7 +60,7 @@ def regex_lite_command(c, m):
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\nMáy chủ test: **{prefix.upper()}**', quote=True)
     else:
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}\nMáy chủ test: **{prefix.upper()}**', quote=True)
-    photo, city, country, org = endpoint_test(test_url, endpoint)
-    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**{city}-{country}\n{org}**\ntester: **{m.from_user.first_name}**")
+    photo, city, region, country, org = endpoint_test(test_url, endpoint)
+    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\n**Thành phố {city}\n{region}-{country}\n{org}**\ntester: **{m.from_user.first_name}**")
     time.sleep(5)
     stt.delete()
