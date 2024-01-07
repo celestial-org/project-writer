@@ -20,4 +20,7 @@ def fill(user_id, machine):
     for e in data_list:
        if e.get("machine") == machine:
            return e["host"], e["user"], e["passwd"], e["port"]
+       raise Exception("Không tìm thấy thông tin máy chủ của bạn")
+  else:
+    raise Exception("Bạn chưa lưu máy chủ nào!")
   
