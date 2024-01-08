@@ -30,7 +30,7 @@ def bot_server_info(c, m):
   ver = platform.version()
   name = platform.uname()
   system = platform.system()
-  serverinfo = server_info()
+  server = server_info()
   msg_text = (f"```{system}\n"
               f"INFO:\n{name}\n\n"
               f"VERSION:\n{ver}\n\n"
