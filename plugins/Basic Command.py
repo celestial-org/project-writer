@@ -11,20 +11,21 @@ def help_list(c, m):
 /remove - Xoá subscribe khỏi danh sách
 /checkall - Tự kiểm tra và xoá subscribe bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
 /request [get, post, put, delete, option] - Gửi yêu cầu HTTP
-/sharelist - Không khả dụng
-/rmshare - Không khả dụng
-/checkshare - Không khả dụng
-/ext - Danh sách lệnh mở rộng
+/sharelist - Lấy danh sách note chung
+/rmshare - Xoá subscribe khỏi note chung 
+/checkshare - Kiểm tra và xoá khỏi note chung
+/ext - Nâng cao
 """, quote=True)
 
 @Client.on_message(filters.command("ext"))
 def ext_command_list(c, m):
-  m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), dưới đây là danh sách lệnh cấp cao:
-/addpoint + `prefix` + `endpoint url` - Thêm điểm cuối cho thử nghiệm
+  m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), lệnh nâng cao:
+  	
+/addpoint + `prefix` + `endpoint url` - Bổ sung máy chủ test
 /endpoints - Lấy danh sách điểm cuối và lệnh gọi
-/delpoint + `prefix` - Xoá điểm cuối nếu nó thuộc về bạn
+/delpoint + `prefix` - Xoá máy chủ test chỉ định 
 /install - Hướng dẫn cài điểm cuối 
-/setupserver - Cài đặt điểm cuối tự động
+/setupserver - Cài đặt điểm cuối tự động (cần thêm máy chủ SSH)
 /addserver - Thêm máy chủ SHH
 /delserver - Xoá máy chủ SSH 
 /machines - Danh sách máy chủ SSH đã thêm 
@@ -34,10 +35,7 @@ def ext_command_list(c, m):
 
 @Client.on_message(filters.command("install"))
 def help_install_endpoint(c, m):
-  m.reply("""
-Yêu cầu: Docker runtime(Máy tính, VPS...), cổng HTTP mở
-Cài đặt: Sử dụng lệnh `docker run -d -p 80:8080 ghcr.io/mymaking/test-endpoint:main` để bắt đầu chạy ở cổng 80. 
-Hoặc sử dụng lệnh /setupserver để tự động cài đặt""", quote=True)
+  m.reply("```bash\ndocker run -d -p 80:8080 ghcr.io/mymaking/test-endpoint:main` để bắt đầu chạy ở cổng 80\n```", quote=True)
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
