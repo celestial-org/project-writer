@@ -45,7 +45,7 @@ def add_endpoint(c, m):
     sponsor = m.from_user.first_name
     sponsor_id = m.from_user.id
     ep.add(sponsor, sponsor_id, prefix, endpoint)
-    st = m.reply(f"**{sponsor}** đã đóng góp máy chủ test mới với prefix {prefix}. Lệnh /test{prefix} đã có thể sử dụng", quote=True)
+    st = m.reply(f"**{sponsor}** đã thêm máy chủ test mới với prefix {prefix}. Lệnh /test{prefix} đã có thể sử dụng", quote=True)
   except Exception as e:
     st = m.reply(f"```Lỗi:\n{e}\n```", quote=True)
   time.sleep(20)
