@@ -54,7 +54,7 @@ def ext_command_list(c, m):
 
 @Client.on_message(filters.command("install"))
 def help_install_endpoint(c, m):
-  m.reply("**Docker:**```bash\ndocker run -d -p 80:8080 ghcr.io/mymaking/test-endpoint:main\n```", quote=True)
+  m.reply("**Docker:**```bash\ndocker run -d -p 80:8080 mymaking/test-endpoint:main\n```", quote=True)
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
