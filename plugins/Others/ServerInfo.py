@@ -31,8 +31,11 @@ def bot_server_info(c, m):
   name = platform.uname()
   system = platform.system()
   serverinfo = server_info()
-  reply_text = (f'**INFO:** \n`{name}`\n\n'
-                f'**VERSION:** \n`{ver}`\n**OS:** `{system}`\n\n'
-                f'**HOSTING:** \n`{serverinfo}`\n\n')
+  msg_text = (f"```{system}\n"
+              f"INFO:\n{name}\n\n"
+              f"VERSION:\n{ver}\n\n"
+              f"SERVER:\n{server}\n"
+              "```"
+                )
 
-  m.reply(reply_text)
+  m.reply(msg_text)
