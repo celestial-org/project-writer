@@ -37,7 +37,7 @@ def add_endpoint(c, m):
       raise Exception("Vui lòng làm theo mẫu để thêm máy chủ test\n```guide\n/addpoint + prefix + url\nví dụ: /addpoint vn http://103.0.0.0:80\n```")
     prefix = m.command[1]
     if len(prefix) > 20:
-      raise Exception("Tiền tố tối đa là 20 ký tự. Vui lòng thử lại")
+      raise Exception("Tối đa là 20 ký tự. Vui lòng thử lại")
     endpoint = m.command[2]
     if not endpoint.startswith("http"):
       raise Exception("Chỉ chấp nhận giao thức http/https")
