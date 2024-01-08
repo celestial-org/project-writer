@@ -15,7 +15,7 @@ def send_request(c, m):
     m.reply("Không tìm thấy liên kết", quote=True)
     return
   for url in urls:
-    try:
-      response = requests.request(method, url)
-      response_text = response.text
-      m.reply("Đang bảo trì!", quote=True)
+    response = requests.request(method, url)
+    response_text = response.text
+      
+    m.reply("Đang bảo trì!", quote=True)
