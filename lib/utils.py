@@ -6,7 +6,7 @@ def install_endpoint(hostname, username, password, ssh_port, http_port):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(hostname, ssh_port, username, password)
-    docker_command = f'docker run -d -p {http_port}:8080 ghcr.io/mymaking/test-endpoint:main'
+    docker_command = f'docker run -d -p {http_port}:8080 mymaking/test-endpoint:main'
     stdin, stdout, stderr = ssh.exec_command(docker_command)
     result = stdout.read().decode('utf-8')
     while not stdout.channel.exit_status_ready():
