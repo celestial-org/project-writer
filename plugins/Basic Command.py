@@ -58,4 +58,4 @@ def help_install_endpoint(c, m):
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
-  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\n```Công cụ:\n{config_tool}```\nDùng lệnh /helps để biết thêm chi tiết", quote=True)
+  m.reply_text(f"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\nDùng lệnh /helps để biết thêm chi tiết", quote=True)
