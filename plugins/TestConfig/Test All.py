@@ -59,7 +59,7 @@ def run_lite_command_test_all(c, m):
           msg_list.append(msg_)
           continue
         photo, city, region, country, org = endpoint_test(test_url, endpoint["endpoint"])
-        msg_ = (photo, f"```sponsor\n{sponsor}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
+        msg_ = (photo, f"```sponsor\n{endpoint['sponsor']}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
         msg_list.append(msg_)
     for msg in msg_list:
         if len(msg) == 2:
