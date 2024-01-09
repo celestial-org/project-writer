@@ -50,6 +50,7 @@ def run_lite_command_test_all(c, m):
     else:
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}.\nMáy chủ test: **TẤT CẢ**', quote=True)
     list_endpoint = eps.get_all()
+    msg_list = []
     for endpoint in list_endpoint:
         try:
           location = requests.get(endpoint["endpoint"]).text
@@ -57,7 +58,10 @@ def run_lite_command_test_all(c, m):
           m.reply(f"Máy chủ test {endpoint['endpoint']} không hoạt động", quote=True)
           return
         photo, city, region, country, org = endpoint_test(test_url, endpoint["endpoint"])
-        m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**", quote=True)
-    m.reply("Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**", quote=True)
+        msg_ = (photo, f"```sponsor\n{sponsor}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**")
+        msg_list.append(msg_)
+    for msg in msg_list:
+        m.reply_photo(photo=msg[0], caption=msg[1], quote=True)
+    m.reply("Phiên kiểm tra đa máy chủ được thực hiện bởi \n**[{m.from_user.first_name}](tg://user?id={m.from_user.id})**", quote=True)
     time.sleep(5)
     stt.delete()
