@@ -62,17 +62,12 @@ def run_lite_command_test_all(c, m):
     for endpoint in list_endpoint:
         try:
           location = requests.get(endpoint["endpoint"]).text
+          photo, city, region, country, org = endpoint_test(test_url, endpoint["endpoint"])
         except:
-          msg_ = (f"Máy chủ test {endpoint['endpoint']} không hoạt động")
-          msg_list.append(msg_)
-          continue
-        photo, city, region, country, org = endpoint_test(test_url, endpoint["endpoint"])
+            continue
         msg_ = (photo, f"```sponsor\n{endpoint['sponsor']}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
         msg_list.append(msg_)
     for msg in msg_list:
-        if len(msg) == 2:
-            m.reply_photo(photo=msg[0], caption=msg[1], quote=True)
-        else:
-            m.reply(msg, quote=True)
+        m.reply_photo(photo=msg[0], caption=msg[1], quote=True)
     time.sleep(5)
     stt.delete()
