@@ -12,7 +12,7 @@ def _admin(_, __, m):
     if m.chat.type != enums.ChatType.PRIVATE:
         member = m.chat.get_member(m.from_user.id)
         bot = m.chat.get_member(6580709427)
-        return hasattr(member, "privileges") and hasattr(bot, "privileges")
+        return member.status in [enums.ChatMemberStatus.OWNER, enums.ChatMemberStatus.ADMINISTRATOR] and bot.status == enums.ChatMemberStatus.ADMINISTRATOR
     else:
         return m.from_user.id == 5665225938
 
