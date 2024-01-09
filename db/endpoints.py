@@ -22,3 +22,12 @@ def get_list():
     result = f"/test{prefix} - **{sponsor}**"
     results.append(result)
   return results
+  
+def get_endpoints():
+    items = db.fetch().items
+    results = []
+    for item in items:
+        endpoint = item["endpoint"]
+        results.append(endpoint)
+    return results
+        
