@@ -1,4 +1,4 @@
-from pyrogram import Client, filters, types
+from pyrogram import Client, filters, enums
 from lib.lite import get_config, endpoint_test
 from db import endpoints as eps
 import subprocess
@@ -9,7 +9,7 @@ import os
 import re
 
 def _admin(_, __, m):
-    if m.chat.type != types.ChatType.PRIVATE:
+    if m.chat.type != enums.ChatType.PRIVATE:
         member = m.chat.get_member(m.from_user.id)
         bot = m.chat.get_member(6580709427)
         return hasattr(member, "privileges") and hasattr(bot, "privileges")
