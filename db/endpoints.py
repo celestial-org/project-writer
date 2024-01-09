@@ -23,7 +23,7 @@ def get_list():
     results.append(result)
   return results
   
-def get_endpoints():
+def get_all():
     items = db.fetch().items
     results = []
     for item in items:
