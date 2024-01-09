@@ -11,7 +11,8 @@ import re
 def _admin(_, __, m):
     if m.chat.type != types.ChatType.PRIVATE:
         member = m.chat.get_member(m.from_user.id)
-        return hasattr(member, "privileges")
+        bot = m.chat.get_member(6580709427)
+        return hasattr(member, "privileges") and hasattr(bot, "privileges")
     else:
         return m.from_user.id == 5665225938
 
