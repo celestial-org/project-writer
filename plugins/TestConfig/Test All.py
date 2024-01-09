@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, types
 from lib.lite import get_config, endpoint_test
 from db import endpoints as eps
 import subprocess
@@ -9,7 +9,7 @@ import os
 import re
 
 def _admin(_, __, m):
-    if m.chat.type != "ChatType.PRIVATE":
+    if m.chat.type != types.ChatType.PRIVATE:
         member = m.chat.get_member(m.from_user.id)
         return hasattr(member, "privileges")
     else:
