@@ -11,6 +11,8 @@ def help_list(c, m):
 
 /share - Chia sẻ subscribe 
 
+/test - Kiểm tra cấu hình v2ray
+
 /mylist - Danh sách subscribe của tôi
 
 /remove - Xoá subscribe khỏi danh sách
@@ -31,6 +33,8 @@ def help_list(c, m):
 @Client.on_message(filters.command("ext"))
 def ext_command_list(c, m):
   m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), lệnh nâng cao:
+
+/multitest - Kiểm tra cấu trúc v2ray đa máy chủ
   	
 /addpoint + `prefix` + `endpoint url` - Bổ sung máy chủ test
 
