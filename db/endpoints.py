@@ -25,9 +25,5 @@ def get_list():
   
 def get_all():
     items = db.fetch().items
-    results = []
-    for item in items:
-        endpoint = item["endpoint"]
-        results.append(endpoint)
-    return results
+    return items
         
