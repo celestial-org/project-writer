@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInf
 import requests
 
 def _filter(_, __, m):
-    if m.text > 4000:
+    if len(m.text) > 4000:
         return True
     return False
     
