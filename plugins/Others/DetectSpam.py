@@ -13,10 +13,9 @@ def _filter(_, __, m):
     
 @Client.on_message(filters.group & filters.create(_filter))
 def detector(c, m):
-    res = requests.post("https://paste.rs", data=m.text)
+    res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
     m.delete()
     user_id = m.from_user.id
     name = m.from_user.first_name
     user = f"[{name}](tg://user?id={user_id})"
-    button = InlineKeyboardMarkup([[InlineKeyboardButton("Bản Sao", web_app=WebAppInfo(url=res.text))]])
-    m.reply(f"Tin nhắn của **{user}** có dấu hiệu spam và đã bị xoá. Dưới đây là bản sao của tin nhắn", reply_markup=button)
+    m.reply(f"Tin nhắn của **{user}** có dấu hiệu spam và đã bị xoá. Dưới đây là bản sao của tin nhắn\n[LINK]({res.text})", reply_markup=button)
