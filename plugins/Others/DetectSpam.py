@@ -18,5 +18,5 @@ def detector(c, m):
     user_id = m.from_user.id
     name = m.from_user.first_name
     user = f"[{name}](tg://user?id={user_id})"
-    button = InlineKeyboardMarkup([[InlineKeyboardButton("Bản Sao", web_app=WebAppInfo((res.text)))]])
+    button = InlineKeyboardMarkup([[InlineKeyboardButton("Bản Sao", web_app=WebAppInfo(url=res.text))]])
     m.reply(f"Tin nhắn của **{user}** có dấu hiệu spam và đã bị xoá. Dưới đây là bản sao của tin nhắn", reply_markup=button)
