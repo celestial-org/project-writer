@@ -21,7 +21,7 @@ def endpoint_test(test_url, endpoint_url, pingonly=False):
 def get_config(url):
   if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
     res = url
-    url = requests.post("https://paste.rs/", data=url).text
+    url = requests.post("https://tempnote-1-q9925339.deta.app/post", data=url).text
   else:
     try:
       res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=5)
