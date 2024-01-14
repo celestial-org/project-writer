@@ -13,8 +13,8 @@ def _filter(_, __, m):
     
 @Client.on_message(filters.group & filters.create(_filter))
 def detector(c, m):
-    res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
     m.delete()
+    res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
     user_id = m.from_user.id
     name = m.from_user.first_name
     user = f"[{name}](tg://user?id={user_id})"
