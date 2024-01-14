@@ -9,7 +9,7 @@ def _filter(_, __, m):
     
 @Client.on_message(filters.group & filters.create(_filter))
 def detector(c, m):
-    res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
+    res = requests.post("https://paste.rs", data=m.text)
     m.delete()
     user_id = m.from_user.id
     name = m.from_user.first_name
