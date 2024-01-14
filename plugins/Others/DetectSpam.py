@@ -3,9 +3,13 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInf
 import requests
 
 def _filter(_, __, m):
-    if m.text and len(m.text) > 4000:
-        return True
-    return False
+    try:
+        if len(m.text) > 4000:
+            return True
+        else:
+            raise
+    except:
+        return False
     
 @Client.on_message(filters.group & filters.create(_filter))
 def detector(c, m):
