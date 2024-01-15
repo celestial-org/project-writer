@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from db import save
-from db import endpoints as ep
+from lib.lite import get_endpoints
 import os 
 import time
 
@@ -23,9 +23,13 @@ def set_local_endpoint(c, m):
 @Client.on_message(filters.command("endpoints"))
 def list_endpoints(c, m):
   save.save(m.from_user)
-  tests = ep.get_list()
-  endpoints = "\n".join(tests)
-  echo = f"```hướng dẫn: /test+prefix```\n**Danh sách:**\n\n"
+  try:
+      count, ___, endpoints = get_endpoints()
+  except Exception as e:
+      m.reply(str(e), quote=True)
+      return
+  endpoints = "\n".join(endpoints)
+  echo = f"**Danh sách máy chủ test:({count})**\n\n"
   text = f"{echo}{endpoints}"
   m.reply(text, quote=True)
   
