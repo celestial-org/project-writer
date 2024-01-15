@@ -4,6 +4,17 @@ import os
 import io
 from lib.env import prox1, prox2
   
+def get_endpoints():
+    try:
+        r = requests.get("http://server.nexcord.com:10232", timeout=10)
+        res = r.json()
+        count = res.get("count")
+        epoints = [f"**{e.get("name")}**: /test{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
+        return count, epoints
+    except:
+        return "API Không hoạt động"
+    
+  
 def endpoint_test(test_url, endpoint_url, pingonly=False):
   data = {"url": test_url}
   r = requests.post(endpoint_url, json=data, timeout=10000)
