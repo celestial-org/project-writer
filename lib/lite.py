@@ -2,11 +2,11 @@ import requests
 import base64
 import os
 import io
-from lib.env import prox1, prox2
+from lib.env import prox1, prox2, server_test
   
 def get_endpoints():
     try:
-        r = requests.get("http://server.nexcord.com:10232", timeout=10)
+        r = requests.get(server_test, timeout=10)
         res = r.json()
         count = res.get("count")
         epoints = [e.get("prefix") for e in res["list"]]
@@ -15,19 +15,23 @@ def get_endpoints():
     except:
         return "API Không hoạt động"
     
+def check_before(prefix):
+    r = requests.post(server_test, json={"prefix": prefix}, timeout=10)
+    if r.text == "TIMEOUT":
+        raise Exception("Máy chủ test không hoạt động")
+    return r.text
   
-def endpoint_test(test_url, endpoint_url, pingonly=False):
-  data = {"url": test_url}
-  r = requests.post(endpoint_url, json=data, timeout=10000)
+def start_test(test_url, endpoint):
+  r = requests.get(f"{server_test}/{endpoint}", params={"url":test_url}, timeout=10000)
   res = r.json()
-  city = res['city']
-  region = res['region']
-  country = res['country']
+  location = res["location"]
   org = res['org']
-  result = requests.get(res['result']).content
-  result = io.BytesIO(result)
-  result.name = "out.png"
-  return result, city, region, country, org
+  endpoint_name = res["name"]
+  code_result = res['result']
+  bytes_result = base64.b64decode(code_result)
+  result = io.BytesIO(bytes_result)
+  result.name = "output.png"
+  return location, org, endpoint_name, result
   
 
 def get_config(url):
