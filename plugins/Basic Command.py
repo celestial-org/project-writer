@@ -36,15 +36,13 @@ def ext_command_list(c, m):
 
 /multitest - Kiểm tra cấu trúc v2ray đa máy chủ
   	
-/addpoint + `prefix` + `endpoint url` - Bổ sung máy chủ test
+/addpoint - `None`
 
-/endpoints - Lấy danh sách lệnh test
+/testservers - Lấy danh sách máy chủ test
 
-/delpoint + `prefix` - Xoá máy chủ test chỉ định 
+/delpoint - None
 
-/install - Hướng dẫn cài điểm cuối
-
-/setupserver - Cài đặt điểm cuối tự động (cần thêm máy chủ SSH)
+/install - Hướng dẫn cài đặt máy chủ test
 
 /addserver - Thêm máy chủ SHH
 
@@ -58,7 +56,7 @@ def ext_command_list(c, m):
 
 @Client.on_message(filters.command("install"))
 def help_install_endpoint(c, m):
-  m.reply("**Docker:**```bash\ndocker run -d -p 80:8080 mymaking/test-endpoint:main\n```", quote=True)
+  m.reply("**Docker:**```bash\ndocker run -d ghcr.io/bosuutap/writer-endpoint-installer:main\n```\n\nThiết lập thủ công:\n\n`git clone https://github.com/bosuutap/writer-endpoint-installer\npip install -r requirements.txt\nbash setup.sh\npython main.py", quote=True)
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
