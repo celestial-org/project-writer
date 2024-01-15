@@ -20,7 +20,7 @@ def get_endpoints():
         raise Exception("API Không hoạt động")
     
 def check_before(prefix):
-    r = requests.post(server_test, json={"prefix": prefix}, timeout=10)
+    r = requests.get(f"{server_test}/{prefix}", timeout=10)
     if r.text == "TIMEOUT":
         raise Exception("Máy chủ test không hoạt động")
     return r.text
