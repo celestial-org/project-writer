@@ -1,28 +1,27 @@
 from pyrogram import Client, filters
 from db import endpoints as ep
-from lib.lite import get_config, endpoint_test
+from lib.lite import get_config, start_test, check_before
 from db import save
 import re 
 import time
 import requests
 
 url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
+def test_filter(_, __, m):
+    return m.text.startswith("/test_")
 
-@Client.on_message(filters.regex("/test"), group=2)
+@Client.on_message(filters.create(test_filter), group=2)
 def regex_lite_command(c, m):
-  if not m.text.startswith("/test"):
-    return
   save.save(m.from_user)
   command = m.text.split(' ')[0]
   if "@v2writer_bot" in command:
     command = command.replace("@v2writer_bot", "")
-  prefix = command.replace("/test", "")
+  prefix = command.replace("/test_", "")
   try:
-    sponsor, _, endpoint = ep.get(prefix)
-  except:
-    return
-  if endpoint is None:
-    return
+    endpoint = check_before(prefix)
+  except Exception as e:
+      m.reply(str(e), quote=True)
+      return
   if m.reply_to_message:
     try:
       text = m.reply_to_message.text
@@ -57,16 +56,11 @@ def regex_lite_command(c, m):
     if count is None:
       m.reply("Liên kết bị lỗi", quote=True)
       return
-    try:
-      location = requests.get(endpoint).text
-    except:
-      m.reply("Máy chủ test không hoạt động", quote=True)
-      return
     if url.startswith("http"):
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình\nMáy chủ test: **{location}**', quote=True)
+      stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình\nPrefix: **{prefix.upper()}**', quote=True)
     else:
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}\nMáy chủ test: **{location}**', quote=True)
-    photo, city, region, country, org = endpoint_test(test_url, endpoint)
-    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
+      stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}\nPrefix: **{prefix.upper()}**', quote=True)
+    location, org, sponsor, photo = start_test(test_url, endpoint)
+    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\nVị trí: **{location}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
     time.sleep(5)
     stt.delete()
