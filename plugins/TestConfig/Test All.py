@@ -1,5 +1,5 @@
 from pyrogram import Client, filters, enums
-from lib.lite import get_config, endpoint_test
+from lib.lite import get_config, start_test, check_before, get_endpoints
 from db import endpoints as eps
 import subprocess
 import time
@@ -57,16 +57,16 @@ def run_lite_command_test_all(c, m):
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\nMáy chủ test: **TẤT CẢ**', quote=True)
     else:
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}.\nMáy chủ test: **TẤT CẢ**', quote=True)
-    list_endpoint = eps.get_all()
+    _, list_endpoint, __ = get_endpoints()
     msg_list = []
     for endpoint in list_endpoint:
         try:
-          location = requests.get(endpoint["endpoint"]).text
-          photo, city, region, country, org = endpoint_test(test_url, endpoint["endpoint"])
+          endpoint = check_before(prefix)
+          location, org, sponsor, photo = start_test(test_url, endpoint)
         except:
             continue
-        msg_ = (photo, f"```sponsor\n{endpoint['sponsor']}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
-        msg_list.append(msg_)
+        msg = (photo, f"```sponsor\n{sponsor}\n```\nVị trí: **{location}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
+        msg_list.append(msg)
     for msg in msg_list:
         m.reply_photo(photo=msg[0], caption=msg[1], quote=True)
     time.sleep(5)
