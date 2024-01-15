@@ -9,8 +9,9 @@ def get_endpoints():
         r = requests.get("http://server.nexcord.com:10232", timeout=10)
         res = r.json()
         count = res.get("count")
-        epoints = [f"**{e.get("name")}**: /test{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
-        return count, epoints
+        epoints = [e.get("prefix") for e in res["list"]]
+        text = [f"**{e.get("name")}**: /test{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
+        return count, epoints, text
     except:
         return "API Không hoạt động"
     
