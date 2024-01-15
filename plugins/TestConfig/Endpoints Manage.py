@@ -12,7 +12,7 @@ def set_local_endpoint(c, m):
       os.environ["ENDPOINT"] = m.command[1]
       st = m.reply("Đã chuyển đổi máy chủ test mặc định")
     else:
-      os.environ["ENDPOINT"] = "hkg"
+      os.environ["ENDPOINT"] = ""
       st = m.reply("Đã khôi phục máy chủ test")
   except Exception as e:
     st = m.reply(f"Lỗi: {e}", quote=True)
