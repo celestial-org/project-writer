@@ -9,7 +9,6 @@ def set_local_endpoint(c, m):
   save.save(m.from_user)
   try:
     if len(m.command) > 1:
-      ep.get(m.command[1])
       os.environ["ENDPOINT"] = m.command[1]
       st = m.reply("Đã chuyển đổi máy chủ test mặc định")
     else:
