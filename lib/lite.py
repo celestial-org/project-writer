@@ -22,7 +22,7 @@ def check_before(prefix):
     return r.text
   
 def start_test(test_url, endpoint):
-  r = requests.get(f"{server_test}/{endpoint}", params={"url":test_url}, timeout=10000)
+  r = requests.get(endpoint, params={"url":test_url}, timeout=10000)
   res = r.json()
   location = res["location"]
   org = res['org']
