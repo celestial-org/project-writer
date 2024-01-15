@@ -13,7 +13,7 @@ def get_endpoints():
             epoints = [e.get("prefix") for e in res["list"]]
             text = [f"**{e.get("name")}**: /test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
         else:
-            epoints = ["///"]
+            epoints = []
             text = ["Không có máy chủ test nào online"]
         return count, epoints, text
     except:
