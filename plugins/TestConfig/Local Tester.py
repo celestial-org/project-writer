@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from lib.lite import get_config, endpoint_test
+from lib.lite import get_config, start_test, get_endpoints, check_before
 from db import endpoints as eps
 import subprocess
 import time
@@ -7,6 +7,11 @@ import requests
 import base64
 import os
 import re
+import random
+
+def ranpoint():
+    _, epoints,__ = get_endpoints()
+    return random.choice(epoints)
 
 @Client.on_message(filters.command("test"))
 def run_lite_command(c, m):
@@ -49,22 +54,17 @@ def run_lite_command(c, m):
     if not prefix:
         prefix == "us"
     try:
-      sponsor, _, endpoint = eps.get(prefix)
-    except:
-      stt = m.reply("Máy chủ test không khả dụng", quote=True)
+      check = check_before(prefix)
+    except Exception as e:
+      stt = m.reply(f"{e}. Hãy thử máy chủ test khác", quote=True)
       time.sleep(10)
       stt.delete()
       return
-    try:
-      location = requests.get(endpoint).text
-    except:
-      m.reply("Máy chủ test không hoạt động", quote=True)
-      return
     if url.startswith("http"):
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\nMáy chủ test: **{location}**', quote=True)
+      stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình', quote=True)
     else:
-      stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}.\nMáy chủ test: **{location}**', quote=True)
-    photo, city, region, country, org = endpoint_test(test_url, endpoint)
-    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\nVị trí: **{city} - {region} - {country}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
+      stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
+    location, org, sponsor, photo = start_test(test_url, endpoint)
+    m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\nVị trí: **{location}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
     time.sleep(5)
     stt.delete()
