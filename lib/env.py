@@ -5,6 +5,7 @@ config_tool = os.getenv("CONFIG_TOOL")
 deta_key = os.getenv("DETA_KEY")
 prox1 = os.getenv("PROX1")
 prox2 = os.getenv("PROX2")
+server_test = os.getenv("SERVER_TEST")
 
 deta = Deta(deta_key)
 base = deta.Base('telegram-sessions')
