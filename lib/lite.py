@@ -10,7 +10,7 @@ def get_endpoints():
         res = r.json()
         count = res.get("count")
         epoints = [e.get("prefix") for e in res["list"]]
-        text = [f"**{e.get("name")}**: /test{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
+        text = [f"**{e.get("name")}**: /test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
         return count, epoints, text
     except:
         return "API Không hoạt động"
