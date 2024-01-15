@@ -51,7 +51,7 @@ def run_lite_command(c, m):
       m.reply("Liên kết bị lỗi", quote=True)
       return
     if not prefix:
-        prefix == ranpoint()
+        prefix = ranpoint()
     try:
       endpoint = check_before(prefix)
     except Exception as e:
