@@ -53,7 +53,7 @@ def run_lite_command(c, m):
     if not prefix:
         prefix == ranpoint()
     try:
-      check = check_before(prefix)
+      endpoint = check_before(prefix)
     except Exception as e:
       stt = m.reply(f"{e}. Hãy thử máy chủ test khác", quote=True)
       time.sleep(10)
