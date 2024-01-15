@@ -9,8 +9,12 @@ def get_endpoints():
         r = requests.get(server_test, timeout=10)
         res = r.json()
         count = res.get("count")
-        epoints = [e.get("prefix") for e in res["list"]]
-        text = [f"**{e.get("name")}**: /test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
+        if res.get('list'):
+            epoints = [e.get("prefix") for e in res["list"]]
+            text = [f"**{e.get("name")}**: /test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
+        else:
+            epoints = ["///"]
+            text = ["Không có máy chủ test nào online"]
         return count, epoints, text
     except:
         raise Exception("API Không hoạt động")
