@@ -35,6 +35,8 @@ def list_endpoints(c, m):
   
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
+  m.reply("Hệ thống máy chủ test mới, /install để biết cách cài đặt", quote=True)
+  return
   save.save(m.from_user)
   try:
     if len(m.command) < 3:
