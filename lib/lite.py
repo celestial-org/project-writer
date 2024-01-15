@@ -13,7 +13,7 @@ def get_endpoints():
         text = [f"**{e.get("name")}**: /test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
         return count, epoints, text
     except:
-        return "API Không hoạt động"
+        raise Exception("API Không hoạt động")
     
 def check_before(prefix):
     r = requests.post(server_test, json={"prefix": prefix}, timeout=10)
