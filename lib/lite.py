@@ -27,7 +27,7 @@ def check_before(prefix):
     return data.get("url")
   
 def start_test(test_url, endpoint):
-    r = requests.get(endpoint, params={"url":test_url}, timeout=10000)
+    r = requests.get(endpoint, params={"url":test_url}, timeout=3100)
     try:
         res = r.json()
         location = res["location"]
