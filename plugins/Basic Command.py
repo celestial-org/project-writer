@@ -11,7 +11,7 @@ def help_list(c, m):
 
 /share - Chia sẻ subscribe 
 
-/test - Kiểm tra cấu hình v2ray
+/test - Kiểm tra cấu hình v2ray...
 
 /mylist - Danh sách subscribe của tôi
 
