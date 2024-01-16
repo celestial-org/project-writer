@@ -51,7 +51,11 @@ def run_lite_command(c, m):
       m.reply("Liên kết bị lỗi", quote=True)
       return
     if not prefix:
-        prefix = ranpoint()
+        try:
+            prefix = ranpoint()
+        except:
+            m.reply("Không có máy chủ test nào hoạt động cả", quote=True)
+            return
     try:
       endpoint = check_before(prefix)
     except Exception as e:
