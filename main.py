@@ -16,7 +16,7 @@ def reset_program(c, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 @bot.on_message(filters.command("resetapi") & filters.user(5665225938))
-def fix_api_server(c, m):
+def reset_api_server(c, m):
     requests.post(f"{server_test}/reset")
     m.reply("Đã gửi lệnh khởi động lại API", quote=True)
 
