@@ -1,7 +1,6 @@
-import os, sys, requests
+import os
 from pyrogram import Client, filters, idle
-from lib.env import tokens, config_tool
-from lib.utils import reply_start
+from lib.env import tokens
 
 bot = Client("writer",
              tokens()[0],
@@ -10,6 +9,9 @@ bot = Client("writer",
              plugins={"root": "plugins"})
              
 bot.start()
-reply_start()
+if os.path.exists("reset.txt"):
+    with open("reset.txt", "r") as f:
+        bot.send_message(int(f.read()), "Chương trình đã được khởi động")
+    os.remove("reset.txt")
 os.system('echo V2Writer')
 idle()
