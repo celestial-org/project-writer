@@ -10,10 +10,10 @@ def set_local_endpoint(c, m):
   try:
     if len(m.command) > 1:
       os.environ["ENDPOINT"] = m.command[1]
-      st = m.reply("Đã chuyển đổi máy chủ test mặc định")
+      st = m.reply("Đã chuyển đổi địa điểm test mặc định")
     else:
       os.environ["ENDPOINT"] = ""
-      st = m.reply("Đã khôi phục máy chủ test")
+      st = m.reply("Đã khôi phục địa điểm test mặc định")
   except Exception as e:
     st = m.reply(f"Lỗi: {e}", quote=True)
   time.sleep(20)
@@ -28,13 +28,13 @@ def list_endpoints(c, m):
       m.reply(str(e), quote=True)
       return
   endpoints = "\n".join(endpoints)
-  echo = f"**Danh sách máy chủ test:({count})**\n\n"
+  echo = f"**Danh sách địa điểm test:({count})**\n\n"
   text = f"{echo}{endpoints}"
   m.reply(text, quote=True)
   
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
-  m.reply("Hệ thống máy chủ test mới, /install để biết cách cài đặt", quote=True)
+  m.reply("Hệ thống địa điểm test mới, /install để biết cách cài đặt", quote=True)
   return
   # save.save(m.from_user)
 #   try:
@@ -61,7 +61,7 @@ def add_endpoint(c, m):
   
 @Client.on_message(filters.command("delpoint"))
 def remove_endpoint(c, m):
-    m.reply("Để xoá máy chủ test, hãy đóng chương trình trên máy chủ đó", quote=True)
+    m.reply("Để xoá địa điểm test, hãy đóng chương trình trên máy chủ đó", quote=True)
 
   # save.save(m.from_user)
 #   try:
