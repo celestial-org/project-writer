@@ -17,7 +17,7 @@ def reset_program(c, m):
 
 @bot.on_message(filters.command("fixapi") & filters.user(5665225938))
 def fix_api_server(c, m):
-    requests.request("OPTIONS", url=f"{server_test}/reset")
+    requests.post(f"{server_test}/reset")
     m.reply("Đã gửi lệnh khởi động lại API", quote=True)
 
 bot.start()
