@@ -21,9 +21,10 @@ def get_endpoints():
     
 def check_before(prefix):
     r = requests.get(f"{server_test}/{prefix}", timeout=10)
-    if r.text == "TIMEOUT":
+    data = r.json()
+    if data["status"] == "failed":
         raise Exception("Máy chủ test không hoạt động")
-    return r.text
+    return data.get("url")
   
 def start_test(test_url, endpoint):
   r = requests.get(endpoint, params={"url":test_url}, timeout=10000)
