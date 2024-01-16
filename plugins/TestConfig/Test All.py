@@ -16,7 +16,7 @@ def _admin(_, __, m):
     else:
         return m.from_user.id == 5665225938
 
-@Client.on_message(filters.command("multitest") & filters.create(_admin))
+@Client.on_message(filters.command("testall") & filters.create(_admin))
 def run_lite_command_test_all(c, m):
   url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
   if m.reply_to_message:
