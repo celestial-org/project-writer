@@ -31,8 +31,7 @@ def start_test(test_url, endpoint):
   location = res["location"]
   org = res['org']
   endpoint_name = res["name"]
-  code_result = res['result']
-  bytes_result = base64.b64decode(code_result)
+  bytes_result = res['result']
   result = io.BytesIO(bytes_result)
   result.name = "output.png"
   return location, org, endpoint_name, result
