@@ -1,7 +1,6 @@
-import os
+import os, sys, requests
 from pyrogram import Client, filters, idle
 from lib.env import tokens, config_tool, server_test
-import requests
 
 bot = Client("writer",
              tokens()[0],
