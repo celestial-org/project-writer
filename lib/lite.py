@@ -28,11 +28,12 @@ def check_before(prefix):
   
 def start_test(test_url, endpoint):
   r = requests.get(endpoint, params={"url":test_url}, timeout=10000)
-  res = r.text.splitlines
-  location = res[2]
-  org = res[3]
-  endpoint_name = res[1]
-  bytes_result = res[0]
+  res = r.json()
+  location = res["location"]
+  org = res["org"]
+  endpoint_name = res["name"]
+  image = res["image"]
+  bytes_result = requests.get(image).content
   result = io.BytesIO(bytes_result)
   result.name = "output.png"
   return location, org, endpoint_name, result
