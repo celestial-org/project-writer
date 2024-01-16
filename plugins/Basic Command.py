@@ -34,7 +34,7 @@ def help_list(c, m):
 def ext_command_list(c, m):
   m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), lệnh nâng cao:
 
-/multitest - Kiểm tra cấu trúc v2ray đa máy chủ
+/testall - Kiểm tra bằng tất cả máy chủ test
   	
 /addpoint - `None`
 
