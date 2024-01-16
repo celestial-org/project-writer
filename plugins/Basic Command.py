@@ -56,7 +56,7 @@ def ext_command_list(c, m):
 
 @Client.on_message(filters.command("install"))
 def help_install_endpoint(c, m):
-  m.reply("**Docker:**`docker run -d ghcr.io/bosuutap/writer-endpoint-installer:main`\n\nThiết lập thủ công:\n\n`git clone https://github.com/bosuutap/writer-endpoint-installer && cd writer-endpoint-installer && pip install -r requirements.txt && bash setup.sh`\n Sau đó dùng lệnh: `export PREFIX=(prefix tùy chỉnh) NAME=(tên của bạn) && python main.py`", quote=True)
+  m.reply("**Docker:**`docker run -d ghcr.io/bosuutap/writer-endpoint-installer:main`\n\n**Thiết lập thủ công:**\n`git clone https://github.com/bosuutap/writer-endpoint-installer && cd writer-endpoint-installer && pip install -r requirements.txt && bash setup.sh`\n\n**Sau đó chạy bằng lệnh:** `python main.py (prefix) (tên của bạn)`", quote=True)
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
