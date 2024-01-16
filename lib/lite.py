@@ -14,7 +14,7 @@ def get_endpoints():
             text = [f"**{e.get("name")}**: /test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
         else:
             epoints = []
-            text = ["Không có máy chủ test nào online"]
+            text = ["Không có máy chủ test nào hoạt động"]
         return count, epoints, text
     except:
         raise Exception("API Không hoạt động")
