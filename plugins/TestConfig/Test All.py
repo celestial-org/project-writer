@@ -57,9 +57,9 @@ def run_lite_command_test_all(c, m):
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\nMáy chủ test: **TẤT CẢ**', quote=True)
     else:
       stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}.\nMáy chủ test: **TẤT CẢ**', quote=True)
-    _, list_endpoint, __ = get_endpoints()
+    _, endpoints, __ = get_endpoints()
     msg_list = []
-    for endpoint in list_endpoint:
+    for prefix in endpoints:
         try:
           endpoint = check_before(prefix)
           location, org, sponsor, photo = start_test(test_url, endpoint)
