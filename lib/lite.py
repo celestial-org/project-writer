@@ -14,7 +14,7 @@ def get_endpoints():
             text = [f"/test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
         else:
             epoints = []
-            text = ["Không có máy chủ test nào hoạt động"]
+            text = ["Không có điểm test nào khả dụng"]
         return count, epoints, text
     except:
         raise Exception("API Không hoạt động")
@@ -23,7 +23,7 @@ def check_before(prefix):
     r = requests.get(f"{server_test}/{prefix}", timeout=10)
     data = r.json()
     if data["status"] == "failed":
-        raise Exception("Máy chủ test không hoạt động")
+        raise Exception("Điểm test không hoạt động")
     return data.get("url")
   
 def start_test(test_url, endpoint):
