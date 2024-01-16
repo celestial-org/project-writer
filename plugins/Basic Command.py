@@ -34,7 +34,7 @@ def help_list(c, m):
 def ext_command_list(c, m):
   m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), lệnh nâng cao:
 
-/testall - Kiểm tra bằng tất cả địa điểm test
+/testall - Sử dụng tất cả địa điểm test
   	
 /addpoint - `None`
 
