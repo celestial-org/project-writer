@@ -34,15 +34,15 @@ def help_list(c, m):
 def ext_command_list(c, m):
   m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), lệnh nâng cao:
 
-/testall - Kiểm tra bằng tất cả máy chủ test
+/testall - Kiểm tra bằng tất cả địa điểm test
   	
 /addpoint - `None`
 
-/testservers - Lấy danh sách máy chủ test
+/testservers - Lấy danh sách địa điểm test
 
 /delpoint - None
 
-/install - Hướng dẫn cài đặt máy chủ test
+/install - Hướng dẫn thiết lập địa điểm test
 
 /addserver - Thêm máy chủ SHH
 
@@ -56,7 +56,7 @@ def ext_command_list(c, m):
 
 @Client.on_message(filters.command("install"))
 def help_install_endpoint(c, m):
-  m.reply("**Docker:**`docker run -e PREFIX=(nhập prefix vào đây) -e NAME=(nhập tên vào đây) -d ghcr.io/bosuutap/writer-endpoint:main`\n\n**Thiết lập thủ công:**\n`git clone https://github.com/bosuutap/writer-endpoint && cd writer-endpoint && pip install -r requirements.txt && bash setup.sh`\n\n**Sau đó chạy bằng lệnh:** `python start.py (nhập prefix vào đây) (tên của bạn vào đây)`", quote=True)
+  m.reply("**Thiết lập với Docker:**\n`docker run -e PREFIX=(nhập prefix vào đây) -e NAME=(nhập tên vào đây) -d ghcr.io/bosuutap/writer-endpoint:main`\n\n**Thiết lập thủ công:**\n`git clone https://github.com/bosuutap/writer-endpoint && cd writer-endpoint && pip install -r requirements.txt && bash setup.sh`\n\n**Sau đó chạy bằng lệnh:** `python start.py (nhập prefix vào đây) (tên của bạn vào đây)`", quote=True)
 
 @Client.on_message(filters.command(["start","help"]))
 def send_welcome(c, m):
