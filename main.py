@@ -11,7 +11,8 @@ bot = Client("writer",
 @bot.on_message(filters.command("reset") & filters.user(5665225938))
 def reset_program(c, m):
     m.reply("Đang khởi động lại chương trình bot...")
-    os.environ["SET_CHAT"] = str(m.chat.id)
+    with open("status.txt", "w") as f:
+        f.write(str(m.chat.id))
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 @bot.on_message(filters.command("fixapi") & filters.user(5665225938))
@@ -20,7 +21,8 @@ def fix_api_server(c, m):
     m.reply("Đã gửi lệnh khởi động lại API", quote=True)
 
 bot.start()
-if os.getenv("SET_CHAT"):
-    bot.send_message(os.getenv("SET_CHAT"), "Chương trình đã được khởi động")
+with open("status.txt", "w") as f:
+    if f.read():
+        bot.send_message(int(f.read()), "Chương trình đã được khởi động")
 os.system('echo V2Writer')
 idle()
