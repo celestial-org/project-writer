@@ -1,7 +1,7 @@
 import os, sys, requests
 from pyrogram import Client, filters, idle
 from lib.env import tokens, config_tool
-from lib.util import reply_start
+from lib.utils import reply_start
 
 bot = Client("writer",
              tokens()[0],
