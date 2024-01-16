@@ -23,10 +23,16 @@ def update_server(c, m):
 
 @Client.on_message(filters.command("rerunapi") & filters.user(5665225938))
 def reset_api_server(c, m):
-    requests.post(f"{server_test}/reset")
     m.reply("Đã bắt đầu khởi động lại API", quote=True)
+    try:
+        requests.post(f"{server_test}/reset", timeout=10)
+    except:
+        pass
     
 @Client.on_message(filters.command("updateapi") & filters.user(5665225938))
 def reset_api_server(c, m):
-    requests.post(f"{server_test}/update")
     m.reply("Đã bắt đầu cập nhật API", quote=True)
+    try:
+        requests.post(f"{server_test}/update", timeout=10)
+    except:
+        pass
