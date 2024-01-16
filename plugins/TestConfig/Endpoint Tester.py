@@ -60,7 +60,11 @@ def regex_lite_command(c, m):
       stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình\nPrefix: **{prefix.upper()}**', quote=True)
     else:
       stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}\nPrefix: **{prefix.upper()}**', quote=True)
-    location, org, sponsor, photo = start_test(test_url, endpoint)
+    try:
+        location, org, sponsor, photo = start_test(test_url, endpoint)
+    except Exception as e:
+        m.reply(f"**Lỗi máy chủ:** ```{e}```")
+        return
     m.reply_photo(photo=photo, quote=True, caption=f"```sponsor\n{sponsor}\n```\nVị trí: **{location}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
     time.sleep(5)
     stt.delete()
