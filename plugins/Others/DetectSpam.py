@@ -18,4 +18,4 @@ def detector(c, m):
     user_id = m.from_user.id
     name = m.from_user.first_name
     user = f"[{name}](tg://user?id={user_id})"
-    m.reply(f"Tin nhắn của **{user}** có dấu hiệu spam và đã bị xoá. Dưới đây là bản sao của tin nhắn\n[LINK]({res.text})")
+    m.reply(f"Tin nhắn của **{user}** có dấu hiệu spam và đã bị xoá. Dưới đây là bản sao của tin nhắn\n[LINK]({res.text}). Nếu cần thiết, hãy lưu lại trước khi liên kết hết hạn.")
