@@ -6,3 +6,4 @@ requests
 tgcrypto
 psutil
 paramiko
+uvloop
