@@ -1,4 +1,5 @@
-import os
+import os, uvloop
+uvloop.install()
 from pyrogram import Client, filters, idle
 from lib.env import tokens
 
