@@ -11,7 +11,7 @@ def get_endpoints():
         count = res.get("count")
         if res.get('list'):
             epoints = [e.get("prefix") for e in res["list"]]
-            text = [f"/test_{e.get("prefix")} - {e.get("location")}" for e in res["list"]]
+            text = [f"/test_{e['prefix']} - {e['location'}" for e in res["list"]]
         else:
             epoints = []
             text = ["Không có điểm test nào khả dụng"]
