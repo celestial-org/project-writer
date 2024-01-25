@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from hydrogram import Client, filters
 from lib.lite import get_config, start_test, get_endpoints, check_before
 import subprocess
 import time
