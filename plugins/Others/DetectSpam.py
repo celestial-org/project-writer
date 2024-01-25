@@ -1,5 +1,5 @@
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
+from hydrogram import Client, filters
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 import requests
 
 def _filter(_, __, m):
