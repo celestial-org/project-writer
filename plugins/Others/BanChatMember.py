@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from hydrogram import Client, filters
 from datetime import datetime, timedelta
 
 @Client.on_message(filters.command(["kick","kickme"]))
