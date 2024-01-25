@@ -1,4 +1,4 @@
-from pyrogram import Client, filters, enums
+from hydrogram import Client, filters, enums
 import re
 from lib.utils import run_cmd
 import requests
