@@ -1,5 +1,5 @@
 flask
-pyrogram
+hydrogram
 deta
 gunicorn
 requests
