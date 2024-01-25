@@ -1,5 +1,5 @@
 import os, re, time
-from pyrogram import Client, filters, idle, enums
+from hydrogram import Client, filters, idle, enums
 from db.note import save_url, remove_url, get_all, check_all
 from lib.env import config_tool
 
