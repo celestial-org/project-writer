@@ -1,5 +1,5 @@
-from pyrogram import Client, idle, filters, enums
-from pyrogram.enums import ParseMode, ChatAction
+from hydrogram import Client, idle, filters, enums
+from hydrogram.enums import ParseMode, ChatAction
 import requests, re
 
 
