@@ -1,4 +1,4 @@
-# from pyrogram import Client, filters
+# from hydrogram import Client, filters
 # import re
 # from lib.utils import install_endpoint
 # from db import savessh
