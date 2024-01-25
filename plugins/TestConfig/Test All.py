@@ -1,4 +1,4 @@
-from pyrogram import Client, filters, enums
+from hydrogram import Client, filters, enums
 from lib.lite import get_config, start_test, check_before, get_endpoints
 from db import endpoints as eps
 import subprocess
