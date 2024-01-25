@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 def ban_chat_member(c, m):
     try:
         m.chat.ban_member(m.from_user.id, until_date=datetime.now() + timedelta(seconds=1))
-        )
         m.reply("**OK**, __--nguyện vọng đã được thực hiện--__", quote=True)
     except:
         pass
