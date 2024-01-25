@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from hydrogram import Client, filters
 from db import endpoints as ep
 from lib.lite import get_config, start_test, check_before
 from db import save
