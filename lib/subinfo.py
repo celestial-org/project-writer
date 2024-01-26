@@ -26,7 +26,7 @@ def parse_url(url):
         res_text = r.text
     res_text = res_text.splitlines()
     protocol_count = {}
-    res_list = [conf if "://" in conf else pass for conf in res_text]
+    res_list = [conf for conf in res_text if "://" in conf]
     result_dict = {}
     orgi_dict = {}
     if res_string:
