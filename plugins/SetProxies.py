@@ -1,10 +1,10 @@
 from hydrogram import Client, filters
-import subprocess
+import os
 
 @Client.on_message(filters.command("set_proxy") & filters.user(5665225938))
 def set_proxy(c, m):
     proxy = m.command[1]
-    subprocess.run(["killall -9 lite"], shell=True)
-    subprocess.run(["./lite -p 8888", proxy, "&"], shell=True)
+    os.system("killall -9 lite")
+    os.system(f"./lite -p 8888 {proxy} &")
     m.reply("Đã thiết lập proxy")
     m.delete()
