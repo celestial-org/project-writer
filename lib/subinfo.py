@@ -25,6 +25,12 @@ def parse_url(url):
     except:
         res_text = r.text
     res_text = res_text.splitlines()
+    protocol_count = {}
+    for conf in res_text:
+        if "://" in conf:
+            protocol, _ = conf.split("://", 1)
+            protocol_count[protocol] = protocol_count.get(protocol, 0) + 1
+    result_str = ", ".join(f"{protocol}: {count}" for protocol, count in protocol_count.items())
     result_dict = {}
     orgi_dict = {}
     if res_string:
@@ -43,4 +49,4 @@ def parse_url(url):
         if 'upload' in result_dict and 'download' in result_dict and 'total' in result_dict:
             available = int(orgi_dict['total']) - (int(orgi_dict['upload']) + int(orgi_dict['download']))
             result_dict['available'] = convert_bytes_to_human_readable(available)
-    return result_dict, len(res_text)
+    return result_dict, result_str
