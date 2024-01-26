@@ -17,5 +17,4 @@ if os.path.exists("reset.txt"):
 os.system('echo V2Writer')
 proxy = os.getenv("PROXY")
 os.system("chmod +x ./lite")
-os.system(f"./lite -p 3333 {proxy} &")
 idle()
