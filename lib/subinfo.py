@@ -18,7 +18,7 @@ def convert_timestamp_to_datetime(timestamp, timezone='UTC'):
     return local_datetime.strftime('%Y-%m-%d %H:%M:%S %Z')
 
 def parse_url(url):
-    r = requests.get(url, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"})
+    r = requests.get(url, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     res_string = r.headers.get("subscription-userinfo")
     res_text = base64.b64decode(r.text)
     res_text = res_text.splitlines()
