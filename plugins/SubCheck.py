@@ -6,7 +6,7 @@ import re
 @Client.on_message(filters.command("checksub"))
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    pattern = r"https?://[\w./-]+"
+    pattern = r"https?://[\w./-]+(?:\?[\w./&=-]+)?"
     if m.text:
         text = m.text
     elif m.reply_to_message.text:
