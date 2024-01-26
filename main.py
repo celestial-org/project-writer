@@ -15,6 +15,5 @@ if os.path.exists("reset.txt"):
         bot.send_message(int(f.read()), "Chương trình đã được khởi động")
     os.remove("reset.txt")
 os.system('echo V2Writer')
-proxy = os.getenv("PROXY")
 os.system("chmod +x ./lite")
 idle()
