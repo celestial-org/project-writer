@@ -26,19 +26,19 @@ def run_lite_command_test_all(c, m):
             text = m.reply_to_message.text
         except:
             try:
-            text = m.reply_to_message.caption
+                text = m.reply_to_message.caption
             except:
-            m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
-            return
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+                return
     else:
         try:
-         text = m.text
+            text = m.text
         except:
             try:
-            text = m.caption
+                text = m.caption
             except:
-            m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
-            return
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+                return
     matches = re.findall(url_pattern, text)
     urls = [match[0] for match in matches]
     if not urls:
