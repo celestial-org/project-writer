@@ -7,8 +7,6 @@ import re
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     pattern = r"https?://[\w./-]+"
-    
-    # Chọn văn bản từ tin nhắn hoặc tin nhắn được trả lời
     if m.text:
         text = m.text
     elif m.reply_to_message.text:
