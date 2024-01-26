@@ -1,9 +1,11 @@
 from hydrogram import Client, filters
+from hydrogram.types import ChatAction
 from lib import parse_url
 import re
 
 @Client.on_message(filters.command("checksub"))
 def check_sub(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
     pattern = r"https?://[\w./-]+"
     if m.text:
         text = m.text
@@ -18,6 +20,7 @@ def check_sub(c, m):
     except:
         user = m.sender_chat.title
     for url in urls:
+        m.reply_chat_action(ChatAction.TYPING)
         info, count = parse_url(url)
         if info:
             total = info["total"]
