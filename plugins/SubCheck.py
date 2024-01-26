@@ -24,8 +24,12 @@ def check_sub(c, m):
     
     for url in urls:
         m.reply_chat_action(ChatAction.TYPING)
-        info, count = parse_url(url)
-        
+        try:
+            info, count = parse_url(url)
+        except:
+            message = f"{url}\n**__Test bởi__ --{user}--**\n__--**Subscription lỗi**--"
+            m.reply(message, quote=True)
+            continue
         if info and all(key in info for key in ["total", "upload", "download", "available", "expire"]):
             total = info.get("total", "N/A")
             upl = info.get("upload", "N/A")
