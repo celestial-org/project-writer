@@ -22,13 +22,14 @@ def parse_url(url):
     res_string = r.headers.get("subscription-userinfo")
     res_text = base64.b64decode(r.text)
     res_text = res_text.splitlines()
-    pairs = res_string.split('; ')
     result_dict = {}
-    for pair in pairs:
-        key, value = pair.split('=')
-        if key in ['upload', 'download', 'total']:
-            value = convert_bytes_to_human_readable(float(value))
-        elif key == 'expire':
-            value = convert_timestamp_to_datetime(int(value), timezone='Asia/Ho_Chi_Minh')
-        result_dict[key] = value
+    if res_string:
+        pairs = res_string.split('; ')
+        for pair in pairs:
+            key, value = pair.split('=')
+            if key in ['upload', 'download', 'total']:
+                value = convert_bytes_to_human_readable(float(value))
+            elif key == 'expire':
+                value = convert_timestamp_to_datetime(int(value), timezone='Asia/Ho_Chi_Minh')
+            result_dict[key] = value
     return result_dict, len(res_text)
