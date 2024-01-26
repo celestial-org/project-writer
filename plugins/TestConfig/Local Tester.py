@@ -1,6 +1,6 @@
 from hydrogram import Client, filters
 from lib.lite import get_config, start_test, get_endpoints, check_before
-from hydrogram.types import ChatAction
+from hydrogram.enums import ChatAction
 import subprocess
 import time
 import requests
