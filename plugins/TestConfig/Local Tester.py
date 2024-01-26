@@ -35,7 +35,7 @@ def run_lite_command(c, m):
                 text = m.caption
             except:
                 m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
-            return
+                return
     matches = re.findall(url_pattern, text)
     urls = [match[0] for match in matches]
     if not urls:
