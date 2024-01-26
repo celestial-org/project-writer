@@ -5,7 +5,7 @@ import platform, requests
 def server_info():
   try:
     # Sử dụng ipinfo.io để lấy thông tin về địa chỉ IP
-    response = requests.get('https://ipinfo.io', proxies={"https": "http://127.0.0.1:8000"})
+    response = requests.get('https://ipinfo.io', proxies={"https": "http://127.0.0.1:8888"})
     data = response.json()
 
     # Trích xuất thông tin từ dữ liệu JSON
