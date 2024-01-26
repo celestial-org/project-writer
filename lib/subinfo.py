@@ -26,6 +26,7 @@ def parse_url(url):
     except:
         res_text = r.text
     res_text = res_text.splitlines()
+    res_text = list(filter(lambda x: "://" in x, res_text))
     result_dict = {}
     orgi_dict = {}
     if res_string:
