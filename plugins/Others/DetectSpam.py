@@ -1,5 +1,6 @@
 from hydrogram import Client, filters
 from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
+from hydrogram.enums import ChatAction
 import requests
 
 def _filter(_, __, m):
@@ -13,6 +14,7 @@ def _filter(_, __, m):
     
 @Client.on_message(filters.group & filters.create(_filter))
 def detector(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
     m.delete()
     res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
     user_id = m.from_user.id
