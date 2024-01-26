@@ -22,9 +22,9 @@ def parse_url(url):
     res_string = r.headers.get("subscription-userinfo")
     try:
         res_text = base64.b64decode(r.text.encode('ascii', 'ignore'))
-        res_text = res_text.splitlines()
     except:
-        res_text = r.text.splitlines
+        res_text = r.text
+    res_text = res_text.splitlines()
     result_dict = {}
     orgi_dict = {}
     if res_string:
