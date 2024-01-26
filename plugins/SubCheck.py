@@ -27,6 +27,7 @@ def check_sub(c, m):
             upl = info["upload"]
             downl = info["download"]
             avail = info["available"]
-            m.reply(f"{url}\n**__Test bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--\n**Tổng:** {total} **Còn lại:** {avail}\n**Đã dùng:** ↑--{upl}--, ↓--{downl}--", quote=True)
+            expire = info["expire"]
+            m.reply(f"{url}\n**__Test bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--\n**Tổng:** {total} **Còn lại:** {avail}\n**Đã dùng:** ↑--{upl}--, ↓--{downl}--\n**Hết hạn:** __--{expire}--__", quote=True)
         else:
             m.reply(f"{url}\n**__Test bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--", quote=True)
