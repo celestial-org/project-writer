@@ -20,8 +20,11 @@ def convert_timestamp_to_datetime(timestamp, timezone='UTC'):
 def parse_url(url):
     r = requests.get(url, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, headers={"User-Agent": "quantumult%20x"}, timeout=60)
     res_string = r.headers.get("subscription-userinfo")
-    res_text = base64.b64decode(r.text.encode('ascii', 'ignore'))
-    res_text = res_text.splitlines()
+    try:
+        res_text = base64.b64decode(r.text.encode('ascii', 'ignore'))
+        res_text = res_text.splitlines()
+    except:
+        res_text = r.text.splitlines
     result_dict = {}
     orgi_dict = {}
     if res_string:
