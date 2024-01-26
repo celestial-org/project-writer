@@ -19,28 +19,28 @@ def run_lite_command(c, m):
     prefix = os.getenv("ENDPOINT")
     url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
     if m.reply_to_message:
-    try:
-        text = m.reply_to_message.text
-    except:
         try:
-        text = m.reply_to_message.caption
+            text = m.reply_to_message.text
         except:
-        m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
-        return
+            try:
+            text = m.reply_to_message.caption
+            except:
+            m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+            return
     else:
-    try:
-     text = m.text
-    except:
         try:
-        text = m.caption
+         text = m.text
         except:
-        m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
-        return
+            try:
+                text = m.caption
+            except:
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+            return
     matches = re.findall(url_pattern, text)
     urls = [match[0] for match in matches]
     if not urls:
-    m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
-    return
+        m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
+        return
     for url in urls:
         m.reply_chat_action(ChatAction.TYPING)
         try:
