@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 import pytz, requests, base64
 
@@ -18,14 +19,16 @@ def convert_timestamp_to_datetime(timestamp, timezone='UTC'):
     return local_datetime.strftime('%Y-%m-%d %H:%M:%S %Z')
 
 def parse_url(url):
-    r = requests.get(url, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, headers={"User-Agent": "quantumult%20x"}, timeout=60)
+    r = requests.get(url, headers={"User-Agent": "quantumult%20x"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     res_string = r.headers.get("subscription-userinfo")
+    print(url)
+    print(r.headers)
+    return
     try:
         res_text = base64.b64decode(r.text.encode('ascii', 'ignore'))
     except:
         res_text = r.text
     res_text = res_text.splitlines()
-    res_list = [conf for conf in res_text if "://" in conf]
     result_dict = {}
     orgi_dict = {}
     if res_string:
@@ -44,4 +47,4 @@ def parse_url(url):
         if 'upload' in result_dict and 'download' in result_dict and 'total' in result_dict:
             available = int(orgi_dict['total']) - (int(orgi_dict['upload']) + int(orgi_dict['download']))
             result_dict['available'] = convert_bytes_to_human_readable(available)
-    return result_dict, len(res_list)
+    return result_dict, len(res_text)
