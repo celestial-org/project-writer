@@ -1,5 +1,5 @@
 from hydrogram import Client, filters
-from hydrogram.types import ChatAction
+from hydrogram.enums import ChatAction
 from db import endpoints as ep
 from lib.lite import get_config, start_test, check_before
 import re 
