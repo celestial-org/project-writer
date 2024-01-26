@@ -5,6 +5,6 @@ import os
 def set_proxy(c, m):
     proxy = m.command[1]
     os.system("killall -9 lite")
-    os.system(f"./lite -p 8000 {proxy} &")
+    os.system(f"./lite -p 8888 {proxy} &")
     m.reply("Đã thiết lập proxy")
     m.delete()
