@@ -8,7 +8,7 @@ import requests
 
 url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
 def test_filter(_, __, m):
-        return m.text.startswith("/test_")
+        return m.text.startswith("/test_") if m.text else False
 
 @Client.on_message(filters.create(test_filter), group=2)
 def regex_lite_command(c, m):
