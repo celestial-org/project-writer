@@ -7,10 +7,10 @@ import re
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     pattern = r"https?://[\w./-]+(?:\?[\w./&=-]+)?"
-    if m.text:
-        text = m.text
-    elif m.reply_to_message.text:
+    if m.reply_to_message.text:
         text = m.reply_to_message.text
+    elif m.text:
+        text = m.text
     else:
         m.reply("Không tìm thấy subscription", quote=True)
         return
