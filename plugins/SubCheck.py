@@ -43,7 +43,7 @@ def check_sub(c, m):
                 f"__**Số lượng cấu hình:**__ --{count}--\n"
                 f"**Tổng:** --{total}--\n"
                 f"**Đã dùng:** ↑--{upl}--, ↓--{downl}--\n"
-                f"**Còn lại:** --{avail}--"
+                f"**Còn lại:** --{avail}--\n"
                 f"**Hết hạn:** __--{expire}--__"
             )
         else:
