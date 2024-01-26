@@ -32,4 +32,7 @@ def parse_url(url):
             elif key == 'expire':
                 value = convert_timestamp_to_datetime(int(value), timezone='Asia/Ho_Chi_Minh')
             result_dict[key] = value
+        if 'upload' in result_dict and 'download' in result_dict and 'total' in result_dict:
+            available = result_dict['total'] - (float(result_dict['upload']) + float(result_dict['download']))
+            result_dict['available'] = convert_bytes_to_human_readable(available)
     return result_dict, len(res_text)
