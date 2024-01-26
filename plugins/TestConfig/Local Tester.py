@@ -23,9 +23,9 @@ def run_lite_command(c, m):
             text = m.reply_to_message.text
         except:
             try:
-            text = m.reply_to_message.caption
+                text = m.reply_to_message.caption
             except:
-            m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
             return
     else:
         try:
