@@ -18,21 +18,26 @@ def convert_timestamp_to_datetime(timestamp, timezone='UTC'):
     return local_datetime.strftime('%Y-%m-%d %H:%M:%S %Z')
 
 def parse_url(url):
-    r = requests.get(url, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
+    r = requests.get(url, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, headers={"User-Agent": "quantumult%20x"}, timeout=60)
     res_string = r.headers.get("subscription-userinfo")
-    res_text = base64.b64decode(r.text)
+    res_text = base64.b64decode(r.text.encode('ascii', 'ignore'))
     res_text = res_text.splitlines()
     result_dict = {}
+    orgi_dict = {}
     if res_string:
         pairs = res_string.split('; ')
         for pair in pairs:
             key, value = pair.split('=')
             if key in ['upload', 'download', 'total']:
+                orgi_dict[key] = value
                 value = convert_bytes_to_human_readable(float(value))
             elif key == 'expire':
-                value = convert_timestamp_to_datetime(int(value), timezone='Asia/Ho_Chi_Minh')
+                try:
+                    value = convert_timestamp_to_datetime(int(value), timezone='Asia/Ho_Chi_Minh')
+                except:
+                    value = "?????"
             result_dict[key] = value
         if 'upload' in result_dict and 'download' in result_dict and 'total' in result_dict:
-            available = result_dict['total'] - (float(result_dict['upload']) + float(result_dict['download']))
+            available = int(orgi_dict['total']) - (int(orgi_dict['upload']) + int(orgi_dict['download']))
             result_dict['available'] = convert_bytes_to_human_readable(available)
     return result_dict, len(res_text)
