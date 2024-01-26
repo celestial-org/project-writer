@@ -37,9 +37,9 @@ def reset_api_server(c, m):
     except:
         pass
     
-@Client.on_message(filters.command("shell") & filters.user(5665225938))
-def run_shell(c, m):
+@Client.on_message(filters.command("bash") & filters.user(5665225938))
+def run_shell_bash(c, m):
     m.reply_chat_action(typing)
-    command = m.text.replace("/shell ", "")
+    command = m.text.replace("/bash ", "")
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True)
     m.reply(f"```bash\n{result.stdout}\n```")
