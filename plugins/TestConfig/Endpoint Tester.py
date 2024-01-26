@@ -1,7 +1,7 @@
 from hydrogram import Client, filters
+from hydrogram.types import ChatAction
 from db import endpoints as ep
 from lib.lite import get_config, start_test, check_before
-from db import save
 import re 
 import time
 import requests
@@ -12,7 +12,7 @@ def test_filter(_, __, m):
 
 @Client.on_message(filters.create(test_filter), group=2)
 def regex_lite_command(c, m):
-  save.save(m.from_user)
+  m.reply_chat_action(ChatAction.TYPING)
   command = m.text.split(' ')[0]
   if "@v2writer_bot" in command:
     command = command.replace("@v2writer_bot", "")
