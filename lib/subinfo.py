@@ -21,7 +21,7 @@ def convert_timestamp_to_datetime(timestamp, timezone='UTC'):
 def parse_url(url):
     r = requests.get(url, headers={"User-Agent": "clash"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     res_string = r.headers.get("subscription-userinfo")
-    r = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)res_text = str(r.text)
+    r = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     res_text = str(r.text)
     if "://" not in res_text:
         res_text = base64.b64decode(res_text).decode('utf-8')
