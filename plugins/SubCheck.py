@@ -3,7 +3,7 @@ from hydrogram.enums import ChatAction
 from lib import parse_url
 import re
 
-@Client.on_message(filters.command("checksub"))
+@Client.on_message(filters.command("checkv2ray"))
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     pattern = r"https?://[\w./-]+(?:\?[\w./&=-]+)?"
