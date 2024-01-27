@@ -11,6 +11,8 @@ def help_list(c, m):
 
 /add - Thêm subscribe 
 
+/checkv2ray - Kiểm tra subscription
+
 /share - Chia sẻ subscribe 
 
 /test - Kiểm tra cấu hình v2ray...
