@@ -8,9 +8,9 @@ prox2 = os.getenv("PROX2")
 server_test = os.getenv("SERVER_TEST")
 
 deta = Deta(deta_key)
-base = deta.Base('telegram-sessions')
+base = deta.Base('tokens')
 def tokens():
-  api_id = base.get('API_ID')
-  api_hash = base.get('API_HASH')
-  bot_token = base.get('V2W_TOKEN')
-  return api_id['value'], api_hash['value'], bot_token['value']
+  api_id = base.get('api')['id']
+  api_hash = base.get('api')['hash']
+  bot_token = base.get('bot')["nw"]
+  return api_id, api_hash, bot_token
