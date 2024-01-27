@@ -26,6 +26,7 @@ def parse_url(url):
         res_text = base64.b64decode(r.text.encode('ascii', 'ignore'))
     except:
         res_text = r.text
+    res_text = str(res_text)
     result_dict = {}
     orgi_dict = {}
     if res_string:
