@@ -14,9 +14,10 @@ def check_sub(c, m):
     else:
         m.reply("Không tìm thấy subscription", quote=True)
         return
-    
     urls = re.findall(pattern, text)
-    
+    if not urls:
+        m.reply("URL là cần thiết để kiểm tra", quote=True)
+        return
     try:
         user = m.from_user.first_name
     except:
