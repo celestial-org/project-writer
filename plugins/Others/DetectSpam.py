@@ -1,6 +1,7 @@
 from hydrogram import Client, filters
-from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo, ChatPermissions
 from hydrogram.enums import ChatAction
+from datetime import datetime, timedelta
 import requests
 
 def _filter(_, __, m):
@@ -14,6 +15,7 @@ def _filter(_, __, m):
     
 @Client.on_message(filters.group & filters.create(_filter))
 def detector(c, m):
+    m.chat.restrict_member(m.from_user.id, permissions=ChatPermissions(can_send_messages=False), until_date=datetime.now() + timedelta(seconds=120))
     m.reply_chat_action(ChatAction.TYPING)
     m.delete()
     res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
