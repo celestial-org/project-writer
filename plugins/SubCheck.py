@@ -6,7 +6,7 @@ import re
 @Client.on_message(filters.command("checkv2ray"))
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    pattern = r"^(https?):\/\/[^\s\/$.?#].[^\s]*(:[0-9]+)?$"
+    pattern = r"(https?):\/\/[^\s\/$.?#].[^\s]*(:[0-9]+)?$"
     if m.reply_to_message and m.reply_to_message.text:
         text = m.reply_to_message.text
     elif m.text:
