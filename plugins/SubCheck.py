@@ -6,15 +6,14 @@ import re
 @Client.on_message(filters.command("checkv2ray"))
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    pattern = r"(https?):\/\/[^\s\/$.?#].[^\s]*(:[0-9]+)?$"
     if m.reply_to_message and m.reply_to_message.text:
         text = m.reply_to_message.text
     elif m.text:
         text = m.text
     else:
-        m.reply("Không tìm thấy subscription", quote=True)
+        m.reply("Không tìm thấy tin nhắn", quote=True)
         return
-    urls = re.findall(pattern, text)
+    urls = [url if any(scheme in url for scheme in ["http://", "https://"]) for url in urls.split(" ")]
     if not urls:
         m.reply("URL là cần thiết để kiểm tra", quote=True)
         return
