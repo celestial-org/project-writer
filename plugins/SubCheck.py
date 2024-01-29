@@ -13,7 +13,7 @@ def check_sub(c, m):
     else:
         m.reply("Không tìm thấy tin nhắn", quote=True)
         return
-    urls = [url for url in urls.split(None) if any(scheme in url for scheme in ["http://", "https://"])]
+    urls = [url for url in text.split(None) if any(scheme in url for scheme in ["http://", "https://"])]
     if not urls:
         m.reply("URL là cần thiết để kiểm tra", quote=True)
         return
