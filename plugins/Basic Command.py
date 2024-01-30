@@ -55,7 +55,7 @@ def ext_command_list(c, m):
 
 /machines - Danh sách máy chủ SSH đã thêm 
 
-...`tên máy` - Chạy lệnh shell trên máy chủ SSH
+.`tên máy` - Chạy lệnh shell trên máy chủ SSH
 """, quote=True
 )
 
