@@ -61,15 +61,18 @@ def get_list_machines(c, m):
         time.sleep(10)
         st.delete()
         
-@Client.on_message(filters.command("&&"))
+def _shell(_, __, m):
+    return m.text.startswith("...")
+    
+@Client.on_message(filters.create(_shell))
 def run_shell_command(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     try:
-        if len(m.command) < 3:
-            raise Exception("Thiếu tham số\n\n&& + `tên máy` + `lệnh shell`")
+        if not m.text.replace("...", "").replace(" ",""):
+            raise Exception("Thiếu lệnh và tên máy.\nHãy thực hiện theo mẫu: `...machine0 echo Hello, World`")
         user_id = m.from_user.id
-        machine = m.command[1]
-        shell_cmd = m.command[2]
+        machine = m.text.split(" ")[0].replace("...", "")
+        shell_cmd = m.text.split(" ", 1)[1]
         host, sshuser, passwd, port = savessh.get(user_id, machine)
         result = run_cmd(host, sshuser, passwd, port, shell_cmd)
         max_length = 4000
