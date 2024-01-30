@@ -62,7 +62,7 @@ def get_list_machines(c, m):
         st.delete()
         
 def _shell(_, __, m):
-    return m.text.startswith("...")
+    return m.text.startswith(".") and m.text.replace(".", "") != None
     
 @Client.on_message(filters.create(_shell))
 def run_shell_command(c, m):
