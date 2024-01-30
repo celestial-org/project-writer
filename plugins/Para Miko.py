@@ -61,12 +61,12 @@ def get_list_machines(c, m):
         time.sleep(10)
         st.delete()
         
-@Client.on_message(filters.command("cmd"))
+@Client.on_message(filters.command("&&"))
 def run_shell_command(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     try:
         if len(m.command) < 3:
-            raise Exception("Thiếu tham số\n\n/cmd + `tên máy` + `lệnh shell`")
+            raise Exception("Thiếu tham số\n\n&& + `tên máy` + `lệnh shell`")
         user_id = m.from_user.id
         machine = m.command[1]
         shell_cmd = m.command[2]
