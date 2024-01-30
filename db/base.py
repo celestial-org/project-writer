@@ -1,7 +1,6 @@
-from lib.env import mongo_url
-from pymongo import MongoClient
+from deta import Deta 
+from lib.env import deta_key
 
-mongo = MongoClient(mongo_url)
-v2ray_notes = mongo["notes"]
-savessh = mongo["ssh"]
-
+deta = Deta(deta_key)
+v2ray_notes = deta.Base("notes")
+savessh = deta.Base("ssh")
