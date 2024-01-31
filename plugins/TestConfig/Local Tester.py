@@ -63,7 +63,7 @@ def test_v2(c, m):
         total_chars = 0
         for result in results:
             result_length = len(result)
-            if total_chars + result_length <= max_chars:
+            if total_chars + result_length <= 4000:
                 current_chunk.append(result)
                 total_chars += result_length
             else:
