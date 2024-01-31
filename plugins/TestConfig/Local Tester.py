@@ -70,8 +70,8 @@ def test_v2(c, m):
                 m.reply("\n".join(current_chunk), quote=True)
                 current_chunk = [result]
                 total_chars = result_length
-            if current_chunk:
-                m.reply("\n".join(current_chunk), quote=True)
+        if current_chunk:
+            m.reply("\n".join(current_chunk), quote=True)
         stt.delete()
 
 #drop
