@@ -26,8 +26,6 @@ def save_ssh_login(c, m):
     except Exception as e:
         st = m.reply(str(e), quote=True)
     time.sleep(60)
-    st.delete()
-    m.delete()
     
 @Client.on_message(filters.command("delserver"))
 def delete_machine_server(c, m):
