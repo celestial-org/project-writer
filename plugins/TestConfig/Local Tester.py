@@ -58,7 +58,7 @@ def test_v2(c, m):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
         r = requests.get(test_url)
         configs = r.text.splitlines()
-        results = [f"++++++++++++++++\n{start_v2(config)}" for config in configs]
+        results = [start_v2(config) for config in configs]
         current_chunk = []
         total_chars = 0
         for result in results:
