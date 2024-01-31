@@ -66,6 +66,7 @@ def test_v2(c, m):
             chunks = [results[i:i+4000] for i in range(0, len(results), 4000)]
             for chunk in chunks:
                 m.reply(chunk, quote=True)
+        stt.delete()
 
 #drop
 def run_lite_command(c, m):
