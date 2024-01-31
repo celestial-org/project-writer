@@ -62,3 +62,7 @@ def get_config(url):
       url = requests.post("https://tempnote-1-q9925339.deta.app/post", data=res).text
   count = len(res.splitlines())
   return url, count
+  
+def start_v2(config):
+    r = requests.get("https://configtest-1-v5891666.deta.app", params={"q": config})
+    return r.text
