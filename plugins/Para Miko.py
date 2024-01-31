@@ -25,7 +25,6 @@ def save_ssh_login(c, m):
         time.sleep(10)
     except Exception as e:
         st = m.reply(str(e), quote=True)
-    time.sleep(60)
     
 @Client.on_message(filters.command("delserver"))
 def delete_machine_server(c, m):
@@ -42,9 +41,6 @@ def delete_machine_server(c, m):
         st = m.reply(f"Đã xoá máy chủ {machine}", quote=True)
     except Exception as e:
         st = m.reply(str(e), quote=True)
-    time.sleep(20)
-    st.delete()
-    m.delete()
 
 @Client.on_message(filters.command("machines"))
 def get_list_machines(c, m):
