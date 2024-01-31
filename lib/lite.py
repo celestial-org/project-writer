@@ -48,7 +48,7 @@ def get_config(url):
     url = requests.post("https://tempnote-1-q9925339.deta.app/post", data=url).text
   else:
     try:
-      res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=5)
+      res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=10, proxies={"http":"http://127.0.0.1:8888", "https":"http://127.0.0.1:8888"})
       if res.text is None or res.status_code != 200:
         raise
     except:
