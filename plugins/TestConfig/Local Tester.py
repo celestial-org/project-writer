@@ -59,13 +59,19 @@ def test_v2(c, m):
         r = requests.get(test_url)
         configs = r.text.splitlines()
         results = [f"<blockquote>{start_v2(config)}</blockquote>" for config in configs]
-        results = "\n".join(results)
-        if len(results) <= 4000:
-            m.reply(results, quote=True)
-        else:
-            chunks = [results[i:i+4000] for i in range(0, len(results), 4000)]
-            for chunk in chunks:
-                m.reply(chunk, quote=True)
+        current_chunk = []
+        total_chars = 0
+        for result in results:
+            result_length = len(result)
+            if total_chars + result_length <= max_chars:
+                current_chunk.append(result)
+                total_chars += result_length
+            else:
+                m.reply("\n".join(current_chunk), quote=True)
+                current_chunk = [result]
+                total_chars = result_length
+                if current_chunk:
+                    m.reply("\n".join(current_chunk), quote=True)
         stt.delete()
 
 #drop
