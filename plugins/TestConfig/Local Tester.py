@@ -58,7 +58,7 @@ def test_v2(c, m):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
         r = requests.get(test_url)
         configs = r.text.splitlines()
-        results = [f"<blockquote>{start_v2(config)}</blockquote>" for config in configs]
+        results = [f"++++++++++++++++\n{start_v2(config)}" for config in configs]
         current_chunk = []
         total_chars = 0
         for result in results:
@@ -67,11 +67,11 @@ def test_v2(c, m):
                 current_chunk.append(result)
                 total_chars += result_length
             else:
-                m.reply("\n".join(current_chunk), quote=True)
+                m.reply("```\n"+"\n".join(current_chunk)+"```", quote=True)
                 current_chunk = [result]
                 total_chars = result_length
         if current_chunk:
-            m.reply("\n".join(current_chunk), quote=True)
+            m.reply("```\n"+"\n".join(current_chunk)+"```", quote=True)
         stt.delete()
 
 #drop
