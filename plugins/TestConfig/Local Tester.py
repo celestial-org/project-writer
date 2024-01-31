@@ -52,6 +52,10 @@ def test_v2(c, m):
         if count is None:
             m.reply("Liên kết bị lỗi", quote=True)
             return
+        if url.startswith("http"):
+            stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình', quote=True)
+        else:
+            stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
         r = requests.get(test_url)
         configs = r.text.splitlines()
         results = [f"<blockquote>{start_v2(config)}</blockquote>" for config in configs]
