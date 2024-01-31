@@ -58,7 +58,7 @@ def test_v2(c, m):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
         r = requests.get(test_url)
         configs = r.text.splitlines()
-        results = [f"<blockquote>```bash\n{start_v2(config)}```</blockquote>" for config in configs]
+        results = [f"<blockquote>{start_v2(config)}</blockquote>" for config in configs]
         results = "\n".join(results)
         if len(results) <= 4000:
             m.reply(results, quote=True)
