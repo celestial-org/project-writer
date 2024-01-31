@@ -1,5 +1,5 @@
 from hydrogram import Client, filters
-from lib.lite import get_config, start_test, get_endpoints, check_before
+from lib.lite import get_config, start_test, get_endpoints, check_before, start_v2
 from hydrogram.enums import ChatAction
 import subprocess
 import time
@@ -14,6 +14,56 @@ def ranpoint():
     return random.choice(epoints)
 
 @Client.on_message(filters.command("test"))
+def test_v2(c, m):
+    m.reply_chat_action(ChatAction.TYPING)    
+    url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
+    if m.reply_to_message:
+        try:
+            text = m.reply_to_message.text
+        except:
+            try:
+                text = m.reply_to_message.caption
+            except:
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+                return
+    else:
+        try:
+            text = m.text
+        except:
+            try:
+                text = m.caption
+            except:
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+                return
+    matches = re.findall(url_pattern, text)
+    urls = [match[0] for match in matches]
+    if not urls:
+        m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
+        return
+    for url in urls:
+        m.reply_chat_action(ChatAction.TYPING)
+        try:
+            test_url, count = get_config(url)
+        except:
+            uvl = m.reply("Liên kết không khả dụng", quote=True)
+            time.sleep(10)
+            uvl.delete()
+            return
+        if count is None:
+            m.reply("Liên kết bị lỗi", quote=True)
+            return
+        r = requests.get(test_url)
+        configs = r.text.splitlines()
+        results = [f"<blockquote>{start_v2(config)}</blockquote>" for config in configs]
+        results = "\n".join(results)
+        if len(results) <= 4000:
+            m.reply(results, quote=True)
+        else:
+            chunks = [results[i:i+4000] for i in range(0, len(results), 4000)]
+            for chunk in chunks:
+                m.reply(chunk, quote=True)
+
+#drop
 def run_lite_command(c, m):
     m.reply_chat_action(ChatAction.TYPING)    
     prefix = os.getenv("ENDPOINT")
