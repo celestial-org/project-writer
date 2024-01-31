@@ -71,7 +71,7 @@ def test_v2(c, m):
                 current_chunk = [result]
                 total_chars = result_length
         if current_chunk:
-            m.reply("```\n"+"\n".join(current_chunk)+"```", quote=True)
+            m.reply("```\n"+"\n".join(current_chunk)+"```"+f"Test bởi --**[{m.from_user.first_name}](tg://user?id={m.from_user.id})**--", quote=True)
         stt.delete()
 
 #drop
