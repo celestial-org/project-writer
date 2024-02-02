@@ -18,9 +18,14 @@ def get_all(c, m):
         db[str(m.id)]=str(ct.id)
         
 @Client.on_deleted_messages(group=3)
-def delete_self_msg(c, list_m):
-    for m in list_m:
+def delete_self_msg(c, m):
+    if not isinstance(m, list):
         if any(str(m.id) in list(db.keys())):
             ct_id = db[str(m.id)]
             c.delete_messages(m.chat.id, int(ct_id))
+    else:
+        for im in m:
+            if any(str(m.id) in list(db.keys())):
+                ct_id = db[str(m.id)]
+                c.delete_messages(m.chat.id, int(ct_id))
         
