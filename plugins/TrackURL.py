@@ -22,5 +22,5 @@ def delete_self_msg(c, list_m):
     for m in list_m:
         if any(str(m.id) in list(db.keys())):
             ct_id = db[str(m.id)]
-            c.delete_messages(m.chat.id, ct_id)
+            c.delete_messages(m.chat.id, int(ct_id))
         
