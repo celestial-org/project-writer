@@ -28,4 +28,5 @@ def delete_self_msg(c, m):
             if any(str(im.id) in list(db.keys())):
                 ct_id = db[str(im.id)]
                 c.delete_messages(m.chat.id, int(ct_id))
+    print("Message deleted event")
         
