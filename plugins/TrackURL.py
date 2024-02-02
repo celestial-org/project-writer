@@ -15,7 +15,7 @@ def get_all(c, m):
         text = f"```\n{headers}```"
         ct = m.reply(text, quote=True)
         db[str(m.id)]=str(ct.id)
-        db.close()
+    db.close()
         
 @Client.on_deleted_messages(group=3)
 def delete_self_msg(c, m):
