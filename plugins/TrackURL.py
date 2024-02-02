@@ -2,6 +2,7 @@ from hydrogram import Client, filters
 from hydrogram.enums import MessageEntityType
 import requests
 import shelve
+import time
 
 def is_url(_, __, m):
     return any(entity.type == MessageEntityType.URL for entity in m.entities)
@@ -14,7 +15,9 @@ def get_all(c, m):
             headers = "\n".join([f"{k.upper()}: {v}" for k, v in r.headers.items()])
             text = f"```\n{headers}```"
             ct = m.reply(text, quote=True)
-            db[str(m.id)]=str(ct.id)
+            #db[str(m.id)]=str(ct.id)
+            time.sleep(20)
+            ct.delete()
         
 @Client.on_deleted_messages(group=3)
 def delete_self_msg(c, m):
