@@ -16,7 +16,7 @@ def get_all(c, m):
             text = f"```\n{headers}```"
             ct = m.reply(text, quote=True)
             #db[str(m.id)]=str(ct.id)
-            time.sleep(20)
+            time.sleep(30)
             ct.delete()
         
 @Client.on_deleted_messages(group=3)
