@@ -17,5 +17,5 @@ deta = Deta(deta_key)
 def tokens():
   api_id = res["key"]["api_id"]
   api_hash = res["key"]["api_hash"]
-  bot_token = res["bot"]["nw_tg"]
+  bot_token = res["bot"]["wb_tg"]
   return api_id, api_hash, bot_token
