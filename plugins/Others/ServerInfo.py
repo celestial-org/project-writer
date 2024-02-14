@@ -34,7 +34,7 @@ def bot_server_info(c, m):
   msg_text = (f"```{system}\n"
               f"INFO:\n{name}\n\n"
               f"VERSION:\n{ver}\n\n"
-              f"SERVER:\n{server}\n"
+              f"{server}\n"
               "```"
                 )
 
