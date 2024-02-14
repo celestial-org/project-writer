@@ -17,7 +17,7 @@ def server_info():
     parts = ip.split('.')
     ip = ".".join(parts[:2] + ['*.*'])
 
-    server_info = f"IP: \nCity: {city}\nRegion: {region}\nCountry: {country}\nProvider: {provider}"
+    server_info = f"IP: {ip}\nCity: {city}\nRegion: {region}\nCountry: {country}\nProvider: {provider}"
 
   except Exception as e:
     server_info = f"Error: {e}"
