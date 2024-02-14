@@ -22,6 +22,8 @@ def set_local_endpoint(c, m):
 @Client.on_message(filters.command("testservers"))
 def list_endpoints(c, m):
     m.reply_chat_action(ChatAction.TYPING)
+    m.reply("Test trong trình duyệt: http://eu4.diresnode.com:3305/", quote=True)
+    return 
     try:
             count, ___, endpoints = get_endpoints()
     except Exception as e:
