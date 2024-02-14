@@ -14,9 +14,7 @@ def server_info():
     region = data.get('region', 'N/A')
     country = data.get('country', 'N/A')
     provider = data.get('org', 'N/A')
-    parts = ip.split('.')
-    ip = ".".join(parts[:2] + ['*.*'])
-
+    
     server_info = f"IP: {ip}\nCity: {city}\nRegion: {region}\nCountry: {country}\nProvider: {provider}"
 
   except Exception as e:
