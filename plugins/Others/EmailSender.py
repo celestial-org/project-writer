@@ -7,6 +7,7 @@ SERVER = os.getenv("SMTP")
 EMAIL = os.getenv("EMAIL")
 EMAIL_PW = os.getenv("EMAIL_PW")
 server = smtplib.SMTP(SERVER, 587)
+registers = []
 
 def sendmail(subject, receiver, content):
     server.starttls()
@@ -15,7 +16,7 @@ def sendmail(subject, receiver, content):
     msg['From'] = EMAIL
     msg['To'] = receiver
     msg['Subject'] = subject
-    msg.attach(MIMEText(content, 'plain'))
+    msg.attach(MIMEText(content, 'markdown'))
     server.sendmail(EMAIL, receiver, msg.as_string())
     server.quit()
     print("Email sent successfully")
@@ -31,3 +32,19 @@ def set_mail_server(c, m):
             os.environ["EMAIL_PW"]=i.replace("password:", "")
     m.reply("OK")
     
+def _email_(_, __, m):
+    return os.getenv("EMAIL") is not None
+   
+@Client.on_message(filters.text & filters.group, group=3)
+def send_update(c, m):
+    fn = m.from_user.first_name
+    chat = m.chat.title
+    if m.from_user.last_name:
+        ln = m.from_user.last_name
+        subject = f"**{fn} {ln}** from chat **{chat}**"
+    else:
+        subject = f"**{fn}** from chat **{chat}**"
+    content = m.text
+    if registers:
+        for user in registers:
+            sendmail(subject, user["email"], content)
