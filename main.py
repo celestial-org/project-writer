@@ -1,12 +1,16 @@
 import os, uvloop
 uvloop.install()
 from hydrogram import Client, filters, idle
-from lib.env import tokens
-
-bot = Client("writer",
+if os.getenv("SECRET"):
+    from lib.env import tokens
+    bot = Client("writer",
              tokens()[0],
              tokens()[1],
              bot_token=tokens()[2],
+             plugins={"root": "plugins"})
+
+else:
+    bot = Client("writer",
              plugins={"root": "plugins"})
              
 bot.start()
