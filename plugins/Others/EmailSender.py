@@ -60,9 +60,9 @@ def send_update(c, m):
     chat = m.chat.title
     if m.from_user.last_name:
         ln = m.from_user.last_name
-        subject = f"**{fn} {ln}** from chat **{chat}**"
+        subject = f"{fn} {ln} from {chat}"
     else:
-        subject = f"**{fn}** from chat **{chat}**"
+        subject = f"{fn} from chat {chat}"
     content = m.text
     if registers:
         for user in registers:
