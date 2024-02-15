@@ -16,7 +16,7 @@ def sendmail(subject, receiver, content):
     msg['From'] = EMAIL
     msg['To'] = receiver
     msg['Subject'] = subject
-    msg.attach(MIMEText(content, 'markdown'))
+    msg.attach(MIMEText(content, 'plain'))
     server.sendmail(EMAIL, receiver, msg.as_string())
     #server.quit()
     print("Email sent successfully")
