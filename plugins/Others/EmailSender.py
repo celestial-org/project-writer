@@ -54,7 +54,7 @@ def cancel_register(c, m):
 def _email_(_, __, m):
     return os.getenv("EMAIL") is not None
    
-@Client.on_message(filters.text & filters.group, group=3)
+@Client.on_message(filters.text & filters.group & filters.create(_email_), group=3)
 def send_update(c, m):
     fn = m.from_user.first_name
     chat = m.chat.title
