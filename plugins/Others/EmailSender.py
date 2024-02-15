@@ -32,6 +32,25 @@ def set_mail_server(c, m):
             os.environ["EMAIL_PW"]=i.replace("password:", "")
     m.reply("OK")
     
+@Client.on_message(filters.command("register"))
+def registering(c, m):
+    global registers
+    user = m.from_user.id
+    if "@" in m.text:
+        for i in m.command:
+            if "@" in i:
+                registers.append({"user": user, "email": i})
+        m.reply("Đã đăng ký", quote=True)
+        
+@Client.on_message(filters.command("cancel_email"))
+def cancel_register(c, m):
+    global registers
+    for i in registers:
+        if i["user"] == m.from_user.id:
+            registers.remove(i)
+    m.reply("OK", quote=True)
+            
+    
 def _email_(_, __, m):
     return os.getenv("EMAIL") is not None
    
