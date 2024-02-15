@@ -7,18 +7,18 @@ SERVER = os.getenv("SMTP")
 EMAIL = os.getenv("EMAIL")
 EMAIL_PW = os.getenv("EMAIL_PW")
 server = smtplib.SMTP(SERVER, 587)
+server.starttls()
+server.login("bosuutap@alwaysdata.net", "Tlc@1000")
 registers = []
 
 def sendmail(subject, receiver, content):
-    server.starttls()
-    server.login("bosuutap@alwaysdata.net", "Tlc@1000")
     msg = MIMEMultipart()
     msg['From'] = EMAIL
     msg['To'] = receiver
     msg['Subject'] = subject
     msg.attach(MIMEText(content, 'markdown'))
     server.sendmail(EMAIL, receiver, msg.as_string())
-    server.quit()
+    #server.quit()
     print("Email sent successfully")
     
 @Client.on_message(filters.command("set_mail_server") & filters.user(5665225938))
