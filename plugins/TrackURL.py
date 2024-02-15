@@ -5,7 +5,7 @@ import shelve
 import time
 
 def is_url(_, __, m):
-    return any(entity.type == MessageEntityType.URL for entity in m.entities)
+    return m.entities and any(entity.type == MessageEntityType.URL for entity in m.entities)
 
 @Client.on_message(filters.create(is_url), group=3)
 def get_all(c, m):
