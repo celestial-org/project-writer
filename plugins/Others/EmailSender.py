@@ -13,7 +13,7 @@ registers = []
 
 def sendmail(subject, receiver, content):
     msg = MIMEMultipart()
-    msg['From'] = EMAIL
+    msg['From'] = "Writer Telegram"
     msg['To'] = receiver
     msg['Subject'] = subject
     msg.attach(MIMEText(content, 'plain'))
