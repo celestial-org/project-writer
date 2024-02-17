@@ -45,7 +45,7 @@ def start_test(test_url, endpoint):
 def get_config(url):
   if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
     res = url
-    url = requests.post("https://tempnote-1-q9925339.deta.app/post", data=url).text
+    url = requests.post("https://paste.rs/", data=url).text
   else:
     try:
       res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=10, proxies={"http":"http://127.0.0.1:8888", "https":"http://127.0.0.1:8888"})
