@@ -59,7 +59,7 @@ def get_config(url):
     res = res.text
     if not any(res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]):
       res = base64.b64decode(res.encode('utf-8')).decode('utf-8')
-      url = requests.post("https://tempnote-1-q9925339.deta.app/post", data=res).text
+      url = requests.post("https://paste.rs/", data=res).text
   count = len(res.splitlines())
   return url, count
   
