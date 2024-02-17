@@ -27,7 +27,7 @@ def check_sub(c, m):
         try:
             info, count = parse_url(url)
         except:
-            message = f"{url}\n**__Test bởi__ --{user}--**\n__--**Subscription lỗi**--"
+            message = f"{url}\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
             m.reply(message, quote=True)
             continue
         if info and all(key in info for key in ["total", "upload", "download", "available", "expire"]):
@@ -39,7 +39,7 @@ def check_sub(c, m):
             
             message = (
                 f"{url}\n"
-                f"**__Test bởi__ --{user}--**\n"
+                f"**__Check bởi__ --{user}--**\n"
                 f"__**Số lượng cấu hình:**__ --{count}--\n"
                 f"**Tổng:** --{total}--\n"
                 f"**Đã dùng:** ↑--{upl}--, ↓--{downl}--\n"
@@ -47,6 +47,6 @@ def check_sub(c, m):
                 f"**Hết hạn:** __--{expire}--__"
             )
         else:
-            message = f"{url}\n**__Test bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--"
+            message = f"{url}\n**__Check bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--"
         
         m.reply(message, quote=True)
