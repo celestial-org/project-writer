@@ -43,4 +43,4 @@ def parse_url(url):
         if 'upload' in result_dict and 'download' in result_dict and 'total' in result_dict:
             available = int(orgi_dict['total']) - (int(orgi_dict['upload']) + int(orgi_dict['download']))
             result_dict['available'] = convert_bytes_to_human_readable(available)
-    return result_dict, res_text.count("://")
+    return result_dict, res_text.count("vmess://") + res_text.count("trojan://") + res_text.count("vless://") + res_text.count("ss://") + res_text.count("hyteria://")
