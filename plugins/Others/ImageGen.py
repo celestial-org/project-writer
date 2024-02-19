@@ -14,5 +14,4 @@ def image_generator(c, m):
         if response.status_code == 200:
             result = BytesIO(response.content)
             result.name = "image.png"
-            q.reply_photo(result, caption=f"By __**{name}**__", quote=True)
-        m.delete()
+            m.reply_photo(result, caption=f"By __**{name}**__", quote=True)
