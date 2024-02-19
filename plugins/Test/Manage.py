@@ -22,7 +22,7 @@ def set_local_endpoint(c, m):
 @Client.on_message(filters.command("testservers"))
 def list_endpoints(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    m.reply("Test trong trình duyệt: https://v2tool.apps.dj/", quote=True)
+    m.reply("Test trong trình duyệt: http://ger2-1.deploy.sbs:1526", quote=True)
     return 
     try:
             count, ___, endpoints = get_endpoints()
