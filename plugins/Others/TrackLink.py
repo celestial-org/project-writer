@@ -10,8 +10,8 @@ def is_url(_, __, m):
 @Client.on_message(filters.command("request"))
 async def track_link(c, m):
     await m.reply_chat_action(ChatAction.TYPING)
-    if m.command[1] in ["GET", "POST", "DELETE"]:
-        method = m.command[1]
+    if m.command[1] in ["GET", "get", "POST", "post", "DELETE", "delete"]:
+        method = m.command[1].upper()
     else:
         method = "GET"
     if any(part in ['headers', 'body', 'picture'] for part in m.command):
