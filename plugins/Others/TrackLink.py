@@ -24,7 +24,7 @@ async def track_link(c, m):
             headers = "\n".join([f"{k.upper()}: {v}" for k, v in r.headers.items()])
             await m.reply(f"```json\n{headers}```", quote=True)
 
-@Client.on_message(filters.create(is_url), group=3)
+#@Client.on_message(filters.create(is_url), group=3)
 def get_all(c, m):
     for url in [url for url in m.text.split(None) if any(scheme in url for scheme in ["http://", "https://"])]:
         r = requests.get(url, headers={"User-Agent": "Writer/Telegram Bot"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"})
