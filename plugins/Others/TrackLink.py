@@ -15,7 +15,7 @@ async def track_link(c, m):
     else:
         method = "GET"
     if any(part in ['headers', 'body', 'picture'] for part in m.command):
-        req = [part.replace('...', '')  for part in m.command if any(part in  ['headers', 'body', 'picture')]][0]
+        req = [part.replace('...', '')  for part in m.command if any(part in  ['headers', 'body', 'picture'])][0]
     else:
         req = "headers"
     for url in [url for url in m.text.split(None) if any(scheme in url for scheme in ["http://", "https://"])]:
