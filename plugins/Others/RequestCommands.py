@@ -3,7 +3,7 @@ from hydrogram.enums import ParseMode, ChatAction
 import requests, re
 
 
-@Client.on_message(filters.command("request"))
+#@Client.on_message(filters.command("request"))
 def send_request(c, m):
   m.reply_chat_action(ChatAction.TYPING)
   method = m.command[1].upper() if len(m.command) > 1 else "GET"
