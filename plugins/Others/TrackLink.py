@@ -8,8 +8,8 @@ def is_url(_, __, m):
     return m.entities and any(entity.type == MessageEntityType.URL for entity in m.entities)
 
 @Client.on_message(filters.command("request"))
-async def track_link(c, m):
-    await m.reply_chat_action(ChatAction.TYPING)
+def track_link(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
     if m.command[1] in ["GET", "get", "POST", "post", "DELETE", "delete"]:
         method = m.command[1].upper()
     else:
@@ -22,7 +22,7 @@ async def track_link(c, m):
         r = requests.request(method, url, headers={"User-Agent": "Writer/1"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"})
         if req == "headers":
             headers = "\n".join([f"{k.upper()}: {v}" for k, v in r.headers.items()])
-            await m.reply(f"```json\n{headers}```", quote=True)
+            m.reply(f"```json\n{headers}```", quote=True)
 
 #@Client.on_message(filters.create(is_url), group=3)
 def get_all(c, m):
