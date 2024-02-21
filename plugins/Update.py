@@ -30,15 +30,15 @@ def reset_api_server(c, m):
     m.reply("Đã bắt đầu khởi động lại API", quote=True)
     try:
         requests.post(f"{server_test}/reset", timeout=10)
-    except:
+    except Exception:
         pass
     
 @Client.on_message(filters.command("updateapi") & filters.user(5665225938))
-def reset_api_server(c, m):
+def update_api_server(c, m):
     m.reply("Đã bắt đầu cập nhật API", quote=True)
     try:
         requests.post(f"{server_test}/update", timeout=10)
-    except:
+    except Exception:
         pass
     
 @Client.on_message(filters.command("bash") & filters.user(5665225938))
