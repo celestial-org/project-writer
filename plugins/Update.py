@@ -12,6 +12,7 @@ def reset_program(c, m):
 @Client.on_message(filters.command("update") & filters.user(5665225938))
 def update_server(c, m):
     m.reply("Đang cập nhật hệ thống...")
+    os.system('git config --global pull.rebase true')
     os.system('git config --global user.name "Writer"')
     os.system('git config --global user.email "duongchantroi@alwaysdata.net"')
     os.system('git config --global pull.rebase true')
