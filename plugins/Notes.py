@@ -41,7 +41,7 @@ def add_url(c, m):
     m.delete()
 
 
-@Client.on_message(filters.command("remove"))
+@Client.on_message(filters.command("delete"))
 def delete_url(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
