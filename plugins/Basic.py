@@ -40,7 +40,7 @@ def ext_command_list(c, m):
     m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), lệnh nâng cao:
 
 /testall - Sử dụng tất cả địa điểm test
-    	
+
 /addpoint - `None`
 
 /testservers - Lấy danh sách địa điểm test
