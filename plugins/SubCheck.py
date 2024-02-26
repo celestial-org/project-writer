@@ -3,7 +3,7 @@ from hydrogram.enums import ChatAction
 from lib import parse_url
 import re
 
-@Client.on_message(filters.command("checkv2ray"))
+@Client.on_message(filters.command("checks"))
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.reply_to_message and m.reply_to_message.text:
