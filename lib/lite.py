@@ -16,7 +16,7 @@ def get_endpoints():
             epoints = []
             text = ["Không có điểm test nào khả dụng"]
         return count, epoints, text
-    except:
+    except Exception:
         raise Exception("API Không hoạt động")
     
 def check_before(prefix):
@@ -50,14 +50,14 @@ def get_config(url):
     try:
         try:
             res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=10, proxies={"http":"http://ger2-1.deploy.sbs:1526", "https":"http://ger2-1.deploy.sbs:1526"})
-        except:  
+        except Exception:  
             res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=10, proxies={"http":"http://127.0.0.1:8888", "https":"http://127.0.0.1:8888"})
         if res.text is None or res.status_code != 200:
             raise
-    except:
+    except Exception:
       try:
         res = requests.get(prox1, params={"url":url}, timeout=10)
-      except:
+      except Exception:
         res = requests.get(prox2, params={"url":url})
     res = res.text
     if not any(res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]):
