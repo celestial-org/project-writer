@@ -68,7 +68,7 @@ def test_v2(c, m):
             except Exception:
                 pre_conf = []
                 s_msg = m.reply(url+"```\n"+result+"```", quote=True)
-    return
+        stt.delete()
         # results = [start_v2(config) for config in configs]
 #         current_chunk = []
 #         total_chars = 0
