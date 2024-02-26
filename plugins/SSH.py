@@ -38,9 +38,9 @@ def delete_machine_server(c, m):
             savessh.delete(user_id, machine)
         except Exception as e:
             raise Exception(str(e))
-        st = m.reply(f"Đã xoá máy chủ {machine}", quote=True)
+        m.reply(f"Đã xoá máy chủ {machine}", quote=True)
     except Exception as e:
-        st = m.reply(str(e), quote=True)
+        m.reply(str(e), quote=True)
 
 @Client.on_message(filters.command("machines"))
 def get_list_machines(c, m):
@@ -71,10 +71,10 @@ def run_shell_command(c, m):
         result = run_cmd(host, sshuser, passwd, port, shell_cmd)
         max_length = 4000
         if len(result) > max_length:
-            parts = [text[i:i+max_length] for i in range(0, len(text), max_length)]
+            parts = [result[i:i+max_length] for i in range(0, len(result), max_length)]
             for i, part in enumerate(parts, start=1):
                 m.reply(f"{i}```bash\n{part}\n```", quote=True)
         else:
             m.reply(f"```bash\n{result}\n```", quote=True)
     except Exception as e:
-        st = m.reply(f"```bash\n{e}\n```", quote=True)
+        m.reply(f"```bash\n{e}\n```", quote=True)
