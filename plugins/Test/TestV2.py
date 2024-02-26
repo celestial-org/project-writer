@@ -60,7 +60,7 @@ def test_v2(c, m):
         configs = r.text.splitlines()
         s_msg = None
         result_gather = ""
-        for i, config in enumerate(configs):
+        for config in configs:
             result = start_v2(config)
             result_gather = f"{result_gather}{result}\n"
             try:
