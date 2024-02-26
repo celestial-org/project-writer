@@ -36,7 +36,7 @@ def add_url(c, m):
     done.delete()
 
 
-@Client.on_message(filters.command("rmshare"))
+@Client.on_message(filters.command("discard"))
 def delete_url(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     text = m.text
