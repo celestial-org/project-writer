@@ -48,10 +48,7 @@ def get_config(url):
     url = requests.post("https://paste.rs/", data=url).text
   else:
     try:
-        try:
-            res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=60, proxies={"http":"http://ger2-1.deploy.sbs:1526", "https":"http://ger2-1.deploy.sbs:1526"})
-        except Exception:  
-            res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=60, proxies={"http":"http://127.0.0.1:8888", "https":"http://127.0.0.1:8888"})
+        res = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=60, proxies={"http":"http://127.0.0.1:8888", "https":"http://127.0.0.1:8888"})
         if res.text is None or res.status_code != 200:
             raise
     except Exception:
