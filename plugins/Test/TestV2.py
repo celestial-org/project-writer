@@ -69,22 +69,21 @@ def test_v2(c, m):
                 pre_conf = []
                 s_msg = m.reply(url+"```\n"+result+"```", quote=True)
     return
-def x():
-        results = [start_v2(config) for config in configs]
-        current_chunk = []
-        total_chars = 0
-        for result in results:
-            result_length = len(result)
-            if total_chars + result_length <= 4000:
-                current_chunk.append(result)
-                total_chars += result_length
-            else:
-                m.reply("```\n"+"\n".join(current_chunk)+"```", quote=True)
-                current_chunk = [result]
-                total_chars = result_length
-        if current_chunk:
-            m.reply("```\n"+"\n".join(current_chunk)+"```"+f"__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__", quote=True)
-        stt.delete()
+        # results = [start_v2(config) for config in configs]
+#         current_chunk = []
+#         total_chars = 0
+#         for result in results:
+#             result_length = len(result)
+#             if total_chars + result_length <= 4000:
+#                 current_chunk.append(result)
+#                 total_chars += result_length
+#             else:
+#                 m.reply("```\n"+"\n".join(current_chunk)+"```", quote=True)
+#                 current_chunk = [result]
+#                 total_chars = result_length
+#         if current_chunk:
+#             m.reply("```\n"+"\n".join(current_chunk)+"```"+f"__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__", quote=True)
+#         stt.delete()
 
 #drop
 def run_lite_command(c, m):
