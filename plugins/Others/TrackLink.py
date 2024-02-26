@@ -10,7 +10,7 @@ def is_url(_, __, m):
 @Client.on_message(filters.command("request"))
 def track_link(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    if m.command[1] in ["GET", "get", "POST", "post", "DELETE", "delete"]:
+    if len(m.command) > 1 and m.command[1] in ["GET", "get", "POST", "post", "DELETE", "delete"]:
         method = m.command[1].upper()
     else:
         method = "GET"
