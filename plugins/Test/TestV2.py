@@ -66,7 +66,7 @@ def test_v2(c, m):
             try:
                 s_msg.edit(url+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"+"```\n"+result_gather+"```")
             except Exception:
-                result_gather = result
+                result_gather = result + "\n"
                 s_msg = m.reply(url+"```\n"+result_gather+"```", quote=True)
         s_msg = None
         stt.delete()
