@@ -51,7 +51,7 @@ def test_v2(c, m):
             continue
         if count is None:
             m.reply("Liên kết bị lỗi", quote=True)
-            return
+            continue
         if url.startswith("http"):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình', quote=True)
         else:
