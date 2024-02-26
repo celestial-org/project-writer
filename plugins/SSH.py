@@ -63,7 +63,7 @@ def run_shell_command(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     try:
         if not m.text.replace(".", "").replace(" ",""):
-            raise Exception("Thiếu lệnh và tên máy.\nHãy thực hiện theo mẫu: `...machine0 echo Hello, World`")
+            raise Exception("Thiếu lệnh và tên máy.\nHãy thực hiện theo mẫu: `.machine0 echo Hello, World`")
         user_id = m.from_user.id
         machine = m.text.split(" ")[0].replace(".", "")
         shell_cmd = m.text.split(" ", 1)[1]
