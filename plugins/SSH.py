@@ -21,10 +21,10 @@ def save_ssh_login(c, m):
             _, machine, host, sshuser, passwd, port = m.command
         user_id = m.from_user.id
         savessh.add(user_id, machine, host, sshuser, passwd, port)
-        st = m.reply(f"Máy chủ với tên {machine} đã được lưu", quote=True)
+        m.reply(f"Máy chủ với tên {machine} đã được lưu", quote=True)
         time.sleep(10)
     except Exception as e:
-        st = m.reply(str(e), quote=True)
+        m.reply(str(e), quote=True)
     
 @Client.on_message(filters.command("delserver"))
 def delete_machine_server(c, m):
