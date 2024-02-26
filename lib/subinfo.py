@@ -22,12 +22,12 @@ def parse_url(url):
     try:
         r = requests.get(url, headers={"User-Agent": "clash"}, proxies={"http": "http://ger2-1.deploy.sbs:1526", "https": "http://ger2-1.deploy.sbs:1526"}, timeout=60)
         res_string = r.headers.get("subscription-userinfo")
-        r = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://ger2-1.deploy.sbs:1526", "https": "http://ger2-1.deploy.sbs:1526"}, timeout=60)
+        r2 = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://ger2-1.deploy.sbs:1526", "https": "http://ger2-1.deploy.sbs:1526"}, timeout=60)
     except:
         r = requests.get(url, headers={"User-Agent": "clash"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
         res_string = r.headers.get("subscription-userinfo")
-        r = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
-    res_text = str(r.text)
+        r2 = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
+    res_text = str(r2.text)
     if "://" not in res_text:
         res_text = base64.b64decode(res_text).decode('utf-8')
     result_dict = {}
@@ -48,4 +48,4 @@ def parse_url(url):
         if 'upload' in result_dict and 'download' in result_dict and 'total' in result_dict:
             available = int(orgi_dict['total']) - (int(orgi_dict['upload']) + int(orgi_dict['download']))
             result_dict['available'] = convert_bytes_to_human_readable(available)
-    return result_dict, res_text.count("vmess://") + res_text.count("trojan://") + res_text.count("vless://") + res_text.count("ss://") + res_text.count("hyteria://")
+    return result_dict, len(res_text.splitlines())
