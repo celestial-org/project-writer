@@ -68,6 +68,7 @@ def test_v2(c, m):
             except Exception:
                 result_gather = result + "\n"
                 s_msg = m.reply(url+"```\n"+result_gather+"```", quote=True)
+        result_gather = ""
         s_msg = None
         stt.delete()
         # results = [start_v2(config) for config in configs]
