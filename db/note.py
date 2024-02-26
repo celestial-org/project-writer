@@ -52,12 +52,9 @@ def check_all(filename):
   if existing_entry:
     removed_urls = []
     for url in existing_entry['urls']:
-      try:
-          response = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://ger2-1.deploy.sbs:1526", "https": "http://ger2-1.deploy.sbs:1526"}, timeout=60)
-      except:
-          response = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"})
-      if response.status_code != 200 or response.text is None or "{" in response.text:
-          removed_urls.append(url)
+        response = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"})
+        if response.status_code != 200 or response.text is None or "{" in response.text:
+            removed_urls.append(url)
     updated_urls = [u for u in existing_entry['urls'] if u not in removed_urls]
     db.update({'urls': updated_urls}, filename)
     return removed_urls
