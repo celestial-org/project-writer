@@ -63,14 +63,11 @@ def test_v2(c, m):
         for config in configs:
             result = start_v2(config)
             pre_conf.append(result)
-            if not s_msg:
+            try:
+                s_msg.edit(url+"```\n"+"\n".join(pre_conf)+"```"+f"__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__")
+            except:
+                pre_conf = []
                 s_msg = m.reply(url+"```\n"+result+"```", quote=True)
-            else:
-                try:
-                    s_msg.edit(url+"```\n"+"\n".join(pre_conf)+"```"+f"__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__")
-                except:
-                    pre_conf = []
-                    s_msg = m.reply(url+"```\n"+result+"```", quote=True)
     return
 def x():
         results = [start_v2(config) for config in configs]
