@@ -71,7 +71,8 @@ def test_v2(c, m):
                 except:
                     pre_conf = []
                     s_msg = m.reply("```\n"+result+"```", quote=True)
-        return
+    return
+def x():
         results = [start_v2(config) for config in configs]
         current_chunk = []
         total_chars = 0
