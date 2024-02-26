@@ -64,7 +64,7 @@ def test_v2(c, m):
             result = start_v2(config)
             pre_conf.append(result)
             try:
-                s_msg.edit(url+"```\n"+"\n".join(pre_conf)+"```"+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__")
+                s_msg.edit(url+"```\n"+"\n".join(pre_conf)+"```"+f" __\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__")
             except Exception:
                 pre_conf = []
                 s_msg = m.reply(url+"```\n"+result+"```", quote=True)
