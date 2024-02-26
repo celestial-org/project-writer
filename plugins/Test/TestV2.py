@@ -58,6 +58,20 @@ def test_v2(c, m):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
         r = requests.get(test_url)
         configs = r.text.splitlines()
+        s_msg = None
+        pre_conf = []
+        for config in configs:
+            result = start_v2(config)
+            pre_conf.append(config)
+            if not s_msg:
+                s_msg = m.reply("```\n"+config+"```", quote=True)
+            else:
+                try:
+                    s_msg.edit("```\n"+"\n".join(pre_conf)+"```"+f"__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__")
+                except:
+                    pre_conf = []
+                    s_msg = m.reply("```\n"+config+"```", quote=True)
+        return
         results = [start_v2(config) for config in configs]
         current_chunk = []
         total_chars = 0
