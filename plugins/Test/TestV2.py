@@ -20,19 +20,19 @@ def test_v2(c, m):
     if m.reply_to_message:
         try:
             text = m.reply_to_message.text
-        except:
+        except Exception:
             try:
                 text = m.reply_to_message.caption
-            except:
+            except Exception:
                 m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
                 return
     else:
         try:
             text = m.text
-        except:
+        except Exception:
             try:
                 text = m.caption
-            except:
+            except Exception:
                 m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
                 return
     matches = re.findall(url_pattern, text)
@@ -44,11 +44,11 @@ def test_v2(c, m):
         m.reply_chat_action(ChatAction.TYPING)
         try:
             test_url, count = get_config(url)
-        except:
+        except Exception:
             uvl = m.reply("Liên kết không khả dụng", quote=True)
             time.sleep(10)
             uvl.delete()
-            return
+            continue
         if count is None:
             m.reply("Liên kết bị lỗi", quote=True)
             return
@@ -65,7 +65,7 @@ def test_v2(c, m):
             pre_conf.append(result)
             try:
                 s_msg.edit(url+"```\n"+"\n".join(pre_conf)+"```"+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__")
-            except:
+            except Exception:
                 pre_conf = []
                 s_msg = m.reply(url+"```\n"+result+"```", quote=True)
     return
@@ -94,19 +94,19 @@ def run_lite_command(c, m):
     if m.reply_to_message:
         try:
             text = m.reply_to_message.text
-        except:
+        except Exception:
             try:
                 text = m.reply_to_message.caption
-            except:
+            except Exception:
                 m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
                 return
     else:
         try:
             text = m.text
-        except:
+        except Exception:
             try:
                 text = m.caption
-            except:
+            except Exception:
                 m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
                 return
     matches = re.findall(url_pattern, text)
@@ -118,7 +118,7 @@ def run_lite_command(c, m):
         m.reply_chat_action(ChatAction.TYPING)
         try:
             test_url, count = get_config(url)
-        except:
+        except Exception:
             uvl = m.reply("Liên kết không khả dụng", quote=True)
             time.sleep(10)
             uvl.delete()
@@ -129,7 +129,7 @@ def run_lite_command(c, m):
         if not prefix:
             try:
                 prefix = ranpoint()
-            except:
+            except Exception:
                 m.reply("Không có máy chủ test nào hoạt động cả", quote=True)
                 return
         try:
