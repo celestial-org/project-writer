@@ -29,7 +29,7 @@ def parse_url(url):
         r2 = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     res_text = str(r2.text)
     try:
-        res_text = base64.b64decode(res_text).decode('utf-8')
+        res_text = base64.b64decode(res_text)
     except Exception:
         pass
     result_dict = {}
