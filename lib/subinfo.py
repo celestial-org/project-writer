@@ -22,11 +22,11 @@ def parse_url(url):
     try:
         r = requests.get(url, headers={"User-Agent": "clash"}, proxies={"http": "http://ger2-1.deploy.sbs:1526", "https": "http://ger2-1.deploy.sbs:1526"}, timeout=60)
         res_string = r.headers.get("subscription-userinfo")
-        r2 = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://ger2-1.deploy.sbs:1526", "https": "http://ger2-1.deploy.sbs:1526"}, timeout=60)
+        r2 = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://ger2-1.deploy.sbs:1526", "https": "http://ger2-1.deploy.sbs:1526"}, timeout=60)
     except:
         r = requests.get(url, headers={"User-Agent": "clash"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
         res_string = r.headers.get("subscription-userinfo")
-        r2 = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.13"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
+        r2 = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     res_text = str(r2.text)
     try:
         res_text = base64.b64decode(res_text)
