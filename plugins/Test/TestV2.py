@@ -62,7 +62,7 @@ def test_v2(c, m):
         result_gather = ""
         for i, config in enumerate(configs):
             result = start_v2(config)
-            result_gather = f"{result_gather}\n{result}"
+            result_gather = f"{result_gather}{result}\n"
             try:
                 s_msg.edit(url+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"+"```\n"+result_gather+"```")
             except Exception:
