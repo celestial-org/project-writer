@@ -59,14 +59,15 @@ def test_v2(c, m):
         r = requests.get(test_url)
         configs = r.text.splitlines()
         s_msg = None
-        pre_conf = []
+        result_gather = ""
         for i, config in enumerate(configs):
             result = start_v2(config)
-            pre_conf.append(f"{i})\n{result}")
+            result_gather = f"{result_gather}\n{result}"
             try:
-                s_msg.edit(url+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"+"```\n"+s_msg.text+"\n"+result+"```")
+                s_msg.edit(url+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"+"```\n"+result_gather+"```")
             except Exception:
-                s_msg = m.reply(url+"```\n"+result+"```", quote=True)
+                result_gather = result
+                s_msg = m.reply(url+"```\n"+result_gather+"```", quote=True)
         s_msg = None
         stt.delete()
         # results = [start_v2(config) for config in configs]
