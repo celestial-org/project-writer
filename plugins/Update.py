@@ -21,9 +21,9 @@ def update_server(c, m):
     os.system("git add * && git commit -a -m UPDATE")
     os.system("git pull")
     m.reply("Đã cập nhật xong đang khởi động lại...")
-   # with open("reset.txt", "w") as f:
-       # f.write(str(m.chat.id))
-    #os.execl(sys.executable, sys.executable, *sys.argv)
+    with open("reset.txt", "w") as f:
+        f.write(str(m.chat.id))
+    os.execl(sys.executable, sys.executable, *sys.argv)
 
 @Client.on_message(filters.command("rerunapi") & filters.user(5665225938))
 def reset_api_server(c, m):
