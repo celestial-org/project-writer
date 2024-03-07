@@ -1,35 +1,19 @@
-import subprocess
-import time
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+import os, uvloop
+uvloop.install()
+from hydrogram import Client, filters, idle
+from lib.env import tokens
 
-class MyHandler(FileSystemEventHandler):
-    def __init__(self):
-        super().__init__()
-        self.proc = None
-        self.start_program()
+bot = Client("writer",
+             tokens()[0],
+             tokens()[1],
+             bot_token=tokens()[2],
+             plugins={"root": "plugins"})
 
-    def start_program(self):
-        print("Starting bot.py...")
-        self.proc = subprocess.Popen(["python", "bot.py"])
-
-    def restart_program(self):
-        print("Restarting bot.py...")
-        self.proc.kill()  # Kill the current process
-        self.start_program()
-
-    def on_modified(self, event):
-        print("File modified. Reloading...")
-        self.restart_program()
-
-if __name__ == "__main__":
-    event_handler = MyHandler()
-    observer = Observer()
-    observer.schedule(event_handler, path='.', recursive=True)
-    observer.start()
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-    observer.join()
+bot.start()
+if os.path.exists("reset.txt"):
+    with open("reset.txt", "r") as f:
+        bot.send_message(int(f.read()), "Chương trình đã được khởi động")
+    os.remove("reset.txt")
+os.system('echo V2Writer')
+os.system("chmod +x ./lite")
+idle()
