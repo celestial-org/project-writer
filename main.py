@@ -10,11 +10,11 @@ class MyHandler(FileSystemEventHandler):
         self.start_program()
 
     def start_program(self):
-        print("Starting main.py...")
-        self.proc = subprocess.Popen(["python", "main.py"])
+        print("Starting bot.py...")
+        self.proc = subprocess.Popen(["python", "bot.py"])
 
     def restart_program(self):
-        print("Restarting main.py...")
+        print("Restarting bot.py...")
         self.proc.kill()  # Kill the current process
         self.start_program()
 
