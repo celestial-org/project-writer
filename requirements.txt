@@ -8,3 +8,4 @@ psutil
 paramiko
 uvloop
 pytz
+watchdog
