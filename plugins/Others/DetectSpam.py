@@ -17,9 +17,9 @@ def _filter(_, __, m):
 def detector(c, m):
     m.chat.restrict_member(m.from_user.id, permissions=ChatPermissions(can_send_messages=False), until_date=datetime.now() + timedelta(seconds=120))
     m.reply_chat_action(ChatAction.TYPING)
-    m.delete()
-    res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
+    #m.delete()
+    #res = requests.post("https://tempnote-1-q9925339.deta.app/post", data=m.text)
     user_id = m.from_user.id
     name = m.from_user.first_name
     user = f"[{name}](tg://user?id={user_id})"
-    m.reply(f"Tin nhắn của **{user}** có dấu hiệu spam và đã bị xoá. Dưới đây là bản sao của tin nhắn\n[LINK]({res.text}).\nNếu cần thiết, hãy lưu lại trước khi liên kết hết hạn.")
+    m.reply(f"Tin nhắn của **{user}** có dấu hiệu spam. \n**[Neko](tg://user?id=5537568128)**, hãy đưa ra quyết định đối với người này đi.")
