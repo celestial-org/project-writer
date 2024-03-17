@@ -5,34 +5,9 @@ from lib.env import config_tool
 @Client.on_message(filters.command("helps"))
 def help_list(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    m.reply(f"""Xin chào **{m.from_user.first_name}**(`{m.from_user.id}`), dưới đây là danh sách lệnh khả dụng:
-    
-/get - Lấy liên kết tổng hợp subscribe
-
-/add - Thêm subscribe 
-
-/checkv2ray - Kiểm tra subscription
-
-/share - Chia sẻ subscribe 
-
-/test - Kiểm tra cấu hình v2ray...
-
-/mylist - Danh sách subscribe của tôi
-
-/remove - Xoá subscribe khỏi danh sách
-
-/checkall - Tự kiểm tra và xoá subscribe bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
-
-/request [get, post, put, delete, option] - Gửi yêu cầu HTTP
-
-/sharelist - Lấy danh sách note chung
-
-/rmshare - Xoá subscribe khỏi note chung 
-
-/checkshare - Kiểm tra và xoá khỏi note chung
-
-/ext - Nâng cao
-""", quote=True)
+    with open('text/helps.txt') as f:
+        text = f.read()
+    m.reply(text, quote=True)
 
 @Client.on_message(filters.command("ext"))
 def ext_command_list(c, m):
