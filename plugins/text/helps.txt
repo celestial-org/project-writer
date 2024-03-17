@@ -12,7 +12,7 @@ Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả d
 
 /getmylist - Danh sách subscribe của tôi
 
-/remove - Xoá subscribe khỏi danh sách
+/delete - Xoá subscribe khỏi danh sách
 
 /checkifunavailable - Tự kiểm tra và xoá subscribe bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
 
