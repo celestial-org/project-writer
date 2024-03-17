@@ -22,6 +22,6 @@ Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả d
 
 /removefromsharelist - Xoá subscribe khỏi note chung 
 
-/checkinsharelistifunavailable - Kiểm tra và xoá khỏi note chung
+/checksharelistifunavailable - Kiểm tra và xoá khỏi note chung
 
 /ext - Nâng cao
