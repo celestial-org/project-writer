@@ -36,7 +36,7 @@ def add_url(c, m):
     done.delete()
 
 
-@Client.on_message(filters.command("discard"))
+@Client.on_message(filters.command("removefromsharelist"))
 def delete_url(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     text = m.text
@@ -67,7 +67,7 @@ def delete_url(c, m):
     m.delete()
 
 
-@Client.on_message(filters.command("checkshare"))
+@Client.on_message(filters.command("checksharelistifunavailable"))
 def check_all_urls(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.from_user.id != 5665225938:
@@ -88,7 +88,7 @@ def check_all_urls(c, m):
         c.delete_messages(m.chat.id, err.id)
 
 
-@Client.on_message(filters.command("sharelist"))
+@Client.on_message(filters.command("getsharelist"))
 def get_all_urls(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.from_user.id != 5665225938:
