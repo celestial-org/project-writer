@@ -14,26 +14,11 @@ def help_list(c, m):
 @Client.on_message(filters.command("ext"))
 def ext_command_list(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    m.reply(f"""**{m.from_user.first_name}**(`{m.from_user.id}`), lệnh nâng cao:
-
-/testall - Sử dụng tất cả địa điểm test
-
-/addpoint - `None`
-
-/testservers - Lấy danh sách địa điểm test
-
-/delpoint - None
-
-/install - Hướng dẫn thiết lập địa điểm test
-
-/addserver - Thêm máy chủ SHH
-
-/delserver - Xoá máy chủ SSH 
-
-/machines - Danh sách máy chủ SSH đã thêm 
-
-.`tên máy` - Chạy lệnh shell trên máy chủ SSH
-""", quote=True
+    with open('plugins/text/ext.md') as f:
+        text = f.read()
+    text = text.replace("{first_name}", m.from_user.first_name)
+    text = text.replace("{uid}", str(m.from_user.id))
+    m.reply(text, quote=True
 )
 
 @Client.on_message(filters.command("install"))
