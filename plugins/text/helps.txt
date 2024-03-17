@@ -20,7 +20,7 @@ Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả d
 
 /getsharelist - Lấy danh sách note chung
 
-/removefromshare - Xoá subscribe khỏi note chung 
+/removefromsharelist - Xoá subscribe khỏi note chung 
 
 /checkinsharelistifunavailable - Kiểm tra và xoá khỏi note chung
 
