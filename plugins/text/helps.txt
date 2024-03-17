@@ -1,0 +1,27 @@
+Xin chào **{m.from_user.first_name}**(`{m.from_user.id}`), dưới đây là danh sách lệnh khả dụng:
+    
+/get - Lấy liên kết tổng hợp subscribe
+
+/add - Thêm subscribe 
+
+/checkv2ray - Kiểm tra subscription
+
+/share - Chia sẻ subscribe 
+
+/test - Kiểm tra cấu hình v2ray...
+
+/mylist - Danh sách subscribe của tôi
+
+/remove - Xoá subscribe khỏi danh sách
+
+/checkall - Tự kiểm tra và xoá subscribe bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
+
+/request [get, post, put, delete, option] - Gửi yêu cầu HTTP
+
+/sharelist - Lấy danh sách note chung
+
+/rmshare - Xoá subscribe khỏi note chung 
+
+/checkshare - Kiểm tra và xoá khỏi note chung
+
+/ext - Nâng cao
