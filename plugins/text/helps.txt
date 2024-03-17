@@ -1,4 +1,4 @@
-Xin chào **{m.from_user.first_name}**(`{m.from_user.id}`), dưới đây là danh sách lệnh khả dụng:
+Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả dụng:
     
 /get - Lấy liên kết tổng hợp subscribe
 
