@@ -4,24 +4,24 @@ Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả d
 
 /add - Thêm subscribe 
 
-/checkv2ray - Kiểm tra subscription
+/checks - Kiểm tra subscription
 
 /share - Chia sẻ subscribe 
 
 /test - Kiểm tra cấu hình v2ray...
 
-/mylist - Danh sách subscribe của tôi
+/getmylist - Danh sách subscribe của tôi
 
 /remove - Xoá subscribe khỏi danh sách
 
-/checkall - Tự kiểm tra và xoá subscribe bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
+/checkifunavailable - Tự kiểm tra và xoá subscribe bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
 
 /request [get, post, put, delete, option] - Gửi yêu cầu HTTP
 
-/sharelist - Lấy danh sách note chung
+/getsharelist - Lấy danh sách note chung
 
-/rmshare - Xoá subscribe khỏi note chung 
+/removefromshare - Xoá subscribe khỏi note chung 
 
-/checkshare - Kiểm tra và xoá khỏi note chung
+/checkinsharelistifunavailable - Kiểm tra và xoá khỏi note chung
 
 /ext - Nâng cao
