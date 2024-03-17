@@ -76,7 +76,7 @@ def delete_url(c, m):
     m.delete()
 
 
-@Client.on_message(filters.command("checkall"))
+@Client.on_message(filters.command("checkifunavailable"))
 def check_all_urls(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
@@ -98,7 +98,7 @@ def check_all_urls(c, m):
         c.delete_messages(m.chat.id, err.id)
 
 
-@Client.on_message(filters.command("mylist"))
+@Client.on_message(filters.command("getmylist"))
 def get_all_urls(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.chat.type != enums.ChatType.PRIVATE:
