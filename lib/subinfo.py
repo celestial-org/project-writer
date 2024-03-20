@@ -20,10 +20,10 @@ def convert_timestamp_to_datetime(timestamp, timezone='UTC'):
 
 def parse_url(url):
     try:
-        r = requests.get(url, headers={"User-Agent": "quantumult x"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=30)
+        r = requests.get(url, headers={"User-Agent": "quantumult%20x"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=30)
         res_string = r.headers.get("subscription-userinfo")
     except Exception:
-        r = requests.get(url, headers={"User-Agent": "quantumult x"},  timeout=30)
+        r = requests.get(url, headers={"User-Agent": "quantumult%20x"},  timeout=30)
         res_string = r.headers.get("subscription-userinfo")
     res_text = r.text
     if "{" in res_text or not res_text:
