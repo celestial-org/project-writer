@@ -23,6 +23,8 @@ def parse_url(url):
     res_string = r.headers.get("subscription-userinfo")
     r2 = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     res_text = r2.text
+    if "{" in res_text:
+        raise Exception("Unavailable")
     try:
         res_text = base64.b64decode(res_text)
     except Exception:
