@@ -20,14 +20,12 @@ def convert_timestamp_to_datetime(timestamp, timezone='UTC'):
 
 def parse_url(url):
     try:
-        r = requests.get(url, headers={"User-Agent": "clash"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
+        r = requests.get(url, headers={"User-Agent": "quantumult x"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
         res_string = r.headers.get("subscription-userinfo")
-        r2 = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}, timeout=60)
     except Exception:
-        r = requests.get(url, headers={"User-Agent": "clash"},  timeout=60)
+        r = requests.get(url, headers={"User-Agent": "quantumult x"},  timeout=60)
         res_string = r.headers.get("subscription-userinfo")
-        r2 = requests.get(url, headers={"User-Agent": "v2rayNG"}, timeout=60)
-    res_text = r2.text
+    res_text = r.text
     if "{" in res_text or not res_text:
         raise Exception("Unavailable")
     try:
