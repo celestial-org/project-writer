@@ -6,14 +6,11 @@ from lib.env import prox1, prox2
 class DatabaseNotFoundError(Exception):
   pass
 
-
 class UrlNotFoundError(Exception):
   pass
 
-
 class UrlExistsError(Exception):
   pass
-
 
 def save_url(filename, url):
     existing_entry = db.get(filename)
@@ -24,7 +21,6 @@ def save_url(filename, url):
             raise UrlExistsError("Url đã tồn tại")
     else:
         db.put({'key': filename, 'urls': [url]})
-
 
 def remove_url(filename, url):
     existing_entry = db.get(filename)
