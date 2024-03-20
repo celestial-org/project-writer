@@ -48,7 +48,10 @@ def check_all(filename):
   if existing_entry:
     removed_urls = []
     for url in existing_entry['urls']:
-        response = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"})
+        try:
+            response = requests.get(url, headers={"User-Agent": "v2rayNG"}, proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"})
+        except Exception:
+            response = requests.get(url, headers={"User-Agent": "v2rayNG"})
         if response.status_code != 200 or response.text is None or "{" in response.text:
             removed_urls.append(url)
     updated_urls = [u for u in existing_entry['urls'] if u not in removed_urls]
