@@ -45,7 +45,7 @@ def parse_url(url):
                 try:
                     value = convert_timestamp_to_datetime(int(value), timezone='Asia/Ho_Chi_Minh')
                 except:
-                    value = "?????"
+                    value = "khong xac dinh"
             result_dict[key] = value
         if 'upload' in result_dict and 'download' in result_dict and 'total' in result_dict:
             available = int(orgi_dict['total']) - (int(orgi_dict['upload']) + int(orgi_dict['download']))
