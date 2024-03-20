@@ -16,14 +16,14 @@ class UrlExistsError(Exception):
 
 
 def save_url(filename, url):
-  existing_entry = db.get(filename)
-  if existing_entry:
-    if url not in existing_entry['urls']:
-      db.update({'urls': existing_entry['urls'] + [url]}, filename)
+    existing_entry = db.get(filename)
+    if existing_entry:
+        if url not in existing_entry['urls']:
+          db.update({'urls': existing_entry['urls'] + [url]}, filename)
+        else:
+            raise UrlExistsError("Url đã tồn tại")
     else:
-      raise UrlExistsError("Url đã tồn tại")
-  else:
-    db.put({'key': filename, 'urls': [url]})
+        db.put({'key': filename, 'urls': [url]})
 
 
 def remove_url(filename, url):
