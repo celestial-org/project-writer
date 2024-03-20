@@ -27,15 +27,15 @@ def save_url(filename, url):
 
 
 def remove_url(filename, url):
-  existing_entry = db.get(filename)
-  if existing_entry:
-    if url in existing_entry['urls']:
-      updated_urls = [u for u in existing_entry['urls'] if u != url]
-      db.update({'urls': updated_urls}, filename)
+    existing_entry = db.get(filename)
+    if existing_entry:
+        if url in existing_entry['urls']:
+            updated_urls = [u for u in existing_entry['urls'] if u != url]
+            db.update({'urls': updated_urls}, filename)
+        else:
+            raise UrlNotFoundError("URL không tồn tại trong kho lưu trữ")
     else:
-      raise UrlNotFoundError("URL không tồn tại trong kho lưu trữ")
-  else:
-    raise DatabaseNotFoundError("Không tìm thấy dữ liệu")
+        raise DatabaseNotFoundError("Không tìm thấy dữ liệu")
 
 
 def get_all(filename):
