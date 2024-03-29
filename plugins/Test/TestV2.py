@@ -62,12 +62,12 @@ def test_v2(c, m):
         s_msg = m
         result_gather = ""
         count = 1
-        s_text = url+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"+"```\n"+result_gather+"```"
-        if count > 1:
-            s_text = url + " " + str(count)
         for config in configs:
             result = start_v2(config)
             result_gather = f"{result_gather}{result}\n"
+            s_text = url+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"+"```\n"+result_gather+"```"
+            if count > 1:
+                s_text = url + " " + str(count)
             try:
                 s_msg.edit(s_text)
             except Exception:
