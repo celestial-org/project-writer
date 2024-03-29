@@ -61,7 +61,7 @@ def test_v2(c, m):
         configs = r.text.splitlines()
         s_msg = m
         result_gather = ""
-        count = 1
+        count = 0
         for config in configs:
             result = start_v2(config)
             result_gather = f"{result_gather}{result}\n"
