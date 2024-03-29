@@ -1,6 +1,7 @@
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from lib import parse_url
+import concurrent.futures
 import re
 
 @Client.on_message(filters.command("checks"))
@@ -22,14 +23,14 @@ def check_sub(c, m):
     except:
         user = m.sender_chat.title
     
-    for url in urls:
+    def handler(url):
         m.reply_chat_action(ChatAction.TYPING)
         try:
             info, count = parse_url(url)
         except:
             message = f"{url}\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
             m.reply(message, quote=True)
-            continue
+            return
         if info and all(key in info for key in ["total", "upload", "download", "available", "expire"]):
             total = info.get("total", "N/A")
             upl = info.get("upload", "N/A")
@@ -50,3 +51,5 @@ def check_sub(c, m):
             message = f"{url}\n**__Check bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--"
         
         m.reply(message, quote=True)
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(handler, urls)
