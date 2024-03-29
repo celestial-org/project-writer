@@ -46,12 +46,12 @@ def test_v2(c, m):
         try:
             test_url, count = get_config(url)
         except Exception:
-            uvl = m.reply("Liên kết không khả dụng", quote=True)
+            uvl = m.reply(f"Liên kết {url} không khả dụng", quote=True)
             time.sleep(10)
             uvl.delete()
             return
         if count is None:
-            m.reply("Liên kết bị lỗi", quote=True)
+            m.reply(f"Liên kết {url} bị lỗi", quote=True)
             return
         if url.startswith("http"):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình', quote=True)
