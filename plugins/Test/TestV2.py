@@ -1,6 +1,7 @@
 from hydrogram import Client, filters
 from lib.lite import get_config, start_test, get_endpoints, check_before, start_v2
 from hydrogram.enums import ChatAction
+import concurrent.futures
 import subprocess
 import time
 import requests
@@ -40,7 +41,7 @@ def test_v2(c, m):
     if not urls:
         m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
         return
-    for url in urls:
+    def handler(url):
         m.reply_chat_action(ChatAction.TYPING)
         try:
             test_url, count = get_config(url)
@@ -48,10 +49,10 @@ def test_v2(c, m):
             uvl = m.reply("Liên kết không khả dụng", quote=True)
             time.sleep(10)
             uvl.delete()
-            continue
+            return
         if count is None:
             m.reply("Liên kết bị lỗi", quote=True)
-            continue
+            return
         if url.startswith("http"):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình', quote=True)
         else:
@@ -71,6 +72,8 @@ def test_v2(c, m):
         result_gather = ""
         s_msg = None
         stt.delete()
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(handler, urls)
         # results = [start_v2(config) for config in configs]
 #         current_chunk = []
 #         total_chars = 0
