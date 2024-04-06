@@ -57,6 +57,7 @@ def test_v2(c, m):
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình', quote=True)
         else:
             stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
+            url = test_url
         r = requests.get(test_url)
         configs = r.text.splitlines()
         s_msg = m
