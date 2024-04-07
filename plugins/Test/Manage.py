@@ -1,8 +1,9 @@
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from lib.lite import get_endpoints
-import os 
+import os
 import time
+
 
 @Client.on_message(filters.command("setpoint") & filters.user(5665225938))
 def set_local_endpoint(c, m):
@@ -19,26 +20,30 @@ def set_local_endpoint(c, m):
     time.sleep(20)
     st.delete()
 
+
 @Client.on_message(filters.command("testservers"))
 def list_endpoints(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     m.reply("Test trong trình duyệt: http://ger2-1.deploy.sbs:1526", quote=True)
-    return 
+    return
     try:
-            count, ___, endpoints = get_endpoints()
+        count, ___, endpoints = get_endpoints()
     except Exception as e:
-            m.reply(str(e), quote=True)
-            return
+        m.reply(str(e), quote=True)
+        return
     endpoints = "\n".join(endpoints)
     echo = f"**Danh sách địa điểm test:({count})**\n\n"
     text = f"{echo}{endpoints}"
     m.reply(text, quote=True)
-    
+
+
 @Client.on_message(filters.command("addpoint"))
 def add_endpoint(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     m.reply("Hệ thống địa điểm test mới, /install để biết cách cài đặt", quote=True)
     return
+
+
 #     try:
 #         if len(m.command) < 3:
 #             raise Exception("Vui lòng làm theo mẫu để thêm máy chủ test\n```guide\n/addpoint + prefix + url\nví dụ: /addpoint vn http://103.0.0.0:80\n```")
@@ -60,10 +65,12 @@ def add_endpoint(c, m):
 #     time.sleep(20)
 #     st.delete
 #     m.delete()
-    
+
+
 @Client.on_message(filters.command("delpoint"))
 def remove_endpoint(c, m):
-        m.reply("Để xoá địa điểm test, hãy đóng chương trình trên máy chủ đó", quote=True)
+    m.reply("Để xoá địa điểm test, hãy đóng chương trình trên máy chủ đó", quote=True)
+
 
 #     try:
 #         if len(m.command) < 2:

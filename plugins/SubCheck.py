@@ -4,6 +4,7 @@ from lib import parse_url
 import concurrent.futures
 import re
 
+
 @Client.on_message(filters.command("checks"))
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
@@ -14,7 +15,11 @@ def check_sub(c, m):
     else:
         m.reply("Không tìm thấy tin nhắn", quote=True)
         return
-    urls = [url for url in text.split(None) if any(scheme in url for scheme in ["http://", "https://"])]
+    urls = [
+        url
+        for url in text.split(None)
+        if any(scheme in url for scheme in ["http://", "https://"])
+    ]
     if not urls:
         m.reply("URL là cần thiết để kiểm tra", quote=True)
         return
@@ -22,7 +27,7 @@ def check_sub(c, m):
         user = m.from_user.first_name
     except:
         user = m.sender_chat.title
-    
+
     def handler(url):
         m.reply_chat_action(ChatAction.TYPING)
         try:
@@ -31,13 +36,16 @@ def check_sub(c, m):
             message = f"{url}\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
             m.reply(message, quote=True)
             return
-        if info and all(key in info for key in ["total", "upload", "download", "available", "expire"]):
+        if info and all(
+            key in info
+            for key in ["total", "upload", "download", "available", "expire"]
+        ):
             total = info.get("total", "N/A")
             upl = info.get("upload", "N/A")
             downl = info.get("download", "N/A")
             avail = info.get("available", "N/A")
             expire = info.get("expire", "N/A")
-            
+
             message = (
                 f"{url}\n"
                 f"**__Check bởi__ --{user}--**\n"
@@ -49,7 +57,8 @@ def check_sub(c, m):
             )
         else:
             message = f"{url}\n**__Check bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--"
-        
+
         m.reply(message, quote=True)
+
     with concurrent.futures.ThreadPoolExecutor() as executor:
         executor.map(handler, urls)

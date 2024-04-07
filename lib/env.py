@@ -14,8 +14,9 @@ server_test = os.getenv("SERVER_TEST")
 
 deta = Deta(deta_key)
 
+
 def tokens():
-  api_id = res["key"]["api_id"]
-  api_hash = res["key"]["api_hash"]
-  bot_token = res["bot"]["wb_tg"]
-  return api_id, api_hash, bot_token
+    api_id = res["key"]["api_id"]
+    api_hash = res["key"]["api_hash"]
+    bot_token = res["bot"]["wb_tg"]
+    return api_id, api_hash, bot_token

@@ -12,8 +12,9 @@ def add_url(c, m):
     if m.reply_to_message:
         text = m.reply_to_message.text
     urls = re.findall(
-            r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
-            text)
+        r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+",
+        text,
+    )
     if not urls:
         err = m.reply_text("Vui lòng cung cấp URL")
         time.sleep(10)
@@ -27,11 +28,11 @@ def add_url(c, m):
         except Exception as e:
             pass
     if l != len(urls):
-        x = len(urls) - l 
+        x = len(urls) - l
         temp = m.reply(f"{x} URL trùng lặp sẽ không được thêm lại")
         time.sleep(5)
         c.delete_messages(m.chat.id, temp.id)
-    done = m.reply_text(f'Đã thêm {l} URL')
+    done = m.reply_text(f"Đã thêm {l} URL")
     time.sleep(10)
     done.delete()
 
@@ -43,8 +44,9 @@ def delete_url(c, m):
     if m.reply_to_message:
         text = m.reply_to_message.text
     urls = re.findall(
-            r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
-            text)
+        r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+",
+        text,
+    )
     if not urls:
         err = m.reply_text("Vui lòng cung cấp URL")
         time.sleep(10)
@@ -57,11 +59,11 @@ def delete_url(c, m):
             remove_url("share", url)
             worked = True
         except Exception as e:
-            err = m.reply_text(f'Error: {e}')
+            err = m.reply_text(f"Error: {e}")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     if worked == True:
-        done = m.reply_text(f'Đã xoá {len(urls)} URL')
+        done = m.reply_text(f"Đã xoá {len(urls)} URL")
         time.sleep(10)
         c.delete_messages(m.chat.id, done.id)
     m.delete()
@@ -71,19 +73,19 @@ def delete_url(c, m):
 def check_all_urls(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.from_user.id != 5665225938:
-        m.reply('`Forbidden`', quote=True)
+        m.reply("`Forbidden`", quote=True)
         return
     try:
         removed_urls = check_all("share")
         if removed_urls:
-            removed_urls_str = '\n'.join(removed_urls)
-            m.reply_text(f' Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}')
+            removed_urls_str = "\n".join(removed_urls)
+            m.reply_text(f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}")
         else:
-            err = m.reply_text('No URLs were removed')
+            err = m.reply_text("No URLs were removed")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     except Exception as e:
-        err = m.reply_text(f'Error: {e}')
+        err = m.reply_text(f"Error: {e}")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)
 
@@ -97,13 +99,13 @@ def get_all_urls(c, m):
     try:
         urls = get_all("share")
         if urls:
-            urls_str = '\n'.join(urls)
-            m.reply_text(f'Tìm thấy {len(urls)} URL:\n{urls_str}')
+            urls_str = "\n".join(urls)
+            m.reply_text(f"Tìm thấy {len(urls)} URL:\n{urls_str}")
         else:
-            err = m.reply_text('No URLs found')
+            err = m.reply_text("No URLs found")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     except Exception as e:
-        err = m.reply_text(f'Error: {e}')
+        err = m.reply_text(f"Error: {e}")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)

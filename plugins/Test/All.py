@@ -9,18 +9,26 @@ import base64
 import os
 import re
 
+
 def _admin(_, __, m):
     if m.chat.type != enums.ChatType.PRIVATE:
         member = m.chat.get_member(m.from_user.id)
         bot = m.chat.get_member(6580709427)
-        return member.status in [enums.ChatMemberStatus.OWNER, enums.ChatMemberStatus.ADMINISTRATOR] and bot.status == enums.ChatMemberStatus.ADMINISTRATOR
+        return (
+            member.status
+            in [enums.ChatMemberStatus.OWNER, enums.ChatMemberStatus.ADMINISTRATOR]
+            and bot.status == enums.ChatMemberStatus.ADMINISTRATOR
+        )
     else:
         return m.from_user.id == 5665225938
+
 
 @Client.on_message(filters.command("testall") & filters.create(_admin))
 def run_lite_command_test_all(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
+    url_pattern = re.compile(
+        r"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)"
+    )
     if m.reply_to_message:
         try:
             text = m.reply_to_message.text
@@ -56,9 +64,15 @@ def run_lite_command_test_all(c, m):
             m.reply("Liên kết bị lỗi", quote=True)
             return
         if url.startswith("http"):
-            stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\n**ALL**', quote=True)
+            stt = m.reply(
+                f"**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến liên kết {url} với **{count}** cấu hình.\n**ALL**",
+                quote=True,
+            )
         else:
-            stt = m.reply(f'**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}.\nMáy chủ test: **ALL**', quote=True)
+            stt = m.reply(
+                f"**{m.from_user.first_name}** vừa bắt đầu đợt kiểm tra mới đến 1 cấu hình\n{test_url}.\nMáy chủ test: **ALL**",
+                quote=True,
+            )
         _, endpoints, __ = get_endpoints()
         msg_list = []
         for prefix in endpoints:
@@ -67,7 +81,10 @@ def run_lite_command_test_all(c, m):
                 location, org, sponsor, photo = start_test(test_url, endpoint)
             except:
                 continue
-            msg = (photo, f"```sponsor\n{sponsor}\n```\nVị trí: **{location}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**")
+            msg = (
+                photo,
+                f"```sponsor\n{sponsor}\n```\nVị trí: **{location}**\nTổ chức: **{org}**\nTest bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**",
+            )
             msg_list.append(msg)
         for msg in msg_list:
             m.reply_chat_action(ChatAction.TYPING)

@@ -10,14 +10,18 @@ import os
 import re
 import random
 
+
 def ranpoint():
-    _, epoints,__ = get_endpoints()
+    _, epoints, __ = get_endpoints()
     return random.choice(epoints)
+
 
 @Client.on_message(filters.command("test"))
 def test_v2(c, m):
-    m.reply_chat_action(ChatAction.TYPING)    
-    url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
+    m.reply_chat_action(ChatAction.TYPING)
+    url_pattern = re.compile(
+        r"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)"
+    )
     if m.reply_to_message:
         try:
             text = m.reply_to_message.text
@@ -41,6 +45,7 @@ def test_v2(c, m):
     if not urls:
         m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
         return
+
     def handler(url):
         m.reply_chat_action(ChatAction.TYPING)
         try:
@@ -54,9 +59,15 @@ def test_v2(c, m):
             m.reply(f"Liên kết {url} bị lỗi", quote=True)
             return
         if url.startswith("http"):
-            stt = m.reply(f'**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình', quote=True)
+            stt = m.reply(
+                f"**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình",
+                quote=True,
+            )
         else:
-            stt = m.reply(f'**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}', quote=True)
+            stt = m.reply(
+                f"**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}",
+                quote=True,
+            )
             url = test_url
         r = requests.get(test_url)
         configs = r.text.splitlines()
@@ -66,9 +77,17 @@ def test_v2(c, m):
         for config in configs:
             result = start_v2(config)
             result_gather = f"{result_gather}{result}\n"
-            s_text = url+f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"+"```\n"+result_gather+"```"
+            s_text = (
+                url
+                + f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"
+                + "```\n"
+                + result_gather
+                + "```"
+            )
             if count > 1:
-                s_text = url + " **" + str(count) + "**" + "```\n" + result_gather + "```"
+                s_text = (
+                    url + " **" + str(count) + "**" + "```\n" + result_gather + "```"
+                )
             try:
                 s_msg.edit(s_text)
             except Exception:
@@ -78,9 +97,12 @@ def test_v2(c, m):
         result_gather = ""
         s_msg = None
         stt.delete()
+
     with concurrent.futures.ThreadPoolExecutor() as executor:
         executor.map(handler, urls)
         # results = [start_v2(config) for config in configs]
+
+
 #         current_chunk = []
 #         total_chars = 0
 #         for result in results:
@@ -96,9 +118,9 @@ def test_v2(c, m):
 #             m.reply("```\n"+"\n".join(current_chunk)+"```"+f"__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__", quote=True)
 #         stt.delete()
 
-#drop
+# drop
 # def run_lite_command(c, m):
-#     m.reply_chat_action(ChatAction.TYPING)    
+#     m.reply_chat_action(ChatAction.TYPING)
 #     prefix = os.getenv("ENDPOINT")
 #     url_pattern = re.compile(r'((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
 #     if m.reply_to_message:

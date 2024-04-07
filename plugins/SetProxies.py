@@ -1,6 +1,7 @@
 from hydrogram import Client, filters
 import os
 
+
 @Client.on_message(filters.command("set_proxy") & filters.user(5665225938))
 def set_proxy(c, m):
     proxy = m.command[1]
