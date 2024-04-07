@@ -1,6 +1,6 @@
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from src.db import NotesDB
+from db import NotesDB
 import asyncio
 import re
 

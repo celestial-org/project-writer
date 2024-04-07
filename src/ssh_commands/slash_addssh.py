@@ -1,6 +1,6 @@
 from hydrogram import Client, filters, enums
 from hydrogram.enums import ChatAction
-from src.db import SSH
+from db import SSH
 import asyncio
 
 @Client.on_message(filters.command("addssh"))
