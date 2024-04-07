@@ -64,5 +64,5 @@ def get_config(url):
   return url, count
   
 def start_v2(config):
-    r = requests.post("https://test-1-b7303347.deta.app", json={"q": config})
+    r = requests.post("http://103.214.10.254:8080", json={"q": config})
     return r.text
