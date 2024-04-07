@@ -92,7 +92,7 @@ def check_all_urls(c, m):
 def get_all_urls(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.from_user.id != 5665225938:
-        m.reply("`Forbidden`", quote=True)
+        m.reply("`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`", quote=True)
         return
     try:
         urls = get_all("share")
