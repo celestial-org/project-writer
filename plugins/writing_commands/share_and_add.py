@@ -72,7 +72,7 @@ async def share_url(c, m):
     if li != len(urls):
         x = len(urls) - li
         temp = await m.reply(f"{x} URL trùng lặp sẽ không được thêm lại")
-        await asyncio.sleep(5)
+        await asyncio.sleep(10)
         await c.delete_messages(m.chat.id, temp.id)
     done = await m.reply_text(f"Đã thêm {li} URL")
     await asyncio.sleep(10)
