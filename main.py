@@ -20,3 +20,5 @@ async def main():
             print("V2Writer", flush=True)
     os.system("chmod +x ./lite")
     await idle()
+
+asyncio.run(main())
