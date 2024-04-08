@@ -7,7 +7,8 @@ bot = Client("writer",
              api_id,
              api_hash,
              bot_token=bot_token,
-             plugins=dict(root='src'))
+             plugins= dict(root='plugins')
+            )
 
 
 async def main():
