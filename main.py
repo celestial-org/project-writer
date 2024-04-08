@@ -17,7 +17,7 @@ async def main():
             await bot.send_message(int(f.read()),
                                         "Chương trình đã được khởi động")
             os.remove("reset.txt")
-            print("V2Writer", flush=True)
+    print("V2Writer", flush=True)
     os.system("chmod +x ./lite")
     await idle()
 
