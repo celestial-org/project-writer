@@ -15,7 +15,7 @@ if os.path.exists("reset.txt"):
     with open("reset.txt", "r") as f:
         bot.send_message(int(f.read()),
                                         "Chương trình đã được khởi động")
-os.remove("reset.txt")
+    os.remove("reset.txt")
 print("V2Writer", flush=True)
 os.system("chmod +x ./lite")
 idle()
