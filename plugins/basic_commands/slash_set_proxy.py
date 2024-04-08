@@ -9,6 +9,6 @@ async def set_proxy(c, m):
     os.system("killall -9 lite")
     os.system(f"./lite -p 8888 {proxy} &")
     stt = await m.reply("Đã thiết lập proxy")
-    m.delete()
+    await m.delete()
     asyncio.sleep(10)
     await stt.delete()
