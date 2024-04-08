@@ -12,7 +12,7 @@ class Writer:
             api_id,
             api_hash,
             bot_token=bot_token,
-            plugins=dict(root='src'),
+            plugins=dict(root='src')
         )
 
     async def start(self):
