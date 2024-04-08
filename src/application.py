@@ -30,7 +30,7 @@ class Writer:
                 os.remove("reset.txt")
 
     async def if_ready(self):
-        os.system("echo V2Writer")
+        print("V2Writer", flush=True)
         os.system("chmod +x ./lite")
 
     def run(self):
