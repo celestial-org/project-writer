@@ -32,6 +32,7 @@ async def add_url(c, m):
             notes.add(filename, url)
             li += 1
         except Exception as e:
+            print(e)
             pass
     if li != len(urls):
         x = len(urls) - li
@@ -66,6 +67,7 @@ async def share_url(c, m):
             notes.add("share", url)
             li += 1
         except Exception as e:
+            print(e)
             pass
     if li != len(urls):
         x = len(urls) - li
