@@ -1,4 +1,6 @@
 import os
+import uvloop
+uvloop.install()
 from hydrogram import Client, idle
 from environment import api_id, api_hash, bot_token
 
