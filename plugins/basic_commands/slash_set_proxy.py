@@ -10,5 +10,5 @@ async def set_proxy(c, m):
     os.system(f"./lite -p 8888 {proxy} &")
     stt = await m.reply("Đã thiết lập proxy")
     await m.delete()
-    asyncio.sleep(10)
+    await asyncio.sleep(10)
     await stt.delete()
