@@ -1,19 +1,27 @@
-**{first_name}**(`{uid}`), lệnh nâng cao:
+__**{first_name}**(`{uid}`), lệnh nâng cao:__
 
-/testall - Sử dụng tất cả địa điểm test
+**SSH**
 
-/addpoint - `None`
+/addssh - Thêm máy chủ SHH
 
-/testservers - Lấy danh sách địa điểm test
-
-/delpoint - None
-
-/install - Hướng dẫn thiết lập địa điểm test
-
-/addserver - Thêm máy chủ SHH
-
-/delserver - Xoá máy chủ SSH 
+/delssh - Xoá máy chủ SSH 
 
 /machines - Danh sách máy chủ SSH đã thêm 
 
 .`tên máy` - Chạy lệnh shell trên máy chủ SSH
+
+**Thông tin**
+
+/server - Xem thông tin máy chủ bot
+
+/source - Lấy mã nguồn bot
+
+/debug - .....
+
+**Super User**
+
+/reset - Khởi động lại máy chủ bot
+
+/update - Cập nhật phiên bản mới nhất của bot
+
+/bash - Thực thi lệnh bash trên máy chủ bot

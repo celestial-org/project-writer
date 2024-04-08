@@ -21,7 +21,7 @@ async def server_info():
     return server_info
 
 
-@Client.on_message(filters.command("info"))
+@Client.on_message(filters.command("server"))
 async def bot_server_info(c, m):
     ver = platform.version()
     name = platform.uname()
