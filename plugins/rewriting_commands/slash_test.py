@@ -1,5 +1,6 @@
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
+from environment import test_server
 import requests
 import asyncio
 import re
@@ -32,7 +33,7 @@ async def get_config(url):
 
 
 async def start_test(config):
-    r = requests.post("https://test-1-b7303347.deta.app", json={"q": config})
+    r = requests.post(test_server, json={"q": config})
     return r.text
 
 
