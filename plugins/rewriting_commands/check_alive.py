@@ -12,9 +12,8 @@ def check_alive(config):
     response = r.json()
     return response.get("alive", False)
 
-
-def generate_link(item_list: list):
-    data = "\n".append(item_list)
+def generate_link(item_list):
+    data = "\n".join(item_list)
     r = requests.post("https://paste.rs/", data=data)
     return r.text
 
