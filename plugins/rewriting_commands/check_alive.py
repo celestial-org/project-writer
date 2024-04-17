@@ -17,7 +17,7 @@ def generate_link(item_list):
     r = requests.post("https://paste.rs/", data=data)
     return r.text
 
-@Client.on_message(filters.command("filter-alive"))
+@Client.on_message(filters.command("filter_alive"))
 async def filter_alive(c, m):
     """
     command function
@@ -48,8 +48,8 @@ async def filter_alive(c, m):
         dead_count = len(dead_list)
         text = [
             f"Original: {url}",
-            f"Result: {alive_link}",
-            f"Deleted {dead_count} links",
+            f"Kết quả: {alive_link}",
+            f"Đã xóa {dead_count} liên kết",
             f"Sender **{user}**",
         ]
         text = "\n".join(text)
