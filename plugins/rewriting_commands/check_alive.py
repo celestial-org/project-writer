@@ -24,11 +24,18 @@ async def filter_alive(c, m):
     """
     user = m.from_user.first_name if m.from_user else m.sender_chat.title
     await m.reply_chat_action(ChatAction.TYPING)
-    urls = [
-        part
-        for part in m.command
-        if any(part.startswith(scheme) for scheme in ["http://", "https://"])
-    ]
+    if m.reply_to_message:
+        urls = [
+            part
+            for part in m.reply_to_message.command
+            if any(part.startswith(scheme) for scheme in ["http://", "https://"])
+        ]
+    else:
+        urls = [
+            part
+            for part in m.command
+            if any(part.startswith(scheme) for scheme in ["http://", "https://"])
+        ]
 
     async def handler(url):
         test_url, count = await get_config(url)
