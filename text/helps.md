@@ -6,7 +6,7 @@ __Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả
 
 /checks - Kiểm tra subscription
 
-/filter-alive - Lọc ra server còn khả dụng từ subscription
+/filter_alive - Lọc ra server còn khả dụng từ subscription
 
 **Note Writing**
     
