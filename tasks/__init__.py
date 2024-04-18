@@ -1,0 +1,1 @@
+from .schedule_task import run as run_schedule
