@@ -25,9 +25,10 @@ async def filter_alive(c, m):
     user = m.from_user.first_name if m.from_user else m.sender_chat.title
     await m.reply_chat_action(ChatAction.TYPING)
     if m.reply_to_message:
+        mpath = m.text.split()
         urls = [
             part
-            for part in m.reply_to_message.command
+            for part in mpath
             if any(part.startswith(scheme) for scheme in ["http://", "https://"])
         ]
     else:
