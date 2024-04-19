@@ -39,9 +39,16 @@ async def filter_alive(c, m):
         ]
 
     if not urls:
-        await m.reply('__Khong tim thay URL__')
+        await m.reply('```\nKhong tim thay URL```', quote=True)
+        return
+
     async def handler(url):
-        test_url, count = await get_config(url)
+        try:
+            test_url, count = await get_config(url)
+        except:
+            await m.reply(f'```Lien ket {url} khong kha dung```', quote=True)
+            return
+
         text = f'**{user}** đang lọc subscription {url} với {count} server'
         tmp = await m.reply(text, quote=True)
         response = requests.get(test_url, timeout=120)
