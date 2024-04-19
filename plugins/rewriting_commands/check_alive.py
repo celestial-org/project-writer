@@ -38,6 +38,8 @@ async def filter_alive(c, m):
             if any(part.startswith(scheme) for scheme in ["http://", "https://"])
         ]
 
+    if not urls:
+        await m.reply('__Khong tim thay URL__')
     async def handler(url):
         test_url, count = await get_config(url)
         text = f'**{user}** đang lọc subscription {url} với {count} server'
