@@ -65,17 +65,12 @@ class NotesDB:
                         proxies={
                             "http": "http://127.0.0.1:8888",
                             "https": "http://127.0.0.1:8888",
-                        },
+                        }, timeout=60
                     )
-                except Exception:
-                    response = requests.get(
-                        url,
-                        headers={"User-Agent": "v2rayNG"},
-                        proxies={
-                            "http": "http://127.0.0.1:8888",
-                            "https": "http://127.0.0.1:8888",
-                        },
-                    )
+                except Exception as e:
+                    print(e)
+                    removed_urls.append(url)
+                    continue
                 if (
                     response.status_code != 200
                     or response.text is None
