@@ -67,7 +67,7 @@ def main():
         text = '\n'.join(text_list)
         bot.send_chat_action(ChatAction.TYPING)
         bot.send_message(
-            chat_id='share_v2ray_file'
+            chat_id='share_v2ray_file',
             text=text
         )
 
