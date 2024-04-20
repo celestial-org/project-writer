@@ -1,1 +1,1 @@
-from .schedule_task import run as run_schedule
+from .schedule_check import run as run_schedule
