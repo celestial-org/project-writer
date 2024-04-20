@@ -43,7 +43,7 @@ async def delete_url(c, m):
     await m.delete()
 
 
-@Client.on_message(filters.command("removefromsharelist"))
+@Client.on_message(filters.command("deletesharelist"))
 async def delete_share_url(c, m):
     notes = NotesDB()
     await m.reply_chat_action(ChatAction.TYPING)

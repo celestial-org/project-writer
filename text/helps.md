@@ -20,13 +20,13 @@ __Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả
 
 /delete - Xoá subscription khỏi danh sách
 
-/checkifunavailable - Tự kiểm tra và xoá subscription bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
+/check_alive - Tự kiểm tra và xoá subscription bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
 
 /getsharelist - Lấy các subscription từ danh sách chia sẻ
 
-/removefromsharelist - Xoá subscription khỏi danh sách chia sẻ 
+/deletesharelist - Xoá subscription khỏi danh sách chia sẻ 
 
-/checksharelistifunavailable - Kiểm tra và xoá subscription bị lỗi khỏi danh sách chia sẻ
+/check_share_alive - Kiểm tra và xoá subscription bị lỗi khỏi danh sách chia sẻ
 
 **Khác**
 

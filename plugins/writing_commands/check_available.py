@@ -4,7 +4,7 @@ from db import NotesDB
 import asyncio
 
 
-@Client.on_message(filters.command("checkifunavailable"))
+@Client.on_message(filters.command("check_alive"))
 async def check_all_urls(c, m):
     notes = NotesDB()
     await m.reply_chat_action(ChatAction.TYPING)
@@ -28,7 +28,7 @@ async def check_all_urls(c, m):
         await c.delete_messages(m.chat.id, err.id)
 
 
-@Client.on_message(filters.command("checksharelistifunavailable"))
+@Client.on_message(filters.command("check_share_alive"))
 async def check_all_share_urls(c, m):
     notes = NotesDB()
     await m.reply_chat_action(ChatAction.TYPING)
