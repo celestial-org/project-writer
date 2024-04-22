@@ -13,15 +13,15 @@ if __name__ == "__main__":
     )
 
     async def main():
-        await bot.start()
         if os.path.exists("reset.txt"):
             with open("reset.txt", "r") as f:
-                await bot.send_message(int(f.read()), "Chương trình đã được khởi động")
+                async with bot:
+                    await bot.send_message(
+                        int(f.read()), "Chương trình đã được khởi động"
+                    )
             os.remove("reset.txt")
         print("V2Writer", flush=True)
         os.system("chmod +x ./lite")
-        await idle()
-        return
+        bot.run()
 
-    bot.run()
     asyncio.run(main())
