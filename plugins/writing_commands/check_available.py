@@ -18,9 +18,11 @@ def check_all_urls(c, m):
         removed_urls = notes.check(filename)
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
-            m.reply_text(f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}")
+            m.reply(
+                f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}", quote=True
+            )
         else:
-            err = m.reply_text("No URLs were removed")
+            err = m.reply("No URLs were removed", quote=True)
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     except Exception as e:
@@ -40,9 +42,11 @@ def check_all_share_urls(c, m):
         removed_urls = notes.check("share")
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
-            m.reply_text(f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}")
+            m.reply(
+                f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}", quote=True
+            )
         else:
-            err = m.reply_text("No URLs were removed")
+            err = m.reply("No URLs were removed", quote=True)
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     except Exception as e:
