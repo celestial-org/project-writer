@@ -1,5 +1,6 @@
 import os
 import uvloop
+import asyncio
 
 uvloop.install()
 
@@ -20,3 +21,6 @@ if __name__ == "__main__":
         print("V2Writer", flush=True)
         os.system("chmod +x ./lite")
         await idle()
+        return
+
+    asyncio.run(main())
