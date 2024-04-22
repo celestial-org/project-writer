@@ -1,4 +1,3 @@
-import os
 import requests
 from pymongo import MongoClient
 from environment import mongo_url
@@ -65,7 +64,8 @@ class NotesDB:
                         proxies={
                             "http": "http://127.0.0.1:8888",
                             "https": "http://127.0.0.1:8888",
-                        }, timeout=60
+                        },
+                        timeout=60,
                     )
                 except Exception as e:
                     print(e)

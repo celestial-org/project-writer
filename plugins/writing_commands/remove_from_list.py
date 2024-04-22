@@ -1,14 +1,16 @@
+import re
+import time
+
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
+
 from db import NotesDB
-import asyncio
-import re
 
 
 @Client.on_message(filters.command("delete"))
-async def delete_url(c, m):
+def delete_url(c, m):
     notes = NotesDB()
-    await m.reply_chat_action(ChatAction.TYPING)
+    m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
     filename = f"{user_id}"
     if user_id == 5665225938:
@@ -21,10 +23,10 @@ async def delete_url(c, m):
         text,
     )
     if not urls:
-        err = await m.reply_text("Vui lòng cung cấp URL")
-        await asyncio.sleep(10)
-        await c.delete_messages(m.chat.id, err.id)
-        await m.delete()
+        err = m.reply_text("Vui lòng cung cấp URL")
+        time.sleep(10)
+        c.delete_messages(m.chat.id, err.id)
+        m.delete()
         return
     worked = None
     for url in urls:
@@ -33,20 +35,20 @@ async def delete_url(c, m):
             notes.remove(filename, url)
             worked = True
         except Exception as e:
-            err = await m.reply_text(f"Error: {e}")
-            await asyncio.sleep(10)
-            await c.delete_messages(m.chat.id, err.id)
+            err = m.reply_text(f"Error: {e}")
+            time.sleep(10)
+            c.delete_messages(m.chat.id, err.id)
     if worked:
-        done = await m.reply_text(f"Đã xoá {len(urls)} URL")
-        await asyncio.sleep(10)
-        await c.delete_messages(m.chat.id, done.id)
-    await m.delete()
+        done = m.reply_text(f"Đã xoá {len(urls)} URL")
+        time.sleep(10)
+        c.delete_messages(m.chat.id, done.id)
+    m.delete()
 
 
 @Client.on_message(filters.command("deletesharelist"))
-async def delete_share_url(c, m):
+def delete_share_url(c, m):
     notes = NotesDB()
-    await m.reply_chat_action(ChatAction.TYPING)
+    m.reply_chat_action(ChatAction.TYPING)
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text
@@ -55,10 +57,10 @@ async def delete_share_url(c, m):
         text,
     )
     if not urls:
-        err = await m.reply_text("Vui lòng cung cấp URL")
-        await asyncio.sleep(10)
-        await c.delete_messages(m.chat.id, err.id)
-        await m.delete()
+        err = m.reply_text("Vui lòng cung cấp URL")
+        time.sleep(10)
+        c.delete_messages(m.chat.id, err.id)
+        m.delete()
         return
     worked = None
     for url in urls:
@@ -67,11 +69,11 @@ async def delete_share_url(c, m):
             notes.remove("share", url)
             worked = True
         except Exception as e:
-            err = await m.reply_text(f"Error: {e}")
-            await asyncio.sleep(10)
-            await c.delete_messages(m.chat.id, err.id)
+            err = m.reply_text(f"Error: {e}")
+            time.sleep(10)
+            c.delete_messages(m.chat.id, err.id)
     if worked:
-        done = await m.reply_text(f"Đã xoá {len(urls)} URL")
-        await asyncio.sleep(10)
-        await c.delete_messages(m.chat.id, done.id)
-    await m.delete()
+        done = m.reply_text(f"Đã xoá {len(urls)} URL")
+        time.sleep(10)
+        c.delete_messages(m.chat.id, done.id)
+    m.delete()

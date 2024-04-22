@@ -1,13 +1,15 @@
+import time
+import base64
+import re
+
+import requests
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
+
 from environment import test_server
-import requests
-import asyncio
-import re
-import base64
 
 
-async def get_config(url):
+def get_config(url):
     if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
         res = url
         url = requests.post("https://paste.rs/", data=url).text
@@ -24,22 +26,22 @@ async def get_config(url):
 
         res = res.text
         if not any(
-                res.startswith(sche)
-                for sche in ["vmess", "trojan", "vless", "ss://"]):
+            res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]
+        ):
             res = base64.b64decode(res.encode("utf-8")).decode("utf-8")
             url = requests.post("https://paste.rs/", data=res).text
     count = len(res.splitlines())
     return url, count
 
 
-async def start_test(config):
+def start_test(config):
     r = requests.post(test_server, json={"q": config})
     return r.text
 
 
 @Client.on_message(filters.command("test"))
-async def litespeedtest(c, m):
-    await m.reply_chat_action(ChatAction.TYPING)
+def litespeedtest(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
     url_pattern = re.compile(
         r"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)"
     )
@@ -50,7 +52,7 @@ async def litespeedtest(c, m):
             try:
                 text = m.reply_to_message.caption
             except Exception:
-                await m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
                 return
     else:
         try:
@@ -59,33 +61,33 @@ async def litespeedtest(c, m):
             try:
                 text = m.caption
             except Exception:
-                await m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
+                m.reply("Không tìm thấy tin nhắn văn bản", quote=True)
                 return
     matches = re.findall(url_pattern, text)
     urls = [match[0] for match in matches]
     if not urls:
-        await m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
+        m.reply("Không tìm thấy URL trong tin nhắn văn bản", quote=True)
         return
 
-    async def handler(url):
-        await m.reply_chat_action(ChatAction.TYPING)
+    def handler(url):
+        m.reply_chat_action(ChatAction.TYPING)
         try:
-            test_url, count = await get_config(url)
+            test_url, count = get_config(url)
         except Exception:
-            uvl = await m.reply(f"Liên kết {url} không khả dụng", quote=True)
-            await asyncio.sleep(10)
-            await uvl.delete()
+            uvl = m.reply(f"Liên kết {url} không khả dụng", quote=True)
+            time.sleep(10)
+            uvl.delete()
             return
         if count is None:
-            await m.reply(f"Liên kết {url} bị lỗi", quote=True)
+            m.reply(f"Liên kết {url} bị lỗi", quote=True)
             return
         if url.startswith("http"):
-            stt = await m.reply(
+            stt = m.reply(
                 f"**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình",
                 quote=True,
             )
         else:
-            stt = await m.reply(
+            stt = m.reply(
                 f"**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}",
                 quote=True,
             )
@@ -96,29 +98,33 @@ async def litespeedtest(c, m):
         result_gather = ""
         count = 0
         for config in configs:
-            result = await start_test(config)
+            result = start_test(config)
             result_gather = f"{result_gather}{result}\n"
             s_text = (
-                url +
-                f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"
-                + "```\n" + result_gather + "```")
+                url
+                + f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"
+                + "```\n"
+                + result_gather
+                + "```"
+            )
             if count > 1:
-                s_text = (url + " **" + str(count) + "**" + "```\n" +
-                          result_gather + "```")
+                s_text = (
+                    url + " **" + str(count) + "**" + "```\n" + result_gather + "```"
+                )
             try:
-                await s_msg.edit(s_text)
+                s_msg.edit(s_text)
             except Exception:
                 result_gather = result + "\n"
-                s_msg = await s_msg.reply(s_text, quote=True)
+                s_msg = s_msg.reply(s_text, quote=True)
                 count += 1
         result_gather = ""
         s_msg = None
-        await stt.delete()
+        stt.delete()
 
-    async def main(urls):
+    def main(urls):
         tasks = []
         for url in urls:
-            tasks.append(asyncio.create_task(handler(url)))
-        await asyncio.gather(*tasks)
+            tasks.append(time.create_task(handler(url)))
+        time.gather(*tasks)
 
-    await main(urls)
+    main(urls)

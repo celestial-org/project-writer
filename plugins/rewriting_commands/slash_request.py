@@ -4,8 +4,8 @@ import requests
 
 
 @Client.on_message(filters.command("request"))
-async def requesting(c, m):
-    await m.reply_chat_action(ChatAction.TYPING)
+def requesting(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
     if len(m.command) > 1 and m.command[1] in [
             "GET",
             "get",
@@ -44,4 +44,4 @@ async def requesting(c, m):
         )
         headers = "\n".join(
             [f"{k.upper()}: {v}" for k, v in r.headers.items()])
-        await m.reply(f"```json\n{headers}```", quote=True)
+        m.reply(f"```json\n{headers}```", quote=True)

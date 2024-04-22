@@ -1,12 +1,15 @@
-from hydrogram import Client, filters, enums
+import time
+
+from hydrogram import Client, enums, filters
 from hydrogram.enums import ChatAction
+
 from db import SSH
-import asyncio
+
 
 @Client.on_message(filters.command("addssh"))
-async def save_ssh_login(c, m):
+def save_ssh_login(c, m):
     ssh = SSH(m.from_user.id)
-    await m.reply_chat_action(ChatAction.TYPING)
+    m.reply_chat_action(ChatAction.TYPING)
     try:
         if m.chat.type != enums.ChatType.PRIVATE:
             raise Exception(
@@ -22,8 +25,7 @@ async def save_ssh_login(c, m):
         else:
             _, machine, host, sshuser, passwd, port = m.command
         ssh.add(machine, host, sshuser, passwd, port)
-        await m.reply(f"Máy chủ với tên {machine} đã được lưu", quote=True)
-        await asyncio.sleep(10)
+        m.reply(f"Máy chủ với tên {machine} đã được lưu", quote=True)
+        time.sleep(10)
     except Exception as e:
-        await m.reply(str(e), quote=True)
-        
+        m.reply(str(e), quote=True)

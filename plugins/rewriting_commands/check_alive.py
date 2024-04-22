@@ -1,9 +1,12 @@
+import concurrent.futures
+
+import requests
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from .slash_test import get_config
+
 from environment import test_server
-import requests
-import asyncio
+
+from .slash_test import get_config
 
 
 def check_alive(config):
@@ -12,18 +15,20 @@ def check_alive(config):
     response = r.json()
     return response.get("alive", False)
 
+
 def generate_link(item_list):
     data = "\n".join(item_list)
     r = requests.post("https://paste.rs/", data=data)
     return r.text
 
+
 @Client.on_message(filters.command("filter_alive"))
-async def filter_alive(c, m):
+def filter_alive(c, m):
     """
     command function
     """
     user = m.from_user.first_name if m.from_user else m.sender_chat.title
-    await m.reply_chat_action(ChatAction.TYPING)
+    m.reply_chat_action(ChatAction.TYPING)
     if m.reply_to_message:
         mpath = m.reply_to_message.text.split()
         urls = [
@@ -39,18 +44,18 @@ async def filter_alive(c, m):
         ]
 
     if not urls:
-        await m.reply('```\nKhong tim thay URL```', quote=True)
+        m.reply("```\nKhong tim thay URL```", quote=True)
         return
 
-    async def handler(url):
+    def handler(url):
         try:
-            test_url, count = await get_config(url)
+            test_url, count = get_config(url)
         except:
-            await m.reply(f'```Lien ket {url} khong kha dung```', quote=True)
+            m.reply(f"```Lien ket {url} khong kha dung```", quote=True)
             return
 
-        text = f'**{user}** đang lọc subscription {url} với {count} server'
-        tmp = await m.reply(text, quote=True)
+        text = f"**{user}** đang lọc subscription {url} với {count} server"
+        tmp = m.reply(text, quote=True)
         response = requests.get(test_url, timeout=120)
         configs = response.text.splitlines()
         alive_list = []
@@ -70,13 +75,8 @@ async def filter_alive(c, m):
             f"Sender **{user}**",
         ]
         text = "\n".join(text)
-        await m.reply(text, quote=True)
-        await tmp.delete()
+        m.reply(text, quote=True)
+        tmp.delete()
 
-    async def main(urls):
-        tasks = []
-        for url in urls:
-            tasks.append(asyncio.create_task(handler(url)))
-        await asyncio.gather(*tasks)
-
-    await main(urls)
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(handler, urls)

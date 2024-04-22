@@ -23,13 +23,15 @@ class SSH:
             existing_list.append(new_data)
             self.db.update({"value": existing_list}, key=str(self.id))
         else:
-            data = [{
-                "machine": machine,
-                "host": host,
-                "user": user,
-                "passwd": passwd,
-                "port": port,
-            }]
+            data = [
+                {
+                    "machine": machine,
+                    "host": host,
+                    "user": user,
+                    "passwd": passwd,
+                    "port": port,
+                }
+            ]
             self.db.put(data=data, key=str(self.id))
         return "OK"
 
@@ -42,11 +44,9 @@ class SSH:
                     match = entry
                     break
             try:
-                return match["host"], match["user"], match["passwd"], match[
-                    "port"]
+                return match["host"], match["user"], match["passwd"], match["port"]
             except Exception as e:
-                raise Exception(
-                    f"Không tìm thấy thông tin máy chủ của bạn\n{e}")
+                raise Exception(f"Không tìm thấy thông tin máy chủ của bạn\n{e}")
         else:
             raise Exception("Bạn chưa lưu máy chủ nào!")
 

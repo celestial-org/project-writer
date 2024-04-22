@@ -1,11 +1,11 @@
+import paramiko
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
+
 from db import SSH
-import paramiko
 
 
-async def run_cmd(hostname: str, username: str, password: str, ssh_port: int,
-                  cmd: str):
+def run_cmd(hostname: str, username: str, password: str, ssh_port: int, cmd: str):
     try:
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -28,14 +28,13 @@ async def run_cmd(hostname: str, username: str, password: str, ssh_port: int,
 
 
 def _shell(_, __, m):
-    return m.text and m.text.startswith(".") and m.text.replace(".",
-                                                                "") is not None
+    return m.text and m.text.startswith(".") and m.text.replace(".", "") is not None
 
 
 @Client.on_message(filters.create(_shell))
-async def run_shell_command(c, m):
+def run_shell_command(c, m):
     ssh = SSH(m.from_user.id)
-    await m.reply_chat_action(ChatAction.TYPING)
+    m.reply_chat_action(ChatAction.TYPING)
     try:
         if not m.text.replace(".", "").replace(" ", ""):
             raise Exception(
@@ -44,16 +43,15 @@ async def run_shell_command(c, m):
         machine = m.text.split(" ")[0].replace(".", "")
         shell_cmd = m.text.split(" ", 1)[1]
         host, sshuser, passwd, port = ssh.get(machine)
-        result = await run_cmd(host, sshuser, passwd, port, shell_cmd)
+        result = run_cmd(host, sshuser, passwd, port, shell_cmd)
         max_length = 4000
         if len(result) > max_length:
             parts = [
-                result[i:i + max_length]
-                for i in range(0, len(result), max_length)
+                result[i : i + max_length] for i in range(0, len(result), max_length)
             ]
             for i, part in enumerate(parts, start=1):
                 m.reply(f"{i}```bash\n{part}\n```", quote=True)
         else:
-            await m.reply(f"```bash\n{result}\n```", quote=True)
+            m.reply(f"```bash\n{result}\n```", quote=True)
     except Exception as e:
-        await m.reply(f"```bash\n{e}\n```", quote=True)
+        m.reply(f"```bash\n{e}\n```", quote=True)
