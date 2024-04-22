@@ -23,4 +23,5 @@ if __name__ == "__main__":
         await idle()
         return
 
+    bot.run()
     asyncio.run(main())
