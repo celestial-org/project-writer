@@ -1,6 +1,7 @@
 import time
 import base64
 import re
+import concurrent.futures
 
 import requests
 from hydrogram import Client, filters
@@ -113,7 +114,8 @@ def litespeedtest(c, m):
                 )
             try:
                 s_msg.edit(s_text)
-            except Exception:
+            except Exception as e:
+                print(e)
                 result_gather = result + "\n"
                 s_msg = s_msg.reply(s_text, quote=True)
                 count += 1
@@ -121,10 +123,5 @@ def litespeedtest(c, m):
         s_msg = None
         stt.delete()
 
-    def main(urls):
-        tasks = []
-        for url in urls:
-            tasks.append(time.create_task(handler(url)))
-        time.gather(*tasks)
-
-    main(urls)
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(handler, urls)
