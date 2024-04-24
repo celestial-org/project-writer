@@ -10,7 +10,7 @@ test_server = res["api"]["test"]
 
 deta_key = res["key"]["collection"]
 
-mongo_url = res["key"]["mongo"]
+mongo_url = res["data"]["mongo"]
 
 api_id = res["key"]["api_id"]
 
