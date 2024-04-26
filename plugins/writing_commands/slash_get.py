@@ -9,6 +9,6 @@ def get_urls(c, m):
     user_id = m.from_user.id
     filename = f"{user_id}"
     m.reply(
-        f"Đây là liên kết của bạn, được chỉnh sửa bằng lệnh /add và /delete do bạn thực thi:\n__--{v2tool}/get/{filename}--__\n\n**Đây là liên kết chung được thêm bởi lệnh /share, có thể được bổ sung bởi mọi người:\n__--{v2tool}/get/share--__",
+        f"**Share Note**:\n__--{v2tool}/get/share\n**Update Share Note:\n{v2tool}/update/share\n\n**Personal Note**:\n__--{v2tool}/get/{filename}\n**Update:\n{v2tool}/update/{filename}",
         quote=True,
     )
