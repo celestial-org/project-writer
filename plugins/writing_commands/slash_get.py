@@ -9,6 +9,6 @@ def get_urls(c, m):
     user_id = m.from_user.id
     filename = f"{user_id}"
     m.reply(
-        f"**Share Note**:\n__--{v2tool}/get/share\n**Update Share Note:\n{v2tool}/update/share\n\n**Personal Note**:\n__--{v2tool}/get/{filename}\n**Update:\n{v2tool}/update/{filename}",
+        f"**Share Note**:\n__--{v2tool}/get/share\n**Update Share Note:\n{v2tool}/update/share\n\n**Personal Note**:\n{v2tool}/get/{filename}\n**Update:\n{v2tool}/update/{filename}",
         quote=True,
     )
