@@ -1,0 +1,1384 @@
+[
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "mongo_url",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "deta_key",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "test_server",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "test_server",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "v2tool",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "api_hash",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "api_id",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "bot_token",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
+        "isExtraImport": true,
+        "detail": "deta",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "enums",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatType",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "concurrent.futures",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "base64",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "base64",
+        "description": "base64",
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "pytz",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytz",
+        "description": "pytz",
+        "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "paramiko",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "paramiko",
+        "description": "paramiko",
+        "detail": "paramiko",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "NotesDB",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "NotesDB",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "NotesDB",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "NotesDB",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "NotesDB",
+        "importPath": "db",
+        "description": "db",
+        "isExtraImport": true,
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "schedule",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "schedule",
+        "description": "schedule",
+        "detail": "schedule",
+        "documentation": {}
+    },
+    {
+        "label": "uvloop",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvloop",
+        "description": "uvloop",
+        "detail": "uvloop",
+        "documentation": {}
+    },
+    {
+        "label": "run_schedule",
+        "importPath": "tasks",
+        "description": "tasks",
+        "isExtraImport": true,
+        "detail": "tasks",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "DatabaseNotFoundError",
+        "kind": 6,
+        "importPath": "db.note_writes",
+        "description": "db.note_writes",
+        "peekOfCode": "class DatabaseNotFoundError(Exception):\n    pass\nclass UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes",
+        "detail": "db.note_writes",
+        "documentation": {}
+    },
+    {
+        "label": "UrlNotFoundError",
+        "kind": 6,
+        "importPath": "db.note_writes",
+        "description": "db.note_writes",
+        "peekOfCode": "class UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, filename: str, url: str):",
+        "detail": "db.note_writes",
+        "documentation": {}
+    },
+    {
+        "label": "UrlExistsError",
+        "kind": 6,
+        "importPath": "db.note_writes",
+        "description": "db.note_writes",
+        "peekOfCode": "class UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, filename: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": filename})\n        if existing_entry:",
+        "detail": "db.note_writes",
+        "documentation": {}
+    },
+    {
+        "label": "NotesDB",
+        "kind": 6,
+        "importPath": "db.note_writes",
+        "description": "db.note_writes",
+        "peekOfCode": "class NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, filename: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": filename})\n        if existing_entry:\n            if url not in existing_entry[\"urls\"]:\n                self.collection.update_one({\"_id\": filename}, {\"$push\": {\"urls\": url}})",
+        "detail": "db.note_writes",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "kind": 6,
+        "importPath": "db.ssh_saves",
+        "description": "db.ssh_saves",
+        "peekOfCode": "class SSH:\n    def __init__(self, user_id: int):\n        deta = Deta(deta_key)\n        self.id = user_id\n        self.db = deta.Base(\"ssh\")\n    def add(self, machine: str, host: str, user: str, passwd: str, port: int):\n        existing_data = self.db.get(str(self.id))\n        if existing_data:\n            existing_list = existing_data.get(\"value\", [])\n            new_data = {",
+        "detail": "db.ssh_saves",
+        "documentation": {}
+    },
+    {
+        "label": "debugger",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.slash_debug",
+        "description": "plugins.basic_commands.slash_debug",
+        "peekOfCode": "def debugger(c, m):\n    m.reply(f\"```json\\n{m}```\")",
+        "detail": "plugins.basic_commands.slash_debug",
+        "documentation": {}
+    },
+    {
+        "label": "ext_command_list",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.slash_ext",
+        "description": "plugins.basic_commands.slash_ext",
+        "peekOfCode": "def ext_command_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    with open(\"text/ext.md\") as f:\n        text = f.read()\n    text = text.replace(\"{first_name}\", m.from_user.first_name)\n    text = text.replace(\"{uid}\", str(m.from_user.id))\n    m.reply(text, quote=True)",
+        "detail": "plugins.basic_commands.slash_ext",
+        "documentation": {}
+    },
+    {
+        "label": "help_list",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.slash_helps",
+        "description": "plugins.basic_commands.slash_helps",
+        "peekOfCode": "def help_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    with open(\"text/helps.md\") as f:\n        text = f.read()\n    text = text.replace(\"{first_name}\", m.from_user.first_name)\n    text = text.replace(\"{uid}\", str(m.from_user.id))\n    m.reply(text, quote=True)",
+        "detail": "plugins.basic_commands.slash_helps",
+        "documentation": {}
+    },
+    {
+        "label": "server_info",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.slash_server",
+        "description": "plugins.basic_commands.slash_server",
+        "peekOfCode": "def server_info():\n    try:\n        response = requests.get(\"https://ipinfo.io\")\n        data = response.json()\n        ip = data.get(\"ip\", \"N/A\")\n        city = data.get(\"city\", \"N/A\")\n        region = data.get(\"region\", \"N/A\")\n        country = data.get(\"country\", \"N/A\")\n        provider = data.get(\"org\", \"N/A\")\n        ip_info = f\"IP: {ip}\\nCity: {city}\\nRegion: {region}\\nCountry: {country}\\nProvider: {provider}\"",
+        "detail": "plugins.basic_commands.slash_server",
+        "documentation": {}
+    },
+    {
+        "label": "bot_server_info",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.slash_server",
+        "description": "plugins.basic_commands.slash_server",
+        "peekOfCode": "def bot_server_info(c, m):\n    ver = platform.version()\n    name = platform.uname()\n    system = platform.system()\n    server = server_info()\n    msg_text = (\n        f\"```{system}\\n\" f\"INFO:\\n{name}\\n\\n\" f\"VERSION:\\n{ver}\\n\\n\" f\"{server}\\n\" \"```\"\n    )\n    m.reply(msg_text, quote=True)",
+        "detail": "plugins.basic_commands.slash_server",
+        "documentation": {}
+    },
+    {
+        "label": "set_proxy",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.slash_set_proxy",
+        "description": "plugins.basic_commands.slash_set_proxy",
+        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"killall -9 lite\")\n    os.system(f\"./lite -p 8888 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()",
+        "detail": "plugins.basic_commands.slash_set_proxy",
+        "documentation": {}
+    },
+    {
+        "label": "soiIurce_code",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.slash_source",
+        "description": "plugins.basic_commands.slash_source",
+        "peekOfCode": "def soiIurce_code(c, m):\n    m.reply(\"**[Mã nguồn](https://github.com/chantroi/writer-bot)**\", quote=True)",
+        "detail": "plugins.basic_commands.slash_source",
+        "documentation": {}
+    },
+    {
+        "label": "send_welcome",
+        "kind": 2,
+        "importPath": "plugins.basic_commands.start_and_help",
+        "description": "plugins.basic_commands.start_and_help",
+        "peekOfCode": "def send_welcome(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply_text(\n        f\"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\\nDùng lệnh /helps để biết thêm chi tiết\",\n        quote=True,\n    )",
+        "detail": "plugins.basic_commands.start_and_help",
+        "documentation": {}
+    },
+    {
+        "label": "check_alive",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.check_alive",
+        "description": "plugins.rewriting_commands.check_alive",
+        "peekOfCode": "def check_alive(config):\n    check_tool = f\"{test_server}/check\"\n    r = requests.get(check_tool, params={\"q\": config})\n    response = r.json()\n    return response.get(\"alive\", False)\ndef generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data)\n    return r.text\n@Client.on_message(filters.command(\"filter_alive\"))",
+        "detail": "plugins.rewriting_commands.check_alive",
+        "documentation": {}
+    },
+    {
+        "label": "generate_link",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.check_alive",
+        "description": "plugins.rewriting_commands.check_alive",
+        "peekOfCode": "def generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data)\n    return r.text\n@Client.on_message(filters.command(\"filter_alive\"))\ndef filter_alive(c, m):\n    \"\"\"\n    command function\n    \"\"\"\n    user = m.from_user.first_name if m.from_user else m.sender_chat.title",
+        "detail": "plugins.rewriting_commands.check_alive",
+        "documentation": {}
+    },
+    {
+        "label": "filter_alive",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.check_alive",
+        "description": "plugins.rewriting_commands.check_alive",
+        "peekOfCode": "def filter_alive(c, m):\n    \"\"\"\n    command function\n    \"\"\"\n    user = m.from_user.first_name if m.from_user else m.sender_chat.title\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message:\n        mpath = m.reply_to_message.text.split()\n        urls = [\n            part",
+        "detail": "plugins.rewriting_commands.check_alive",
+        "documentation": {}
+    },
+    {
+        "label": "convert_bytes_to_human_readable",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_checks",
+        "description": "plugins.rewriting_commands.slash_checks",
+        "peekOfCode": "def convert_bytes_to_human_readable(bytes_value):\n    units = [\"B\", \"KB\", \"MB\", \"GB\", \"TB\"]\n    unit_index = 0\n    while bytes_value >= 1024 and unit_index < len(units) - 1:\n        bytes_value /= 1024.0\n        unit_index += 1\n    result = \"{:.2f} {}\".format(bytes_value, units[unit_index])\n    return result\ndef convert_timestamp_to_datetime(timestamp, timezone=\"UTC\"):\n    utc_datetime = datetime.utcfromtimestamp(timestamp).replace(tzinfo=pytz.utc)",
+        "detail": "plugins.rewriting_commands.slash_checks",
+        "documentation": {}
+    },
+    {
+        "label": "convert_timestamp_to_datetime",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_checks",
+        "description": "plugins.rewriting_commands.slash_checks",
+        "peekOfCode": "def convert_timestamp_to_datetime(timestamp, timezone=\"UTC\"):\n    utc_datetime = datetime.utcfromtimestamp(timestamp).replace(tzinfo=pytz.utc)\n    local_datetime = utc_datetime.astimezone(pytz.timezone(timezone))\n    return local_datetime.strftime(\"%Y-%m-%d %H:%M:%S %Z\")\ndef parse_url(url):\n    try:\n        r = requests.get(\n            url,\n            headers={\"User-Agent\": \"quantumult%20x\"},\n            proxies={\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"},",
+        "detail": "plugins.rewriting_commands.slash_checks",
+        "documentation": {}
+    },
+    {
+        "label": "parse_url",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_checks",
+        "description": "plugins.rewriting_commands.slash_checks",
+        "peekOfCode": "def parse_url(url):\n    try:\n        r = requests.get(\n            url,\n            headers={\"User-Agent\": \"quantumult%20x\"},\n            proxies={\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"},\n            timeout=30,\n        )\n        res_string = r.headers.get(\"subscription-userinfo\")\n    except Exception:",
+        "detail": "plugins.rewriting_commands.slash_checks",
+        "documentation": {}
+    },
+    {
+        "label": "check_sub",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_checks",
+        "description": "plugins.rewriting_commands.slash_checks",
+        "peekOfCode": "def check_sub(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message and m.reply_to_message.text:\n        text = m.reply_to_message.text\n    elif m.text:\n        text = m.text\n    else:\n        m.reply(\"Không tìm thấy tin nhắn\", quote=True)\n        return False\n    urls = [",
+        "detail": "plugins.rewriting_commands.slash_checks",
+        "documentation": {}
+    },
+    {
+        "label": "requesting",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_request",
+        "description": "plugins.rewriting_commands.slash_request",
+        "peekOfCode": "def requesting(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1] in [\n            \"GET\",\n            \"get\",\n            \"POST\",\n            \"post\",\n            \"DELETE\",\n            \"delete\",\n    ]:",
+        "detail": "plugins.rewriting_commands.slash_request",
+        "documentation": {}
+    },
+    {
+        "label": "get_config",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_test",
+        "description": "plugins.rewriting_commands.slash_test",
+        "peekOfCode": "def get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\"https://paste.rs/\", data=url).text\n    else:\n        res = requests.get(\n            url,\n            headers={\"User-Agent\": \"v2rayNG\"},\n            timeout=60,\n            proxies={",
+        "detail": "plugins.rewriting_commands.slash_test",
+        "documentation": {}
+    },
+    {
+        "label": "start_test",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_test",
+        "description": "plugins.rewriting_commands.slash_test",
+        "peekOfCode": "def start_test(config):\n    r = requests.post(test_server, json={\"q\": config})\n    return r.text\n@Client.on_message(filters.command(\"test\"))\ndef litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    url_pattern = re.compile(\n        r\"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)\"\n    )\n    if m.reply_to_message:",
+        "detail": "plugins.rewriting_commands.slash_test",
+        "documentation": {}
+    },
+    {
+        "label": "litespeedtest",
+        "kind": 2,
+        "importPath": "plugins.rewriting_commands.slash_test",
+        "description": "plugins.rewriting_commands.slash_test",
+        "peekOfCode": "def litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    url_pattern = re.compile(\n        r\"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)\"\n    )\n    if m.reply_to_message:\n        try:\n            text = m.reply_to_message.text\n        except Exception:\n            try:",
+        "detail": "plugins.rewriting_commands.slash_test",
+        "documentation": {}
+    },
+    {
+        "label": "run_cmd",
+        "kind": 2,
+        "importPath": "plugins.ssh_commands.dot_machine_name",
+        "description": "plugins.ssh_commands.dot_machine_name",
+        "peekOfCode": "def run_cmd(hostname: str, username: str, password: str, ssh_port: int, cmd: str):\n    try:\n        ssh = paramiko.SSHClient()\n        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n        ssh.connect(hostname, ssh_port, username, password)\n        stdin, stdout, stderr = ssh.exec_command(cmd)\n        output = stdout.read().decode(\"utf-8\")\n        errors = stderr.read().decode(\"utf-8\")\n        exit_status = stdout.channel.recv_exit_status()\n        ssh.close()",
+        "detail": "plugins.ssh_commands.dot_machine_name",
+        "documentation": {}
+    },
+    {
+        "label": "run_shell_command",
+        "kind": 2,
+        "importPath": "plugins.ssh_commands.dot_machine_name",
+        "description": "plugins.ssh_commands.dot_machine_name",
+        "peekOfCode": "def run_shell_command(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if not m.text.replace(\".\", \"\").replace(\" \", \"\"):\n            raise Exception(\n                \"Thiếu lệnh và tên máy.\\nHãy thực hiện theo mẫu: `.machine0 echo Hello, World`\"\n            )\n        machine = m.text.split(\" \")[0].replace(\".\", \"\")\n        shell_cmd = m.text.split(\" \", 1)[1]",
+        "detail": "plugins.ssh_commands.dot_machine_name",
+        "documentation": {}
+    },
+    {
+        "label": "save_ssh_login",
+        "kind": 2,
+        "importPath": "plugins.ssh_commands.slash_addssh",
+        "description": "plugins.ssh_commands.slash_addssh",
+        "peekOfCode": "def save_ssh_login(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if m.chat.type != enums.ChatType.PRIVATE:\n            raise Exception(\n                \"Để bảo mật, vui lòng thực hiện thao tác này ở chat riêng tư\"\n            )\n        if len(m.command) < 5:\n            raise Exception(",
+        "detail": "plugins.ssh_commands.slash_addssh",
+        "documentation": {}
+    },
+    {
+        "label": "delete_machine_server",
+        "kind": 2,
+        "importPath": "plugins.ssh_commands.slash_delssh",
+        "description": "plugins.ssh_commands.slash_delssh",
+        "peekOfCode": "def delete_machine_server(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if len(m.command) < 2:\n            raise Exception(\"Vui lòng cung cấp tên máy\")\n        machine = m.command[1]\n        try:\n            ssh.delete(machine)\n        except Exception as e:",
+        "detail": "plugins.ssh_commands.slash_delssh",
+        "documentation": {}
+    },
+    {
+        "label": "get_list_machines",
+        "kind": 2,
+        "importPath": "plugins.ssh_commands.slash_machines",
+        "description": "plugins.ssh_commands.slash_machines",
+        "peekOfCode": "def get_list_machines(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        user_id = m.from_user.id\n        ssh = SSH(user_id)\n        user = m.from_user.first_name\n        list_machines = ssh.machines()\n        list_machines = \"    \".join(list_machines)\n        m.reply(\n            f\"Danh sách máy chủ SSH của **{user}**:```Machines\\n{list_machines}\\n```\",",
+        "detail": "plugins.ssh_commands.slash_machines",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "kind": 5,
+        "importPath": "plugins.super_commands.admin",
+        "description": "plugins.super_commands.admin",
+        "peekOfCode": "admin = os.getenv(\"ADMIN_ID\", \"5665225938\")\nif admin.isdigit():\n    if not admin.startswith(\"0\"):\n        admin = int(admin)",
+        "detail": "plugins.super_commands.admin",
+        "documentation": {}
+    },
+    {
+        "label": "run_shell_bash",
+        "kind": 2,
+        "importPath": "plugins.super_commands.slash_bash",
+        "description": "plugins.super_commands.slash_bash",
+        "peekOfCode": "def run_shell_bash(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    command = m.text.replace(\"/bash \", \"\")\n    result = subprocess.run(\n        command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True\n    )\n    m.reply(f\"```bash\\n{result.stdout}\\n```\")",
+        "detail": "plugins.super_commands.slash_bash",
+        "documentation": {}
+    },
+    {
+        "label": "reset_program",
+        "kind": 2,
+        "importPath": "plugins.super_commands.slash_reset",
+        "description": "plugins.super_commands.slash_reset",
+        "peekOfCode": "def reset_program(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\"Đang khởi động lại chương trình Client...\")\n    with open(\"reset.txt\", \"w\") as f:\n        f.write(str(m.chat.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
+        "detail": "plugins.super_commands.slash_reset",
+        "documentation": {}
+    },
+    {
+        "label": "update_server",
+        "kind": 2,
+        "importPath": "plugins.super_commands.slash_update",
+        "description": "plugins.super_commands.slash_update",
+        "peekOfCode": "def update_server(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\"Đang cập nhật hệ thống...\")\n    os.system(\"git config --global pull.rebase true\")\n    os.system('git config --global user.name \"Writer\"')\n    os.system('git config --global user.email \"duongchantroi@alwaysdata.net\"')\n    os.system(\"git config --global pull.rebase true\")\n    os.system(\"git add * && git commit -a -m UPDATE\")\n    os.system(\"git pull\")\n    m.reply(\"Đã cập nhật xong đang khởi động lại...\")",
+        "detail": "plugins.super_commands.slash_update",
+        "documentation": {}
+    },
+    {
+        "label": "check_all_urls",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.check_available",
+        "description": "plugins.writing_commands.check_available",
+        "peekOfCode": "def check_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    if m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    try:\n        removed_urls = notes.check(filename)\n        if removed_urls:",
+        "detail": "plugins.writing_commands.check_available",
+        "documentation": {}
+    },
+    {
+        "label": "check_all_share_urls",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.check_available",
+        "description": "plugins.writing_commands.check_available",
+        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938:\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        removed_urls = notes.check(\"share\")\n        if removed_urls:\n            removed_urls_str = \"\\n\".join(removed_urls)",
+        "detail": "plugins.writing_commands.check_available",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_urls",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.get_list",
+        "description": "plugins.writing_commands.get_list",
+        "peekOfCode": "def get_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    if m.from_user.id == 5665225938:\n        filename = \"v2ray\"",
+        "detail": "plugins.writing_commands.get_list",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_share_urls",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.get_list",
+        "description": "plugins.writing_commands.get_list",
+        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938:\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    try:\n        urls = notes.all(\"share\")\n        if urls:\n            urls_str = \"\\n\".join(urls)",
+        "detail": "plugins.writing_commands.get_list",
+        "documentation": {}
+    },
+    {
+        "label": "delete_url",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.remove_from_list",
+        "description": "plugins.writing_commands.remove_from_list",
+        "peekOfCode": "def delete_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    if user_id == 5665225938:\n        filename = \"v2ray\"\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text",
+        "detail": "plugins.writing_commands.remove_from_list",
+        "documentation": {}
+    },
+    {
+        "label": "delete_share_url",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.remove_from_list",
+        "description": "plugins.writing_commands.remove_from_list",
+        "peekOfCode": "def delete_share_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
+        "detail": "plugins.writing_commands.remove_from_list",
+        "documentation": {}
+    },
+    {
+        "label": "add_url",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.share_and_add",
+        "description": "plugins.writing_commands.share_and_add",
+        "peekOfCode": "def add_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    if m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text",
+        "detail": "plugins.writing_commands.share_and_add",
+        "documentation": {}
+    },
+    {
+        "label": "share_url",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.share_and_add",
+        "description": "plugins.writing_commands.share_and_add",
+        "peekOfCode": "def share_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
+        "detail": "plugins.writing_commands.share_and_add",
+        "documentation": {}
+    },
+    {
+        "label": "get_urls",
+        "kind": 2,
+        "importPath": "plugins.writing_commands.slash_get",
+        "description": "plugins.writing_commands.slash_get",
+        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    m.reply(\n        f\"**Share Note**:\\n{v2tool}/get/share\\n**Update Share Note**:\\n{v2tool}/update/share\\n\\n**Personal Note**:\\n{v2tool}/get/{filename}\\n**Update**:\\n{v2tool}/update/{filename}\",\n        quote=True,\n    )",
+        "detail": "plugins.writing_commands.slash_get",
+        "documentation": {}
+    },
+    {
+        "label": "get_time",
+        "kind": 2,
+        "importPath": "tasks.schedule_check",
+        "description": "tasks.schedule_check",
+        "peekOfCode": "def get_time():\n    tz = pytz.timezone(\"Asia/Ho_Chi_Minh\")\n    local_time = datetime.now(tz)\n    formatted_time = local_time.strftime(\"%d/%m/%Y %H:%M:%S\")\n    return formatted_time\ndef check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies)\n    return r.text, r.status_code\ndef validate(data, code):",
+        "detail": "tasks.schedule_check",
+        "documentation": {}
+    },
+    {
+        "label": "check",
+        "kind": 2,
+        "importPath": "tasks.schedule_check",
+        "description": "tasks.schedule_check",
+        "peekOfCode": "def check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies)\n    return r.text, r.status_code\ndef validate(data, code):\n    if \"{\" in data or \"}\" in data:\n        return False\n    elif data is None:\n        return False\n    elif code > 399:",
+        "detail": "tasks.schedule_check",
+        "documentation": {}
+    },
+    {
+        "label": "validate",
+        "kind": 2,
+        "importPath": "tasks.schedule_check",
+        "description": "tasks.schedule_check",
+        "peekOfCode": "def validate(data, code):\n    if \"{\" in data or \"}\" in data:\n        return False\n    elif data is None:\n        return False\n    elif code > 399:\n        return False\n    return True\ndef main():\n    db = NotesDB()",
+        "detail": "tasks.schedule_check",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "tasks.schedule_check",
+        "description": "tasks.schedule_check",
+        "peekOfCode": "def main():\n    db = NotesDB()\n    bot = Client(\n        \"writer\", api_id, api_hash, bot_token=bot_token, plugins=dict(root=\"plugins\")\n    )\n    with bot:\n        bot.send_chat_action(ChatAction.TYPING)\n    urls = db.all(\"share\")\n    time_now = get_time()\n    alive = []",
+        "detail": "tasks.schedule_check",
+        "documentation": {}
+    },
+    {
+        "label": "run",
+        "kind": 2,
+        "importPath": "tasks.schedule_check",
+        "description": "tasks.schedule_check",
+        "peekOfCode": "def run():\n    schedule.every().hour.do(main)\n    print(\"Running schedule checking subscription\", flush=True)\n    while True:\n        schedule.run_pending()\n        time.sleep(1)",
+        "detail": "tasks.schedule_check",
+        "documentation": {}
+    },
+    {
+        "label": "res",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nv2tool = res[\"api\"][\"v2tool\"]\ntest_server = res[\"api\"][\"test\"]\ndeta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "v2tool",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "v2tool = res[\"api\"][\"v2tool\"]\ntest_server = res[\"api\"][\"test\"]\ndeta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "test_server",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "test_server = res[\"api\"][\"test\"]\ndeta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "deta_key",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "deta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "mongo_url",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "mongo_url = res[\"data\"][\"mongo\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "api_id",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "api_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "api_hash",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "api_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "bot_token",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "bot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "web",
+        "description": "web",
+        "peekOfCode": "def home():\n    return \"V2Writer\"",
+        "detail": "web",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "web",
+        "description": "web",
+        "peekOfCode": "app = Flask(\"Web\")\n@app.route(\"/\")\ndef home():\n    return \"V2Writer\"",
+        "detail": "web",
+        "documentation": {}
+    }
+]
