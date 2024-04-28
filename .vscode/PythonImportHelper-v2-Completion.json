@@ -1242,7 +1242,7 @@
         "kind": 2,
         "importPath": "plugins.writing_commands.slash_get",
         "description": "plugins.writing_commands.slash_get",
-        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f'**Shared Link:**{v2tool}/get/share',\n        f'**Private Link:**{v2tool}/get/{filename}',\n        f'**Update Link:**{v2tool}/update/{filename}',\n        'Sử dụng **Update Link** để cập nhật lại các server trong **Private Link**. Có thể dùng trực tiếp **Update Link** nhưng sẽ chậm hơn do phải truy cập đến từng subscription.',\n        '**Shared Link** sẽ tự động cập nhật sau mỗi giờ. Không khuyến khích sử đụng link update của **Shared Link**'",
+        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f'**Shared Link:** {v2tool}/get/share',\n        f'**Private Link:** {v2tool}/get/{filename}',\n        f'**Update Link:** {v2tool}/update/{filename}',\n        'Sử dụng **Update Link** để cập nhật lại các server trong **Private Link**. Có thể dùng trực tiếp **Update Link** nhưng sẽ chậm hơn do phải truy cập đến từng subscription.',\n        '**Shared Link** sẽ tự động cập nhật sau mỗi giờ. Không khuyến khích sử đụng link update của **Shared Link**'",
         "detail": "plugins.writing_commands.slash_get",
         "documentation": {}
     },
