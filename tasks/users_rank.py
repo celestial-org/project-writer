@@ -30,4 +30,5 @@ def get_rank(c, m):
     m.reply(text, quote=True)
 
 
+print("Ranking bot is running")
 app.run()

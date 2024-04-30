@@ -9,7 +9,6 @@ from hydrogram.enums import ChatAction
 
 from db import NotesDB
 from environment import api_hash, api_id, bot_token
-from plugins.rewriting_commands.slash_checks import convert_bytes_to_human_readable
 
 
 def get_time():
@@ -40,7 +39,7 @@ def validate(data, code):
 def main():
     db = NotesDB()
     bot = Client(
-        "task_runner", api_id, api_hash, bot_token=bot_token, in_memory=True)
+        "task_runner", api_id, api_hash, bot_token=bot_token, in_memory=True
     )
     with bot:
         bot.send_chat_action(ChatAction.TYPING)
