@@ -9,6 +9,7 @@ from hydrogram.enums import ChatAction
 
 from db import NotesDB
 from environment import api_hash, api_id, bot_token
+from plugins.rewriting_commands.slash_checks import convert_bytes_to_human_readable
 
 
 def get_time():
@@ -20,7 +21,9 @@ def get_time():
 
 def check(url):
     proxies = {"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"}
-    r = requests.get(url, headers={"User-Agent": "v2rayNG/1.8.*"}, proxies=proxies)
+    r = requests.get(
+        url, headers={"User-Agent": "v2rayNG/1.8.*"}, proxies=proxies, timeout=60
+    )
     return r.text, r.status_code
 
 
@@ -37,7 +40,7 @@ def validate(data, code):
 def main():
     db = NotesDB()
     bot = Client(
-        "writer", api_id, api_hash, bot_token=bot_token, plugins=dict(root="plugins")
+        "task_runner", api_id, api_hash, bot_token=bot_token, in_memory=True)
     )
     with bot:
         bot.send_chat_action(ChatAction.TYPING)
@@ -46,8 +49,8 @@ def main():
     alive = []
     dead_count = 0
     for url in urls:
-        check_result = check(url)
-        if validate(check_result):
+        check_result, status_code = check(url)
+        if validate(check_result, status_code):
             alive.append(url)
         else:
             dead_count += 1

@@ -81,6 +81,30 @@
         "documentation": {}
     },
     {
+        "label": "api_hash",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "api_id",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "bot_token",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
         "label": "Deta",
         "importPath": "deta",
         "description": "deta",
@@ -489,6 +513,22 @@
         "documentation": {}
     },
     {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
         "label": "ChatAction",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
@@ -618,6 +658,14 @@
     },
     {
         "label": "ChatType",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
         "isExtraImport": true,
@@ -841,6 +889,23 @@
         "importPath": "schedule",
         "description": "schedule",
         "detail": "schedule",
+        "documentation": {}
+    },
+    {
+        "label": "convert_bytes_to_human_readable",
+        "importPath": "plugins.rewriting_commands.slash_checks",
+        "description": "plugins.rewriting_commands.slash_checks",
+        "isExtraImport": true,
+        "detail": "plugins.rewriting_commands.slash_checks",
+        "documentation": {}
+    },
+    {
+        "label": "shelve",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shelve",
+        "description": "shelve",
+        "detail": "shelve",
         "documentation": {}
     },
     {
@@ -1242,7 +1307,7 @@
         "kind": 2,
         "importPath": "plugins.writing_commands.slash_get",
         "description": "plugins.writing_commands.slash_get",
-        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f'**Shared Link:** {v2tool}/get/share',\n        f'**Private Link:** {v2tool}/get/{filename}',\n        f'**Update Link:** {v2tool}/update/{filename}',\n        'Sử dụng **Update Link** để cập nhật lại các server trong **Private Link**. Có thể dùng trực tiếp **Update Link** nhưng sẽ chậm hơn do phải truy cập đến từng subscription.',\n        '**Shared Link** sẽ tự động cập nhật sau mỗi giờ. Không khuyến khích sử đụng link update của **Shared Link**'",
+        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f'**Shared Link:** {v2tool}/get/share',\n        f'**Private Link:** {v2tool}/get/{filename}',\n        f'**Update Link:** {v2tool}/update/{filename}',\n        'Sử dụng **Update Link** để cập nhật lại các server trong **Private Link**. Có thể dùng trực tiếp **Update Link** nhưng sẽ chậm hơn do phải truy cập đến từng subscription.',\n        'Các server trong **Link sẽ tự động được làm mới sau mỗi lần truy cập mà không cần thiết sử dụng **Update Link**',",
         "detail": "plugins.writing_commands.slash_get",
         "documentation": {}
     },
@@ -1251,7 +1316,7 @@
         "kind": 2,
         "importPath": "tasks.schedule_check",
         "description": "tasks.schedule_check",
-        "peekOfCode": "def get_time():\n    tz = pytz.timezone(\"Asia/Ho_Chi_Minh\")\n    local_time = datetime.now(tz)\n    formatted_time = local_time.strftime(\"%d/%m/%Y %H:%M:%S\")\n    return formatted_time\ndef check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies)\n    return r.text, r.status_code\ndef validate(data, code):",
+        "peekOfCode": "def get_time():\n    tz = pytz.timezone(\"Asia/Ho_Chi_Minh\")\n    local_time = datetime.now(tz)\n    formatted_time = local_time.strftime(\"%d/%m/%Y %H:%M:%S\")\n    return formatted_time\ndef check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(\n        url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies, timeout=60\n    )",
         "detail": "tasks.schedule_check",
         "documentation": {}
     },
@@ -1260,7 +1325,7 @@
         "kind": 2,
         "importPath": "tasks.schedule_check",
         "description": "tasks.schedule_check",
-        "peekOfCode": "def check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies)\n    return r.text, r.status_code\ndef validate(data, code):\n    if \"{\" in data or \"}\" in data:\n        return False\n    elif data is None:\n        return False\n    elif code > 399:",
+        "peekOfCode": "def check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(\n        url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies, timeout=60\n    )\n    return r.text, r.status_code\ndef validate(data, code):\n    if \"{\" in data or \"}\" in data:\n        return False\n    elif data is None:",
         "detail": "tasks.schedule_check",
         "documentation": {}
     },
@@ -1278,7 +1343,7 @@
         "kind": 2,
         "importPath": "tasks.schedule_check",
         "description": "tasks.schedule_check",
-        "peekOfCode": "def main():\n    db = NotesDB()\n    bot = Client(\n        \"writer\", api_id, api_hash, bot_token=bot_token, plugins=dict(root=\"plugins\")\n    )\n    with bot:\n        bot.send_chat_action(ChatAction.TYPING)\n    urls = db.all(\"share\")\n    time_now = get_time()\n    alive = []",
+        "peekOfCode": "def main():\n    db = NotesDB()\n    bot = Client(\n        \"task_runner\", api_id, api_hash, bot_token=bot_token, in_memory=True)\n    )\n    with bot:\n        bot.send_chat_action(ChatAction.TYPING)\n    urls = db.all(\"share\")\n    time_now = get_time()\n    alive = []",
         "detail": "tasks.schedule_check",
         "documentation": {}
     },
@@ -1289,6 +1354,42 @@
         "description": "tasks.schedule_check",
         "peekOfCode": "def run():\n    schedule.every().hour.do(main)\n    print(\"Running schedule checking subscription\", flush=True)\n    while True:\n        schedule.run_pending()\n        time.sleep(1)",
         "detail": "tasks.schedule_check",
+        "documentation": {}
+    },
+    {
+        "label": "counter",
+        "kind": 2,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "def counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db[key]:\n            count = int(db[key]) + 1\n        else:\n            count = 1\n        db[key] = str(count)\n@app.on_message(filters.command(\"rank\") & filters.chat(\"share_v2ray_file\"))\ndef get_rank(c, m):",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "get_rank",
+        "kind": 2,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "def get_rank(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    users = []\n    for user in list(db.keys()):\n        users.append((f\"{user}  ({db[user]})\", int(db[user])))\n    text = \"Share V2ray Group Ranking:\\n\\n\\n\" + \"\\n\".join(\n        f\"{i + 1}) {item}\" for i, item in enumerate(users)\n    )\n    m.reply(text, quote=True)\napp.run()",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "app = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndb = shelve.open(\"users_rank.shelve\")\n@app.on_message(filters.chat(\"share_v2ray_file\"))\ndef counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db[key]:\n            count = int(db[key]) + 1\n        else:\n            count = 1",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "db = shelve.open(\"users_rank.shelve\")\n@app.on_message(filters.chat(\"share_v2ray_file\"))\ndef counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db[key]:\n            count = int(db[key]) + 1\n        else:\n            count = 1\n        db[key] = str(count)",
+        "detail": "tasks.users_rank",
         "documentation": {}
     },
     {

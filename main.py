@@ -2,6 +2,8 @@ import os
 import uvloop
 
 uvloop.install()
+os.system("python -u tasks/users_rannk.py &")
+
 
 if __name__ == "__main__":
     from hydrogram import Client, idle
