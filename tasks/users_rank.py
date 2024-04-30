@@ -7,11 +7,11 @@ app = Client("rank_counter", api_id, api_hash, bot_token=bot_token)
 db = shelve.open("users_rank.shelve")
 
 
-@app.on_message(filters.chat("share_v2ray_file"))
+@app.on_message(filters.chat("share_v2ray_file"), group=2)
 def counter(c, m):
     if m.from_user:
         key = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-        if db[key]:
+        if db.get(key):
             count = int(db[key]) + 1
         else:
             count = 1

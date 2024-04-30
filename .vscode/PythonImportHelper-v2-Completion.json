@@ -1369,7 +1369,7 @@
         "kind": 2,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "def counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db[key]:\n            count = int(db[key]) + 1\n        else:\n            count = 1\n        db[key] = str(count)\n@app.on_message(filters.command(\"rank\") & filters.chat(\"share_v2ray_file\"))\ndef get_rank(c, m):",
+        "peekOfCode": "def counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db.get(key):\n            count = int(db[key]) + 1\n        else:\n            count = 1\n        db[key] = str(count)\n@app.on_message(filters.command(\"rank\") & filters.chat(\"share_v2ray_file\"))\ndef get_rank(c, m):",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1387,7 +1387,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "app = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndb = shelve.open(\"users_rank.shelve\")\n@app.on_message(filters.chat(\"share_v2ray_file\"))\ndef counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db[key]:\n            count = int(db[key]) + 1\n        else:\n            count = 1",
+        "peekOfCode": "app = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndb = shelve.open(\"users_rank.shelve\")\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db.get(key):\n            count = int(db[key]) + 1\n        else:\n            count = 1",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1396,7 +1396,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "db = shelve.open(\"users_rank.shelve\")\n@app.on_message(filters.chat(\"share_v2ray_file\"))\ndef counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db[key]:\n            count = int(db[key]) + 1\n        else:\n            count = 1\n        db[key] = str(count)",
+        "peekOfCode": "db = shelve.open(\"users_rank.shelve\")\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        if db.get(key):\n            count = int(db[key]) + 1\n        else:\n            count = 1\n        db[key] = str(count)",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
