@@ -2,7 +2,7 @@ import os
 import uvloop
 
 uvloop.install()
-os.system("python -u tasks/users_rannk.py &")
+os.system("python -u tasks/users_rank.py &")
 
 
 if __name__ == "__main__":
