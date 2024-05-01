@@ -24,6 +24,7 @@ def get_rank(c, m):
     users = []
     for user in list(db.keys()):
         users.append((f"{user}  ({db[user]})", int(db[user])))
+    users = sorted(users, key=lambda x: x[1], reverse=True)
     users = [
         f"{i + 1}) **{item[0]}**" if i < 4 else f"{i + 1} {item[0]}"
         for i, item in enumerate(users)
