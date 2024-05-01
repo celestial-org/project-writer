@@ -24,9 +24,11 @@ def get_rank(c, m):
     users = []
     for user in list(db.keys()):
         users.append((f"{user}  ({db[user]})", int(db[user])))
-    text = "Share V2ray Group Ranking:\n\n\n" + "\n".join(
-        f"{i + 1}) {item}" for i, item in enumerate(users)
-    )
+    users = [
+        f"{i + 1}) **{item[0]}**" if i < 4 else f"{i + 1} {item[0]}"
+        for i, item in enumerate(users)
+    ]
+    text = "Share V2ray Group Ranking:\n\n\n" + "\n".join(users)
     m.reply(text, quote=True)
 
 
