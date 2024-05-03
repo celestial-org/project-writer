@@ -902,6 +902,14 @@
         "documentation": {}
     },
     {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "run_schedule",
         "importPath": "tasks",
         "description": "tasks",
@@ -1463,6 +1471,24 @@
         "description": "tasks.users_rank",
         "peekOfCode": "cursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER\n    )\n\"\"\"\n)\nconn.commit()",
         "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "hello",
+        "kind": 2,
+        "importPath": "helloworld",
+        "description": "helloworld",
+        "peekOfCode": "def hello():\n    return \"Hello World!\"",
+        "detail": "helloworld",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "helloworld",
+        "description": "helloworld",
+        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/\")\ndef hello():\n    return \"Hello World!\"",
+        "detail": "helloworld",
         "documentation": {}
     }
 ]
