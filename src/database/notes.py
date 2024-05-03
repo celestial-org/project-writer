@@ -1,6 +1,6 @@
 import requests
 from pymongo import MongoClient
-from environment import mongo_url
+from ..environment import mongo_url
 
 
 class DatabaseNotFoundError(Exception):

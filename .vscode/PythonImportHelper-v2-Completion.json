@@ -17,11 +17,11 @@
         "documentation": {}
     },
     {
-        "label": "mongo_url",
-        "importPath": "environment",
-        "description": "environment",
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
         "isExtraImport": true,
-        "detail": "environment",
+        "detail": "deta",
         "documentation": {}
     },
     {
@@ -78,14 +78,6 @@
         "description": "environment",
         "isExtraImport": true,
         "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
         "documentation": {}
     },
     {
