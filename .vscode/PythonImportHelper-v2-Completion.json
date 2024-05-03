@@ -1276,11 +1276,20 @@
         "documentation": {}
     },
     {
+        "label": "neon",
+        "kind": 2,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "def neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    conn, cursor = neon()\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        cursor.execute(\"SELECT count FROM user_ranks WHERE user_key = %s\", (key,))",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
         "label": "counter",
         "kind": 2,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "def counter(c, m):\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        cursor.execute(\"SELECT count FROM user_ranks WHERE user_key = %s\", (key,))\n        result = cursor.fetchone()\n        if result:\n            count = int(result[0]) + 1\n            cursor.execute(\n                \"UPDATE user_ranks SET count = %s WHERE user_key = %s\", (count, key)\n            )",
+        "peekOfCode": "def counter(c, m):\n    conn, cursor = neon()\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        cursor.execute(\"SELECT count FROM user_ranks WHERE user_key = %s\", (key,))\n        result = cursor.fetchone()\n        if result:\n            count = int(result[0]) + 1\n            cursor.execute(\n                \"UPDATE user_ranks SET count = %s WHERE user_key = %s\", (count, key)",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1289,7 +1298,7 @@
         "kind": 2,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "def get_rank(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10\"\n    )\n    rows = cursor.fetchall()\n    users = [\n        (\n            f\"{i + 1}) **{row[0]}** ({row[1]})\"\n            if i < 4",
+        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10\"\n    )\n    rows = cursor.fetchall()\n    users = [\n        (\n            f\"{i + 1}) **{row[0]}** ({row[1]})\"",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1298,7 +1307,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nneon_url = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nneon_url = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1307,7 +1316,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "neon_url = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (",
+        "peekOfCode": "neon_url = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1316,7 +1325,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "api_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,",
+        "peekOfCode": "api_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1325,7 +1334,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "api_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER",
+        "peekOfCode": "api_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    conn, cursor = neon()",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1334,7 +1343,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "bot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER\n    )",
+        "peekOfCode": "bot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    conn, cursor = neon()\n    if m.from_user:",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
@@ -1343,25 +1352,7 @@
         "kind": 5,
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
-        "peekOfCode": "app = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER\n    )\n\"\"\"",
-        "detail": "tasks.users_rank",
-        "documentation": {}
-    },
-    {
-        "label": "conn",
-        "kind": 5,
-        "importPath": "tasks.users_rank",
-        "description": "tasks.users_rank",
-        "peekOfCode": "conn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER\n    )\n\"\"\"\n)",
-        "detail": "tasks.users_rank",
-        "documentation": {}
-    },
-    {
-        "label": "cursor",
-        "kind": 5,
-        "importPath": "tasks.users_rank",
-        "description": "tasks.users_rank",
-        "peekOfCode": "cursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER\n    )\n\"\"\"\n)\nconn.commit()",
+        "peekOfCode": "app = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@app.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    conn, cursor = neon()\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"",
         "detail": "tasks.users_rank",
         "documentation": {}
     },
