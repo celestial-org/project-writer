@@ -36,7 +36,7 @@ def counter(c, m):
         conn.commit()
 
 
-@app.on_message(filters.command("rank") & filters.chat("share_v2ray_file"))
+@app.on_message(filters.command("rank"))
 def get_rank(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     cursor.execute(
