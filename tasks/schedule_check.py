@@ -1,13 +1,11 @@
 import time
 from datetime import datetime
-
 import pytz
 import requests
 import schedule
 from hydrogram import Client
 from hydrogram.enums import ChatAction
-
-from db import NotesDB
+from src.database import NotesDB
 from environment import api_hash, api_id, bot_token
 
 

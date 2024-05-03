@@ -854,10 +854,10 @@
     },
     {
         "label": "NotesDB",
-        "importPath": "db",
-        "description": "db",
+        "importPath": "src.database",
+        "description": "src.database",
         "isExtraImport": true,
-        "detail": "db",
+        "detail": "src.database",
         "documentation": {}
     },
     {
