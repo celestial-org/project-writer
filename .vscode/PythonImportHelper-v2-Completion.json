@@ -639,14 +639,6 @@
         "documentation": {}
     },
     {
-        "label": "test_server",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
         "label": "base64",
         "kind": 6,
         "isExtraImport": true,
@@ -974,6 +966,15 @@
         "importPath": "src.plugins.rewrites.check_alive",
         "description": "src.plugins.rewrites.check_alive",
         "peekOfCode": "def filter_alive(c, m):\n    \"\"\"\n    command function\n    \"\"\"\n    user = m.from_user.first_name if m.from_user else m.sender_chat.title\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message:\n        mpath = m.reply_to_message.text.split()\n        urls = [\n            part",
+        "detail": "src.plugins.rewrites.check_alive",
+        "documentation": {}
+    },
+    {
+        "label": "test_server",
+        "kind": 5,
+        "importPath": "src.plugins.rewrites.check_alive",
+        "description": "src.plugins.rewrites.check_alive",
+        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef check_alive(config):\n    check_tool = f\"{test_server}/check\"\n    r = requests.get(check_tool, params={\"q\": config})\n    response = r.json()\n    return response.get(\"alive\", False)\ndef generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data)\n    return r.text",
         "detail": "src.plugins.rewrites.check_alive",
         "documentation": {}
     },

@@ -1,9 +1,11 @@
+import os
 import concurrent.futures
 import requests
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from environment import test_server
 from .test import get_config
+
+test_server = os.getenv("TEST_SERVER")
 
 
 def check_alive(config):
