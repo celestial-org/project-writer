@@ -1,5 +1,14 @@
 [
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -22,15 +31,6 @@
         "description": "deta",
         "isExtraImport": true,
         "detail": "deta",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
         "documentation": {}
     },
     {
@@ -663,22 +663,6 @@
         "documentation": {}
     },
     {
-        "label": "test_server",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "v2tool",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
         "label": "api_hash",
         "importPath": "environment",
         "description": "environment",
@@ -954,11 +938,29 @@
         "documentation": {}
     },
     {
+        "label": "mongo_url",
+        "kind": 5,
+        "importPath": "src.database.notes",
+        "description": "src.database.notes",
+        "peekOfCode": "mongo_url = os.getenv(\"MONGO_URL\")\nclass DatabaseNotFoundError(Exception):\n    pass\nclass UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)",
+        "detail": "src.database.notes",
+        "documentation": {}
+    },
+    {
         "label": "SSH",
         "kind": 6,
         "importPath": "src.database.ssh",
         "description": "src.database.ssh",
         "peekOfCode": "class SSH:\n    def __init__(self, user_id: int):\n        deta = Deta(deta_key)\n        self.id = user_id\n        self.db = deta.Base(\"ssh\")\n    def add(self, machine: str, host: str, user: str, passwd: str, port: int):\n        existing_data = self.db.get(str(self.id))\n        if existing_data:\n            existing_list = existing_data.get(\"value\", [])\n            new_data = {",
+        "detail": "src.database.ssh",
+        "documentation": {}
+    },
+    {
+        "label": "deta_key",
+        "kind": 5,
+        "importPath": "src.database.ssh",
+        "description": "src.database.ssh",
+        "peekOfCode": "deta_key = os.getenv(\"DETA_KEY\")\nclass SSH:\n    def __init__(self, user_id: int):\n        deta = Deta(deta_key)\n        self.id = user_id\n        self.db = deta.Base(\"ssh\")\n    def add(self, machine: str, host: str, user: str, passwd: str, port: int):\n        existing_data = self.db.get(str(self.id))\n        if existing_data:\n            existing_list = existing_data.get(\"value\", [])",
         "detail": "src.database.ssh",
         "documentation": {}
     },
@@ -1161,6 +1163,15 @@
         "documentation": {}
     },
     {
+        "label": "test_server",
+        "kind": 5,
+        "importPath": "src.plugins.rewrites.test",
+        "description": "src.plugins.rewrites.test",
+        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\"https://paste.rs/\", data=url).text\n    else:\n        res = requests.get(\n            url,\n            headers={\"User-Agent\": \"v2rayNG\"},\n            timeout=60,",
+        "detail": "src.plugins.rewrites.test",
+        "documentation": {}
+    },
+    {
         "label": "save_ssh_login",
         "kind": 2,
         "importPath": "src.plugins.ssh.add",
@@ -1228,7 +1239,16 @@
         "kind": 2,
         "importPath": "src.plugins.writing.get",
         "description": "src.plugins.writing.get",
-        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f'**Shared Link:** {v2tool}/get/share',\n        f'**Private Link:** {v2tool}/get/{filename}',\n        f'**Update Link:** {v2tool}/update/{filename}',\n        'Sử dụng **Update Link** để cập nhật lại các server trong **Private Link**. Có thể dùng trực tiếp **Update Link** nhưng sẽ chậm hơn do phải truy cập đến từng subscription.',\n        'Các server trong **Link sẽ tự động được làm mới sau mỗi lần truy cập mà không cần thiết sử dụng **Update Link**',",
+        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        f\"**Private Link:** {v2tool}/get/{filename}\",\n        f\"**Update Link:** {v2tool}/update/{filename}\",\n        \"Sử dụng **Update Link** để cập nhật lại các server trong **Private Link**. Có thể dùng trực tiếp **Update Link** nhưng sẽ chậm hơn do phải truy cập đến từng subscription.\",\n        \"Các server trong **Link sẽ tự động được làm mới sau mỗi lần truy cập mà không cần thiết sử dụng **Update Link**\",",
+        "detail": "src.plugins.writing.get",
+        "documentation": {}
+    },
+    {
+        "label": "v2tool",
+        "kind": 5,
+        "importPath": "src.plugins.writing.get",
+        "description": "src.plugins.writing.get",
+        "peekOfCode": "v2tool = os.getenv(\"V2TOOL\")\n@Client.on_message(filters.command(\"get\"))\ndef get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        f\"**Private Link:** {v2tool}/get/{filename}\",\n        f\"**Update Link:** {v2tool}/update/{filename}\",",
         "detail": "src.plugins.writing.get",
         "documentation": {}
     },
@@ -1291,52 +1311,52 @@
         "kind": 5,
         "importPath": "src.environment",
         "description": "src.environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nv2tool = res[\"api\"][\"v2tool\"]\ntest_server = res[\"api\"][\"test\"]\ndeta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\nneon_url = res['data']['neon']\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "src.environment",
         "documentation": {}
     },
     {
-        "label": "v2tool",
+        "label": "os.environ[\"V2TOOL\"]",
         "kind": 5,
         "importPath": "src.environment",
         "description": "src.environment",
-        "peekOfCode": "v2tool = res[\"api\"][\"v2tool\"]\ntest_server = res[\"api\"][\"test\"]\ndeta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\nneon_url = res['data']['neon']\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "src.environment",
         "documentation": {}
     },
     {
-        "label": "test_server",
+        "label": "os.environ[\"TEST_SERVER\"]",
         "kind": 5,
         "importPath": "src.environment",
         "description": "src.environment",
-        "peekOfCode": "test_server = res[\"api\"][\"test\"]\ndeta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\nneon_url = res['data']['neon']\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "src.environment",
         "documentation": {}
     },
     {
-        "label": "deta_key",
+        "label": "os.environ[\"DETA_KEY\"]",
         "kind": 5,
         "importPath": "src.environment",
         "description": "src.environment",
-        "peekOfCode": "deta_key = res[\"key\"][\"collection\"]\nmongo_url = res[\"data\"][\"mongo\"]\nneon_url = res['data']['neon']\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "src.environment",
         "documentation": {}
     },
     {
-        "label": "mongo_url",
+        "label": "os.environ[\"MONGO_URL\"]",
         "kind": 5,
         "importPath": "src.environment",
         "description": "src.environment",
-        "peekOfCode": "mongo_url = res[\"data\"][\"mongo\"]\nneon_url = res['data']['neon']\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "src.environment",
         "documentation": {}
     },
     {
-        "label": "neon_url",
+        "label": "os.environ[\"NEON_URL\"]",
         "kind": 5,
         "importPath": "src.environment",
         "description": "src.environment",
-        "peekOfCode": "neon_url = res['data']['neon']\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "src.environment",
         "documentation": {}
     },

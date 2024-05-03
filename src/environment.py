@@ -4,15 +4,15 @@ import requests
 
 res = requests.get(os.getenv("SECRET")).json()
 
-v2tool = res["api"]["v2tool"]
+os.environ["V2TOOL"] = res["api"]["v2tool"]
 
-test_server = res["api"]["test"]
+os.environ["TEST_SERVER"] = res["api"]["test"]
 
-deta_key = res["key"]["collection"]
+os.environ["DETA_KEY"] = res["key"]["collection"]
 
-mongo_url = res["data"]["mongo"]
+os.environ["MONGO_URL"] = res["data"]["mongo"]
 
-neon_url = res['data']['neon']
+os.environ["NEON_URL"] = res["data"]["neon"]
 
 api_id = res["key"]["api_id"]
 

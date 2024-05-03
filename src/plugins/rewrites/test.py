@@ -1,13 +1,13 @@
 import time
 import base64
 import re
+import os
 import concurrent.futures
-
 import requests
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 
-from environment import test_server
+test_server = os.getenv("TEST_SERVER")
 
 
 def get_config(url):

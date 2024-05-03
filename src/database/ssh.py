@@ -1,5 +1,7 @@
+import os
 from deta import Deta
-from ..environment import deta_key
+
+deta_key = os.getenv("DETA_KEY")
 
 
 class SSH:
