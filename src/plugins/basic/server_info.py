@@ -1,11 +1,11 @@
-from hydrogram import Client, filters
 import platform
 import requests
+from hydrogram import Client, filters
 
 
 def server_info():
     try:
-        response = requests.get("https://ipinfo.io")
+        response = requests.get("https://ipinfo.io", timeout=30)
         data = response.json()
         ip = data.get("ip", "N/A")
         city = data.get("city", "N/A")

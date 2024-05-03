@@ -1,9 +1,7 @@
 import time
-
 from hydrogram import Client, enums, filters
 from hydrogram.enums import ChatAction
-
-from db import SSH
+from database import SSH
 
 
 @Client.on_message(filters.command("addssh"))

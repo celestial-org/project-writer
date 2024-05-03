@@ -1,9 +1,7 @@
 import time
-
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction, ChatType
-
-from db import NotesDB
+from database import NotesDB
 
 
 @Client.on_message(filters.command("getmylist"))

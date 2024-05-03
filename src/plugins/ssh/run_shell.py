@@ -1,8 +1,7 @@
 import paramiko
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-
-from db import SSH
+from database import SSH
 
 
 def run_cmd(hostname: str, username: str, password: str, ssh_port: int, cmd: str):
