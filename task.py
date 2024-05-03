@@ -1,6 +1,5 @@
-from tasks import run_schedule, rank_bot
-from threading import Thread
+from tasks import rank_bot
 
-if __name__ == '__main__':
-    Thread(target=run_schedule).start()
+if __name__ == "__main__":
+
     rank_bot()

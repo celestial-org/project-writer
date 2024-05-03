@@ -427,14 +427,6 @@
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
         "label": "filters",
         "importPath": "hydrogram",
         "description": "hydrogram",
@@ -611,14 +603,6 @@
         "documentation": {}
     },
     {
-        "label": "ChatAction",
-        "importPath": "hydrogram.enums",
-        "description": "hydrogram.enums",
-        "isExtraImport": true,
-        "detail": "hydrogram.enums",
-        "documentation": {}
-    },
-    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -663,44 +647,12 @@
         "documentation": {}
     },
     {
-        "label": "api_hash",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_id",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "bot_token",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
         "label": "base64",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "base64",
         "description": "base64",
         "detail": "base64",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -812,61 +764,12 @@
         "documentation": {}
     },
     {
-        "label": "schedule",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "schedule",
-        "description": "schedule",
-        "detail": "schedule",
-        "documentation": {}
-    },
-    {
-        "label": "NotesDB",
-        "importPath": "src.database",
-        "description": "src.database",
-        "isExtraImport": true,
-        "detail": "src.database",
-        "documentation": {}
-    },
-    {
         "label": "psycopg2",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "psycopg2",
         "description": "psycopg2",
         "detail": "psycopg2",
-        "documentation": {}
-    },
-    {
-        "label": "api_hash",
-        "importPath": "src.environment",
-        "description": "src.environment",
-        "isExtraImport": true,
-        "detail": "src.environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_id",
-        "importPath": "src.environment",
-        "description": "src.environment",
-        "isExtraImport": true,
-        "detail": "src.environment",
-        "documentation": {}
-    },
-    {
-        "label": "bot_token",
-        "importPath": "src.environment",
-        "description": "src.environment",
-        "isExtraImport": true,
-        "detail": "src.environment",
-        "documentation": {}
-    },
-    {
-        "label": "neon_url",
-        "importPath": "src.environment",
-        "description": "src.environment",
-        "isExtraImport": true,
-        "detail": "src.environment",
         "documentation": {}
     },
     {
@@ -878,27 +781,11 @@
         "documentation": {}
     },
     {
-        "label": "run_schedule",
-        "importPath": "tasks",
-        "description": "tasks",
-        "isExtraImport": true,
-        "detail": "tasks",
-        "documentation": {}
-    },
-    {
         "label": "rank_bot",
         "importPath": "tasks",
         "description": "tasks",
         "isExtraImport": true,
         "detail": "tasks",
-        "documentation": {}
-    },
-    {
-        "label": "Thread",
-        "importPath": "threading",
-        "description": "threading",
-        "isExtraImport": true,
-        "detail": "threading",
         "documentation": {}
     },
     {
@@ -1388,51 +1275,6 @@
         "documentation": {}
     },
     {
-        "label": "get_time",
-        "kind": 2,
-        "importPath": "tasks.schedule_check",
-        "description": "tasks.schedule_check",
-        "peekOfCode": "def get_time():\n    tz = pytz.timezone(\"Asia/Ho_Chi_Minh\")\n    local_time = datetime.now(tz)\n    formatted_time = local_time.strftime(\"%d/%m/%Y %H:%M:%S\")\n    return formatted_time\ndef check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(\n        url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies, timeout=60\n    )",
-        "detail": "tasks.schedule_check",
-        "documentation": {}
-    },
-    {
-        "label": "check",
-        "kind": 2,
-        "importPath": "tasks.schedule_check",
-        "description": "tasks.schedule_check",
-        "peekOfCode": "def check(url):\n    proxies = {\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"}\n    r = requests.get(\n        url, headers={\"User-Agent\": \"v2rayNG/1.8.*\"}, proxies=proxies, timeout=60\n    )\n    return r.text, r.status_code\ndef validate(data, code):\n    if \"{\" in data or \"}\" in data:\n        return False\n    elif data is None:",
-        "detail": "tasks.schedule_check",
-        "documentation": {}
-    },
-    {
-        "label": "validate",
-        "kind": 2,
-        "importPath": "tasks.schedule_check",
-        "description": "tasks.schedule_check",
-        "peekOfCode": "def validate(data, code):\n    if \"{\" in data or \"}\" in data:\n        return False\n    elif data is None:\n        return False\n    elif code > 399:\n        return False\n    return True\ndef main():\n    db = NotesDB()",
-        "detail": "tasks.schedule_check",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "tasks.schedule_check",
-        "description": "tasks.schedule_check",
-        "peekOfCode": "def main():\n    db = NotesDB()\n    bot = Client(\n        \"task_runner\", api_id, api_hash, bot_token=bot_token, in_memory=True\n    )\n    with bot:\n        bot.send_chat_action(ChatAction.TYPING)\n    urls = db.all(\"share\")\n    time_now = get_time()\n    alive = []",
-        "detail": "tasks.schedule_check",
-        "documentation": {}
-    },
-    {
-        "label": "run",
-        "kind": 2,
-        "importPath": "tasks.schedule_check",
-        "description": "tasks.schedule_check",
-        "peekOfCode": "def run():\n    schedule.every().hour.do(main)\n    print(\"Running schedule checking subscription\", flush=True)\n    while True:\n        schedule.run_pending()\n        time.sleep(1)",
-        "detail": "tasks.schedule_check",
-        "documentation": {}
-    },
-    {
         "label": "counter",
         "kind": 2,
         "importPath": "tasks.users_rank",
@@ -1447,6 +1289,51 @@
         "importPath": "tasks.users_rank",
         "description": "tasks.users_rank",
         "peekOfCode": "def get_rank(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10\"\n    )\n    rows = cursor.fetchall()\n    users = [\n        (\n            f\"{i + 1}) **{row[0]}** ({row[1]})\"\n            if i < 4",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "res",
+        "kind": 5,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nneon_url = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "neon_url",
+        "kind": 5,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "neon_url = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "api_id",
+        "kind": 5,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "api_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "api_hash",
+        "kind": 5,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "api_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER",
+        "detail": "tasks.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "bot_token",
+        "kind": 5,
+        "importPath": "tasks.users_rank",
+        "description": "tasks.users_rank",
+        "peekOfCode": "bot_token = res[\"bot\"][\"wb_tg\"]\napp = Client(\"rank_counter\", api_id, api_hash, bot_token=bot_token)\nconn = psycopg2.connect(neon_url)\ncursor = conn.cursor()\ncursor.execute(\n    \"\"\"\n    CREATE TABLE IF NOT EXISTS user_ranks (\n        user_key VARCHAR(255) PRIMARY KEY,\n        count INTEGER\n    )",
         "detail": "tasks.users_rank",
         "documentation": {}
     },

@@ -1,7 +1,18 @@
+import os
+import requests
 import psycopg2
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from src.environment import api_hash, api_id, bot_token, neon_url
+import os
+import requests
+
+
+res = requests.get(os.getenv("SECRET")).json()
+neon_url = res["data"]["neon"]
+api_id = res["key"]["api_id"]
+api_hash = res["key"]["api_hash"]
+bot_token = res["bot"]["wb_tg"]
+
 
 app = Client("rank_counter", api_id, api_hash, bot_token=bot_token)
 conn = psycopg2.connect(neon_url)
