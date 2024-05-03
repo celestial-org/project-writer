@@ -1,5 +1,5 @@
 from deta import Deta
-from environment import deta_key
+from ..environment import deta_key
 
 
 class SSH:

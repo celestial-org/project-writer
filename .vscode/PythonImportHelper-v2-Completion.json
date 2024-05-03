@@ -25,62 +25,6 @@
         "documentation": {}
     },
     {
-        "label": "deta_key",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "test_server",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "test_server",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "v2tool",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_hash",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_id",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "bot_token",
-        "importPath": "environment",
-        "description": "environment",
-        "isExtraImport": true,
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -708,6 +652,54 @@
         "importPath": "concurrent.futures",
         "description": "concurrent.futures",
         "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "test_server",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "test_server",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "v2tool",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "api_hash",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "api_id",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "bot_token",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
         "documentation": {}
     },
     {
