@@ -54,13 +54,17 @@ def get_rank(c, m):
     rows = cursor.fetchall()
     users = [
         (
-            f"{i + 1}) **{row[0]}** ({row[1]})"
-            if i < 4
-            else f"{i + 1}) {row[0]} ({row[1]})"
+            f"__TRÙM__ **{row[0]}** ({row[1]})"
+            if i == 1
+            else (
+                f"{i + 1}) **{row[0]}** ({row[1]})"
+                if i < 4
+                else f"{i + 1}) {row[0]} ({row[1]})"
+            )
         )
         for i, row in enumerate(rows)
     ]
-    text = "Share V2ray Group Ranking:\n\n\n" + "\n".join(users)
+    text = "Bảng xếp hạng:\n\n\n" + "\n".join(users)
     m.reply(text, quote=True)
     conn.close()
 
