@@ -9,10 +9,13 @@ from database import NotesDB
 def delete_url(c, m):
     notes = NotesDB()
     m.reply_chat_action(ChatAction.TYPING)
-    user_id = m.from_user.id
-    filename = f"{user_id}"
-    if user_id == 5665225938:
+    if m.command[1] and m.command[1].startswith(":"):
+        filename = m.command[1].replace(":", "")
+    elif m.from_user.id == 5665225938:
         filename = "v2ray"
+    else:
+        m.reply("Vui lòng cung cấp tên ghi", quote=True)
+        return
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text

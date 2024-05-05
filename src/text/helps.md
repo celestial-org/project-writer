@@ -26,7 +26,7 @@ __Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả
 
 /deletesharelist - Xoá subscription khỏi danh sách chia sẻ 
 
-/check_share_alive - Kiểm tra và xoá subscription bị lỗi khỏi danh sách chia sẻ
+/check_share - Kiểm tra và xoá subscription bị lỗi khỏi danh sách chia sẻ
 
 **Khác**
 

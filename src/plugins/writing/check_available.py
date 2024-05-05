@@ -8,16 +8,20 @@ from database import NotesDB
 def check_all_urls(c, m):
     notes = NotesDB()
     m.reply_chat_action(ChatAction.TYPING)
-    user_id = m.from_user.id
-    filename = f"{user_id}"
-    if m.from_user.id == 5665225938:
+    if m.command[1] and m.command[1].startswith(":"):
+        filename = m.command[1].replace(":", "")
+    elif m.from_user.id == 5665225938:
         filename = "v2ray"
+    else:
+        m.reply("Vui lòng cung cấp tên ghi", quote=True)
+        return
     try:
         removed_urls = notes.check(filename)
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
             m.reply(
-                f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}", quote=True
+                f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}",
+                quote=True,
             )
         else:
             err = m.reply("No URLs were removed", quote=True)
@@ -29,7 +33,7 @@ def check_all_urls(c, m):
         c.delete_messages(m.chat.id, err.id)
 
 
-@Client.on_message(filters.command("check_share_alive"))
+@Client.on_message(filters.command("check_share"))
 def check_all_share_urls(c, m):
     notes = NotesDB()
     m.reply_chat_action(ChatAction.TYPING)

@@ -11,10 +11,13 @@ def get_all_urls(c, m):
     if m.chat.type != ChatType.PRIVATE:
         m.reply("Vui lòng thực hiện thao tác này ở khu vực riêng tư!", quote=True)
         return
-    user_id = m.from_user.id
-    filename = f"{user_id}"
-    if m.from_user.id == 5665225938:
+    if m.command[1] and m.command[1].startswith(":"):
+        filename = m.command[1].replace(":", "")
+    elif m.from_user.id == 5665225938:
         filename = "v2ray"
+    else:
+        m.reply("Vui lòng cung cấp tên ghi", quote=True)
+        return
     try:
         urls = notes.all(filename)
         if urls:
