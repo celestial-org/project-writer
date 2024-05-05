@@ -8,7 +8,7 @@ from database import NotesDB
 def check_all_urls(c, m):
     notes = NotesDB()
     m.reply_chat_action(ChatAction.TYPING)
-    if m.command[1] and m.command[1].startswith(":"):
+    if len(m.command) > 1 and m.command[1].startswith(":"):
         filename = m.command[1].replace(":", "")
     elif m.from_user.id == 5665225938:
         filename = "v2ray"

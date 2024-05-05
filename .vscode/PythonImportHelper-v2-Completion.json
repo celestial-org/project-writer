@@ -1109,7 +1109,7 @@
         "kind": 2,
         "importPath": "src.plugins.writing.check_available",
         "description": "src.plugins.writing.check_available",
-        "peekOfCode": "def check_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.command[1] and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
+        "peekOfCode": "def check_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
         "detail": "src.plugins.writing.check_available",
         "documentation": {}
     },
@@ -1145,7 +1145,7 @@
         "kind": 2,
         "importPath": "src.plugins.writing.get_list",
         "description": "src.plugins.writing.get_list",
-        "peekOfCode": "def get_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if m.command[1] and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"",
+        "peekOfCode": "def get_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"",
         "detail": "src.plugins.writing.get_list",
         "documentation": {}
     },
@@ -1163,7 +1163,7 @@
         "kind": 2,
         "importPath": "src.plugins.writing.remove_from_list",
         "description": "src.plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.command[1] and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
+        "peekOfCode": "def delete_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
         "detail": "src.plugins.writing.remove_from_list",
         "documentation": {}
     },
@@ -1181,7 +1181,7 @@
         "kind": 2,
         "importPath": "src.plugins.writing.share_and_add",
         "description": "src.plugins.writing.share_and_add",
-        "peekOfCode": "def add_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.command[1] and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        filename = \"share\"\n    text = m.text",
+        "peekOfCode": "def add_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        filename = \"share\"\n    text = m.text",
         "detail": "src.plugins.writing.share_and_add",
         "documentation": {}
     },
