@@ -20,8 +20,8 @@ def get_config(url):
             headers={"User-Agent": "v2rayNG"},
             timeout=60,
             proxies={
-                "http": "http://127.0.0.1:8888",
-                "https": "http://127.0.0.1:8888",
+                "http": "http://127.0.0.1:6868",
+                "https": "http://127.0.0.1:6868",
             },
         )
 
