@@ -31,7 +31,7 @@ def parse_url(url):
         r = requests.get(
             url,
             headers={"User-Agent": "quantumult%20x"},
-            proxies={"http": "http://127.0.0.1:8888", "https": "http://127.0.0.1:8888"},
+            proxies={"http": "http://127.0.0.1:6868", "https": "http://127.0.0.1:6868"},
             timeout=30,
         )
         res_string = r.headers.get("subscription-userinfo")
