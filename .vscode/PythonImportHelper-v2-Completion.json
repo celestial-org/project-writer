@@ -747,15 +747,6 @@
         "documentation": {}
     },
     {
-        "label": "uvloop",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "uvloop",
-        "description": "uvloop",
-        "detail": "uvloop",
-        "documentation": {}
-    },
-    {
         "label": "psycopg2",
         "kind": 6,
         "isExtraImport": true,

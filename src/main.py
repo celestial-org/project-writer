@@ -1,7 +1,4 @@
 import os
-import uvloop
-
-uvloop.install()
 
 
 if __name__ == "__main__":
