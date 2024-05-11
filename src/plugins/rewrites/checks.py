@@ -1,4 +1,5 @@
 import base64
+import urllib.parse
 import concurrent.futures
 from datetime import datetime
 
@@ -103,7 +104,8 @@ def check_sub(c, m):
         try:
             info, count = parse_url(url)
         except Exception:
-            message = f"[{url}]({url})\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
+            url = urllib.parse.quote(url, safe=":/")
+            message = f"{url}\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
             m.reply(message, quote=True)
             return True
         if info and all(

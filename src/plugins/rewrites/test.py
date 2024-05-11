@@ -2,6 +2,7 @@ import time
 import base64
 import re
 import os
+import urllib.parse
 import concurrent.futures
 import requests
 from hydrogram import Client, filters
@@ -98,11 +99,12 @@ def litespeedtest(c, m):
         s_msg = m
         result_gather = ""
         count = 0
+        url = urllib.parse.quote(url, safe=":/")
         for config in configs:
             result = start_test(config)
             result_gather = f"{result_gather}{result}\n"
             s_text = (
-                f"[{url}]({url})"
+                f"{url}"
                 + f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"
                 + "```\n"
                 + result_gather
