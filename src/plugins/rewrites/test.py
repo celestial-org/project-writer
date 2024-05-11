@@ -99,7 +99,7 @@ def litespeedtest(c, m):
         s_msg = m
         result_gather = ""
         count = 0
-        url = urllib.parse.quote(url, safe=":/")
+        url = url.replace("--", "%2D%2D")
         for config in configs:
             result = start_test(config)
             result_gather = f"{result_gather}{result}\n"
