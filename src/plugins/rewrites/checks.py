@@ -103,7 +103,7 @@ def check_sub(c, m):
         try:
             info, count = parse_url(url)
         except Exception:
-            message = f"{url}\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
+            message = f"[{url}]({url})\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
             m.reply(message, quote=True)
             return True
         if info and all(
@@ -117,7 +117,7 @@ def check_sub(c, m):
             expire = info.get("expire", "N/A")
 
             message = (
-                f"{url}\n"
+                f"[{url}]({url})\n"
                 f"**__Check bởi__ --{user}--**\n"
                 f"__**Số lượng cấu hình:**__ --{count}--\n"
                 f"**Tổng:** --{total}--\n"
