@@ -16,7 +16,7 @@ def update_server(c, m):
     os.system('git config --global user.email "duongchantroi@alwaysdata.net"')
     os.system("git config --global pull.rebase true")
     os.system("git add * && git commit -a -m UPDATE")
-    os.system("git pull")
+    os.system("cd .. && git pull")
     m.reply("Đã cập nhật xong đang khởi động lại...")
     with open("reset.txt", "w") as f:
         f.write(str(m.chat.id))
