@@ -98,7 +98,7 @@ def check_sub(c, m):
     except Exception as e:
         print(e)
         user = m.sender_chat.title
-    sleep = 0
+    sleep = 1
 
     def handler(url):
         nonlocal sleep
