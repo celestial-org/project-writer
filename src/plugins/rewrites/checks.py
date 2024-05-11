@@ -1,8 +1,8 @@
+import time
 import base64
 import urllib.parse
 import concurrent.futures
 from datetime import datetime
-
 import pytz
 import requests
 from hydrogram import Client, filters
@@ -98,8 +98,12 @@ def check_sub(c, m):
     except Exception as e:
         print(e)
         user = m.sender_chat.title
+    sleep = 0
 
     def handler(url):
+        nonlocal sleep
+        time.sleep(sleep)
+        sleep += 1
         m.reply_chat_action(ChatAction.TYPING)
         try:
             info, count = parse_url(url)
