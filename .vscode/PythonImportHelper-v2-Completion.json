@@ -921,7 +921,7 @@
         "kind": 2,
         "importPath": "src.plugins.basic.set_proxy",
         "description": "src.plugins.basic.set_proxy",
-        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"killall -9 lite\")\n    os.system(f\"./lite -p 8888 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()",
+        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"killall -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()",
         "detail": "src.plugins.basic.set_proxy",
         "documentation": {}
     },
@@ -1011,7 +1011,7 @@
         "kind": 2,
         "importPath": "src.plugins.rewrites.checks",
         "description": "src.plugins.rewrites.checks",
-        "peekOfCode": "def convert_timestamp_to_datetime(timestamp, timezone=\"UTC\"):\n    utc_datetime = datetime.utcfromtimestamp(timestamp).replace(tzinfo=pytz.utc)\n    local_datetime = utc_datetime.astimezone(pytz.timezone(timezone))\n    return local_datetime.strftime(\"%Y-%m-%d %H:%M:%S %Z\")\ndef parse_url(url):\n    try:\n        r = requests.get(\n            url,\n            headers={\"User-Agent\": \"quantumult%20x\"},\n            proxies={\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"},",
+        "peekOfCode": "def convert_timestamp_to_datetime(timestamp, timezone=\"UTC\"):\n    utc_datetime = datetime.utcfromtimestamp(timestamp).replace(tzinfo=pytz.utc)\n    local_datetime = utc_datetime.astimezone(pytz.timezone(timezone))\n    return local_datetime.strftime(\"%Y-%m-%d %H:%M:%S %Z\")\ndef parse_url(url):\n    try:\n        r = requests.get(\n            url,\n            headers={\"User-Agent\": \"quantumult%20x\"},\n            proxies={\"http\": \"http://127.0.0.1:6868\", \"https\": \"http://127.0.0.1:6868\"},",
         "detail": "src.plugins.rewrites.checks",
         "documentation": {}
     },
@@ -1020,7 +1020,7 @@
         "kind": 2,
         "importPath": "src.plugins.rewrites.checks",
         "description": "src.plugins.rewrites.checks",
-        "peekOfCode": "def parse_url(url):\n    try:\n        r = requests.get(\n            url,\n            headers={\"User-Agent\": \"quantumult%20x\"},\n            proxies={\"http\": \"http://127.0.0.1:8888\", \"https\": \"http://127.0.0.1:8888\"},\n            timeout=30,\n        )\n        res_string = r.headers.get(\"subscription-userinfo\")\n    except Exception:",
+        "peekOfCode": "def parse_url(url):\n    try:\n        r = requests.get(\n            url,\n            headers={\"User-Agent\": \"quantumult%20x\"},\n            proxies={\"http\": \"http://127.0.0.1:6868\", \"https\": \"http://127.0.0.1:6868\"},\n            timeout=30,\n        )\n        res_string = r.headers.get(\"subscription-userinfo\")\n    except Exception:",
         "detail": "src.plugins.rewrites.checks",
         "documentation": {}
     },
