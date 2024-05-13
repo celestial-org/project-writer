@@ -858,7 +858,7 @@
         "kind": 2,
         "importPath": "plugins.admin.update",
         "description": "plugins.admin.update",
-        "peekOfCode": "def update_server(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\"Đang cập nhật hệ thống...\")\n    os.system('git config --global user.name \"Writer\"')\n    os.system('git config --global user.email \"duongchantroi@alwaysdata.net\"')\n    os.system(\"git config --global pull.rebase true\")\n    os.system(\"git add *\")\n    os.system('git commit -a -m \"UPDATE\"')\n    os.system(\"git pull\")\n    m.reply(\"Đã cập nhật xong đang khởi động lại...\")",
+        "peekOfCode": "def update_server(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\"Đang cập nhật hệ thống...\")\n    # os.system(\"git config --global user.name Writer\")\n    # os.system(\"git config --global user.email bosuutap@alwaysdata.net\")\n    # os.system(\"git config --global pull.rebase true\")\n    os.system(\"git add *\")\n    os.system('git commit -a -m \"UPDATE\"')\n    os.system(\"git pull\")\n    m.reply(\"Đã cập nhật xong đang khởi động lại...\")",
         "detail": "plugins.admin.update",
         "documentation": {}
     },
