@@ -2,7 +2,6 @@ import time
 import base64
 import re
 import os
-import urllib.parse
 import concurrent.futures
 import requests
 from hydrogram import Client, filters
