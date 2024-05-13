@@ -11,7 +11,8 @@ if __name__ == "__main__":
     bot.start()
     if os.path.exists("reset.txt"):
         with open("reset.txt", "r") as f:
-            bot.send_message(int(f.read()), "Chương trình đã được khởi động")
+            chat_id, m_id = f.read().split(":")
+            bot.delete_messages(int(chat_id), int(m_id))
         os.remove("reset.txt")
     print("V2Writer", flush=True)
     os.system("chmod +x ./lite")
