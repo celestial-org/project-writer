@@ -849,7 +849,7 @@
         "kind": 2,
         "importPath": "plugins.admin.reset",
         "description": "plugins.admin.reset",
-        "peekOfCode": "def reset_program(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\"Đang khởi động lại chương trình Client...\")\n    with open(\"reset.txt\", \"w\") as f:\n        f.write(str(m.chat.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
+        "peekOfCode": "def reset_program(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    md = m.reply(\"Đang khởi động lại chương trình Client...\")\n    with open(\"reset.txt\", \"w\") as f:\n        f.write(str(m.chat.id) + \":\" + str(md.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
         "detail": "plugins.admin.reset",
         "documentation": {}
     },
