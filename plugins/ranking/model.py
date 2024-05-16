@@ -25,7 +25,7 @@ class DB:
     def update(
         self, user_id: int, first_name: str, last_name: str, username: str, exp: int
     ):
-        user = self.session.query(User).filter(User.user_id == user_id).first()
+        user = self.session.query(User).filter(user_id=user_id).first()
         if user:
             exp = exp + user.exp
         user = User(
