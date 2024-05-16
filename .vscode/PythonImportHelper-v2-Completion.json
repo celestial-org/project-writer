@@ -1005,7 +1005,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "def ranks_prettier(user_rows):\n    ranks = []\n    emojis = [\"🏆\", \"🎖️\", \"🏅\", \"🥇\", \"🥈\", \"🥉\"]\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, row in enumerate(sorted_users[:20]):\n        rank = f\"{emojis[i]}\" if i < len(emojis) else f\"{i + 1}\"\n        user_info = [\n            f\"<b>{rank}) {row[0]}</b>\",\n            f\"(Lv-{get_level(row[1])})\",\n        ]",
+        "peekOfCode": "def ranks_prettier(user_rows):\n    ranks = []\n    emojis = [\"🏆\", \"🎖️\", \"🏅\", \"🥇\", \"🥈\", \"🥉\"]\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, row in enumerate(sorted_users[:20]):\n        rank = f\"{emojis[i]}\" if i < len(emojis) else f\"{i + 1}\"\n        user_info = [\n            f\"<b>{rank}) {row[0]}</b>\",\n            f\"(Lv{get_level(row[1])[0]})\",\n        ]",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },

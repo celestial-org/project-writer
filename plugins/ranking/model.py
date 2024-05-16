@@ -66,7 +66,7 @@ def ranks_prettier(user_rows):
         rank = f"{emojis[i]}" if i < len(emojis) else f"{i + 1}"
         user_info = [
             f"<b>{rank}) {row[0]}</b>",
-            f"(Lv-{get_level(row[1])})",
+            f"(Lv{get_level(row[1])[0]})",
         ]
         ranks.append("  ".join(user_info))
 
