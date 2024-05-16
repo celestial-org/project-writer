@@ -630,12 +630,60 @@
         "documentation": {}
     },
     {
-        "label": "psycopg2",
+        "label": "re",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "psycopg2",
-        "description": "psycopg2",
-        "detail": "psycopg2",
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -671,15 +719,6 @@
         "importPath": "pytz",
         "description": "pytz",
         "detail": "pytz",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
         "documentation": {}
     },
     {
@@ -935,48 +974,102 @@
         "documentation": {}
     },
     {
-        "label": "neon",
+        "label": "User",
+        "kind": 6,
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self, db_url):\n        self.engine = create_engine(db_url)",
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "DB",
+        "kind": 6,
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "class DB:\n    def __init__(self, db_url):\n        self.engine = create_engine(db_url)\n        Base.metadata.create_all(self.engine)\n        Session = sessionmaker(bind=self.engine)\n        self.session = Session()\n    def update(\n        self, user_id: int, first_name: str, last_name: str, username: str, exp: int\n    ):\n        user = self.session.query(User).filter(User.user_id == user_id).first()",
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "get_level",
         "kind": 2,
-        "importPath": "plugins.basic.users_rank",
-        "description": "plugins.basic.users_rank",
-        "peekOfCode": "def neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\ndef ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                f\"**I) {row[0]}**\",",
-        "detail": "plugins.basic.users_rank",
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "def get_level(exp):\n    level = 0\n    require_exp = 2\n    while exp >= require_exp:\n        exp -= require_exp\n        level += 1\n        if level % 10 == 0:\n            require_exp *= 1.2\n    remaining_exp_for_next_level = require_exp - exp\n    return level, remaining_exp_for_next_level",
+        "detail": "plugins.ranking.model",
         "documentation": {}
     },
     {
         "label": "ranks_prettier",
         "kind": 2,
-        "importPath": "plugins.basic.users_rank",
-        "description": "plugins.basic.users_rank",
-        "peekOfCode": "def ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                f\"**I) {row[0]}**\",\n                f\"(level {row[1]})\",\n                \"[🏆]\", \n            ]\n            ranks.append(\"  \".join(user))",
-        "detail": "plugins.basic.users_rank",
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "def ranks_prettier(user_rows):\n    ranks = []\n    emojis = [\"🏆\", \"🎖️\", \"🏅\", \"🥇\", \"🥈\", \"🥉\"]\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, row in enumerate(sorted_users[:20]):\n        rank = f\"{emojis[i]}\" if i < len(emojis) else f\"{i + 1}\"\n        user_info = [\n            f\"**{rank}) {row[0]}**\",\n            f\"(level {get_level(row[1])})\",\n        ]",
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "count_exp",
+        "kind": 2,
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    if m.text:\n        exp = len(m.text)\n        if m.text.startswith(\"/share\"):\n            if any(scheme in m.text for scheme in [\"http://\", \"https://\"]):\n                exp += exp * 2\n    elif m.video or m.audio or m.file:\n        exp += 500\n    elif m.photo:",
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_rank",
+        "kind": 2,
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "def get_user_rank(user_rows, target_user_id):\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, (user_id, _) in enumerate(sorted_users, start=1):\n        if user_id == target_user_id:\n            return i\n    return None\ndef get_title(level):\n    if level < 50:\n        return\n    elif level < 200:",
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "get_title",
+        "kind": 2,
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "def get_title(level):\n    if level < 50:\n        return\n    elif level < 200:\n        return\n    elif level < 600:\n        return\n    elif level < 2000:\n        return\n    elif level < 10000:",
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self, db_url):",
+        "detail": "plugins.ranking.model",
         "documentation": {}
     },
     {
         "label": "counter",
         "kind": 2,
-        "importPath": "plugins.basic.users_rank",
-        "description": "plugins.basic.users_rank",
-        "peekOfCode": "def counter(c, m):\n    conn, cursor = neon()\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        cursor.execute(\"SELECT count FROM user_ranks WHERE user_key = %s\", (key,))\n        result = cursor.fetchone()\n        if result:\n            count = int(result[0]) + 1\n            cursor.execute(\n                \"UPDATE user_ranks SET count = %s WHERE user_key = %s\", (count, key)",
-        "detail": "plugins.basic.users_rank",
+        "importPath": "plugins.ranking.users_rank",
+        "description": "plugins.ranking.users_rank",
+        "peekOfCode": "def counter(c, m):\n    if m.from_user:\n        db = DB()\n        user_id = m.from_user.id\n        first_name = m.from_user.first_name\n        last_name = m.from_user.last_name\n        username = m.from_user.username\n        exp = count_exp(m)\n        db.update(user_id, first_name, last_name, username, exp)\n@Client.on_message(filters.command(\"rank\"))",
+        "detail": "plugins.ranking.users_rank",
         "documentation": {}
     },
     {
         "label": "get_rank",
         "kind": 2,
-        "importPath": "plugins.basic.users_rank",
-        "description": "plugins.basic.users_rank",
-        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 20\"\n    )\n    rows = cursor.fetchall()\n    users = ranks_prettier(rows)\n    text = \"Bảng xếp hạng Chiến Thần:\\n\\n\\n\" + \"\\n\\n\".join(users)\n    m.reply(text, quote=True)",
-        "detail": "plugins.basic.users_rank",
+        "importPath": "plugins.ranking.users_rank",
+        "description": "plugins.ranking.users_rank",
+        "peekOfCode": "def get_rank(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = DB()\n    result_list = db.list()\n    users = []\n    for item in result_list:\n        if item.last_name:\n            name = item.first_name + \" \" + item.last_name\n        else:\n            name = item.first_name",
+        "detail": "plugins.ranking.users_rank",
         "documentation": {}
     },
     {
-        "label": "neon_url",
-        "kind": 5,
-        "importPath": "plugins.basic.users_rank",
-        "description": "plugins.basic.users_rank",
-        "peekOfCode": "neon_url = os.getenv(\"NEON_URL\")\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\ndef ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [",
-        "detail": "plugins.basic.users_rank",
+        "label": "check_user_level",
+        "kind": 2,
+        "importPath": "plugins.ranking.users_rank",
+        "description": "plugins.ranking.users_rank",
+        "peekOfCode": "def check_user_level(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = DB()\n    if m.reply_to_message:\n        if m.reply_to_message.from_user:\n            user_id = m.reply_to_message.from_user.id\n    elif len(m.command) > 1:\n        username = m.command[1]\n        try:\n            user_id = c.get_users(username).id",
+        "detail": "plugins.ranking.users_rank",
         "documentation": {}
     },
     {
