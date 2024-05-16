@@ -966,7 +966,7 @@
         "kind": 2,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 20\"\n    )\n    rows = cursor.fetchall()\n    users = ranks_prettier(rows)\n    text = \"Bảng xếp hạng Chiến Thần:\\n\\n\\n\" + \"\\n\".join(users)\n    m.reply(text, quote=True)",
+        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 20\"\n    )\n    rows = cursor.fetchall()\n    users = ranks_prettier(rows)\n    text = \"Bảng xếp hạng Chiến Thần:\\n\\n\\n\" + \"\\n\\n\".join(users)\n    m.reply(text, quote=True)",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
