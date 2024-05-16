@@ -19,7 +19,7 @@ def ranks_prettier(rows):
             user = [
                 f"**I) {row[0]}**",
                 f"({row[1]})",
-                "🏆",
+                "[🏆]",
             ]
             ranks.append(" ".join(user))
         elif i == 1:
