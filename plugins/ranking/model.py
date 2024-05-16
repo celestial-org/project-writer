@@ -77,20 +77,26 @@ def count_exp(m, level: int):
     exp = 1
     if m.text:
         exp = len(m.text)
+        if exp == 4096:
+            exp -= 4000
+        elif exp > 4000:
+            exp -= 3000
+        elif exp > 3000:
+            exp -= 1000
         if m.text.startswith("/share"):
             if any(scheme in m.text for scheme in ["http://", "https://"]):
-                exp += exp * 2
+                exp += exp * 2 + level
     elif m.video or m.audio or m.document:
-        exp += 500
+        exp += 500 + level
     elif m.photo:
-        exp += 300
+        exp += 300 + level
     elif m.sticker:
-        exp += 50
+        exp += 50 + level
     if m.caption:
         exp += len(m.caption)
     if m.from_user.id == 6580709427:
         exp += 100
-    return exp + level
+    return exp
 
 
 def get_user_rank(user_rows, target_user_id):
