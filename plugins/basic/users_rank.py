@@ -17,41 +17,73 @@ def ranks_prettier(rows):
     for i, row in enumerate(rows):
         if i == 0:
             user = [
-                "🏆",
                 f"**{row[0]}**",
                 f"({row[1]})",
+                "🏆",
             ]
             ranks.append(" ".join(user))
         elif i == 1:
-            user = ["🎖️", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🎖️",
+            ]
             ranks.append(" ".join(user))
         elif i == 2:
             user = [
-                "🏅",
                 f"**{row[0]}**",
                 f"({row[1]})",
+                "🏅",
             ]
             ranks.append(" ".join(user))
         elif i == 3:
-            user = ["🥇🥇🥇", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🥇🥇🥇",
+            ]
             ranks.append(" ".join(user))
         elif i == 4:
-            user = ["🥇🥈🥇", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🥇🥈🥇",
+            ]
             ranks.append(" ".join(user))
         elif i == 5:
-            user = ["🥈🥇🥈", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🥈🥇🥈",
+            ]
             ranks.append(" ".join(user))
         elif i == 6:
-            user = ["🥈🥈🥈", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🥈🥈🥈",
+            ]
             ranks.append(" ".join(user))
         elif i == 7:
-            user = ["🥉🥇🥉", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🥉🥇🥉",
+            ]
             ranks.append(" ".join(user))
         elif i == 8:
-            user = ["🥉🥈🥉", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🥉🥈🥉",
+            ]
             ranks.append(" ".join(user))
         elif i == 9:
-            user = ["🥉🥉🥉", f"**{row[0]}**", f"({row[1]})"]
+            user = [
+                f"**{row[0]}**",
+                f"({row[1]})",
+                "🥉🥉🥉",
+            ]
             ranks.append(" ".join(user))
         else:
             ranks.append("   ")
