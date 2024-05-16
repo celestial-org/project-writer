@@ -190,6 +190,6 @@ def get_rank(c, m):
     )
     rows = cursor.fetchall()
     users = ranks_prettier(rows)
-    text = "Bảng xếp hạng:\n\n\n" + "\n".join(users)
+    text = "Bảng xếp hạng Chiến Thần:\n\n\n" + "\n".join(users)
     m.reply(text, quote=True)
     conn.close()
