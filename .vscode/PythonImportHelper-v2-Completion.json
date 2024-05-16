@@ -1005,7 +1005,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "def ranks_prettier(user_rows):\n    ranks = []\n    emojis = [\"🏆\", \"🎖️\", \"🏅\", \"🥇\", \"🥈\", \"🥉\"]\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, row in enumerate(sorted_users[:20]):\n        rank = f\"{emojis[i]}\" if i < len(emojis) else f\"{i + 1}\"\n        user_info = [\n            f\"**{rank}) {row[0]}**\",\n            f\"(level {get_level(row[1])})\",\n        ]",
+        "peekOfCode": "def ranks_prettier(user_rows):\n    ranks = []\n    emojis = [\"🏆\", \"🎖️\", \"🏅\", \"🥇\", \"🥈\", \"🥉\"]\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, row in enumerate(sorted_users[:20]):\n        rank = f\"{emojis[i]}\" if i < len(emojis) else f\"{i + 1}\"\n        user_info = [\n            f\"<b>{rank}) {row[0]}</b>\",\n            f\"(Lv-{get_level(row[1])})\",\n        ]",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1023,7 +1023,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "def get_user_rank(user_rows, target_user_id):\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, (user_id, _) in enumerate(sorted_users, start=1):\n        if user_id == target_user_id:\n            return i\n    return None\ndef get_title(level):\n    if level < 50:\n        return\n    elif level < 200:",
+        "peekOfCode": "def get_user_rank(user_rows, target_user_id):\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, (user_id, _) in enumerate(sorted_users, start=1):\n        if user_id == target_user_id:\n            return i\n    return None\ndef get_title(level):\n    if level < 50:\n        return \"Tập Tành Quay Tay\"\n    elif level < 200:",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1032,7 +1032,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "def get_title(level):\n    if level < 50:\n        return\n    elif level < 200:\n        return\n    elif level < 600:\n        return\n    elif level < 2000:\n        return\n    elif level < 10000:",
+        "peekOfCode": "def get_title(level):\n    if level < 50:\n        return \"Tập Tành Quay Tay\"\n    elif level < 200:\n        return \"Có Chút Kinh Nghiệm\"\n    elif level < 600:\n        return \"Tay Chân Nhanh Nhẹn\"\n    elif level < 2000:\n        return \"Cao Thủ Gõ Mõ\"\n    elif level < 10000:",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },

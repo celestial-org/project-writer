@@ -84,6 +84,11 @@ def check_user_level(c, m):
     title = get_title(level)
     text = [
         f"<b>{user}</b>",
-        f"Level: {level}",
-        f"Danh: {title}",
+        f"Cấp độ: {level}",
+        f"Thứ hạng: {rank}",
+        f"EXP: {exp}",
+        f"EXP cần để đạt <i>cấp {level + 1}</i>: {needed_exp}",
+        f"Đánh giá: {title}",
     ]
+    text = "\n\n".join(text)
+    m.reply(text, quote=True)
