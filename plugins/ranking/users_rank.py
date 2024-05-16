@@ -20,7 +20,12 @@ def counter(c, m):
         first_name = m.from_user.first_name
         last_name = m.from_user.last_name
         username = m.from_user.username
-        exp = count_exp(m)
+        user = db.get(user_id)
+        if user:
+            level = get_level(user.exp)
+        else:
+            level = 0
+        exp = count_exp(m, level)
         db.update(user_id, first_name, last_name, username, exp)
 
 

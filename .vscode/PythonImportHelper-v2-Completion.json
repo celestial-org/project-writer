@@ -1050,7 +1050,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.users_rank",
         "description": "plugins.ranking.users_rank",
-        "peekOfCode": "def counter(c, m):\n    if m.from_user:\n        db = DB()\n        user_id = m.from_user.id\n        first_name = m.from_user.first_name\n        last_name = m.from_user.last_name\n        username = m.from_user.username\n        exp = count_exp(m)\n        db.update(user_id, first_name, last_name, username, exp)\n@Client.on_message(filters.command(\"rank\"))",
+        "peekOfCode": "def counter(c, m):\n    if m.from_user:\n        db = DB()\n        user_id = m.from_user.id\n        first_name = m.from_user.first_name\n        last_name = m.from_user.last_name\n        username = m.from_user.username\n        user = db.get(user_id)\n        if user:\n            level = get_level(user.exp)",
         "detail": "plugins.ranking.users_rank",
         "documentation": {}
     },
