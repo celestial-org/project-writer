@@ -55,7 +55,7 @@ def get_level(exp):
             require_exp *= 2.2
 
     remaining_exp_for_next_level = require_exp - exp
-    return level, remaining_exp_for_next_level
+    return level, round(remaining_exp_for_next_level)
 
 
 def ranks_prettier(user_rows):
