@@ -81,8 +81,6 @@ def count_exp(m, level: int):
             exp -= 4000
         elif exp > 4000:
             exp -= 3000
-        elif exp > 3000:
-            exp -= 1000
         if m.text.startswith("/share"):
             if any(scheme in m.text for scheme in ["http://", "https://"]):
                 exp += exp * 2 + level
