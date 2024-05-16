@@ -26,63 +26,133 @@ def ranks_prettier(rows):
             user = [
                 f"**II) {row[0]}**",
                 f"({row[1]})",
-                "🎖️",
+                "[🎖️]",
             ]
             ranks.append(" ".join(user))
         elif i == 2:
             user = [
                 f"**III) {row[0]}**",
                 f"({row[1]})",
-                "🏅",
+                "[🏅]",
             ]
             ranks.append(" ".join(user))
         elif i == 3:
             user = [
                 f"**IV) {row[0]}**",
                 f"({row[1]})",
-                "🥇🥇🥇",
+                "[🥇🥇🥇]",
             ]
             ranks.append(" ".join(user))
         elif i == 4:
             user = [
                 f"**V) {row[0]}**",
                 f"({row[1]})",
-                "🥇🥈🥇",
+                "[🥇🥈🥇]",
             ]
             ranks.append(" ".join(user))
         elif i == 5:
             user = [
                 f"**VI) {row[0]}**",
                 f"({row[1]})",
-                "🥈🥇🥈",
+                "[🥇🥇]",
             ]
             ranks.append(" ".join(user))
         elif i == 6:
             user = [
                 f"**7) {row[0]}**",
                 f"({row[1]})",
-                "🥈🥈🥈",
+                "[🥈🥇🥈]",
             ]
             ranks.append(" ".join(user))
         elif i == 7:
             user = [
                 f"**8) {row[0]}**",
                 f"({row[1]})",
-                "🥉🥇🥉",
+                "[🥇🥈🥉]",
             ]
             ranks.append(" ".join(user))
         elif i == 8:
             user = [
                 f"**9) {row[0]}**",
                 f"({row[1]})",
-                "🥉🥈🥉",
+                "[🥇🥈]",
             ]
             ranks.append(" ".join(user))
         elif i == 9:
             user = [
                 f"**10) {row[0]}**",
                 f"({row[1]})",
-                "🥉🥉🥉",
+                "[🥇🥉]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 10:
+            user = [
+                f"**11) {row[0]}**",
+                f"({row[1]})",
+                "[🥇]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 11:
+            user = [
+                f"**12) {row[0]}**",
+                f"({row[1]})",
+                "[🥈🥈🥈]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 12:
+            user = [
+                f"**13) {row[0]}**",
+                f"({row[1]})",
+                "[🥈🥉🥈]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 13:
+            user = [
+                f"**14) {row[0]}**",
+                f"({row[1]})",
+                "[🥈🥈]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 14:
+            user = [
+                f"**15) {row[0]}**",
+                f"({row[1]})",
+                "[🥈🥉]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 15:
+            user = [
+                f"**16) {row[0]}**",
+                f"({row[1]})",
+                "[🥈]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 16:
+            user = [
+                f"**17) {row[0]}**",
+                f"({row[1]})",
+                "[🥉🥉🥉]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 17:
+            user = [
+                f"**18) {row[0]}**",
+                f"({row[1]})",
+                "[🥉🥉]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 18:
+            user = [
+                f"**19) {row[0]}**",
+                f"({row[1]})",
+                "[🥉]",
+            ]
+            ranks.append(" ".join(user))
+        elif i == 19:
+            user = [
+                f"**20) {row[0]}**",
+                f"({row[1]})",
+                "[]",
             ]
             ranks.append(" ".join(user))
         else:
@@ -116,7 +186,7 @@ def get_rank(c, m):
     conn, cursor = neon()
     m.reply_chat_action(ChatAction.TYPING)
     cursor.execute(
-        "SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10"
+        "SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 15"
     )
     rows = cursor.fetchall()
     users = ranks_prettier(rows)
