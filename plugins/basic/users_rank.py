@@ -186,7 +186,7 @@ def get_rank(c, m):
     conn, cursor = neon()
     m.reply_chat_action(ChatAction.TYPING)
     cursor.execute(
-        "SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 15"
+        "SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 20"
     )
     rows = cursor.fetchall()
     users = ranks_prettier(rows)
