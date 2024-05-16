@@ -8,6 +8,6 @@ def debugger(c, m):
 
 @Client.on_message(filters.command("parse_mode"))
 def test_parse_mode(c, m):
-    text = m.text.replace(m.command[0], "")
+    text = m.text.split(" ", 1)[1]
     m.reply(text)
     m.delete()

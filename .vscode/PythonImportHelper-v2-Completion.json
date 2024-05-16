@@ -867,7 +867,7 @@
         "kind": 2,
         "importPath": "plugins.basic.debug",
         "description": "plugins.basic.debug",
-        "peekOfCode": "def debugger(c, m):\n    m.reply(f\"```json\\n{m}```\")\n@Client.on_message(filters.command(\"parse_mode\"))\ndef test_parse_mode(c, m):\n    text = m.text.replace(m.command[0], \"\")\n    m.reply(text)\n    m.delete()",
+        "peekOfCode": "def debugger(c, m):\n    m.reply(f\"```json\\n{m}```\")\n@Client.on_message(filters.command(\"parse_mode\"))\ndef test_parse_mode(c, m):\n    text = m.text.split(\" \", 1)[1]\n    m.reply(text)\n    m.delete()",
         "detail": "plugins.basic.debug",
         "documentation": {}
     },
@@ -876,7 +876,7 @@
         "kind": 2,
         "importPath": "plugins.basic.debug",
         "description": "plugins.basic.debug",
-        "peekOfCode": "def test_parse_mode(c, m):\n    text = m.text.replace(m.command[0], \"\")\n    m.reply(text)\n    m.delete()",
+        "peekOfCode": "def test_parse_mode(c, m):\n    text = m.text.split(\" \", 1)[1]\n    m.reply(text)\n    m.delete()",
         "detail": "plugins.basic.debug",
         "documentation": {}
     },
