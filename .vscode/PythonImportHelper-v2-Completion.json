@@ -948,7 +948,7 @@
         "kind": 2,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "def ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                f\"**I) {row[0]}**\",\n                f\"({row[1]})\",\n                \"[🏆]\",\n            ]\n            ranks.append(\" \".join(user))",
+        "peekOfCode": "def ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                f\"**I) {row[0]}**\",\n                f\"({row[1]})\",\n                \"[🏆]\",\n            ]\n            ranks.append(\"  \".join(user))",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
