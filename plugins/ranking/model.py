@@ -108,15 +108,23 @@ def get_user_rank(user_rows, target_user_id):
 
 
 def get_title(level):
-    if level < 50:
-        return "Tập Tành Quay Tay"
-    elif level < 200:
-        return "Có Chút Kinh Nghiệm"
-    elif level < 600:
-        return "Tay Chân Nhanh Nhẹn"
-    elif level < 2000:
-        return "Cao Thủ Gõ Mõ"
-    elif level < 10000:
-        return "Chiến Thần Giáng Thế"
+    if level < 20:
+        return "Luyện Khí"
+    elif level < 40:
+        return "Trúc Cơ"
+    elif level < 60:
+        return "Kết Đan"
+    elif level < 80:
+        return "Nguyên Anh"
+    elif level < 101:
+        return "Hoá Thần"
+    elif level < 201:
+        return "Luyện Hư"
+    elif level < 301:
+        return "Hợp Thể"
+    elif level < 401:
+        return "Độ Kiếp"
+    elif level < 501:
+        return "Chiến Thần"
     else:
-        return "Đẳng Cấp Vũ Trụ"
+        return "Vĩnh Hằng"
