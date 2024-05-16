@@ -49,7 +49,7 @@ def get_rank(c, m):
     ranks = ranks_prettier(users)
     text = ["**Bảng Phong Thần**", "\n\n".join(ranks)]
     text = "\n\n\n".join(text)
-    m.reply(text, quote=True)
+    m.reply(text, quote=True, disable_web_page_preview=True)
 
 
 @Client.on_message(filters.command("level"))
@@ -96,4 +96,4 @@ def check_user_level(c, m):
         f"Đánh giá: {title}",
     ]
     text = "\n\n".join(text)
-    m.reply(text, quote=True)
+    m.reply(text, quote=True, disable_web_page_preview=True)
