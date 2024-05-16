@@ -1014,7 +1014,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    if m.text:\n        exp = len(m.text)\n        if m.text.startswith(\"/share\"):\n            if any(scheme in m.text for scheme in [\"http://\", \"https://\"]):\n                exp += exp * 2\n    elif m.video or m.audio or m.file:\n        exp += 500\n    elif m.photo:",
+        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    if m.text:\n        exp = len(m.text)\n        if m.text.startswith(\"/share\"):\n            if any(scheme in m.text for scheme in [\"http://\", \"https://\"]):\n                exp += exp * 2\n    elif m.video or m.audio or m.document:\n        exp += 500\n    elif m.photo:",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },

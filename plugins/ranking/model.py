@@ -80,7 +80,7 @@ def count_exp(m, level: int):
         if m.text.startswith("/share"):
             if any(scheme in m.text for scheme in ["http://", "https://"]):
                 exp += exp * 2
-    elif m.video or m.audio or m.file:
+    elif m.video or m.audio or m.document:
         exp += 500
     elif m.photo:
         exp += 300
