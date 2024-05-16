@@ -930,7 +930,16 @@
         "kind": 2,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "def neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@Client.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    conn, cursor = neon()\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"\n        cursor.execute(\"SELECT count FROM user_ranks WHERE user_key = %s\", (key,))",
+        "peekOfCode": "def neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\ndef ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                \"◻️✴️◻️**(__--Chiến Thần--__)**\",",
+        "detail": "plugins.basic.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "ranks_prettier",
+        "kind": 2,
+        "importPath": "plugins.basic.users_rank",
+        "description": "plugins.basic.users_rank",
+        "peekOfCode": "def ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                \"◻️✴️◻️**(__--Chiến Thần--__)**\",\n                f\"**{row[0]}**🏆\",\n                f\"(exp: {row[1]})\",\n            ]\n            ranks.append(\" \".join(user))",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
@@ -948,7 +957,7 @@
         "kind": 2,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10\"\n    )\n    rows = cursor.fetchall()\n    users = [\n        (\n            f\"__TRÙM__ **{row[0]}** ({row[1]})\"",
+        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10\"\n    )\n    rows = cursor.fetchall()\n    users = ranks_prettier(rows)\n    text = \"Bảng xếp hạng:\\n\\n\\n\" + \"\\n\\n\".join(users)\n    m.reply(text, quote=True)",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
@@ -957,7 +966,7 @@
         "kind": 5,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "neon_url = os.getenv(\"NEON_URL\")\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\n@Client.on_message(filters.chat(\"share_v2ray_file\"), group=2)\ndef counter(c, m):\n    conn, cursor = neon()\n    if m.from_user:\n        key = f\"[{m.from_user.first_name}](tg://user?id={m.from_user.id})\"",
+        "peekOfCode": "neon_url = os.getenv(\"NEON_URL\")\ndef neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\ndef ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
