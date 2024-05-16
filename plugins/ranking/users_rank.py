@@ -97,6 +97,7 @@ def check_user_level(c, m):
         f"<b>EXP:</b> `{exp}xp`",
         f"<b>EXP cần để đạt <i>cấp {level + 1}</i>:</b> `{needed_exp}xp`",
         f"<b>Đánh giá:</b> ```\n{title}```",
+        "**Lưu ý:**\nHệ thống tính điểm dựa trên một loạt các quy tắc phức tạp cho nên việc spam lượng lớn tin nhắn không giúp tăng nhiều điểm kinh nghiệm."
     ]
     text = "\n\n".join(text)
     m.reply(text, quote=True, disable_web_page_preview=True)
