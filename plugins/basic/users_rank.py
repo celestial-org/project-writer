@@ -17,42 +17,42 @@ def ranks_prettier(rows):
     for i, row in enumerate(rows):
         if i == 0:
             user = [
-                "◻️✴️◻️**(__--Chiến Thần--__)**",
-                f"**{row[0]}**🏆",
-                f"(exp: {row[1]})",
+                "🏆)",
+                f"**{row[0]}**",
+                f"({row[1]})",
             ]
-            ranks.append("\n".join(user))
+            ranks.append(" ".join(user))
         elif i == 1:
-            user = ["🌟🌟🌟**(__Bất Tử__)**", f"**{row[0]}**🎖️", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🎖️", f"**{row[0]}**", f"({row[1]})"]
+            ranks.append(" ".join(user))
         elif i == 2:
             user = [
-                "🌟◻️🌟**(__Truyền Thuyết__)**",
-                f"**{row[0]}**🏅",
-                f"(exp: {row[1]})",
+                "🏅",
+                f"**{row[0]}**",
+                f"({row[1]})",
             ]
-            ranks.append("\n".join(user))
+            ranks.append(" ".join(user))
         elif i == 3:
-            user = ["◻️🌟◻️**(Huyền Thoại)**", f"__{row[0]}__🥇", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🥇🥇🥇", f"**{row[0]}**", f"({row[1]})"]
+            ranks.append(" ".join(user))
         elif i == 4:
-            user = ["⭐⭐⭐**(Đại Cao Thủ)**", f"__{row[0]}__🥈", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🥇🥈🥇", f"**{row[0]}**", f"({row[1]})"]
+            ranks.append(" ".join(user))
         elif i == 5:
-            user = ["⭐◻️⭐**(Cao Thủ)**", f"__{row[0]}__🥉", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🥈🥇🥈", f"**{row[0]}**", f"({row[1]})"]
+            ranks.append(" ".join(user))
         elif i == 6:
-            user = ["◻️⭐◻️(Chuyên Nghiệp)", f"{row[0]}7️⃣", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🥈🥈🥈", f"{row[0]}", f"({row[1]})"]
+            ranks.append(" ".join(user))
         elif i == 7:
-            user = ["⚔️⚔️⚔️ (Điêu Luyện)", f"{row[0]}8️⃣", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🥉🥇🥉", f"**{row[0]}**", f"({row[1]})"]
+            ranks.append(" ".join(user))
         elif i == 8:
-            user = ["⚔️◻️⚔️(Nghiệp Dư)", f"{row[0]}9️⃣", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🥉🥈🥉", f"{row[0]}", f"({row[1]})"]
+            ranks.append(" ".join(user))
         elif i == 9:
-            user = ["◻️⚔️◻️(Gà Mờ)", f"{row[0]}🔟", f"(exp: {row[1]})"]
-            ranks.append("\n".join(user))
+            user = ["🥉🥉🥉", f"{row[0]}", f"({row[1]})"]
+            ranks.append(" ".join(user))
         else:
             others = ["◻️◻️◻️(Phù Du)", f"Phần còn lại📉"]
             ranks.append("\n".join(others))
@@ -89,6 +89,6 @@ def get_rank(c, m):
     )
     rows = cursor.fetchall()
     users = ranks_prettier(rows)
-    text = "Bảng xếp hạng:\n\n\n\n" + "\n\n\n".join(users)
+    text = "Bảng xếp hạng:\n\n\n" + "\n".join(users)
     m.reply(text, quote=True)
     conn.close()

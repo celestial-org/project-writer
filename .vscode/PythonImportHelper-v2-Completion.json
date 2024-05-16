@@ -939,7 +939,7 @@
         "kind": 2,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "def neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\ndef ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                \"◻️✴️◻️**(__--Chiến Thần--__)**\",",
+        "peekOfCode": "def neon():\n    conn = psycopg2.connect(neon_url)\n    cursor = conn.cursor()\n    return conn, cursor\ndef ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                \"🏆)\",",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
@@ -948,7 +948,7 @@
         "kind": 2,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "def ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                \"◻️✴️◻️**(__--Chiến Thần--__)**\",\n                f\"**{row[0]}**🏆\",\n                f\"(exp: {row[1]})\",\n            ]\n            ranks.append(\"\\n\".join(user))",
+        "peekOfCode": "def ranks_prettier(rows):\n    ranks = []\n    for i, row in enumerate(rows):\n        if i == 0:\n            user = [\n                \"🏆)\",\n                f\"**{row[0]}**\",\n                f\"({row[1]})\",\n            ]\n            ranks.append(\" \".join(user))",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
@@ -966,7 +966,7 @@
         "kind": 2,
         "importPath": "plugins.basic.users_rank",
         "description": "plugins.basic.users_rank",
-        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10\"\n    )\n    rows = cursor.fetchall()\n    users = ranks_prettier(rows)\n    text = \"Bảng xếp hạng:\\n\\n\\n\\n\" + \"\\n\\n\\n\".join(users)\n    m.reply(text, quote=True)",
+        "peekOfCode": "def get_rank(c, m):\n    conn, cursor = neon()\n    m.reply_chat_action(ChatAction.TYPING)\n    cursor.execute(\n        \"SELECT user_key, count FROM user_ranks ORDER BY count DESC LIMIT 10\"\n    )\n    rows = cursor.fetchall()\n    users = ranks_prettier(rows)\n    text = \"Bảng xếp hạng:\\n\\n\\n\" + \"\\n\".join(users)\n    m.reply(text, quote=True)",
         "detail": "plugins.basic.users_rank",
         "documentation": {}
     },
