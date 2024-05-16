@@ -646,7 +646,7 @@
         "documentation": {}
     },
     {
-        "label": "Integer",
+        "label": "BigInteger",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -978,7 +978,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self):\n        db_url = os.getenv(\"MYSQL_URL\")",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DB:\n    def __init__(self):\n        db_url = os.getenv(\"MYSQL_URL\")",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1041,7 +1041,7 @@
         "kind": 5,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self):",
+        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DB:\n    def __init__(self):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },

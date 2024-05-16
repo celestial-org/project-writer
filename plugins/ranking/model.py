@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, BigInteger, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
@@ -7,11 +7,11 @@ Base = declarative_base()
 
 class User(Base):
     __tablename__ = "rank"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     first_name = Column(String(500))
     last_name = Column(String(500), nullable=True)
     username = Column(String(500), nullable=True)
-    exp = Column(Integer, default=0)
+    exp = Column(BigInteger, default=0)
 
 
 class DB:
