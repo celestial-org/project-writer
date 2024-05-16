@@ -43,11 +43,11 @@ def get_rank(c, m):
     rows = cursor.fetchall()
     users = [
         (
-            f"__TRÙM__ **{row[0]}** ({row[1]})"
-            if i == 1
+            f"__**TRÙM**__👑) **{row[0]}** ({row[1]})"
+            if i == 0
             else (
                 f"{i + 1}) **{row[0]}** ({row[1]})"
-                if i < 4
+                if i < 3
                 else f"{i + 1}) {row[0]} ({row[1]})"
             )
         )
