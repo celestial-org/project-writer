@@ -17,7 +17,7 @@ def ranks_prettier(rows):
     for i, row in enumerate(rows):
         if i == 0:
             user = [
-                "🏆)",
+                "🏆",
                 f"**{row[0]}**",
                 f"({row[1]})",
             ]
@@ -42,20 +42,19 @@ def ranks_prettier(rows):
             user = ["🥈🥇🥈", f"**{row[0]}**", f"({row[1]})"]
             ranks.append(" ".join(user))
         elif i == 6:
-            user = ["🥈🥈🥈", f"{row[0]}", f"({row[1]})"]
+            user = ["🥈🥈🥈", f"**{row[0]}**", f"({row[1]})"]
             ranks.append(" ".join(user))
         elif i == 7:
             user = ["🥉🥇🥉", f"**{row[0]}**", f"({row[1]})"]
             ranks.append(" ".join(user))
         elif i == 8:
-            user = ["🥉🥈🥉", f"{row[0]}", f"({row[1]})"]
+            user = ["🥉🥈🥉", f"**{row[0]}**", f"({row[1]})"]
             ranks.append(" ".join(user))
         elif i == 9:
-            user = ["🥉🥉🥉", f"{row[0]}", f"({row[1]})"]
+            user = ["🥉🥉🥉", f"**{row[0]}**", f"({row[1]})"]
             ranks.append(" ".join(user))
         else:
-            others = ["◻️◻️◻️(Phù Du)", f"Phần còn lại📉"]
-            ranks.append("\n".join(others))
+            ranks.append("   ")
     return ranks
 
 
