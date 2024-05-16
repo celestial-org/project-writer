@@ -12,7 +12,7 @@ from .model import (
 )
 
 
-@Client.on_message(filters.chat("share_v2ray_file"), group=2)
+@Client.on_message((filters.chat("share_v2ray_file")|(filters.chat("share_v2ray_file") & filters.me)), group=2)
 def counter(c, m):
     if m.from_user:
         db = DB()
