@@ -47,7 +47,7 @@ class DB:
 
 def get_level(exp):
     level = 0
-    require_exp = 10
+    require_exp = 100
     while exp >= require_exp:
         exp -= require_exp
         level += 1
