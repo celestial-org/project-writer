@@ -71,6 +71,9 @@ def check_user_level(c, m):
     else:
         user_id = c.get_me().id
     user = db.get(user_id)
+    if not user:
+        m.reply("Chưa có số liệu", quote=True)
+        return
     exp = user.exp
     if user.last_name:
         name = user.first_name + " " + user.last_name
