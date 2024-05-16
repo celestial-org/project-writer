@@ -52,7 +52,7 @@ def get_level(exp):
         exp -= require_exp
         level += 1
         if level % 2 == 0:
-            require_exp *= 1.8
+            require_exp *= 1.2
 
     remaining_exp_for_next_level = require_exp - exp
     return level, round(remaining_exp_for_next_level)
