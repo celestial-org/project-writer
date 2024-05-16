@@ -1,4 +1,4 @@
-import re
+import os
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 
@@ -15,7 +15,8 @@ class User(Base):
 
 
 class DB:
-    def __init__(self, db_url):
+    def __init__(self):
+        db_url = os.getenv("MYSQL_URL")
         self.engine = create_engine(db_url)
         Base.metadata.create_all(self.engine)
         Session = sessionmaker(bind=self.engine)

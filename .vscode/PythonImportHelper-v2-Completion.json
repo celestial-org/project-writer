@@ -630,15 +630,6 @@
         "documentation": {}
     },
     {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -719,6 +710,15 @@
         "importPath": "pytz",
         "description": "pytz",
         "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
@@ -978,7 +978,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self, db_url):\n        self.engine = create_engine(db_url)",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self):\n        db_url = os.getenv(\"MYSQL_URL\")",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -987,7 +987,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class DB:\n    def __init__(self, db_url):\n        self.engine = create_engine(db_url)\n        Base.metadata.create_all(self.engine)\n        Session = sessionmaker(bind=self.engine)\n        self.session = Session()\n    def update(\n        self, user_id: int, first_name: str, last_name: str, username: str, exp: int\n    ):\n        user = self.session.query(User).filter(User.user_id == user_id).first()",
+        "peekOfCode": "class DB:\n    def __init__(self):\n        db_url = os.getenv(\"MYSQL_URL\")\n        self.engine = create_engine(db_url)\n        Base.metadata.create_all(self.engine)\n        Session = sessionmaker(bind=self.engine)\n        self.session = Session()\n    def update(\n        self, user_id: int, first_name: str, last_name: str, username: str, exp: int\n    ):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1041,7 +1041,7 @@
         "kind": 5,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self, db_url):",
+        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(Integer, default=0)\nclass DB:\n    def __init__(self):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1329,7 +1329,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1338,7 +1338,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1347,7 +1347,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1356,7 +1356,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1365,7 +1365,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1374,7 +1374,16 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"MYSQL_URL\"]",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "os.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
