@@ -22,7 +22,7 @@ def counter(c, m):
         username = m.from_user.username
         user = db.get(user_id)
         if user:
-            level = get_level(user.exp)
+            level, _ = get_level(user.exp)
         else:
             level = 0
         exp = count_exp(m, level)
