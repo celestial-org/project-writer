@@ -23,8 +23,8 @@ def schedule(c):
         ranks = ranks_prettier(users)
         text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
         text = "\n\n\n".join(text)
-        c.send_message("duongchantroi", text, disable_web_page_preview=True)
+        c.send_message("share_v2ray_file", text, disable_web_page_preview=True)
 
     scheduler = BackgroundScheduler()
-    scheduler.add_job(ranking, "interval", seconds=5)
+    scheduler.add_job(ranking, "interval", hours=3)
     scheduler.start()
