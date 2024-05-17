@@ -21,7 +21,7 @@ def schedule(c):
             exp = item.exp
             users.append((user, exp))
         ranks = ranks_prettier(users)
-        text = ["**Bảng Phong Thần**", "\n\n".join(ranks)]
+        text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
         text = "\n\n\n".join(text)
         c.send_message("duongchantroi", text, disable_web_page_preview=True)
 
