@@ -47,7 +47,7 @@ def get_rank(c, m):
         exp = item.exp
         users.append((user, exp))
     ranks = ranks_prettier(users)
-    text = ["**𝗕𝗮̉𝗻𝗴 𝗫𝗲̂́𝗽 𝗛𝗮̣𝗻𝗴 **", "\n\n".join(ranks)]
+    text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
     text = "\n\n\n".join(text)
     m.reply(text, quote=True, disable_web_page_preview=True)
 
