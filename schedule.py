@@ -22,10 +22,10 @@ def schedule(c):
         text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
         text = "\n\n\n".join(text)
         msg = c.send_message("share_v2ray_file", text, disable_web_page_preview=True)
-        os.environ["PRE_MESSAGE_ID"] = str(msg.id)
         if os.getenv("PRE_MESSAGE_ID"):
             msg_id = os.getenv("PRE_MESSAGE_ID")
             c.delete_messages("share_v2ray_file", int(msg_id))
+        os.environ["PRE_MESSAGE_ID"] = str(msg.id)
 
     scheduler = BackgroundScheduler()
     scheduler.add_job(ranking, "interval", minutes=30)
