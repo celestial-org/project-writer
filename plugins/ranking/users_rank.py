@@ -82,7 +82,7 @@ def check_user_level(c, m):
         name = user.first_name + " " + user.last_name
     else:
         name = user.first_name
-    user = f"<a href='tg://user?id={user_id}'>{name}</a>"
+    user = f"&lt;a href='tg://user?id={user_id}'&gt;{name}&lt;/a&gt;"
     result_list = db.list()
     rows = []
     for row in result_list:
