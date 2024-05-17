@@ -46,7 +46,7 @@ def get_rank(c, m):
             name = item.first_name + " " + item.last_name
         else:
             name = item.first_name
-        user = f"<b><a href='tg://user?id={item.user_id}'>{name}</a></b>"
+        user = f"[{name}](tg://user?id={item.user_id})"
         exp = item.exp
         users.append((user, exp))
     ranks = ranks_prettier(users)
@@ -82,7 +82,7 @@ def check_user_level(c, m):
         name = user.first_name + " " + user.last_name
     else:
         name = user.first_name
-    user = f"<a href='tg://user?id={user_id}'>{name}</a>"
+    user = f"[{name}](tg://user?id={user_id})"
     result_list = db.list()
     rows = []
     for row in result_list:
