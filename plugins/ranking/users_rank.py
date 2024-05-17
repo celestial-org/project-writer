@@ -46,7 +46,7 @@ def get_rank(c, m):
             name = item.first_name + " " + item.last_name
         else:
             name = item.first_name
-        user = f'<a href="tg://user?id={item.user_id}">{name}</a>'
+        user = f"&lt;a href='tg://user?id={item.user_id}'&gt;{name}&lt;/a&gt;"
         exp = item.exp
         users.append((user, exp))
     ranks = ranks_prettier(users)
