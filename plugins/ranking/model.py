@@ -111,9 +111,9 @@ def get_title(level):
     elif level < 40:
         return "Nghiệp Dư"
     elif level < 60:
-        return "Thông Thạo"
+        return "Thành Thạo"
     elif level < 80:
-        return "Lưu Loát"
+        return "Bán Chuyên"
     elif level < 101:
         return "Chuyên Nghiệp"
     elif level < 201:
