@@ -60,7 +60,7 @@ def get_level(exp):
 
 def ranks_prettier(user_rows):
     ranks = []
-    emojis = ["✵", "✧", "✯", "✭", "✮", "✬", "✩", "◆", "◇"]
+    emojis = ["🏆", "🏅", "🥇", "🥈", "🥉"]
     sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)
     for i, row in enumerate(sorted_users[:20]):
         rank = f"{emojis[i]}" if i < len(emojis) else f"{i + 1}"
@@ -107,21 +107,21 @@ def get_user_rank(user_rows, target_user_id):
 
 def get_title(level):
     if level < 20:
-        return "Luyện Khí"
+        return "Gà Mờ"
     elif level < 40:
-        return "Trúc Cơ"
+        return "Nghiệp Dư"
     elif level < 60:
-        return "Kết Đan"
+        return "Thông Thạo"
     elif level < 80:
-        return "Nguyên Anh"
+        return "Lưu Loát"
     elif level < 101:
-        return "Hoá Thần"
+        return "Chuyên Nghiệp"
     elif level < 201:
-        return "Luyện Hư"
+        return "Bậc Thầy"
     elif level < 301:
-        return "Hợp Thể"
+        return "Vô Địch"
     elif level < 401:
-        return "Độ Kiếp"
+        return "Bất Tử"
     elif level < 501:
         return "Chiến Thần"
     else:
