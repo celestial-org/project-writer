@@ -26,5 +26,5 @@ def schedule(c):
         c.send_message("share_v2ray_file", text, disable_web_page_preview=True)
 
     scheduler = BackgroundScheduler()
-    scheduler.add_job(ranking, "interval", seconds=10)
+    scheduler.add_job(ranking, "interval", hours=1)
     scheduler.start()
