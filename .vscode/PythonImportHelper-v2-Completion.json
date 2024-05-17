@@ -603,6 +603,14 @@
         "documentation": {}
     },
     {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -800,6 +808,22 @@
         "description": "flask",
         "isExtraImport": true,
         "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "schedule",
+        "importPath": "schedule",
+        "description": "schedule",
+        "isExtraImport": true,
+        "detail": "schedule",
+        "documentation": {}
+    },
+    {
+        "label": "BackgroundScheduler",
+        "importPath": "apscheduler.schedulers.background",
+        "description": "apscheduler.schedulers.background",
+        "isExtraImport": true,
+        "detail": "apscheduler.schedulers.background",
         "documentation": {}
     },
     {
@@ -1430,6 +1454,15 @@
         "description": "helloworld",
         "peekOfCode": "app = Flask(__name__)\n@app.route(\"/\")\ndef hello():\n    return \"Hello World!\"",
         "detail": "helloworld",
+        "documentation": {}
+    },
+    {
+        "label": "schedule",
+        "kind": 2,
+        "importPath": "schedule",
+        "description": "schedule",
+        "peekOfCode": "def schedule(c):\n    def ranking():\n        c.send_chat_action(\"share_v2ray_file\", ChatAction.TYPING)\n        db = DB()\n        result_list = db.list()\n        users = []\n        for item in result_list:\n            if item.last_name:\n                name = item.first_name + \" \" + item.last_name\n            else:",
+        "detail": "schedule",
         "documentation": {}
     }
 ]
