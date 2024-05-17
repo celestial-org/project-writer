@@ -28,5 +28,5 @@ def schedule(c):
             c.delete_messages("share_v2ray_file", int(msg_id))
 
     scheduler = BackgroundScheduler()
-    scheduler.add_job(ranking, "interval", hours=1)
+    scheduler.add_job(ranking, "cron", hour=1)
     scheduler.start()
