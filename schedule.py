@@ -24,7 +24,10 @@ def schedule(c):
         msg = c.send_message("share_v2ray_file", text, disable_web_page_preview=True)
         if os.getenv("PRE_MESSAGE_ID"):
             msg_id = os.getenv("PRE_MESSAGE_ID")
-            c.delete_messages("share_v2ray_file", int(msg_id))
+            try:
+                c.delete_messages("share_v2ray_file", int(msg_id))
+            except:
+                pass
         os.environ["PRE_MESSAGE_ID"] = str(msg.id)
 
     scheduler = BackgroundScheduler()
