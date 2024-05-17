@@ -46,11 +46,11 @@ def get_rank(c, m):
             name = item.first_name + " " + item.last_name
         else:
             name = item.first_name
-        user = f"<a href='tg://user?id={item.user_id}'>{name}</a>"
+        user = f"<b><a href='tg://user?id={item.user_id}'>{name}</a></b>"
         exp = item.exp
         users.append((user, exp))
     ranks = ranks_prettier(users)
-    text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
+    text = ["<b>Bảng Xếp Hạng</b>", "\n".join(ranks)]
     text = "\n\n\n".join(text)
     m.reply(text, quote=True, disable_web_page_preview=True)
 
