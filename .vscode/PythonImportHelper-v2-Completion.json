@@ -827,6 +827,22 @@
         "documentation": {}
     },
     {
+        "label": "DB",
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "isExtraImport": true,
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "ranks_prettier",
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "isExtraImport": true,
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
         "label": "DatabaseNotFoundError",
         "kind": 6,
         "importPath": "database.notes",

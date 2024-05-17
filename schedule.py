@@ -1,6 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 from hydrogram.enums import ChatAction
-from .plugins.ranking.model import DB, ranks_prettier
+from plugins.ranking.model import DB, ranks_prettier
 
 
 def schedule(c):
