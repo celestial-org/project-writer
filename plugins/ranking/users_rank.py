@@ -12,7 +12,13 @@ from .model import (
 )
 
 
-@Client.on_message((filters.chat("share_v2ray_file")|(filters.chat("share_v2ray_file") & filters.me)), group=2)
+@Client.on_message(
+    (
+        filters.chat("share_v2ray_file")
+        | (filters.chat("share_v2ray_file") & filters.me)
+    ),
+    group=2,
+)
 def counter(c, m):
     if m.from_user:
         db = DB()
@@ -40,10 +46,7 @@ def get_rank(c, m):
             name = item.first_name + " " + item.last_name
         else:
             name = item.first_name
-        if item.username:
-            user = f'<a href="https://{item.username}.t.me">{name}</a>'
-        else:
-            user = f'<a href="tg://user?id={item.user_id}">{name}</a>'
+        user = f'<a href="tg://user?id={item.user_id}">{name}</a>'
         exp = item.exp
         users.append((user, exp))
     ranks = ranks_prettier(users)
@@ -96,7 +99,7 @@ def check_user_level(c, m):
         f"<b>Thứ hạng:</b> `{rank}`",
         f"<b>EXP:</b> `{exp}xp`",
         f"<b>EXP cần để đạt <i>cấp {level + 1}</i>:</b> `{needed_exp}xp`",
-        f"<b>Danh Hiệu:</b> ```\n{title}```"
+        f"<b>Danh Hiệu:</b> ```\n{title}```",
     ]
     text = "\n\n".join(text)
     m.reply(text, quote=True, disable_web_page_preview=True)
