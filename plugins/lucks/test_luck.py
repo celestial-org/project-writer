@@ -12,7 +12,7 @@ def roll_luck(c, m):
     if dice.value == 1:
         mtime = random.randint(0, 300)
         m.reply(
-            f"Chúc mừng **{m.from_user.first_name}** nhận được khoá trò chuyện `{mtime}` phút🎉",
+            f"**{m.from_user.first_name}** quá đen đủi, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.",
             quote=True,
         )
         now = datetime.now()
