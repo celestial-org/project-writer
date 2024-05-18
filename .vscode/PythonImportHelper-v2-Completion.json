@@ -291,6 +291,22 @@
         "documentation": {}
     },
     {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
         "label": "enums",
         "importPath": "hydrogram",
         "description": "hydrogram",
@@ -579,6 +595,14 @@
         "documentation": {}
     },
     {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
         "label": "ChatType",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
@@ -638,6 +662,47 @@
         "documentation": {}
     },
     {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "ChatPermissions",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -686,15 +751,6 @@
         "documentation": {}
     },
     {
-        "label": "random",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "random",
-        "description": "random",
-        "detail": "random",
-        "documentation": {}
-    },
-    {
         "label": "concurrent.futures",
         "kind": 6,
         "isExtraImport": true,
@@ -710,14 +766,6 @@
         "importPath": "base64",
         "description": "base64",
         "detail": "base64",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -1044,6 +1092,15 @@
         "description": "plugins.basic.set_proxy",
         "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"killall -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()",
         "detail": "plugins.basic.set_proxy",
+        "documentation": {}
+    },
+    {
+        "label": "roll_luck",
+        "kind": 2,
+        "importPath": "plugins.lucks.test_luck",
+        "description": "plugins.lucks.test_luck",
+        "peekOfCode": "def roll_luck(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    c.send_dice(m.chat.id)\n    rand = random.randint(0, 1000)\n    choice = random.choice([rand, rand, rand, 0000, rand, rand])\n    if choice == 0000:\n        mtime = random.randint(0, 300)\n        m.reply(\n            f\"Chúc mừng **{m.from_user.first_name}** nhận được khoá trò chuyện `{mtime}` phút🎉\",\n            quote=True,",
+        "detail": "plugins.lucks.test_luck",
         "documentation": {}
     },
     {
