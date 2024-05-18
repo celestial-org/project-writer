@@ -76,19 +76,21 @@ def ranks_prettier(user_rows):
 
 def count_exp(m, level: int):
     exp = 1
-    is_bonus = None
+    is_bonus = 0
     if m.text:
         exp = len(m.text)
         if exp == 4096:
-            exp -= 4000
+            div = random.randint(1000, 9656)
+            exp -= ((div + level) * 10) + 4096
+            is_bonus = exp
         elif exp > 4000:
-            exp -= 3000
+            exp -= (level * 2) + 4000
+            is_bonus = exp
         if m.text.startswith("/share"):
             if any(scheme in m.text for scheme in ["http://", "https://"]):
                 bonus = random.choice([1, 1, 2, 6, 8, 10, level])
                 exp += exp * bonus + level
-                if bonus > 1:
-                    is_bonus = bonus
+                is_bonus = bonus
     elif m.video or m.audio or m.document:
         exp += 500 + level
     elif m.photo:
@@ -107,8 +109,7 @@ def count_exp(m, level: int):
         )
         ranexp = random.randint(1, 1000)
         exp += ranexp * bonus + level
-        if bonus > 1:
-            is_bonus = bonus
+        is_bonus = bonus
     if m.caption:
         exp += len(m.caption)
     return exp, is_bonus

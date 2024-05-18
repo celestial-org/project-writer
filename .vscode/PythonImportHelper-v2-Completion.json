@@ -1063,7 +1063,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    is_bonus = None\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            exp -= 4000\n        elif exp > 4000:\n            exp -= 3000\n        if m.text.startswith(\"/share\"):",
+        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    is_bonus = 0\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            div = random.randint(1000, 9656)\n            exp -= ((div + level) * 10) + 4096\n            is_bonus = exp\n        elif exp > 4000:",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
