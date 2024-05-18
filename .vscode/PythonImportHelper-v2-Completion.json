@@ -1115,7 +1115,7 @@
         "kind": 2,
         "importPath": "plugins.experimental.test_game_core",
         "description": "plugins.experimental.test_game_core",
-        "peekOfCode": "def catch_all(c, m):\n    m.reply(m)",
+        "peekOfCode": "def catch_all(c, m):\n    m.reply(f\"```json\\n{m}```\")",
         "detail": "plugins.experimental.test_game_core",
         "documentation": {}
     },
