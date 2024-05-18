@@ -638,6 +638,15 @@
         "documentation": {}
     },
     {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -1054,7 +1063,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            exp -= 4000\n        elif exp > 4000:\n            exp -= 3000\n        if m.text.startswith(\"/share\"):\n            if any(scheme in m.text for scheme in [\"http://\", \"https://\"]):",
+        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    is_bonus = None\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            exp -= 4000\n        elif exp > 4000:\n            exp -= 3000\n        if m.text.startswith(\"/share\"):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
