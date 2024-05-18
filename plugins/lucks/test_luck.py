@@ -5,7 +5,7 @@ from hydrogram.enums import ChatAction
 from hydrogram.types import ChatPermissions
 
 
-@Client.on_message(filters.command("roll"))
+@Client.on_message(filters.command("luck"))
 def roll_luck(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     c.send_dice(m.chat.id)
