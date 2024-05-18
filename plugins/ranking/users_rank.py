@@ -1,4 +1,4 @@
-import os
+import time
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from .model import (
@@ -34,15 +34,18 @@ def counter(c, m):
         exp, bonus = count_exp(m, level)
         db.update(user_id, first_name, last_name, username, exp)
         if bonus > 0:
-            m.reply(
+            bm = m.reply(
                 f"**[{m.from_user.first_name}]({m.from_user.id})** vừa nhận được `x{bonus}` EXP. Tổng cộng là `{exp}xp`",
                 quote=True,
             )
         elif bonus < 0:
-            m.reply(
+            bm = m.reply(
                 f"**[{m.from_user.first_name}]({m.from_user.id})** vừa bị trừ {exp}xp` do spam",
                 quote=True,
             )
+        if bm:
+            time.sleep(30)
+            bm.delete()
 
 
 @Client.on_message(filters.command("rank"))
