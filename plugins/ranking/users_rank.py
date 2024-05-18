@@ -152,7 +152,7 @@ def check_user_level(c, m):
         f"<b>Thứ hạng hôm nay:</b> `{daily_rank}",
         f"<b>EXP:</b> `{exp}xp`",
         f"<b>EXP hôm nay:</b> {daily_exp}",
-        f"<b>EXP cần để đạt <i>cấp {level + 1}</i>:</b> `{needed_exp}xp`",
+        f"<b>EXP cho <i>cấp {level + 1}</i>:</b> `{needed_exp}xp`",
         f"<b>Danh Hiệu:</b> ```\n{title}```",
     ]
     text = "\n\n".join(text)
