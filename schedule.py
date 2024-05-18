@@ -25,7 +25,7 @@ def schedule(c):
             level = item.level
             users.append((user, exp, level))
         ranks = ranks_prettier(users)
-        text = ["<b>Các thành viên đứng đầu bảng xếp hạng trong ngày</b>", "\n\n".join(ranks)]
+        text = ["<b>Các thành viên đứng đầu bảng xếp hạng hôm nay</b>", "\n\n".join(ranks)]
         text = "\n\n\n".join(text)
         msg = c.send_message("share_v2ray_file", text, disable_web_page_preview=True)
         if os.getenv("PRE_MESSAGE_ID"):
