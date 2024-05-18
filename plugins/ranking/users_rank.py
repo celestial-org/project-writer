@@ -1,4 +1,5 @@
 import time
+import random
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from .model import DB
@@ -134,13 +135,15 @@ def check_user_level(c, m):
     level, needed_exp = get_level(exp)
     rank = get_user_rank(rows, user_id)
     daily_rank = get_user_rank(day_rows, user_id)
+    if not daily_rank:
+        daily_rank = random.randint(100, 1800)
 
     daily_info = db.daily_get(user_id)
     if daily_info:
         daily_exp = daily_info.exp
     else:
         daily_exp = 0
-        
+
     title = get_title(level)
     text = [
         f"<b>{user}</b>",
