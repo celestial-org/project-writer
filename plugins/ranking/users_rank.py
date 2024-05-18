@@ -61,7 +61,7 @@ def get_rank(c, m):
             name = item.first_name + " " + item.last_name
         else:
             name = item.first_name
-        user = f"<a href='tg://user?id={item.user_id}'>{name}</a>"
+        user = name
         exp = item.exp
         level, _ = get_level(exp)
         users.append((user, exp, level))
@@ -82,7 +82,7 @@ def get_daily_rank(c, m):
             name = item.first_name + " " + item.last_name
         else:
             name = item.first_name
-        user = f"<a href='tg://user?id={item.user_id}'>{name}</a>"
+        user = name
         exp = item.exp
         level = item.level
         users.append((user, exp, level))

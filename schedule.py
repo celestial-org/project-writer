@@ -20,12 +20,15 @@ def schedule(c):
                 name = item.first_name + " " + item.last_name
             else:
                 name = item.first_name
-            user = f"<a href='tg://user?id={item.user_id}'>{name}</a>"
+            user = f"name"
             exp = item.exp
             level = item.level
             users.append((user, exp, level))
         ranks = ranks_prettier(users)
-        text = ["<b>Các thành viên đứng đầu bảng xếp hạng hôm nay</b>", "\n\n".join(ranks)]
+        text = [
+            "<b>Các thành viên đứng đầu bảng xếp hạng hôm nay</b>",
+            "\n\n".join(ranks),
+        ]
         text = "\n\n\n".join(text)
         msg = c.send_message("share_v2ray_file", text, disable_web_page_preview=True)
         if os.getenv("PRE_MESSAGE_ID"):
