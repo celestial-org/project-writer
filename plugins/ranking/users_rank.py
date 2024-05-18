@@ -66,7 +66,7 @@ def get_rank(c, m):
         level, _ = get_level(exp)
         users.append((user, exp, level))
     ranks = ranks_prettier(users)
-    text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
+    text = ["<b>Bảng xếp hạng 20 thành viên hàng đầu</b>", "\n\n".join(ranks)]
     text = "\n\n\n".join(text)
     m.reply(text, quote=True, disable_web_page_preview=True)
 
@@ -87,7 +87,7 @@ def get_daily_rank(c, m):
         level = item.level
         users.append((user, exp, level))
     ranks = ranks_prettier(users)
-    text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
+    text = ["<b>Bảng xếp hạng hằng ngày những thành viên hàng đầu</b>", "\n\n".join(ranks)]
     text = "\n\n\n".join(text)
     m.reply(text, quote=True, disable_web_page_preview=True)
 
