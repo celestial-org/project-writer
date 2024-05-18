@@ -638,15 +638,6 @@
         "documentation": {}
     },
     {
-        "label": "random",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "random",
-        "description": "random",
-        "detail": "random",
-        "documentation": {}
-    },
-    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -692,6 +683,15 @@
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
         "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
         "documentation": {}
     },
     {
@@ -836,6 +836,30 @@
         "documentation": {}
     },
     {
+        "label": "BackgroundScheduler",
+        "importPath": "apscheduler.schedulers.background",
+        "description": "apscheduler.schedulers.background",
+        "isExtraImport": true,
+        "detail": "apscheduler.schedulers.background",
+        "documentation": {}
+    },
+    {
+        "label": "BackgroundScheduler",
+        "importPath": "apscheduler.schedulers.background",
+        "description": "apscheduler.schedulers.background",
+        "isExtraImport": true,
+        "detail": "apscheduler.schedulers.background",
+        "documentation": {}
+    },
+    {
+        "label": "CronTrigger",
+        "importPath": "apscheduler.triggers.cron",
+        "description": "apscheduler.triggers.cron",
+        "isExtraImport": true,
+        "detail": "apscheduler.triggers.cron",
+        "documentation": {}
+    },
+    {
         "label": "DB",
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
@@ -845,10 +869,10 @@
     },
     {
         "label": "ranks_prettier",
-        "importPath": "plugins.ranking.model",
-        "description": "plugins.ranking.model",
+        "importPath": "plugins.ranking.util",
+        "description": "plugins.ranking.util",
         "isExtraImport": true,
-        "detail": "plugins.ranking.model",
+        "detail": "plugins.ranking.util",
         "documentation": {}
     },
     {
@@ -1027,7 +1051,16 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DB:\n    def __init__(self):\n        db_url = os.getenv(\"MYSQL_URL\")",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(BigInteger, primary_key=True)",
+        "detail": "plugins.ranking.model",
+        "documentation": {}
+    },
+    {
+        "label": "DailyUser",
+        "kind": 6,
+        "importPath": "plugins.ranking.model",
+        "description": "plugins.ranking.model",
+        "peekOfCode": "class DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\n    level = Column(BigInteger, default=0)\nclass DB:\n    def __init__(self):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1041,56 +1074,11 @@
         "documentation": {}
     },
     {
-        "label": "get_level",
-        "kind": 2,
-        "importPath": "plugins.ranking.model",
-        "description": "plugins.ranking.model",
-        "peekOfCode": "def get_level(exp):\n    level = 0\n    require_exp = 100\n    while exp >= require_exp:\n        exp -= require_exp\n        level += 1\n        if level % 2 == 0:\n            require_exp *= 1.2\n    remaining_exp_for_next_level = require_exp - exp\n    return level, round(remaining_exp_for_next_level)",
-        "detail": "plugins.ranking.model",
-        "documentation": {}
-    },
-    {
-        "label": "ranks_prettier",
-        "kind": 2,
-        "importPath": "plugins.ranking.model",
-        "description": "plugins.ranking.model",
-        "peekOfCode": "def ranks_prettier(user_rows):\n    ranks = []\n    emojis = [\"🏆\", \"🏅\", \"🥇\", \"🥈\", \"🥉\"]\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, row in enumerate(sorted_users[:20]):\n        rank = f\"{emojis[i]}\" if i < len(emojis) else f\"{i + 1}\"\n        user_info = [\n            f\"<b>{rank}) {row[0]}</b>\",\n            f\"(Lv{get_level(row[1])[0]})\",\n        ]",
-        "detail": "plugins.ranking.model",
-        "documentation": {}
-    },
-    {
-        "label": "count_exp",
-        "kind": 2,
-        "importPath": "plugins.ranking.model",
-        "description": "plugins.ranking.model",
-        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    is_bonus = 0\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            div = random.randint(1000, 9656)\n            exp -= ((div + level) * 10) + 4096\n            is_bonus = exp\n        elif exp > 4000:",
-        "detail": "plugins.ranking.model",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_rank",
-        "kind": 2,
-        "importPath": "plugins.ranking.model",
-        "description": "plugins.ranking.model",
-        "peekOfCode": "def get_user_rank(user_rows, target_user_id):\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, (user_id, _) in enumerate(sorted_users, start=1):\n        if user_id == target_user_id:\n            return i\n    return None\ndef get_title(level):\n    if level < 20:\n        return \"Gà Mờ\"\n    elif level < 40:",
-        "detail": "plugins.ranking.model",
-        "documentation": {}
-    },
-    {
-        "label": "get_title",
-        "kind": 2,
-        "importPath": "plugins.ranking.model",
-        "description": "plugins.ranking.model",
-        "peekOfCode": "def get_title(level):\n    if level < 20:\n        return \"Gà Mờ\"\n    elif level < 40:\n        return \"Nghiệp Dư\"\n    elif level < 60:\n        return \"Thành Thạo\"\n    elif level < 80:\n        return \"Bán Chuyên\"\n    elif level < 101:",
-        "detail": "plugins.ranking.model",
-        "documentation": {}
-    },
-    {
         "label": "Base",
         "kind": 5,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DB:\n    def __init__(self):",
+        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1113,12 +1101,66 @@
         "documentation": {}
     },
     {
+        "label": "get_daily_rank",
+        "kind": 2,
+        "importPath": "plugins.ranking.users_rank",
+        "description": "plugins.ranking.users_rank",
+        "peekOfCode": "def get_daily_rank(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = DB()\n    result_list = db.daily_list()\n    users = []\n    for item in result_list:\n        if item.last_name:\n            name = item.first_name + \" \" + item.last_name\n        else:\n            name = item.first_name",
+        "detail": "plugins.ranking.users_rank",
+        "documentation": {}
+    },
+    {
         "label": "check_user_level",
         "kind": 2,
         "importPath": "plugins.ranking.users_rank",
         "description": "plugins.ranking.users_rank",
         "peekOfCode": "def check_user_level(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = DB()\n    if m.reply_to_message:\n        if m.reply_to_message.from_user:\n            user_id = m.reply_to_message.from_user.id\n    elif len(m.command) > 1:\n        username = m.command[1]\n        try:\n            user_id = c.get_users(username).id",
         "detail": "plugins.ranking.users_rank",
+        "documentation": {}
+    },
+    {
+        "label": "get_level",
+        "kind": 2,
+        "importPath": "plugins.ranking.util",
+        "description": "plugins.ranking.util",
+        "peekOfCode": "def get_level(exp):\n    level = 0\n    require_exp = 100\n    while exp >= require_exp:\n        exp -= require_exp\n        level += 1\n        if level % 2 == 0:\n            require_exp *= 1.2\n    remaining_exp_for_next_level = require_exp - exp\n    return level, round(remaining_exp_for_next_level)",
+        "detail": "plugins.ranking.util",
+        "documentation": {}
+    },
+    {
+        "label": "ranks_prettier",
+        "kind": 2,
+        "importPath": "plugins.ranking.util",
+        "description": "plugins.ranking.util",
+        "peekOfCode": "def ranks_prettier(user_rows):\n    ranks = []\n    emojis = [\"🏆\", \"🏅\", \"🥇\", \"🥈\", \"🥉\"]\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, row in enumerate(sorted_users[:20]):\n        rank = f\"{emojis[i]}\" if i < len(emojis) else f\"{i + 1}\"\n        user_info = [\n            f\"<b>{rank}) {row[0]}</b>\",\n            f\"(Lv{row[2]})\",\n        ]",
+        "detail": "plugins.ranking.util",
+        "documentation": {}
+    },
+    {
+        "label": "count_exp",
+        "kind": 2,
+        "importPath": "plugins.ranking.util",
+        "description": "plugins.ranking.util",
+        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    is_bonus = 0\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            div = random.randint(1000, 9656)\n            exp -= ((div + level) * 10) + 4096\n            is_bonus = exp\n        elif exp > 4000:",
+        "detail": "plugins.ranking.util",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_rank",
+        "kind": 2,
+        "importPath": "plugins.ranking.util",
+        "description": "plugins.ranking.util",
+        "peekOfCode": "def get_user_rank(user_rows, target_user_id):\n    sorted_users = sorted(user_rows, key=lambda x: x[1], reverse=True)\n    for i, (user_id, _) in enumerate(sorted_users, start=1):\n        if user_id == target_user_id:\n            return i\n    return None\ndef get_title(level):\n    if level < 20:\n        return \"Gà Mờ\"\n    elif level < 40:",
+        "detail": "plugins.ranking.util",
+        "documentation": {}
+    },
+    {
+        "label": "get_title",
+        "kind": 2,
+        "importPath": "plugins.ranking.util",
+        "description": "plugins.ranking.util",
+        "peekOfCode": "def get_title(level):\n    if level < 20:\n        return \"Gà Mờ\"\n    elif level < 40:\n        return \"Nghiệp Dư\"\n    elif level < 60:\n        return \"Thành Thạo\"\n    elif level < 80:\n        return \"Bán Chuyên\"\n    elif level < 101:",
+        "detail": "plugins.ranking.util",
         "documentation": {}
     },
     {
@@ -1486,7 +1528,7 @@
         "kind": 2,
         "importPath": "schedule",
         "description": "schedule",
-        "peekOfCode": "def schedule(c):\n    def ranking():\n        c.send_chat_action(\"share_v2ray_file\", ChatAction.TYPING)\n        db = DB()\n        result_list = db.list()\n        users = []\n        for item in result_list:\n            if item.last_name:\n                name = item.first_name + \" \" + item.last_name\n            else:",
+        "peekOfCode": "def schedule(c):\n    def ranking():\n        c.send_chat_action(\"share_v2ray_file\", ChatAction.TYPING)\n        db = DB()\n        result_list = db.daily_list()\n        users = []\n        for item in result_list:\n            if item.last_name:\n                name = item.first_name + \" \" + item.last_name\n            else:",
         "detail": "schedule",
         "documentation": {}
     }

@@ -1,14 +1,19 @@
 import os
+import pytz
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 from hydrogram.enums import ChatAction
-from plugins.ranking.model import DB, ranks_prettier
+from plugins.ranking.model import DB
+from plugins.ranking.util import ranks_prettier
 
 
 def schedule(c):
     def ranking():
         c.send_chat_action("share_v2ray_file", ChatAction.TYPING)
         db = DB()
-        result_list = db.list()
+        result_list = db.daily_list()
         users = []
         for item in result_list:
             if item.last_name:
@@ -17,7 +22,8 @@ def schedule(c):
                 name = item.first_name
             user = f"<a href='tg://user?id={item.user_id}'>{name}</a>"
             exp = item.exp
-            users.append((user, exp))
+            level = item.level
+            users.append((user, exp, level))
         ranks = ranks_prettier(users)
         text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
         text = "\n\n\n".join(text)
@@ -30,6 +36,15 @@ def schedule(c):
                 pass
         os.environ["PRE_MESSAGE_ID"] = str(msg.id)
 
+    def reset_rank():
+        db = DB()
+        db.reset_daily()
+
+    vietnam_tz = pytz.timezone("Asia/Ho_Chi_Minh")
+
     scheduler = BackgroundScheduler()
+
     scheduler.add_job(ranking, "interval", minutes=30)
+
+    scheduler.add_job(reset_rank, CronTrigger(hour=0, minute=0, timezone=vietnam_tz))
     scheduler.start()

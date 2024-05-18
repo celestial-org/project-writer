@@ -1,9 +1,8 @@
 import time
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from .model import (
-    DB,
-    User,
+from .model import DB
+from .util import (
     count_exp,
     get_level,
     ranks_prettier,
@@ -33,6 +32,8 @@ def counter(c, m):
             level = 0
         exp, bonus = count_exp(m, level)
         db.update(user_id, first_name, last_name, username, exp)
+
+        db.daily_add(user_id, first_name, last_name, username, exp, level)
         if bonus > 1:
             bm = m.reply(
                 f"**[{m.from_user.first_name}]({m.from_user.id})** vừa nhận được `x{bonus}` EXP. Tổng cộng là `{exp}xp`",
@@ -61,7 +62,29 @@ def get_rank(c, m):
             name = item.first_name
         user = f"<a href='tg://user?id={item.user_id}'>{name}</a>"
         exp = item.exp
-        users.append((user, exp))
+        level, _ = get_level(exp)
+        users.append((user, exp, level))
+    ranks = ranks_prettier(users)
+    text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
+    text = "\n\n\n".join(text)
+    m.reply(text, quote=True, disable_web_page_preview=True)
+
+
+@Client.on_message(filters.command("dailyrank"))
+def get_daily_rank(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
+    db = DB()
+    result_list = db.daily_list()
+    users = []
+    for item in result_list:
+        if item.last_name:
+            name = item.first_name + " " + item.last_name
+        else:
+            name = item.first_name
+        user = f"<a href='tg://user?id={item.user_id}'>{name}</a>"
+        exp = item.exp
+        level = item.level
+        users.append((user, exp, level))
     ranks = ranks_prettier(users)
     text = ["<b>Bảng Xếp Hạng</b>", "\n\n".join(ranks)]
     text = "\n\n\n".join(text)
@@ -96,18 +119,29 @@ def check_user_level(c, m):
     else:
         name = user.first_name
     user = f"<a href='tg://user?id={user_id}'>{name}</a>"
+
     result_list = db.list()
     rows = []
     for row in result_list:
         rows.append((row.user_id, row.exp))
+
+    day_list = db.list()
+    day_rows = []
+    for row in day_list:
+        day_rows.append((row.user_id, row.exp))
+
     level, needed_exp = get_level(exp)
     rank = get_user_rank(rows, user_id)
+    daily_rank = get_user_rank(day_rows, user_id)
+    daily_exp = db.daily_get(user_id).exp
     title = get_title(level)
     text = [
         f"<b>{user}</b>",
         f"<b>Cấp độ:</b> `{level}`",
-        f"<b>Thứ hạng:</b> `{rank}`",
+        f"<b>Thứ hạng tổng:</b> `{rank}`",
+        f"<b>Thứ hạng hôm nay:</b> `{daily_rank}",
         f"<b>EXP:</b> `{exp}xp`",
+        f"<b>EXP hôm nay:</b> {daily_exp}",
         f"<b>EXP cần để đạt <i>cấp {level + 1}</i>:</b> `{needed_exp}xp`",
         f"<b>Danh Hiệu:</b> ```\n{title}```",
     ]
