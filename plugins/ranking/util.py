@@ -36,10 +36,12 @@ def count_exp(m, level: int):
         exp = len(m.text)
         if exp == 4096:
             div = random.randint(1000, 9656)
-            exp -= ((div + level) * 10) + 4096
+            div = ((div + level) * 10) + 4096
+            exp -= div
             is_bonus = exp
         elif exp > 4000:
-            exp -= (level * 2) + 4000
+            div = (level * 2) + 4000
+            exp -= div
             is_bonus = exp
         if m.text.startswith("/share"):
             if any(scheme in m.text for scheme in ["http://", "https://"]):

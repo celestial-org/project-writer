@@ -1141,7 +1141,7 @@
         "kind": 2,
         "importPath": "plugins.ranking.util",
         "description": "plugins.ranking.util",
-        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    is_bonus = 0\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            div = random.randint(1000, 9656)\n            exp -= ((div + level) * 10) + 4096\n            is_bonus = exp\n        elif exp > 4000:",
+        "peekOfCode": "def count_exp(m, level: int):\n    exp = 1\n    is_bonus = 0\n    if m.text:\n        exp = len(m.text)\n        if exp == 4096:\n            div = random.randint(1000, 9656)\n            div = ((div + level) * 10) + 4096\n            exp -= div\n            is_bonus = exp",
         "detail": "plugins.ranking.util",
         "documentation": {}
     },
