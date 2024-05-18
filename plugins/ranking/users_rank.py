@@ -136,7 +136,7 @@ def check_user_level(c, m):
     rank = get_user_rank(rows, user_id)
     daily_rank = get_user_rank(day_rows, user_id)
     if not daily_rank:
-        daily_rank = random.randint(100, 1800)
+        daily_rank = random.randint(1000, 1800)
 
     daily_info = db.daily_get(user_id)
     if daily_info:
