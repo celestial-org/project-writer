@@ -66,7 +66,7 @@ class DB:
         user = self.session.query(DailyUser).filter_by(user_id=user_id).first()
         if user:
             exp = exp + user.exp
-        user = User(
+        user = DailyUser(
             user_id=user_id,
             first_name=first_name,
             last_name=last_name,
