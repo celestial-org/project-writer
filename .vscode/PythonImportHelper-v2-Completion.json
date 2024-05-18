@@ -307,6 +307,22 @@
         "documentation": {}
     },
     {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
         "label": "enums",
         "importPath": "hydrogram",
         "description": "hydrogram",
@@ -1095,11 +1111,20 @@
         "documentation": {}
     },
     {
+        "label": "catch_all",
+        "kind": 2,
+        "importPath": "plugins.experimental.test_game_core",
+        "description": "plugins.experimental.test_game_core",
+        "peekOfCode": "def catch_all(c, m):\n    m.reply(m)",
+        "detail": "plugins.experimental.test_game_core",
+        "documentation": {}
+    },
+    {
         "label": "roll_luck",
         "kind": 2,
         "importPath": "plugins.lucks.test_luck",
         "description": "plugins.lucks.test_luck",
-        "peekOfCode": "def roll_luck(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    c.send_dice(m.chat.id)\n    rand = random.randint(0, 1000)\n    choice = random.choice([rand, rand, rand, 0000, rand, rand])\n    if choice == 0000:\n        mtime = random.randint(0, 300)\n        m.reply(\n            f\"Chúc mừng **{m.from_user.first_name}** nhận được khoá trò chuyện `{mtime}` phút🎉\",\n            quote=True,",
+        "peekOfCode": "def roll_luck(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    dice = m.dice\n    if dice.value == 1:\n        mtime = random.randint(0, 300)\n        m.reply(\n            f\"**{m.from_user.first_name}** quá đen đủi, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.\",\n            quote=True,\n        )\n        now = datetime.now()",
         "detail": "plugins.lucks.test_luck",
         "documentation": {}
     },
