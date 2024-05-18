@@ -127,13 +127,20 @@ def check_user_level(c, m):
 
     day_list = db.list()
     day_rows = []
-    for row in day_list:
-        day_rows.append((row.user_id, row.exp))
+    if day_list:
+        for row in day_list:
+            day_rows.append((row.user_id, row.exp))
 
     level, needed_exp = get_level(exp)
     rank = get_user_rank(rows, user_id)
     daily_rank = get_user_rank(day_rows, user_id)
-    daily_exp = db.daily_get(user_id).exp
+
+    daily_info = db.daily_get(user_id)
+    if daily_info:
+        daily_exp = daily_info.exp
+    else:
+        daily_exp = 0
+        
     title = get_title(level)
     text = [
         f"<b>{user}</b>",
