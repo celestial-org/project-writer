@@ -126,7 +126,7 @@ def check_user_level(c, m):
     for row in result_list:
         rows.append((row.user_id, row.exp))
 
-    day_list = db.list()
+    day_list = db.daily_list()
     day_rows = []
     if day_list:
         for row in day_list:
