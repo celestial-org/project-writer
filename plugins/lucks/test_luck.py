@@ -28,6 +28,3 @@ def roll_luck(c, m):
             f"Chúc mừng **{m.from_user.first_name}** nhận được `{choice}` điểm may mắn🎉",
             quote=True,
         )
-
-
-b
