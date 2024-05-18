@@ -5,13 +5,11 @@ from hydrogram.enums import ChatAction
 from hydrogram.types import ChatPermissions
 
 
-@Client.on_message(filters.command("luck"))
+@Client.on_message(filters.dice)
 def roll_luck(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    c.send_dice(m.chat.id)
-    rand = random.randint(0, 1000)
-    choice = random.choice([rand, rand, rand, 0000, rand, rand])
-    if choice == 0000:
+    dice = m.dice
+    if dice.value == 1:
         mtime = random.randint(0, 300)
         m.reply(
             f"Chúc mừng **{m.from_user.first_name}** nhận được khoá trò chuyện `{mtime}` phút🎉",
@@ -25,6 +23,6 @@ def roll_luck(c, m):
         )
     else:
         m.reply(
-            f"Chúc mừng **{m.from_user.first_name}** nhận được `{choice}` điểm may mắn🎉",
+            f"Chúc mừng **{m.from_user.first_name}** nhận được `{dice.value}` điểm🎉",
             quote=True,
         )
