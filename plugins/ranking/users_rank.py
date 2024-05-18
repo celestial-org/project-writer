@@ -33,7 +33,7 @@ def counter(c, m):
             level = 0
         exp, bonus = count_exp(m, level)
         db.update(user_id, first_name, last_name, username, exp)
-        if bonus > 0:
+        if bonus > 1:
             bm = m.reply(
                 f"**[{m.from_user.first_name}]({m.from_user.id})** vừa nhận được `x{bonus}` EXP. Tổng cộng là `{exp}xp`",
                 quote=True,
