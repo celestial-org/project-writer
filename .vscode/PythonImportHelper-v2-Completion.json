@@ -1115,7 +1115,7 @@
         "kind": 2,
         "importPath": "plugins.dice.test_luck",
         "description": "plugins.dice.test_luck",
-        "peekOfCode": "def punish(m):\n    mtime = random.randint(0, 300)\n    m.reply(\n        f\"**{m.from_user.first_name}** nhận được `{m.dice.values}` điểm, quá đen đủi cho một con người, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.\",\n        quote=True,\n    )\n    now = datetime.now()\n    delta = timedelta(minutes=mtime)\n    targ = now + delta\n    m.chat.restrict_member(",
+        "peekOfCode": "def punish(m):\n    mtime = random.randint(0, 300)\n    m.reply(\n        f\"**{m.from_user.first_name}** nhận được `{m.dice.value}` điểm, quá đen đủi cho một con người, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.\",\n        quote=True,\n    )\n    now = datetime.now()\n    delta = timedelta(minutes=mtime)\n    targ = now + delta\n    m.chat.restrict_member(",
         "detail": "plugins.dice.test_luck",
         "documentation": {}
     },

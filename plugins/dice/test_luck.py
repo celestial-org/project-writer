@@ -8,7 +8,7 @@ from hydrogram.types import ChatPermissions
 def punish(m):
     mtime = random.randint(0, 300)
     m.reply(
-        f"**{m.from_user.first_name}** nhận được `{m.dice.values}` điểm, quá đen đủi cho một con người, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.",
+        f"**{m.from_user.first_name}** nhận được `{m.dice.value}` điểm, quá đen đủi cho một con người, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.",
         quote=True,
     )
     now = datetime.now()
