@@ -11,3 +11,4 @@ TgCrypto==1.2.5
 pymysql
 sqlalchemy
 apscheduler
+black==24.4.2
