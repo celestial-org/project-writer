@@ -1111,21 +1111,30 @@
         "documentation": {}
     },
     {
-        "label": "catch_all",
+        "label": "punish",
         "kind": 2,
-        "importPath": "plugins.experimental.test_game_core",
-        "description": "plugins.experimental.test_game_core",
-        "peekOfCode": "def catch_all(c, m):\n    m.reply(f\"```json\\n{m}```\")",
-        "detail": "plugins.experimental.test_game_core",
+        "importPath": "plugins.dice.test_luck",
+        "description": "plugins.dice.test_luck",
+        "peekOfCode": "def punish(m):\n    mtime = random.randint(0, 300)\n    m.reply(\n        f\"**{m.from_user.first_name}** nhận được `{m.dice.values}` điểm, quá đen đủi cho một con người, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.\",\n        quote=True,\n    )\n    now = datetime.now()\n    delta = timedelta(minutes=mtime)\n    targ = now + delta\n    m.chat.restrict_member(",
+        "detail": "plugins.dice.test_luck",
         "documentation": {}
     },
     {
-        "label": "roll_luck",
+        "label": "roll_dice",
         "kind": 2,
-        "importPath": "plugins.lucks.test_luck",
-        "description": "plugins.lucks.test_luck",
-        "peekOfCode": "def roll_luck(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    dice = m.dice\n    if dice.value == 1:\n        mtime = random.randint(0, 300)\n        m.reply(\n            f\"**{m.from_user.first_name}** quá đen đủi, hãy dành `{mtime}` phút để suy nghĩ lại về cuộc đời.\",\n            quote=True,\n        )\n        now = datetime.now()",
-        "detail": "plugins.lucks.test_luck",
+        "importPath": "plugins.dice.test_luck",
+        "description": "plugins.dice.test_luck",
+        "peekOfCode": "def roll_dice(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    dice = m.dice\n    if dice.emoji == \"🎰\":\n        if dice.value > 19:\n            m.reply(\n                f\"Chúc mừng **{m.from_user.first_name}** nhận được `{dice.value}` điểm🎉\",\n                quote=True,\n            )\n        else:",
+        "detail": "plugins.dice.test_luck",
+        "documentation": {}
+    },
+    {
+        "label": "catch_all",
+        "kind": 2,
+        "importPath": "plugins.experimental.debug_group",
+        "description": "plugins.experimental.debug_group",
+        "peekOfCode": "def catch_all(c, m):\n    m.reply(f\"```json\\n{m}```\")",
+        "detail": "plugins.experimental.debug_group",
         "documentation": {}
     },
     {
