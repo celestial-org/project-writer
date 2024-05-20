@@ -24,7 +24,7 @@ class Type6(Base):
 
 
 class Type5(Base):
-    __tablename__ = "type6"
+    __tablename__ = "type5"
     user_id = Column(Integer, primary_key=True)
     first_name = Column(String)
     last_name = Column(String, nullable=True)

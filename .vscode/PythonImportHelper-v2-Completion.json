@@ -1172,7 +1172,7 @@
         "kind": 6,
         "importPath": "plugins.dice.model",
         "description": "plugins.dice.model",
-        "peekOfCode": "class Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type5(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)",
+        "peekOfCode": "class Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type5(Base):\n    __tablename__ = \"type5\"\n    user_id = Column(Integer, primary_key=True)",
         "detail": "plugins.dice.model",
         "documentation": {}
     },
@@ -1181,7 +1181,7 @@
         "kind": 6,
         "importPath": "plugins.dice.model",
         "description": "plugins.dice.model",
-        "peekOfCode": "class Type5(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Database:\n    def __init__(self):\n        db_url = os.getenv(\"NEON_URL\")",
+        "peekOfCode": "class Type5(Base):\n    __tablename__ = \"type5\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Database:\n    def __init__(self):\n        db_url = os.getenv(\"NEON_URL\")",
         "detail": "plugins.dice.model",
         "documentation": {}
     },
