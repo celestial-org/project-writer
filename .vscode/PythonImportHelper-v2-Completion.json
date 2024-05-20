@@ -678,44 +678,35 @@
         "documentation": {}
     },
     {
-        "label": "random",
-        "kind": 6,
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "importPath": "random",
-        "description": "random",
-        "detail": "random",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "ChatPermissions",
-        "importPath": "hydrogram.types",
-        "description": "hydrogram.types",
-        "isExtraImport": true,
-        "detail": "hydrogram.types",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
@@ -764,6 +755,63 @@
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
         "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "ChatPermissions",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
         "documentation": {}
     },
     {
@@ -1111,6 +1159,51 @@
         "documentation": {}
     },
     {
+        "label": "Type64",
+        "kind": 6,
+        "importPath": "plugins.dice.model",
+        "description": "plugins.dice.model",
+        "peekOfCode": "class Type64(Base):\n    __tablename__ = \"type64\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)",
+        "detail": "plugins.dice.model",
+        "documentation": {}
+    },
+    {
+        "label": "Type6",
+        "kind": 6,
+        "importPath": "plugins.dice.model",
+        "description": "plugins.dice.model",
+        "peekOfCode": "class Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type5(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)",
+        "detail": "plugins.dice.model",
+        "documentation": {}
+    },
+    {
+        "label": "Type5",
+        "kind": 6,
+        "importPath": "plugins.dice.model",
+        "description": "plugins.dice.model",
+        "peekOfCode": "class Type5(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Database:\n    def __init__(self):\n        db_url = os.getenv(\"NEON_URL\")",
+        "detail": "plugins.dice.model",
+        "documentation": {}
+    },
+    {
+        "label": "Database",
+        "kind": 6,
+        "importPath": "plugins.dice.model",
+        "description": "plugins.dice.model",
+        "peekOfCode": "class Database:\n    def __init__(self):\n        db_url = os.getenv(\"NEON_URL\")\n        self.engine = create_engine(db_url)\n        Base.metadata.create_all(self.engine)\n        Session = sessionmaker(bind=self.engine)\n        self.session = Session()\n    def update(\n        self,\n        user_id: int,",
+        "detail": "plugins.dice.model",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "plugins.dice.model",
+        "description": "plugins.dice.model",
+        "peekOfCode": "Base = declarative_base()\nclass Type64(Base):\n    __tablename__ = \"type64\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type6(Base):\n    __tablename__ = \"type6\"",
+        "detail": "plugins.dice.model",
+        "documentation": {}
+    },
+    {
         "label": "punish",
         "kind": 2,
         "importPath": "plugins.dice.test_luck",
@@ -1120,11 +1213,20 @@
         "documentation": {}
     },
     {
+        "label": "already",
+        "kind": 2,
+        "importPath": "plugins.dice.test_luck",
+        "description": "plugins.dice.test_luck",
+        "peekOfCode": "def already(m, point):\n    temp = m.reply(\n        f\"Hôm nay bạn đã thử vận may với cái này rồi, không thể thực hiện lại nữa, hãy chờ ngày mai hoặc thử cái khác.\\n\\nĐiểm của bạn là  **{point}**\",\n        quote=True,\n    )\n    time.sleep(10)\n    temp.delete()\n    m.delete()\n@Client.on_message(filters.dice)\ndef roll_dice(c, m):",
+        "detail": "plugins.dice.test_luck",
+        "documentation": {}
+    },
+    {
         "label": "roll_dice",
         "kind": 2,
         "importPath": "plugins.dice.test_luck",
         "description": "plugins.dice.test_luck",
-        "peekOfCode": "def roll_dice(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    dice = m.dice\n    if dice.emoji == \"🎰\":\n        if dice.value > 59:\n            m.reply(\n                f\"Chúc mừng **{m.from_user.first_name}** nhận được `{dice.value}` điểm. Hôm nay bạn thật may mắn🎉\",\n                quote=True,\n            )\n        elif dice.value > 19:",
+        "peekOfCode": "def roll_dice(c, m):\n    db = Database()\n    m.reply_chat_action(ChatAction.TYPING)\n    dice = m.dice\n    if dice.emoji == \"🎰\":\n        MODEL = 64\n        user = db.get(m.from_user.id, MODEL)\n        if user:\n            return already(m, user.point)\n        if dice.value > 59:",
         "detail": "plugins.dice.test_luck",
         "documentation": {}
     },
