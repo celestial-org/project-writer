@@ -694,7 +694,7 @@
         "documentation": {}
     },
     {
-        "label": "Integer",
+        "label": "BigInteger",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -726,7 +726,7 @@
         "documentation": {}
     },
     {
-        "label": "Integer",
+        "label": "BigInteger",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -1171,7 +1171,7 @@
         "kind": 6,
         "importPath": "plugins.dice.model",
         "description": "plugins.dice.model",
-        "peekOfCode": "class Type64(Base):\n    __tablename__ = \"type64\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)",
+        "peekOfCode": "class Type64(Base):\n    __tablename__ = \"type64\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(BigInteger, default=0)\nclass Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(BigInteger, primary_key=True)",
         "detail": "plugins.dice.model",
         "documentation": {}
     },
@@ -1180,7 +1180,7 @@
         "kind": 6,
         "importPath": "plugins.dice.model",
         "description": "plugins.dice.model",
-        "peekOfCode": "class Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type5(Base):\n    __tablename__ = \"type5\"\n    user_id = Column(Integer, primary_key=True)",
+        "peekOfCode": "class Type6(Base):\n    __tablename__ = \"type6\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(BigInteger, default=0)\nclass Type5(Base):\n    __tablename__ = \"type5\"\n    user_id = Column(BigInteger, primary_key=True)",
         "detail": "plugins.dice.model",
         "documentation": {}
     },
@@ -1189,7 +1189,7 @@
         "kind": 6,
         "importPath": "plugins.dice.model",
         "description": "plugins.dice.model",
-        "peekOfCode": "class Type5(Base):\n    __tablename__ = \"type5\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Database:\n    def __init__(self):\n        db_url = os.getenv(\"NEON_URL\")",
+        "peekOfCode": "class Type5(Base):\n    __tablename__ = \"type5\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(BigInteger, default=0)\nclass Database:\n    def __init__(self):\n        db_url = os.getenv(\"NEON_URL\")",
         "detail": "plugins.dice.model",
         "documentation": {}
     },
@@ -1207,7 +1207,7 @@
         "kind": 5,
         "importPath": "plugins.dice.model",
         "description": "plugins.dice.model",
-        "peekOfCode": "Base = declarative_base()\nclass Type64(Base):\n    __tablename__ = \"type64\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(Integer, default=0)\nclass Type6(Base):\n    __tablename__ = \"type6\"",
+        "peekOfCode": "Base = declarative_base()\nclass Type64(Base):\n    __tablename__ = \"type64\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    point = Column(BigInteger, default=0)\nclass Type6(Base):\n    __tablename__ = \"type6\"",
         "detail": "plugins.dice.model",
         "documentation": {}
     },
@@ -1252,7 +1252,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(Integer, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(Integer, primary_key=True)",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(BigInteger, primary_key=True)",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1261,7 +1261,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(Integer, default=0)\n    level = Column(Integer, default=0)\nclass DB:\n    def __init__(self):",
+        "peekOfCode": "class DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(BigInteger, default=0)\n    level = Column(BigInteger, default=0)\nclass DB:\n    def __init__(self):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1279,7 +1279,7 @@
         "kind": 5,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(Integer, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"",
+        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },

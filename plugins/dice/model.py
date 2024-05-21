@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, BigInteger, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
@@ -7,29 +7,29 @@ Base = declarative_base()
 
 class Type64(Base):
     __tablename__ = "type64"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     first_name = Column(String)
     last_name = Column(String, nullable=True)
     username = Column(String, nullable=True)
-    point = Column(Integer, default=0)
+    point = Column(BigInteger, default=0)
 
 
 class Type6(Base):
     __tablename__ = "type6"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     first_name = Column(String)
     last_name = Column(String, nullable=True)
     username = Column(String, nullable=True)
-    point = Column(Integer, default=0)
+    point = Column(BigInteger, default=0)
 
 
 class Type5(Base):
     __tablename__ = "type5"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     first_name = Column(String)
     last_name = Column(String, nullable=True)
     username = Column(String, nullable=True)
-    point = Column(Integer, default=0)
+    point = Column(BigInteger, default=0)
 
 
 class Database:
