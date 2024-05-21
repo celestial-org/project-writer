@@ -7,6 +7,7 @@ from apscheduler.triggers.cron import CronTrigger
 from hydrogram.enums import ChatAction
 from plugins.ranking.model import DB
 from plugins.ranking.util import ranks_prettier
+from plugins.dice.model import Database
 
 
 def schedule(c):
@@ -42,6 +43,8 @@ def schedule(c):
     def reset_rank():
         db = DB()
         db.reset_daily()
+        db = Database()
+        db.reset()
 
     vietnam_tz = pytz.timezone("Asia/Ho_Chi_Minh")
 

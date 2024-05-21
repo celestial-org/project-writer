@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import create_engine, Column, BigInteger, String
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
@@ -7,26 +7,26 @@ Base = declarative_base()
 
 class User(Base):
     __tablename__ = "rank"
-    user_id = Column(BigInteger, primary_key=True)
-    first_name = Column(String(500))
-    last_name = Column(String(500), nullable=True)
-    username = Column(String(500), nullable=True)
-    exp = Column(BigInteger, default=0)
+    user_id = Column(Integer, primary_key=True)
+    first_name = Column(String)
+    last_name = Column(String, nullable=True)
+    username = Column(String, nullable=True)
+    exp = Column(Integer, default=0)
 
 
 class DailyUser(Base):
     __tablename__ = "dailyrank"
-    user_id = Column(BigInteger, primary_key=True)
-    first_name = Column(String(500))
-    last_name = Column(String(500), nullable=True)
-    username = Column(String(500), nullable=True)
-    exp = Column(BigInteger, default=0)
-    level = Column(BigInteger, default=0)
+    user_id = Column(Integer, primary_key=True)
+    first_name = Column(String)
+    last_name = Column(String, nullable=True)
+    username = Column(String, nullable=True)
+    exp = Column(Integer, default=0)
+    level = Column(Integer, default=0)
 
 
 class DB:
     def __init__(self):
-        db_url = os.getenv("MYSQL_URL")
+        db_url = os.getenv("NEON_URL")
         self.engine = create_engine(db_url)
         Base.metadata.create_all(self.engine)
         Session = sessionmaker(bind=self.engine)

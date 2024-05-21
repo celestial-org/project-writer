@@ -726,7 +726,7 @@
         "documentation": {}
     },
     {
-        "label": "BigInteger",
+        "label": "Integer",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
@@ -988,6 +988,14 @@
         "documentation": {}
     },
     {
+        "label": "Database",
+        "importPath": "plugins.dice.model",
+        "description": "plugins.dice.model",
+        "isExtraImport": true,
+        "detail": "plugins.dice.model",
+        "documentation": {}
+    },
+    {
         "label": "DatabaseNotFoundError",
         "kind": 6,
         "importPath": "database.notes",
@@ -1244,7 +1252,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(BigInteger, primary_key=True)",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(Integer, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(Integer, primary_key=True)",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1253,7 +1261,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\n    level = Column(BigInteger, default=0)\nclass DB:\n    def __init__(self):",
+        "peekOfCode": "class DailyUser(Base):\n    __tablename__ = \"dailyrank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(Integer, default=0)\n    level = Column(Integer, default=0)\nclass DB:\n    def __init__(self):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1262,7 +1270,7 @@
         "kind": 6,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "class DB:\n    def __init__(self):\n        db_url = os.getenv(\"MYSQL_URL\")\n        self.engine = create_engine(db_url)\n        Base.metadata.create_all(self.engine)\n        Session = sessionmaker(bind=self.engine)\n        self.session = Session()\n    def update(\n        self, user_id: int, first_name: str, last_name: str, username: str, exp: int\n    ):",
+        "peekOfCode": "class DB:\n    def __init__(self):\n        db_url = os.getenv(\"NEON_URL\")\n        self.engine = create_engine(db_url)\n        Base.metadata.create_all(self.engine)\n        Session = sessionmaker(bind=self.engine)\n        self.session = Session()\n    def update(\n        self, user_id: int, first_name: str, last_name: str, username: str, exp: int\n    ):",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
@@ -1271,7 +1279,7 @@
         "kind": 5,
         "importPath": "plugins.ranking.model",
         "description": "plugins.ranking.model",
-        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(BigInteger, primary_key=True)\n    first_name = Column(String(500))\n    last_name = Column(String(500), nullable=True)\n    username = Column(String(500), nullable=True)\n    exp = Column(BigInteger, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"",
+        "peekOfCode": "Base = declarative_base()\nclass User(Base):\n    __tablename__ = \"rank\"\n    user_id = Column(Integer, primary_key=True)\n    first_name = Column(String)\n    last_name = Column(String, nullable=True)\n    username = Column(String, nullable=True)\n    exp = Column(Integer, default=0)\nclass DailyUser(Base):\n    __tablename__ = \"dailyrank\"",
         "detail": "plugins.ranking.model",
         "documentation": {}
     },
