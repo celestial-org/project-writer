@@ -50,23 +50,33 @@ class Database:
         model: int,
     ):
         if model == 64:
-            MODEL = Type64
+            user = Type64(
+                user_id=user_id,
+                first_name=first_name,
+                last_name=last_name,
+                username=username,
+                point=point,
+            )
         elif model == 6:
-            MODEL = Type6
+            user = Type6(
+                user_id=user_id,
+                first_name=first_name,
+                last_name=last_name,
+                username=username,
+                point=point,
+            )
         else:
-            MODEL = Type5
-
-        user = MODEL(
-            user_id=user_id,
-            first_name=first_name,
-            last_name=last_name,
-            username=username,
-            point=point,
-        )
+            user = Type5(
+                user_id=user_id,
+                first_name=first_name,
+                last_name=last_name,
+                username=username,
+                point=point,
+            )
         self.session.merge(user)
         self.session.commit()
 
-    def get(self, user_id: int, model: int) -> bool:
+    def get(self, user_id: int, model: int) -> Type64 | Type6 | Type5 | None:
         if model == 64:
             MODEL = Type64
         elif model == 6:
