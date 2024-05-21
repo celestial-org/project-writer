@@ -21,7 +21,7 @@ def schedule(c):
                 name = item.first_name + " " + item.last_name
             else:
                 name = item.first_name
-            user = f"name"
+            user = name
             exp = item.exp
             level = item.level
             users.append((user, exp, level))
