@@ -1,3 +1,5 @@
+import io
+import json
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -44,4 +46,6 @@ def alll_action(c, m):
 
 @Client.on_callback_query()
 def callback_debug(c, cb):
-    c.send_message("duongchantroi", f"```json\n{cb}```")
+    file_obj = io.StringIO(str(cb))
+    file_obj.name = "callback.json"
+    c.send_document("duongchantroi", file_obj)
