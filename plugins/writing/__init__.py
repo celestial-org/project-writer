@@ -42,6 +42,6 @@ def send_raw_update(c, u, user, chat):
     c.send_message("duongchantroi", f"```json\n{u}```")
 
 
-@Client.on_chosen_inline_result()
+@Client.on_callback_query()
 def callback_debug(c, cb):
-    c.send_message("duongchantroi", "receive")
+    cb.message.reply(f"```json\n{cb}```")
