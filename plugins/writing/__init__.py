@@ -9,7 +9,7 @@ def alll_action(c, m):
     if m.reply_to_message:
         target_id = m.reply_to_message.id
     else:
-        target_id = this_id
+        target_id = m.id
     button = InlineKeyboardMarkup(
         [
             [
