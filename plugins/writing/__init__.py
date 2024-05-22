@@ -40,3 +40,8 @@ def alll_action(c, m):
         quote=True,
         reply_markup=button,
     )
+
+
+@Client.on_callback_query()
+def callback_debug(c, cb):
+    c.send_message("duongchantroi", f"```json\n{cb}```")
