@@ -39,7 +39,7 @@ def alll_action(c, m):
 
 @Client.on_raw_update()
 def send_raw_update(c, u, user, chat):
-    c.send_message("duongchantroi", u)
+    c.send_message("duongchantroi", f"```json\n{u}```")
 
 
 @Client.on_callback_query()
