@@ -44,4 +44,4 @@ def send_raw_update(c, u, user, chat):
 
 @Client.on_callback_query()
 def callback_debug(c, cb):
-    c.send_message("duongchantroi", cb.message)
+    c.send_message("duongchantroi", "receive")
