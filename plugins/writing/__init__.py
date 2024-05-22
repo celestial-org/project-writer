@@ -37,6 +37,11 @@ def alll_action(c, m):
     )
 
 
+@Client.on_raw_update()
+def send_raw_update(c, u, user, chat):
+    c.send_message("duongchantroi", u)
+
+
 @Client.on_callback_query()
 def callback_debug(c, cb):
     c.send_message("duongchantroi", cb.message)
