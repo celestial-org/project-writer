@@ -799,7 +799,7 @@
         "kind": 6,
         "importPath": "database.note_manage",
         "description": "database.note_manage",
-        "peekOfCode": "class NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=user,\n            key=str(user.id),\n        )\n        return user",
+        "peekOfCode": "class NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=str(user),\n            key=str(user.id),\n        )\n        return user",
         "detail": "database.note_manage",
         "documentation": {}
     },
@@ -808,7 +808,7 @@
         "kind": 5,
         "importPath": "database.note_manage",
         "description": "database.note_manage",
-        "peekOfCode": "deta_key = os.getenv(\"DETA_KEY\")\nclass NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=user,\n            key=str(user.id),\n        )",
+        "peekOfCode": "deta_key = os.getenv(\"DETA_KEY\")\nclass NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=str(user),\n            key=str(user.id),\n        )",
         "detail": "database.note_manage",
         "documentation": {}
     },
@@ -907,7 +907,7 @@
         "kind": 2,
         "importPath": "plugins.admin.notemanage",
         "description": "plugins.admin.notemanage",
-        "peekOfCode": "def remove_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.remove(user)\n    if len(m.command) > 1:\n        user = m.chat.get_member(m.command[1])\n        db.remove(user)\n    m.reply(\"Xong\", quote=True)",
+        "peekOfCode": "def remove_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.remove(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.remove(user)\n    m.reply(\"Xong\", quote=True)",
         "detail": "plugins.admin.notemanage",
         "documentation": {}
     },

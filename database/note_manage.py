@@ -13,7 +13,7 @@ class NoteManage:
 
     def add(self, user: User):
         self.base.put(
-            data=user,
+            data=str(user),
             key=str(user.id),
         )
         return user
