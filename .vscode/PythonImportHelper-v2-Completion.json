@@ -1258,7 +1258,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1267,7 +1267,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1276,7 +1276,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1285,7 +1285,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1294,7 +1294,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1303,16 +1303,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\nos.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ[\"MYSQL_URL\"]",
-        "kind": 5,
-        "importPath": "environment",
-        "description": "environment",
-        "peekOfCode": "os.environ[\"MYSQL_URL\"] = res[\"data\"][\"mysql\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
