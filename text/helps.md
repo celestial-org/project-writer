@@ -24,7 +24,7 @@ __Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả
 
 /getsharelist - Lấy các subscription từ danh sách chia sẻ
 
-/deletesharelist - Xoá subscription khỏi danh sách chia sẻ 
+/deleteshare - Xoá subscription khỏi danh sách chia sẻ 
 
 /check_share - Kiểm tra và xoá subscription bị lỗi khỏi danh sách chia sẻ
 

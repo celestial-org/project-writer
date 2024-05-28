@@ -9,6 +9,30 @@
         "documentation": {}
     },
     {
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
+        "isExtraImport": true,
+        "detail": "deta",
+        "documentation": {}
+    },
+    {
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
+        "isExtraImport": true,
+        "detail": "deta",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -26,20 +50,28 @@
         "documentation": {}
     },
     {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
-        "documentation": {}
-    },
-    {
         "label": "subprocess",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "subprocess",
         "description": "subprocess",
         "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
         "documentation": {}
     },
     {
@@ -555,6 +587,14 @@
         "documentation": {}
     },
     {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
         "label": "ChatType",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
@@ -576,6 +616,14 @@
         "description": "hydrogram.enums",
         "isExtraImport": true,
         "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "NoteManage",
+        "importPath": "database.note_manage",
+        "description": "database.note_manage",
+        "isExtraImport": true,
+        "detail": "database.note_manage",
         "documentation": {}
     },
     {
@@ -690,7 +738,23 @@
         "documentation": {}
     },
     {
+        "label": "NoteManage",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "NotesDB",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "NoteManage",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -728,6 +792,24 @@
         "description": "flask",
         "isExtraImport": true,
         "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "NoteManage",
+        "kind": 6,
+        "importPath": "database.note_manage",
+        "description": "database.note_manage",
+        "peekOfCode": "class NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=user,\n            key=str(user.id),\n        )\n        return user",
+        "detail": "database.note_manage",
+        "documentation": {}
+    },
+    {
+        "label": "deta_key",
+        "kind": 5,
+        "importPath": "database.note_manage",
+        "description": "database.note_manage",
+        "peekOfCode": "deta_key = os.getenv(\"DETA_KEY\")\nclass NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=user,\n            key=str(user.id),\n        )",
+        "detail": "database.note_manage",
         "documentation": {}
     },
     {
@@ -809,6 +891,24 @@
         "description": "plugins.admin.bash",
         "peekOfCode": "def run_shell_bash(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    command = m.text.replace(\"/bash \", \"\")\n    result = subprocess.run(\n        command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True\n    )\n    m.reply(f\"```bash\\n{result.stdout}\\n```\")",
         "detail": "plugins.admin.bash",
+        "documentation": {}
+    },
+    {
+        "label": "add_manager",
+        "kind": 2,
+        "importPath": "plugins.admin.notemanage",
+        "description": "plugins.admin.notemanage",
+        "peekOfCode": "def add_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.add(user)\n    if len(m.command) > 1:\n        user = m.chat.get_member(m.command[1])\n        db.add(user)\n    m.reply(\"Xong\", quote=True)",
+        "detail": "plugins.admin.notemanage",
+        "documentation": {}
+    },
+    {
+        "label": "remove_manager",
+        "kind": 2,
+        "importPath": "plugins.admin.notemanage",
+        "description": "plugins.admin.notemanage",
+        "peekOfCode": "def remove_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.remove(user)\n    if len(m.command) > 1:\n        user = m.chat.get_member(m.command[1])\n        db.remove(user)\n    m.reply(\"Xong\", quote=True)",
+        "detail": "plugins.admin.notemanage",
         "documentation": {}
     },
     {
@@ -1077,7 +1177,7 @@
         "kind": 2,
         "importPath": "plugins.writing.check_available",
         "description": "plugins.writing.check_available",
-        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938:\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        removed_urls = notes.check(\"share\")\n        if removed_urls:\n            removed_urls_str = \"\\n\".join(removed_urls)",
+        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = NotesDB()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 or not managers.get(m.from_user):\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        removed_urls = notes.check(\"share\")\n        if removed_urls:",
         "detail": "plugins.writing.check_available",
         "documentation": {}
     },
@@ -1113,7 +1213,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get_list",
         "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938:\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    try:\n        urls = notes.all(\"share\")\n        if urls:\n            urls_str = \"\\n\".join(urls)",
+        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = NotesDB()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 or not managers.get(m.from_user):\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    try:\n        urls = notes.all(\"share\")\n        if urls:",
         "detail": "plugins.writing.get_list",
         "documentation": {}
     },

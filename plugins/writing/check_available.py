@@ -1,7 +1,7 @@
 import time
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from database import NotesDB
+from database import NotesDB, NoteManage
 
 
 @Client.on_message(filters.command("check_alive"))
@@ -36,8 +36,9 @@ def check_all_urls(c, m):
 @Client.on_message(filters.command("check_share"))
 def check_all_share_urls(c, m):
     notes = NotesDB()
+    managers = NoteManage()
     m.reply_chat_action(ChatAction.TYPING)
-    if m.from_user.id != 5665225938:
+    if m.from_user.id != 5665225938 or not managers.get(m.from_user):
         m.reply("`Forbidden`", quote=True)
         return
     try:

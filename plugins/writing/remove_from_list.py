@@ -46,7 +46,7 @@ def delete_url(c, m):
     m.delete()
 
 
-@Client.on_message(filters.command("deletesharelist"))
+@Client.on_message(filters.command("deleteshare"))
 def delete_share_url(c, m):
     notes = NotesDB()
     m.reply_chat_action(ChatAction.TYPING)
