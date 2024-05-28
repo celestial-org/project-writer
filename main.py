@@ -5,7 +5,12 @@ if __name__ == "__main__":
     from environment import api_id, api_hash, bot_token
 
     bot = Client(
-        "writer", api_id, api_hash, bot_token=bot_token, plugins=dict(root="plugins")
+        "writer",
+        api_id,
+        api_hash,
+        bot_token=bot_token,
+        plugins=dict(root="plugins"),
+        in_memory=True,
     )
     bot.start()
     if os.path.exists("reset.txt"):
