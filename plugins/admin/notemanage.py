@@ -12,7 +12,7 @@ def add_manager(c, m):
         user = m.reply_to_message.from_user
         db.add(user)
     if len(m.command) > 1:
-        user = m.chat.get_member(m.command[1])
+        user = c.get_users(m.command[1])
         db.add(user)
     m.reply("Xong", quote=True)
 

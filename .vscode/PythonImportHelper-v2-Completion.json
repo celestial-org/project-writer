@@ -898,7 +898,7 @@
         "kind": 2,
         "importPath": "plugins.admin.notemanage",
         "description": "plugins.admin.notemanage",
-        "peekOfCode": "def add_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.add(user)\n    if len(m.command) > 1:\n        user = m.chat.get_member(m.command[1])\n        db.add(user)\n    m.reply(\"Xong\", quote=True)",
+        "peekOfCode": "def add_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.add(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.add(user)\n    m.reply(\"Xong\", quote=True)",
         "detail": "plugins.admin.notemanage",
         "documentation": {}
     },
