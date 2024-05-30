@@ -2,12 +2,12 @@ import os
 
 if __name__ == "__main__":
     from hydrogram import Client, idle
-    from environment import api_id, api_hash, bot_token
+    from environment import bot_token
 
     bot = Client(
         "writer",
-        api_id,
-        api_hash,
+        21021245,
+        "7b32ea92719781c5e22ede319c5dbde5",
         bot_token=bot_token,
         plugins=dict(root="plugins"),
         in_memory=True,
