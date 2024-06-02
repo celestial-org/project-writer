@@ -1186,7 +1186,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get",
         "description": "plugins.writing.get",
-        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        \"Các server trong Link sẽ tự động được làm mới sau mỗi lần truy cập, sau mỗi giờ.\"\n        f\"Nếu phần mềm client của bạn không hỗ trợ cấu hình v2ray, hãy sử dụng công cụ để chuyển đổi: https://convert.v2ray-subscribe.workers.dev/?url={v2tool}/get/share&flag=sing-box\\nThay `sing-box` bằng tên phần mềm client của bạn\",\n    ]\n    m.reply(",
+        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        \"Các server sẽ tự động được làm mới.\",\n    ]\n    m.reply(\n        \"\\n\\n\".join(text),\n        quote=True,\n    )",
         "detail": "plugins.writing.get",
         "documentation": {}
     },
@@ -1195,7 +1195,7 @@
         "kind": 5,
         "importPath": "plugins.writing.get",
         "description": "plugins.writing.get",
-        "peekOfCode": "v2tool = os.getenv(\"V2TOOL\")\n@Client.on_message(filters.command(\"get\"))\ndef get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    filename = f\"{user_id}\"\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        \"Các server trong Link sẽ tự động được làm mới sau mỗi lần truy cập, sau mỗi giờ.\"\n        f\"Nếu phần mềm client của bạn không hỗ trợ cấu hình v2ray, hãy sử dụng công cụ để chuyển đổi: https://convert.v2ray-subscribe.workers.dev/?url={v2tool}/get/share&flag=sing-box\\nThay `sing-box` bằng tên phần mềm client của bạn\",",
+        "peekOfCode": "v2tool = os.getenv(\"V2TOOL\")\n@Client.on_message(filters.command(\"get\"))\ndef get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        \"Các server sẽ tự động được làm mới.\",\n    ]\n    m.reply(\n        \"\\n\\n\".join(text),",
         "detail": "plugins.writing.get",
         "documentation": {}
     },
