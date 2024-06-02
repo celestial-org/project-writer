@@ -1087,7 +1087,7 @@
         "kind": 2,
         "importPath": "plugins.rewrites.test",
         "description": "plugins.rewrites.test",
-        "peekOfCode": "def get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\"https://paste.rs/\", data=url).text\n    else:\n        res = requests.get(\n            url,\n            headers={\"User-Agent\": \"v2rayNG\"},\n            timeout=60,\n            proxies={",
+        "peekOfCode": "def get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\"https://paste.rs/\", data=url, timeout=120).text\n    else:\n        res = requests.get(\n            url,\n            headers={\"User-Agent\": \"v2rayNG\"},\n            timeout=120,\n            proxies={",
         "detail": "plugins.rewrites.test",
         "documentation": {}
     },
@@ -1096,7 +1096,7 @@
         "kind": 2,
         "importPath": "plugins.rewrites.test",
         "description": "plugins.rewrites.test",
-        "peekOfCode": "def start_test(config):\n    r = requests.post(test_server, json={\"q\": config})\n    return r.text\n@Client.on_message(filters.command(\"test\"))\ndef litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    url_pattern = re.compile(\n        r\"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)\"\n    )\n    if m.reply_to_message:",
+        "peekOfCode": "def start_test(config):\n    r = requests.post(test_server, json={\"q\": config}, timeout=60)\n    return r.text\n@Client.on_message(filters.command(\"test\"))\ndef litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    url_pattern = re.compile(\n        r\"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)\"\n    )\n    if m.reply_to_message:",
         "detail": "plugins.rewrites.test",
         "documentation": {}
     },
@@ -1114,7 +1114,7 @@
         "kind": 5,
         "importPath": "plugins.rewrites.test",
         "description": "plugins.rewrites.test",
-        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\"https://paste.rs/\", data=url).text\n    else:\n        res = requests.get(\n            url,\n            headers={\"User-Agent\": \"v2rayNG\"},\n            timeout=60,",
+        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\"https://paste.rs/\", data=url, timeout=120).text\n    else:\n        res = requests.get(\n            url,\n            headers={\"User-Agent\": \"v2rayNG\"},\n            timeout=120,",
         "detail": "plugins.rewrites.test",
         "documentation": {}
     },

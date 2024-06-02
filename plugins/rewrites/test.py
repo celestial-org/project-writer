@@ -13,12 +13,12 @@ test_server = os.getenv("TEST_SERVER")
 def get_config(url):
     if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
         res = url
-        url = requests.post("https://paste.rs/", data=url).text
+        url = requests.post("https://paste.rs/", data=url, timeout=120).text
     else:
         res = requests.get(
             url,
             headers={"User-Agent": "v2rayNG"},
-            timeout=60,
+            timeout=120,
             proxies={
                 "http": "http://127.0.0.1:6868",
                 "https": "http://127.0.0.1:6868",
@@ -30,13 +30,13 @@ def get_config(url):
             res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]
         ):
             res = base64.b64decode(res.encode("utf-8")).decode("utf-8")
-            url = requests.post("https://paste.rs/", data=res).text
+            url = requests.post("https://paste.rs/", data=res, timeout=120).text
     count = len(res.splitlines())
     return url, count
 
 
 def start_test(config):
-    r = requests.post(test_server, json={"q": config})
+    r = requests.post(test_server, json={"q": config}, timeout=60)
     return r.text
 
 
@@ -93,7 +93,7 @@ def litespeedtest(c, m):
                 quote=True,
             )
             url = test_url
-        r = requests.get(test_url)
+        r = requests.get(test_url, timeout=120)
         configs = r.text.splitlines()
         s_msg = m
         result_gather = ""
