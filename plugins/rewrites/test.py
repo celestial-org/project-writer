@@ -14,7 +14,7 @@ def get_config(url):
     if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
         res = url
         url = requests.post(
-            "https://notes.nghiep.dev",
+            "https://paste.rs",
             data=res,
             timeout=120,
             headers={"Content-Type": "text/plain"},
@@ -33,7 +33,7 @@ def get_config(url):
         ):
             res = base64.b64decode(res.encode("utf-8")).decode("utf-8")
             url = requests.post(
-                "https://notes.nghiep.dev",
+                "https://paste.rs",
                 data=res,
                 timeout=120,
                 headers={"Content-Type": "text/plain"},
