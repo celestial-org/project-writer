@@ -1177,7 +1177,7 @@
         "kind": 2,
         "importPath": "plugins.writing.check_available",
         "description": "plugins.writing.check_available",
-        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = NotesDB()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 or not managers.get(m.from_user):\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        removed_urls = notes.check(\"share\")\n        if removed_urls:",
+        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = NotesDB()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        removed_urls = notes.check(\"share\")\n        if removed_urls:",
         "detail": "plugins.writing.check_available",
         "documentation": {}
     },

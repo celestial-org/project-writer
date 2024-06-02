@@ -38,7 +38,7 @@ def check_all_share_urls(c, m):
     notes = NotesDB()
     managers = NoteManage()
     m.reply_chat_action(ChatAction.TYPING)
-    if m.from_user.id != 5665225938 or not managers.get(m.from_user):
+    if m.from_user.id != 5665225938 and not managers.get(m.from_user):
         m.reply("`Forbidden`", quote=True)
         return
     try:
