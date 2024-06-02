@@ -13,16 +13,18 @@ test_server = os.getenv("TEST_SERVER")
 def get_config(url):
     if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
         res = url
-        url = requests.post("https://paste.rs/", data=url, timeout=120).text
+        url = requests.post(
+            "https://notes.nghiep.dev",
+            data=res,
+            timeout=120,
+            headers={"Content-Type": "text/plain"},
+        ).text
     else:
         res = requests.get(
             url,
             headers={"User-Agent": "v2rayNG"},
             timeout=120,
-            proxies={
-                "http": "http://127.0.0.1:6868",
-                "https": "http://127.0.0.1:6868",
-            },
+            proxies={"http": "http://127.0.0.1:6868", "https": "http://127.0.0.1:6868"},
         )
 
         res = res.text
@@ -30,7 +32,12 @@ def get_config(url):
             res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]
         ):
             res = base64.b64decode(res.encode("utf-8")).decode("utf-8")
-            url = requests.post("https://paste.rs/", data=res, timeout=120).text
+            url = requests.post(
+                "https://notes.nghiep.dev",
+                data=res,
+                timeout=120,
+                headers={"Content-Type": "text/plain"},
+            ).text
     count = len(res.splitlines())
     return url, count
 
