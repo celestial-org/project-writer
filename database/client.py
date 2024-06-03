@@ -15,7 +15,10 @@ class Turso:
 
     def add(self, name: str, url: str, user_id: int) -> bool:
         note = self.get(name, user_id)
-        urls = note.urls.splitlines()
+        if note:
+            urls = note.urls.splitlines()
+        else:
+            urls = []
         if url in urls:
             return False
         urls.append(url)
