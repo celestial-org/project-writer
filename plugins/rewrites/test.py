@@ -100,14 +100,19 @@ def litespeedtest(c, m):
             )
         s_msg = m
         first_msg = m
-        result_gather = ""
+        result_good = ""
+        result_none = ""
         count = 0
         url = url.replace("--", "%2D%2D")
         for config in configs:
             result = start_test(config)
             if "|" not in result:
                 continue
-            result_gather = f"{result_gather}{result}\n"
+            if "N/A" in result:
+                result_none = f"{result_none}{result}\n"
+            else:
+                result_good = f"{result_good}{result}\n"
+            result_gather = result_good + result_none
             s_text = (
                 f"{url}"
                 + f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"
