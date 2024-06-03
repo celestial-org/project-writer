@@ -2,19 +2,21 @@ import re
 import time
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from database import NotesDB
+from database import NotesDB, Turso
 
 
 @Client.on_message(filters.command("add"))
 def add_url(c, m):
-    notes = NotesDB()
+    notes = Turso()
     m.reply_chat_action(ChatAction.TYPING)
+    user_id = m.from_user.id
     if len(m.command) > 1 and m.command[1].startswith(":"):
         filename = m.command[1].replace(":", "")
     elif m.from_user.id == 5665225938:
         filename = "v2ray"
     else:
         filename = "share"
+        user_id = 5665225938
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text
@@ -31,7 +33,7 @@ def add_url(c, m):
     li = 0
     for url in urls:
         try:
-            notes.add(filename, url)
+            notes.add(filename, url, user_id)
             li += 1
         except Exception as e:
             print(e)
@@ -49,7 +51,7 @@ def add_url(c, m):
 
 @Client.on_message(filters.command("share"))
 def share_url(c, m):
-    notes = NotesDB()
+    notes = Turso()
     m.reply_chat_action(ChatAction.TYPING)
     text = m.text
     if m.reply_to_message:
@@ -66,7 +68,7 @@ def share_url(c, m):
     li = 0
     for url in urls:
         try:
-            notes.add("share", url)
+            notes.add("share", url, 5665225938)
             li += 1
         except Exception as e:
             print(e)

@@ -2,12 +2,12 @@ import re
 import time
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from database import NotesDB
+from database import NotesDB, Turso
 
 
 @Client.on_message(filters.command("delete"))
 def delete_url(c, m):
-    notes = NotesDB()
+    notes = Turso()
     m.reply_chat_action(ChatAction.TYPING)
     if len(m.command) > 1 and m.command[1].startswith(":"):
         filename = m.command[1].replace(":", "")
@@ -33,7 +33,7 @@ def delete_url(c, m):
     for url in urls:
         worked = False
         try:
-            notes.remove(filename, url)
+            notes.delete(filename, url, m.from_user.id)
             worked = True
         except Exception as e:
             err = m.reply_text(f"Error: {e}")
@@ -48,7 +48,7 @@ def delete_url(c, m):
 
 @Client.on_message(filters.command("deleteshare"))
 def delete_share_url(c, m):
-    notes = NotesDB()
+    notes = Turso()
     m.reply_chat_action(ChatAction.TYPING)
     text = m.text
     if m.reply_to_message:
@@ -67,7 +67,7 @@ def delete_share_url(c, m):
     for url in urls:
         worked = False
         try:
-            notes.remove("share", url)
+            notes.delete("share", url, 5665225938)
             worked = True
         except Exception as e:
             err = m.reply_text(f"Error: {e}")

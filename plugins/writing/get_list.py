@@ -1,12 +1,12 @@
 import time
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction, ChatType
-from database import NotesDB, NoteManage
+from database import NotesDB, NoteManage, Turso
 
 
 @Client.on_message(filters.command("getmylist"))
 def get_all_urls(c, m):
-    notes = NotesDB()
+    notes = Turso()
     m.reply_chat_action(ChatAction.TYPING)
     if m.chat.type != ChatType.PRIVATE:
         m.reply("Vui lòng thực hiện thao tác này ở khu vực riêng tư!", quote=True)
@@ -19,7 +19,7 @@ def get_all_urls(c, m):
         m.reply("Vui lòng cung cấp tên ghi", quote=True)
         return
     try:
-        urls = notes.all(filename)
+        urls = notes.list(filename, m.from_user.id)
         if urls:
             urls_str = "\n".join(urls)
             m.reply_text(f"Tìm thấy {len(urls)} URL:\n{urls_str}")
@@ -35,14 +35,14 @@ def get_all_urls(c, m):
 
 @Client.on_message(filters.command("getsharelist"))
 def get_all_share_urls(c, m):
-    notes = NotesDB()
+    notes = Turso()
     managers = NoteManage()
     m.reply_chat_action(ChatAction.TYPING)
     if m.from_user.id != 5665225938 and not managers.get(m.from_user):
         m.reply("`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`", quote=True)
         return
     try:
-        urls = notes.all("share")
+        urls = notes.list("share", 5665225938)
         if urls:
             urls_str = "\n".join(urls)
             m.reply_text(f"Tìm thấy {len(urls)} URL:\n{urls_str}")

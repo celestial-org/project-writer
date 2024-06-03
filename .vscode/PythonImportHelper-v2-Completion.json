@@ -25,6 +25,14 @@
         "documentation": {}
     },
     {
+        "label": "and_",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "String",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -810,6 +818,14 @@
         "documentation": {}
     },
     {
+        "label": "Turso",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "NotesDB",
         "importPath": "database",
         "description": "database",
@@ -826,7 +842,7 @@
         "documentation": {}
     },
     {
-        "label": "NotesDB",
+        "label": "Turso",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -835,6 +851,30 @@
     },
     {
         "label": "NotesDB",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Turso",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "NotesDB",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Turso",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -859,6 +899,15 @@
         "documentation": {}
     },
     {
+        "label": "Turso",
+        "kind": 6,
+        "importPath": "database.client",
+        "description": "database.client",
+        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        TURSO_DATABASE_URL = os.environ.get(\"TURSO_DATABASE_URL\")\n        TURSO_AUTH_TOKEN = os.environ.get(\"TURSO_AUTH_TOKEN\")\n        dbUrl = f\"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true\"\n        engine = create_engine(\n            dbUrl, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)",
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
         "label": "Base",
         "kind": 6,
         "importPath": "database.model",
@@ -873,15 +922,6 @@
         "importPath": "database.model",
         "description": "database.model",
         "peekOfCode": "class Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)\n    content: Mapped[str] = mapped_column(String)\n    user_id: Mapped[int] = mapped_column(BigInteger)\n    def __repr__(self) -> str:\n        obj = dict(\n            name=self.name,\n            urls=self.urls.splitlines(),",
-        "detail": "database.model",
-        "documentation": {}
-    },
-    {
-        "label": "Turso",
-        "kind": 6,
-        "importPath": "database.model",
-        "description": "database.model",
-        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        TURSO_DATABASE_URL = os.environ.get(\"TURSO_DATABASE_URL\")\n        TURSO_AUTH_TOKEN = os.environ.get(\"TURSO_AUTH_TOKEN\")\n        dbUrl = f\"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true\"\n        engine = create_engine(\n            dbUrl, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        self.session = Session(engine)\n    def add(self, name: str, user_id: int, url: str) -> bool:",
         "detail": "database.model",
         "documentation": {}
     },
@@ -1255,11 +1295,20 @@
         "documentation": {}
     },
     {
+        "label": "check_urls",
+        "kind": 2,
+        "importPath": "plugins.writing.check_available",
+        "description": "plugins.writing.check_available",
+        "peekOfCode": "def check_urls(urls: list) -> list:\n    removed_urls = []\n    for url in urls:\n        try:\n            response = requests.get(\n                url,\n                headers={\"User-Agent\": \"v2rayNG\"},\n                proxies={\n                    \"http\": \"http://127.0.0.1:6868\",\n                    \"https\": \"http://127.0.0.1:6868\",",
+        "detail": "plugins.writing.check_available",
+        "documentation": {}
+    },
+    {
         "label": "check_all_urls",
         "kind": 2,
         "importPath": "plugins.writing.check_available",
         "description": "plugins.writing.check_available",
-        "peekOfCode": "def check_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
+        "peekOfCode": "def check_all_urls(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
         "detail": "plugins.writing.check_available",
         "documentation": {}
     },
@@ -1268,7 +1317,7 @@
         "kind": 2,
         "importPath": "plugins.writing.check_available",
         "description": "plugins.writing.check_available",
-        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = NotesDB()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        removed_urls = notes.check(\"share\")\n        if removed_urls:",
+        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = Turso()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        urls = notes.list(\"share\", m.from_user.id)\n        removed_urls = check_urls(urls)",
         "detail": "plugins.writing.check_available",
         "documentation": {}
     },
@@ -1295,7 +1344,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get_list",
         "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_urls(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"",
+        "peekOfCode": "def get_all_urls(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"",
         "detail": "plugins.writing.get_list",
         "documentation": {}
     },
@@ -1304,7 +1353,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get_list",
         "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = NotesDB()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    try:\n        urls = notes.all(\"share\")\n        if urls:",
+        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = Turso()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    try:\n        urls = notes.list(\"share\", 5665225938)\n        if urls:",
         "detail": "plugins.writing.get_list",
         "documentation": {}
     },
@@ -1313,7 +1362,7 @@
         "kind": 2,
         "importPath": "plugins.writing.remove_from_list",
         "description": "plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
+        "peekOfCode": "def delete_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
         "detail": "plugins.writing.remove_from_list",
         "documentation": {}
     },
@@ -1322,7 +1371,7 @@
         "kind": 2,
         "importPath": "plugins.writing.remove_from_list",
         "description": "plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_share_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
+        "peekOfCode": "def delete_share_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
         "detail": "plugins.writing.remove_from_list",
         "documentation": {}
     },
@@ -1331,7 +1380,7 @@
         "kind": 2,
         "importPath": "plugins.writing.share_and_add",
         "description": "plugins.writing.share_and_add",
-        "peekOfCode": "def add_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        filename = \"share\"\n    text = m.text",
+        "peekOfCode": "def add_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        filename = \"share\"",
         "detail": "plugins.writing.share_and_add",
         "documentation": {}
     },
@@ -1340,7 +1389,7 @@
         "kind": 2,
         "importPath": "plugins.writing.share_and_add",
         "description": "plugins.writing.share_and_add",
-        "peekOfCode": "def share_url(c, m):\n    notes = NotesDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
+        "peekOfCode": "def share_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
         "detail": "plugins.writing.share_and_add",
         "documentation": {}
     },
