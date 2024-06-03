@@ -20,22 +20,15 @@ def get_config(url):
             headers={"Content-Type": "text/plain"},
         ).text
     else:
-        try:
-            req = requests.get(
-                url,
-                headers={"User-Agent": "v2rayNG/1.*"},
-                proxies={
-                    "http": "http://127.0.0.1:6868",
-                    "https": "https://127.0.0.1:6868",
-                },
-                timeout=20,
-            )
-        except Exception:
-            req = requests.get(
-                url,
-                headers={"User-Agent": "v2rayNG/1.*"},
-                timeout=20,
-            )
+        req = requests.get(
+            url,
+            headers={"User-Agent": "v2rayNG/1.*"},
+            proxies={
+                "http": "http://127.0.0.1:6868",
+                "https": "https://127.0.0.1:6868",
+            },
+            timeout=20,
+        )
         res = req.text
         if not any(
             res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]
