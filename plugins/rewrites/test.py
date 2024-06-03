@@ -28,13 +28,13 @@ def get_config(url):
                     "http": "http://127.0.0.1:6868",
                     "https": "https://127.0.0.1:6868",
                 },
-                timeout=60,
+                timeout=20,
             )
         except Exception:
             req = requests.get(
                 url,
                 headers={"User-Agent": "v2rayNG/1.*"},
-                timeout=60,
+                timeout=20,
             )
         res = req.text
         if not any(
