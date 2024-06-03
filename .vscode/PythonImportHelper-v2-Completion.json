@@ -1087,7 +1087,7 @@
         "kind": 2,
         "importPath": "plugins.rewrites.test",
         "description": "plugins.rewrites.test",
-        "peekOfCode": "def get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\n            \"https://paste.rs\",\n            data=res,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},\n        ).text\n    else:",
+        "peekOfCode": "def get_config(data):\n    url = data\n    if any(data.startswith(sche) for sche in [\"vmess\", \"trojan\", \"vless\", \"ss:\"]):\n        url = requests.post(\n            \"https://paste.rs\",\n            data=data,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},\n        ).text\n    elif any(data.startswith(sche) for sche in [\"http\", \"https\"]):",
         "detail": "plugins.rewrites.test",
         "documentation": {}
     },
@@ -1114,7 +1114,7 @@
         "kind": 5,
         "importPath": "plugins.rewrites.test",
         "description": "plugins.rewrites.test",
-        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef get_config(url):\n    if any(scheme in url for scheme in [\"vmess:\", \"trojan:\", \"vless:\", \"ss:\"]):\n        res = url\n        url = requests.post(\n            \"https://paste.rs\",\n            data=res,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},\n        ).text",
+        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef get_config(data):\n    url = data\n    if any(data.startswith(sche) for sche in [\"vmess\", \"trojan\", \"vless\", \"ss:\"]):\n        url = requests.post(\n            \"https://paste.rs\",\n            data=data,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},\n        ).text",
         "detail": "plugins.rewrites.test",
         "documentation": {}
     },

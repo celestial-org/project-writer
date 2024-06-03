@@ -10,18 +10,18 @@ from hydrogram.enums import ChatAction
 test_server = os.getenv("TEST_SERVER")
 
 
-def get_config(url):
-    if any(scheme in url for scheme in ["vmess:", "trojan:", "vless:", "ss:"]):
-        res = url
+def get_config(data):
+    url = data
+    if any(data.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss:"]):
         url = requests.post(
             "https://paste.rs",
-            data=res,
+            data=data,
             timeout=20,
             headers={"Content-Type": "text/plain"},
         ).text
-    else:
+    elif any(data.startswith(sche) for sche in ["http", "https"]):
         req = requests.get(
-            url,
+            data,
             headers={"User-Agent": "v2rayNG/1"},
             proxies={
                 "http": "http://127.0.0.1:6868",
@@ -29,19 +29,16 @@ def get_config(url):
             },
             timeout=20,
         )
-        res = req.text
+        data = req.text
         if not any(
-            res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]
+            data.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss:"]
         ):
-            res = base64.b64decode(res.encode("utf-8")).decode("utf-8")
-            url = requests.post(
-                "https://paste.rs",
-                data=res,
-                timeout=20,
-                headers={"Content-Type": "text/plain"},
-            ).text
-    count = len(res.splitlines())
-    return url, count
+            data = base64.b64decode(data).decode()
+    else:
+        data = base64.b64decode(data).decode()
+    data = data.splitlines()
+    count = len(data)
+    return url, data, count
 
 
 def start_test(config):
@@ -82,7 +79,7 @@ def litespeedtest(c, m):
     def handler(url):
         m.reply_chat_action(ChatAction.TYPING)
         try:
-            test_url, count = get_config(url)
+            url, configs, count = get_config(url)
         except Exception:
             uvl = m.reply(f"Liên kết {url} không khả dụng", quote=True)
             time.sleep(10)
@@ -98,13 +95,11 @@ def litespeedtest(c, m):
             )
         else:
             stt = m.reply(
-                f"**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{test_url}",
+                f"**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{url}",
                 quote=True,
             )
-            url = test_url
-        r = requests.get(test_url, timeout=120)
-        configs = r.text.splitlines()
         s_msg = m
+        first_msg = m
         result_gather = ""
         count = 0
         url = url.replace("--", "%2D%2D")
@@ -119,22 +114,16 @@ def litespeedtest(c, m):
                 + "```"
             )
             if count > 1:
-                s_text = (
-                    f"[{url}]({url})"
-                    + " **"
-                    + str(count)
-                    + "**"
-                    + "```\n"
-                    + result_gather
-                    + "```"
-                )
+                s_text = "**" + str(count) + "**" + "```\n" + result_gather + "```"
             try:
                 s_msg.edit(s_text)
             except Exception as e:
                 print(e)
                 result_gather = result + "\n"
-                s_msg = s_msg.reply(s_text, quote=True)
+                s_msg = first_msg.reply(s_text, quote=True)
                 count += 1
+                if count == 1:
+                    first_msg = s_msg
         result_gather = ""
         s_msg = None
         stt.delete()
