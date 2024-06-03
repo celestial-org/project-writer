@@ -40,7 +40,7 @@ def get_config(url):
         if not any(
             res.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss://"]
         ):
-            res = base64.b64decode(res.encode("utf-8")).decode("utf-8")
+            res = base64.b64decode(res)
             url = requests.post(
                 "https://paste.rs",
                 data=res,
