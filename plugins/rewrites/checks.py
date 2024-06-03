@@ -42,7 +42,7 @@ def parse_url(url):
     if "{" in res_text or not res_text:
         raise Exception("Unavailable")
     try:
-        res_text = base64.b64decode(res_text)
+        res_text = base64.b64decode(res_text).decode("utf-8")
     except Exception:
         pass
     result_dict = {}
