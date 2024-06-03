@@ -25,7 +25,7 @@ def get_config(url):
             headers={"User-Agent": "v2rayNG/1"},
             proxies={
                 "http": "http://127.0.0.1:6868",
-                "https": "https://127.0.0.1:6868",
+                "https": "http://127.0.0.1:6868",
             },
             timeout=20,
         )
