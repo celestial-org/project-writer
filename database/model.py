@@ -10,7 +10,7 @@ class Note(Base):
     __tablename__ = "notes"
     name: Mapped[str] = mapped_column(String, primary_key=True)
     urls: Mapped[str] = mapped_column(String)
-    content: Mapped[str] = mapped_column(String)
+    content: Mapped[str] = mapped_column(String, default="")
     user_id: Mapped[int] = mapped_column(BigInteger)
 
     def __repr__(self) -> str:
