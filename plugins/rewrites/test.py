@@ -16,7 +16,7 @@ def get_config(url):
         url = requests.post(
             "https://paste.rs",
             data=res,
-            timeout=120,
+            timeout=20,
             headers={"Content-Type": "text/plain"},
         ).text
     else:
@@ -37,7 +37,7 @@ def get_config(url):
             url = requests.post(
                 "https://paste.rs",
                 data=res,
-                timeout=120,
+                timeout=20,
                 headers={"Content-Type": "text/plain"},
             ).text
     count = len(res.splitlines())
