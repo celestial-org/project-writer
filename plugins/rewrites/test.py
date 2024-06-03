@@ -105,6 +105,8 @@ def litespeedtest(c, m):
         url = url.replace("--", "%2D%2D")
         for config in configs:
             result = start_test(config)
+            if "|" not in result:
+                continue
             result_gather = f"{result_gather}{result}\n"
             s_text = (
                 f"{url}"
