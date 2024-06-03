@@ -903,7 +903,7 @@
         "kind": 6,
         "importPath": "database.client",
         "description": "database.client",
-        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        TURSO_DATABASE_URL = os.environ.get(\"TURSO_DATABASE_URL\")\n        TURSO_AUTH_TOKEN = os.environ.get(\"TURSO_AUTH_TOKEN\")\n        dbUrl = f\"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true\"\n        engine = create_engine(\n            dbUrl, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)",
+        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        TURSO_URL = os.environ.get(\"TURSO_URL\")\n        engine = create_engine(\n            TURSO_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, name: str, url: str, user_id: int) -> bool:\n        note = self.get(name, user_id)",
         "detail": "database.client",
         "documentation": {}
     },
@@ -1398,7 +1398,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\")).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"data\"][\"turso\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1407,7 +1407,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"data\"][\"turso\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1416,7 +1416,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"data\"][\"turso\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1425,25 +1425,16 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"key\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"data\"][\"turso\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },
     {
-        "label": "os.environ[\"MONGO_URL\"]",
+        "label": "os.environ[\"TURSO_URL\"]",
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"MONGO_URL\"] = res[\"data\"][\"mongo\"]\nos.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ[\"NEON_URL\"]",
-        "kind": 5,
-        "importPath": "environment",
-        "description": "environment",
-        "peekOfCode": "os.environ[\"NEON_URL\"] = res[\"data\"][\"neon\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
+        "peekOfCode": "os.environ[\"TURSO_URL\"] = res[\"data\"][\"turso\"]\napi_id = res[\"key\"][\"api_id\"]\napi_hash = res[\"key\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"wb_tg\"]",
         "detail": "environment",
         "documentation": {}
     },

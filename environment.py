@@ -10,9 +10,7 @@ os.environ["TEST_SERVER"] = res["api"]["test"]
 
 os.environ["DETA_KEY"] = res["key"]["collection"]
 
-os.environ["MONGO_URL"] = res["data"]["mongo"]
-
-os.environ["NEON_URL"] = res["data"]["neon"]
+os.environ["TURSO_URL"] = res["data"]["turso"]
 
 api_id = res["key"]["api_id"]
 

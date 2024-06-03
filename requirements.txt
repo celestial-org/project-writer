@@ -12,5 +12,4 @@ pymysql
 sqlalchemy
 apscheduler
 black==24.4.2
-sqlalchemy
 sqlalchemy-libsql
