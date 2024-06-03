@@ -9,6 +9,70 @@
         "documentation": {}
     },
     {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "select",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "BigInteger",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Mapped",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "DeclarativeBase",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "mapped_column",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "Deta",
         "importPath": "deta",
         "description": "deta",
@@ -792,6 +856,33 @@
         "description": "flask",
         "isExtraImport": true,
         "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 6,
+        "importPath": "database.model",
+        "description": "database.model",
+        "peekOfCode": "class Base(DeclarativeBase):\n    pass\nclass Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)\n    content: Mapped[str] = mapped_column(String)\n    user_id: Mapped[int] = mapped_column(BigInteger)\n    def __repr__(self) -> str:\n        obj = dict(",
+        "detail": "database.model",
+        "documentation": {}
+    },
+    {
+        "label": "Note",
+        "kind": 6,
+        "importPath": "database.model",
+        "description": "database.model",
+        "peekOfCode": "class Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)\n    content: Mapped[str] = mapped_column(String)\n    user_id: Mapped[int] = mapped_column(BigInteger)\n    def __repr__(self) -> str:\n        obj = dict(\n            name=self.name,\n            urls=self.urls.splitlines(),",
+        "detail": "database.model",
+        "documentation": {}
+    },
+    {
+        "label": "Turso",
+        "kind": 6,
+        "importPath": "database.model",
+        "description": "database.model",
+        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        TURSO_DATABASE_URL = os.environ.get(\"TURSO_DATABASE_URL\")\n        TURSO_AUTH_TOKEN = os.environ.get(\"TURSO_AUTH_TOKEN\")\n        dbUrl = f\"sqlite+{TURSO_DATABASE_URL}/?authToken={TURSO_AUTH_TOKEN}&secure=true\"\n        engine = create_engine(\n            dbUrl, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        self.session = Session(engine)\n    def add(self, name: str, user_id: int, url: str) -> bool:",
+        "detail": "database.model",
         "documentation": {}
     },
     {
