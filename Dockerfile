@@ -1,11 +1,11 @@
-FROM python:latest
+FROM python
 
 RUN useradd -m -u 1000 user
-COPY . /home/user
 WORKDIR /home/user
-RUN curl -L -o lite.gz https://github.com/xxf098/LiteSpeedTest/releases/download/v0.15.0/lite-linux-amd64-v0.15.0.gz && gunzip -d lite.gz
+RUN git clone https://github.com/chantroi/project-writer bot
+WORKDIR /home/user/bot
 RUN pip install -r requirements.txt
-RUN chown -R user:user /home/user
+RUN chown -R user:user /home/user/bot
 RUN chmod +x ./start.sh && chmod +x ./lite
 
 USER user
