@@ -1128,7 +1128,7 @@
         "kind": 2,
         "importPath": "plugins.basic.set_proxy",
         "description": "plugins.basic.set_proxy",
-        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()",
+        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()\n    os.environ[\"http_proxy\"] = os.environ[\"https_proxy\"] = \"http://127.0.0.1:6868\"",
         "detail": "plugins.basic.set_proxy",
         "documentation": {}
     },

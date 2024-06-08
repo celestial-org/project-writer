@@ -12,3 +12,4 @@ def set_proxy(c, m):
     m.delete()
     time.sleep(10)
     stt.delete()
+    os.environ["http_proxy"] = os.environ["https_proxy"] = "http://127.0.0.1:6868"
