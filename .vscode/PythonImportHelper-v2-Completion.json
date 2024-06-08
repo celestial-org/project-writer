@@ -81,22 +81,6 @@
         "documentation": {}
     },
     {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
-        "documentation": {}
-    },
-    {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
-        "documentation": {}
-    },
-    {
         "label": "User",
         "importPath": "hydrogram.types",
         "description": "hydrogram.types",
@@ -128,6 +112,86 @@
         "importPath": "subprocess",
         "description": "subprocess",
         "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
         "documentation": {}
     },
     {
@@ -443,118 +507,6 @@
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
-        "importPath": "hydrogram.enums",
-        "description": "hydrogram.enums",
-        "isExtraImport": true,
-        "detail": "hydrogram.enums",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
-        "importPath": "hydrogram.enums",
-        "description": "hydrogram.enums",
-        "isExtraImport": true,
-        "detail": "hydrogram.enums",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
-        "importPath": "hydrogram.enums",
-        "description": "hydrogram.enums",
-        "isExtraImport": true,
-        "detail": "hydrogram.enums",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
-        "importPath": "hydrogram.enums",
-        "description": "hydrogram.enums",
-        "isExtraImport": true,
-        "detail": "hydrogram.enums",
-        "documentation": {}
-    },
-    {
         "label": "ChatAction",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
@@ -691,11 +643,123 @@
         "documentation": {}
     },
     {
-        "label": "NoteManage",
-        "importPath": "database.note_manage",
-        "description": "database.note_manage",
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
         "isExtraImport": true,
-        "detail": "database.note_manage",
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "NoteManage",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "NoteManage",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Turso",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "NoteManage",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Turso",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Turso",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "Turso",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
         "documentation": {}
     },
     {
@@ -770,118 +834,6 @@
         "documentation": {}
     },
     {
-        "label": "SSH",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "SSH",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "SSH",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "SSH",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "NotesDB",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "NoteManage",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "Turso",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "NotesDB",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "NoteManage",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "Turso",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "NotesDB",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "Turso",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "NotesDB",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "Turso",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
         "label": "paramiko",
         "kind": 6,
         "isExtraImport": true,
@@ -908,11 +860,38 @@
         "documentation": {}
     },
     {
+        "label": "NoteManage",
+        "kind": 6,
+        "importPath": "database.client",
+        "description": "database.client",
+        "peekOfCode": "class NoteManage:\n    def __init__(self) -> None:\n        TURSO_URL = os.environ.get(\"TURSO_URL\")\n        engine = create_engine(\n            TURSO_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, user: User):\n        manager = Manager(user_id=user.id, data=str(User))",
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
+        "label": "Machine",
+        "kind": 6,
+        "importPath": "database.client",
+        "description": "database.client",
+        "peekOfCode": "class Machine:\n    def __init__(self) -> None:\n        TURSO_URL = os.environ.get(\"TURSO_URL\")\n        engine = create_engine(\n            TURSO_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)",
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
         "label": "Base",
         "kind": 6,
         "importPath": "database.model",
         "description": "database.model",
-        "peekOfCode": "class Base(DeclarativeBase):\n    pass\nclass Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)\n    content: Mapped[str] = mapped_column(String, default=\"\")\n    user_id: Mapped[int] = mapped_column(BigInteger)\n    def __repr__(self) -> str:\n        obj = dict(",
+        "peekOfCode": "class Base(DeclarativeBase):\n    pass\nclass Manager(Base):\n    __tablename__ = \"managers\"\n    user_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)\n    data: Mapped[str] = mapped_column(String)\nclass Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)",
+        "detail": "database.model",
+        "documentation": {}
+    },
+    {
+        "label": "Manager",
+        "kind": 6,
+        "importPath": "database.model",
+        "description": "database.model",
+        "peekOfCode": "class Manager(Base):\n    __tablename__ = \"managers\"\n    user_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)\n    data: Mapped[str] = mapped_column(String)\nclass Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)\n    content: Mapped[str] = mapped_column(String, default=\"\")\n    user_id: Mapped[int] = mapped_column(BigInteger)",
         "detail": "database.model",
         "documentation": {}
     },
@@ -923,24 +902,6 @@
         "description": "database.model",
         "peekOfCode": "class Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)\n    content: Mapped[str] = mapped_column(String, default=\"\")\n    user_id: Mapped[int] = mapped_column(BigInteger)\n    def __repr__(self) -> str:\n        obj = dict(\n            name=self.name,\n            urls=self.urls.splitlines(),",
         "detail": "database.model",
-        "documentation": {}
-    },
-    {
-        "label": "NoteManage",
-        "kind": 6,
-        "importPath": "database.note_manage",
-        "description": "database.note_manage",
-        "peekOfCode": "class NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=str(user),\n            key=str(user.id),\n        )\n        return user",
-        "detail": "database.note_manage",
-        "documentation": {}
-    },
-    {
-        "label": "deta_key",
-        "kind": 5,
-        "importPath": "database.note_manage",
-        "description": "database.note_manage",
-        "peekOfCode": "deta_key = os.getenv(\"DETA_KEY\")\nclass NoteManage:\n    def __init__(self):\n        deta = Deta(deta_key)\n        self.base = deta.Base(\"managers\")\n    def add(self, user: User):\n        self.base.put(\n            data=str(user),\n            key=str(user.id),\n        )",
-        "detail": "database.note_manage",
         "documentation": {}
     },
     {
@@ -986,24 +947,6 @@
         "description": "database.notes",
         "peekOfCode": "mongo_url = os.getenv(\"MONGO_URL\")\nclass DatabaseNotFoundError(Exception):\n    pass\nclass UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)",
         "detail": "database.notes",
-        "documentation": {}
-    },
-    {
-        "label": "SSH",
-        "kind": 6,
-        "importPath": "database.ssh",
-        "description": "database.ssh",
-        "peekOfCode": "class SSH:\n    def __init__(self, user_id: int):\n        deta = Deta(deta_key)\n        self.id = user_id\n        self.db = deta.Base(\"ssh\")\n    def add(self, machine: str, host: str, user: str, passwd: str, port: int):\n        existing_data = self.db.get(str(self.id))\n        if existing_data:\n            existing_list = existing_data.get(\"value\", [])\n            new_data = {",
-        "detail": "database.ssh",
-        "documentation": {}
-    },
-    {
-        "label": "deta_key",
-        "kind": 5,
-        "importPath": "database.ssh",
-        "description": "database.ssh",
-        "peekOfCode": "deta_key = os.getenv(\"DETA_KEY\")\nclass SSH:\n    def __init__(self, user_id: int):\n        deta = Deta(deta_key)\n        self.id = user_id\n        self.db = deta.Base(\"ssh\")\n    def add(self, machine: str, host: str, user: str, passwd: str, port: int):\n        existing_data = self.db.get(str(self.id))\n        if existing_data:\n            existing_list = existing_data.get(\"value\", [])",
-        "detail": "database.ssh",
         "documentation": {}
     },
     {
@@ -1250,51 +1193,6 @@
         "documentation": {}
     },
     {
-        "label": "save_ssh_login",
-        "kind": 2,
-        "importPath": "plugins.ssh.add",
-        "description": "plugins.ssh.add",
-        "peekOfCode": "def save_ssh_login(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if m.chat.type != enums.ChatType.PRIVATE:\n            raise Exception(\n                \"Để bảo mật, vui lòng thực hiện thao tác này ở chat riêng tư\"\n            )\n        if len(m.command) < 5:\n            raise Exception(",
-        "detail": "plugins.ssh.add",
-        "documentation": {}
-    },
-    {
-        "label": "delete_machine_server",
-        "kind": 2,
-        "importPath": "plugins.ssh.delete",
-        "description": "plugins.ssh.delete",
-        "peekOfCode": "def delete_machine_server(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if len(m.command) < 2:\n            raise Exception(\"Vui lòng cung cấp tên máy\")\n        machine = m.command[1]\n        try:\n            ssh.delete(machine)\n        except Exception as e:",
-        "detail": "plugins.ssh.delete",
-        "documentation": {}
-    },
-    {
-        "label": "get_list_machines",
-        "kind": 2,
-        "importPath": "plugins.ssh.list",
-        "description": "plugins.ssh.list",
-        "peekOfCode": "def get_list_machines(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        user_id = m.from_user.id\n        ssh = SSH(user_id)\n        user = m.from_user.first_name\n        list_machines = ssh.machines()\n        list_machines = \"    \".join(list_machines)\n        m.reply(\n            f\"Danh sách máy chủ SSH của **{user}**:```Machines\\n{list_machines}\\n```\",",
-        "detail": "plugins.ssh.list",
-        "documentation": {}
-    },
-    {
-        "label": "run_cmd",
-        "kind": 2,
-        "importPath": "plugins.ssh.run_shell",
-        "description": "plugins.ssh.run_shell",
-        "peekOfCode": "def run_cmd(hostname: str, username: str, password: str, ssh_port: int, cmd: str):\n    try:\n        ssh = paramiko.SSHClient()\n        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n        ssh.connect(hostname, ssh_port, username, password)\n        stdin, stdout, stderr = ssh.exec_command(cmd)\n        output = stdout.read().decode(\"utf-8\")\n        errors = stderr.read().decode(\"utf-8\")\n        exit_status = stdout.channel.recv_exit_status()\n        ssh.close()",
-        "detail": "plugins.ssh.run_shell",
-        "documentation": {}
-    },
-    {
-        "label": "run_shell_command",
-        "kind": 2,
-        "importPath": "plugins.ssh.run_shell",
-        "description": "plugins.ssh.run_shell",
-        "peekOfCode": "def run_shell_command(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if not m.text.replace(\".\", \"\").replace(\" \", \"\"):\n            raise Exception(\n                \"Thiếu lệnh và tên máy.\\nHãy thực hiện theo mẫu: `.machine0 echo Hello, World`\"\n            )\n        machine = m.text.split(\" \")[0].replace(\".\", \"\")\n        shell_cmd = m.text.split(\" \", 1)[1]",
-        "detail": "plugins.ssh.run_shell",
-        "documentation": {}
-    },
-    {
         "label": "check_urls",
         "kind": 2,
         "importPath": "plugins.writing.check_available",
@@ -1391,6 +1289,51 @@
         "description": "plugins.writing.share_and_add",
         "peekOfCode": "def share_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
         "detail": "plugins.writing.share_and_add",
+        "documentation": {}
+    },
+    {
+        "label": "save_ssh_login",
+        "kind": 2,
+        "importPath": "trash.ssh.add",
+        "description": "trash.ssh.add",
+        "peekOfCode": "def save_ssh_login(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if m.chat.type != enums.ChatType.PRIVATE:\n            raise Exception(\n                \"Để bảo mật, vui lòng thực hiện thao tác này ở chat riêng tư\"\n            )\n        if len(m.command) < 5:\n            raise Exception(",
+        "detail": "trash.ssh.add",
+        "documentation": {}
+    },
+    {
+        "label": "delete_machine_server",
+        "kind": 2,
+        "importPath": "trash.ssh.delete",
+        "description": "trash.ssh.delete",
+        "peekOfCode": "def delete_machine_server(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if len(m.command) < 2:\n            raise Exception(\"Vui lòng cung cấp tên máy\")\n        machine = m.command[1]\n        try:\n            ssh.delete(machine)\n        except Exception as e:",
+        "detail": "trash.ssh.delete",
+        "documentation": {}
+    },
+    {
+        "label": "get_list_machines",
+        "kind": 2,
+        "importPath": "trash.ssh.list",
+        "description": "trash.ssh.list",
+        "peekOfCode": "def get_list_machines(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        user_id = m.from_user.id\n        ssh = SSH(user_id)\n        user = m.from_user.first_name\n        list_machines = ssh.machines()\n        list_machines = \"    \".join(list_machines)\n        m.reply(\n            f\"Danh sách máy chủ SSH của **{user}**:```Machines\\n{list_machines}\\n```\",",
+        "detail": "trash.ssh.list",
+        "documentation": {}
+    },
+    {
+        "label": "run_cmd",
+        "kind": 2,
+        "importPath": "trash.ssh.run_shell",
+        "description": "trash.ssh.run_shell",
+        "peekOfCode": "def run_cmd(hostname: str, username: str, password: str, ssh_port: int, cmd: str):\n    try:\n        ssh = paramiko.SSHClient()\n        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n        ssh.connect(hostname, ssh_port, username, password)\n        stdin, stdout, stderr = ssh.exec_command(cmd)\n        output = stdout.read().decode(\"utf-8\")\n        errors = stderr.read().decode(\"utf-8\")\n        exit_status = stdout.channel.recv_exit_status()\n        ssh.close()",
+        "detail": "trash.ssh.run_shell",
+        "documentation": {}
+    },
+    {
+        "label": "run_shell_command",
+        "kind": 2,
+        "importPath": "trash.ssh.run_shell",
+        "description": "trash.ssh.run_shell",
+        "peekOfCode": "def run_shell_command(c, m):\n    ssh = SSH(m.from_user.id)\n    m.reply_chat_action(ChatAction.TYPING)\n    try:\n        if not m.text.replace(\".\", \"\").replace(\" \", \"\"):\n            raise Exception(\n                \"Thiếu lệnh và tên máy.\\nHãy thực hiện theo mẫu: `.machine0 echo Hello, World`\"\n            )\n        machine = m.text.split(\" \")[0].replace(\".\", \"\")\n        shell_cmd = m.text.split(\" \", 1)[1]",
+        "detail": "trash.ssh.run_shell",
         "documentation": {}
     },
     {

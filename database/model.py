@@ -6,6 +6,12 @@ class Base(DeclarativeBase):
     pass
 
 
+class Manager(Base):
+    __tablename__ = "managers"
+    user_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    data: Mapped[str] = mapped_column(String)
+
+
 class Note(Base):
     __tablename__ = "notes"
     name: Mapped[str] = mapped_column(String, primary_key=True)

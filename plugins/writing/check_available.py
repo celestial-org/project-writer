@@ -2,7 +2,7 @@ import time
 import requests
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from database import NotesDB, NoteManage, Turso
+from database import NoteManage, Turso
 
 
 def check_urls(urls: list) -> list:

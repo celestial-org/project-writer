@@ -2,7 +2,7 @@ import re
 import time
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from database import NotesDB, Turso
+from database import Turso
 
 
 @Client.on_message(filters.command("add"))

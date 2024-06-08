@@ -1,6 +1,6 @@
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from database.note_manage import NoteManage
+from database import NoteManage
 from .admin import admin
 
 
