@@ -1341,7 +1341,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"deta\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"sqlite\"][\"turso\"]\napi_id = res[\"telegram\"][\"api_id\"]\napi_hash = res[\"telegram\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"TURSO_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1350,7 +1350,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"deta\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"sqlite\"][\"turso\"]\napi_id = res[\"telegram\"][\"api_id\"]\napi_hash = res[\"telegram\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"TURSO_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1359,16 +1359,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DETA_KEY\"] = res[\"deta\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"sqlite\"][\"turso\"]\napi_id = res[\"telegram\"][\"api_id\"]\napi_hash = res[\"telegram\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"writer\"]",
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "os.environ[\"DETA_KEY\"]",
-        "kind": 5,
-        "importPath": "environment",
-        "description": "environment",
-        "peekOfCode": "os.environ[\"DETA_KEY\"] = res[\"deta\"][\"collection\"]\nos.environ[\"TURSO_URL\"] = res[\"sqlite\"][\"turso\"]\napi_id = res[\"telegram\"][\"api_id\"]\napi_hash = res[\"telegram\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"TURSO_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1377,25 +1368,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TURSO_URL\"] = res[\"sqlite\"][\"turso\"]\napi_id = res[\"telegram\"][\"api_id\"]\napi_hash = res[\"telegram\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"writer\"]",
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_id",
-        "kind": 5,
-        "importPath": "environment",
-        "description": "environment",
-        "peekOfCode": "api_id = res[\"telegram\"][\"api_id\"]\napi_hash = res[\"telegram\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"writer\"]",
-        "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_hash",
-        "kind": 5,
-        "importPath": "environment",
-        "description": "environment",
-        "peekOfCode": "api_hash = res[\"telegram\"][\"api_hash\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"TURSO_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
