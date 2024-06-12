@@ -59,7 +59,7 @@ def parse_url(url):
                     value = convert_timestamp_to_datetime(
                         int(value), timezone="Asia/Ho_Chi_Minh"
                     )
-                except:
+                except Exception:
                     value = "khong xac dinh"
             result_dict[key] = value
         if (
@@ -74,7 +74,7 @@ def parse_url(url):
     return result_dict, len(res_text.splitlines())
 
 
-@Client.on_message(filters.command("checks"))
+@Client.on_message(filters.command("check") & (filters.mentioned | filters.private))
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.reply_to_message and m.reply_to_message.text:

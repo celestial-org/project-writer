@@ -49,7 +49,7 @@ def filter_alive(c, m):
     def handler(url):
         try:
             test_url, count = get_config(url)
-        except:
+        except Exception:
             m.reply(f"```Lien ket {url} khong kha dung```", quote=True)
             return
 
