@@ -32,11 +32,10 @@ def delete_url(c, m):
     worked = None
     for url in urls:
         worked = False
-        try:
-            notes.delete(filename, url, m.from_user.id)
+        if notes.delete(filename, url, m.from_user.id):
             worked = True
-        except Exception as e:
-            err = m.reply_text(f"Error: {e}")
+        else:
+            err = m.reply_text("Error: Subscription khong ton tai trong kho luu tru")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     if worked:
@@ -66,11 +65,10 @@ def delete_share_url(c, m):
     worked = None
     for url in urls:
         worked = False
-        try:
-            notes.delete("share", url, 5665225938)
+        if notes.delete("share", url, 5665225938):
             worked = True
-        except Exception as e:
-            err = m.reply_text(f"Error: {e}")
+        else:
+            err = m.reply_text("Error: Subscription khong ton tai trong kho luu tru")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     if worked:

@@ -1251,7 +1251,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get_list",
         "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = Turso()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    try:\n        urls = notes.list(\"share\", 5665225938)\n        if urls:",
+        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = Turso()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    urls = notes.list(\"share\", 5665225938)\n    if urls:\n        urls_str = \"\\n\".join(urls)",
         "detail": "plugins.writing.get_list",
         "documentation": {}
     },

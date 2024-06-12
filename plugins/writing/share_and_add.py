@@ -32,12 +32,10 @@ def add_url(c, m):
         return
     li = 0
     for url in urls:
-        try:
-            notes.add(filename, url, user_id)
+        if notes.add(filename, url, user_id):
             li += 1
-        except Exception as e:
-            print(e)
-            pass
+        else:
+            print("Existing")
     if li != len(urls):
         x = len(urls) - li
         temp = m.reply(f"{x} URL trùng lặp sẽ không được thêm lại")
@@ -67,12 +65,10 @@ def share_url(c, m):
         return
     li = 0
     for url in urls:
-        try:
-            notes.add("share", url, 5665225938)
+        if notes.add("share", url, 5665225938):
             li += 1
-        except Exception as e:
-            print(e)
-            pass
+        else:
+            print("Existing")
     if li != len(urls):
         x = len(urls) - li
         temp = m.reply(f"{x} URL trùng lặp sẽ không được thêm lại")
