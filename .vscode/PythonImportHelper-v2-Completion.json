@@ -855,7 +855,7 @@
         "kind": 6,
         "importPath": "database.client",
         "description": "database.client",
-        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"PG_URL\")\n        engine = create_engine(DB_URL)\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, name: str, url: str, user_id: int) -> bool:\n        note = self.get(name, user_id)\n        if note:\n            urls = note.urls.splitlines()",
+        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"DB_URL\")\n        engine = create_engine(DB_URL)\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, name: str, url: str, user_id: int) -> bool:\n        note = self.get(name, user_id)\n        if note:\n            urls = note.urls.splitlines()",
         "detail": "database.client",
         "documentation": {}
     },
