@@ -63,10 +63,8 @@ class Turso:
 
 class NoteManage:
     def __init__(self) -> None:
-        TURSO_URL = os.environ.get("TURSO_URL")
-        engine = create_engine(
-            TURSO_URL, connect_args={"check_same_thread": False}, echo=True
-        )
+        DB_URL = os.environ.get("DB_URL")
+        engine = create_engine(DB_URL)
         Base.metadata.create_all(engine)
         self.session = Session(engine)
 

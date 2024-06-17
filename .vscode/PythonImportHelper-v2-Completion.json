@@ -864,7 +864,7 @@
         "kind": 6,
         "importPath": "database.client",
         "description": "database.client",
-        "peekOfCode": "class NoteManage:\n    def __init__(self) -> None:\n        TURSO_URL = os.environ.get(\"TURSO_URL\")\n        engine = create_engine(\n            TURSO_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, user: User):\n        manager = Manager(user_id=user.id, data=str(User))",
+        "peekOfCode": "class NoteManage:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"DB_URL\")\n        engine = create_engine(DB_URL)\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, user: User):\n        manager = Manager(user_id=user.id, data=str(User))\n        self.session.merge(manager)\n        self.session.commit()",
         "detail": "database.client",
         "documentation": {}
     },
