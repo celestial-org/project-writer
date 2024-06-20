@@ -81,23 +81,12 @@ def litespeedtest(c, m):
         try:
             url, configs, count = get_config(url)
         except Exception:
-            uvl = m.reply(f"Liên kết {url} không khả dụng", quote=True)
-            time.sleep(10)
-            uvl.delete()
+            m.reply(f"Liên kết {url} không khả dụng", quote=True)
             return
         if count is None:
-            m.reply(f"Liên kết {url} bị lỗi", quote=True)
+            m.reply(f"Liên kết {url} không có máy chủ nào cả !", quote=True)
             return
-        if url.startswith("http"):
-            stt = m.reply(
-                f"**{m.from_user.first_name}** thực hiện test liên kết {url} với **{count}** cấu hình",
-                quote=True,
-            )
-        else:
-            stt = m.reply(
-                f"**{m.from_user.first_name}** thực hiện test 1 cấu hình\n{url}",
-                quote=True,
-            )
+
         s_msg = m
         first_msg = m
         result_good = ""
@@ -133,7 +122,6 @@ def litespeedtest(c, m):
                     first_msg = s_msg
         result_gather = ""
         s_msg = None
-        stt.delete()
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         executor.map(handler, urls)
