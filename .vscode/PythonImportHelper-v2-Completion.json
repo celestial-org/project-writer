@@ -1170,7 +1170,7 @@
         "kind": 2,
         "importPath": "plugins.rewrites.test",
         "description": "plugins.rewrites.test",
-        "peekOfCode": "def start_test(config):\n    r = requests.post(test_server, json={\"q\": config}, timeout=60)\n    return r.text\n@Client.on_message(filters.command(\"test\"))\ndef litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    url_pattern = re.compile(\n        r\"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)\"\n    )\n    if m.reply_to_message:",
+        "peekOfCode": "def start_test(config):\n    try:\n        r = requests.post(test_server, json={\"q\": config}, timeout=60)\n        return r.text\n    except Exception as e:\n        print(e)\n        return \"\"\n@Client.on_message(filters.command(\"test\"))\ndef litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)",
         "detail": "plugins.rewrites.test",
         "documentation": {}
     },

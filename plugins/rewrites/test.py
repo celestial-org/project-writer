@@ -42,8 +42,12 @@ def get_config(data):
 
 
 def start_test(config):
-    r = requests.post(test_server, json={"q": config}, timeout=60)
-    return r.text
+    try:
+        r = requests.post(test_server, json={"q": config}, timeout=60)
+        return r.text
+    except Exception as e:
+        print(e)
+        return ""
 
 
 @Client.on_message(filters.command("test"))
