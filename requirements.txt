@@ -13,3 +13,4 @@ sqlalchemy
 apscheduler
 black==24.4.2
 psycopg2
+mysqlclient
