@@ -1341,7 +1341,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1350,7 +1350,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1359,7 +1359,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1368,7 +1368,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"DB_URL\"] = res[\"database\"][\"notes\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
