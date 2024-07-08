@@ -1,6 +1,6 @@
 import os
-from hydrogram import Client, filters
-from hydrogram.enums import ChatAction
+from pyrogram import Client, filters
+from pyrogram.enums import ChatAction
 
 v2tool = os.getenv("V2TOOL")
 

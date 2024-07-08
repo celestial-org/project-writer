@@ -1,6 +1,6 @@
 import time
-from hydrogram import Client, filters
-from hydrogram.enums import ChatAction, ChatType
+from pyrogram import Client, filters
+from pyrogram.enums import ChatAction, ChatType
 from database import NoteManage, Turso
 
 

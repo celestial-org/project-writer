@@ -4,8 +4,8 @@ import re
 import os
 import concurrent.futures
 import requests
-from hydrogram import Client, filters
-from hydrogram.enums import ChatAction
+from pyrogram import Client, filters
+from pyrogram.enums import ChatAction
 
 test_server = os.getenv("TEST_SERVER")
 
@@ -96,7 +96,6 @@ def litespeedtest(c, m):
         result_good = ""
         result_none = ""
         count = 0
-        url = url.replace("--", "%2D%2D")
         for config in configs:
             result = start_test(config)
             if "|" not in result:

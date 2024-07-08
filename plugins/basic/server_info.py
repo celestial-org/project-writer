@@ -1,6 +1,6 @@
 import platform
 import requests
-from hydrogram import Client, filters
+from pyrogram import Client, filters
 
 
 def server_info():

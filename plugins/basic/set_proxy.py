@@ -1,6 +1,6 @@
 import os
 import time
-from hydrogram import Client, filters
+from pyrogram import Client, filters
 
 
 @Client.on_message(filters.command("set_proxy") & filters.user(5665225938))

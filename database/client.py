@@ -1,7 +1,7 @@
 import os
 from sqlalchemy import create_engine, select, and_
 from sqlalchemy.orm import Session
-from hydrogram.types import User
+from pyrogram.types import User
 from .model import Base, Manager, Note
 
 

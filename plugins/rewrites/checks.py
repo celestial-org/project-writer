@@ -4,8 +4,8 @@ import concurrent.futures
 from datetime import datetime
 import pytz
 import requests
-from hydrogram import Client, filters
-from hydrogram.enums import ChatAction
+from pyrogram import Client, filters
+from pyrogram.enums import ChatAction
 
 
 def convert_bytes_to_human_readable(bytes_value):
@@ -74,7 +74,9 @@ def parse_url(url):
     return result_dict, len(res_text.splitlines())
 
 
-@Client.on_message((filters.command("check") &  filters.private) & filters.regex('check@writerplus_bot'))
+@Client.on_message(
+    (filters.command("check") & filters.private) & filters.regex("check@writerplus_bot")
+)
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     if m.reply_to_message and m.reply_to_message.text:

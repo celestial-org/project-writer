@@ -1,8 +1,8 @@
 import os
 import concurrent.futures
 import requests
-from hydrogram import Client, filters
-from hydrogram.enums import ChatAction
+from pyrogram import Client, filters
+from pyrogram.enums import ChatAction
 from .test import get_config
 
 test_server = os.getenv("TEST_SERVER")

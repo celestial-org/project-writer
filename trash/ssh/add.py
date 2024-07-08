@@ -1,6 +1,6 @@
 import time
-from hydrogram import Client, enums, filters
-from hydrogram.enums import ChatAction
+from pyrogram import Client, enums, filters
+from pyrogram.enums import ChatAction
 from database import SSH
 
 

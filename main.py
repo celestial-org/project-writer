@@ -1,7 +1,7 @@
 import os
 
 if __name__ == "__main__":
-    from hydrogram import Client, idle
+    from pyrogram import Client, idle
     from environment import bot_token
 
     bot = Client(
