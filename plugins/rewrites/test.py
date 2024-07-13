@@ -106,7 +106,7 @@ def litespeedtest(c, m):
             result_gather = result_good + result_none
             s_text = (
                 f"{url}"
-                + f"\nTest bởi <b>[{m.from_user.first_name}](tg://user?id={m.from_user.id})</b>"
+                + f"\nTest bởi <b><a href='tg://user?id={m.from_user.id}'>{m.from_user.first_name}</a></b>"
                 + "<code>"
                 + result_gather
                 + "</code>"

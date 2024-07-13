@@ -123,7 +123,7 @@ def check_sub(c, m):
             expire = info.get("expire", "N/A")
 
             message = (
-                f"[{url}]({url})\n"
+                f"{url}\n"
                 f"Check bởi <b>{user}</b>\n"
                 f"Số lượng cấu hình: <b>{count}</b>\n"
                 f"Tổng: <b>{total}</b>\n"
