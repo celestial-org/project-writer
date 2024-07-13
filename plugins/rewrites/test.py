@@ -11,7 +11,7 @@ test_server = os.getenv("TEST_SERVER")
 
 def get_config(data):
     url = data
-    if any(data.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss:"]):
+    if any(data.startswith(sche) for sche in ["vmess://", "trojan://", "vless://", "ss://"]):
         url = requests.post(
             "https://paste.rs",
             data=data,
@@ -35,7 +35,7 @@ def get_config(data):
             data = base64.b64decode(data).decode()
     else:
         data = base64.b64decode(data).decode()
-    data = data.splitlines()
+    data = data.split()
     count = len(data)
     return url, data, count
 
@@ -107,13 +107,13 @@ def litespeedtest(c, m):
             s_text = (
                 f"{url}"
                 + f"\nTest bởi <b><a href='tg://user?id={m.from_user.id}'>{m.from_user.first_name}</a></b>"
-                + "<code>"
+                + "<pre><code>"
                 + result_gather
-                + "</code>"
+                + "</code></pre>"
             )
             if count > 1:
                 s_text = (
-                    "<b>" + str(count) + "</b>" + "<code>" + result_gather + "</code>"
+                    "<b>" + str(count) + "</b>" + "<pre><code>" + result_gather + "</code></pre>"
                 )
             try:
                 s_msg.edit(s_text, parse_mode=ParseMode.HTML)
