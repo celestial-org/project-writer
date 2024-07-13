@@ -1,6 +1,6 @@
 import time
 from pyrogram import Client, filters
-from pyrogram.enums import ChatAction, ChatType
+from pyrogram.enums import ChatAction, ChatType, ParseMode
 from database import NoteManage, Turso
 
 
@@ -21,9 +21,13 @@ def get_all_urls(c, m):
     urls = notes.list(filename, m.from_user.id)
     if urls:
         urls_str = "\n".join(urls)
-        m.reply_text(f"Tìm thấy {len(urls)} URL:\n{urls_str}")
+        m.reply(
+            f"Tìm thấy {len(urls)} URL:\n{urls_str}",
+            quote=True,
+            parse_mode=ParseMode.HTML,
+        )
     else:
-        err = m.reply_text("No URLs found")
+        err = m.reply("No URLs found")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)
 
@@ -39,8 +43,12 @@ def get_all_share_urls(c, m):
     urls = notes.list("share", 5665225938)
     if urls:
         urls_str = "\n".join(urls)
-        m.reply_text(f"Tìm thấy {len(urls)} URL:\n{urls_str}")
+        m.reply(
+            f"Tìm thấy {len(urls)} URL:\n{urls_str}",
+            quote=True,
+            parse_mode=ParseMode.HTML,
+        )
     else:
-        err = m.reply_text("No URLs found")
+        err = m.reply("No URLs found")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)

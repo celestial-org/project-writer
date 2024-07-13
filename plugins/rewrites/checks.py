@@ -5,7 +5,7 @@ from datetime import datetime
 import pytz
 import requests
 from pyrogram import Client, filters
-from pyrogram.enums import ChatAction
+from pyrogram.enums import ChatAction, ParseMode
 
 
 def convert_bytes_to_human_readable(bytes_value):
@@ -109,7 +109,7 @@ def check_sub(c, m):
         try:
             info, count = parse_url(url)
         except Exception:
-            message = f"{url}\n**__Check bởi__ --{user}--**\n__--**Subscription lỗi**--"
+            message = f"{url}\nCheck bởi <b>{user}</b>\n<b>Subscription lỗi</b>"
             m.reply(message, quote=True)
             return True
         if info and all(
@@ -124,17 +124,19 @@ def check_sub(c, m):
 
             message = (
                 f"[{url}]({url})\n"
-                f"**__Check bởi__ --{user}--**\n"
-                f"__**Số lượng cấu hình:**__ --{count}--\n"
-                f"**Tổng:** --{total}--\n"
-                f"**Đã dùng:** ↑--{upl}--, ↓--{downl}--\n"
-                f"**Còn lại:** --{avail}--\n"
-                f"**Hết hạn:** __--{expire}--__"
+                f"Check bởi <b>{user}</b>\n"
+                f"Số lượng cấu hình: <b>{count}</b>\n"
+                f"Tổng: <b>{total}</b>\n"
+                f"Đã dùng: <b>↑{upl}, ↓{downl}</b>\n"
+                f"Còn lại: <b>{avail}</b>\n"
+                f"Hết hạn: <b>{expire}</b>"
             )
         else:
-            message = f"{url}\n**__Check bởi__ --{user}--**\n__**Số lượng cấu hình:**__ --{count}--"
+            message = (
+                f"{url}\nCheck bởi <b>{user}</b>\nSố lượng cấu hình: <b>{count}</b>"
+            )
 
-        m.reply(message, quote=True)
+        m.reply(message, quote=True, parse_mode=ParseMode.HTML)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         executor.map(handler, urls)

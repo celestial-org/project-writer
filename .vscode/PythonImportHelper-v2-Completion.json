@@ -579,7 +579,7 @@
         "documentation": {}
     },
     {
-        "label": "ChatAction",
+        "label": "ParseMode",
         "importPath": "pyrogram.enums",
         "description": "pyrogram.enums",
         "isExtraImport": true,
@@ -596,6 +596,30 @@
     },
     {
         "label": "ChatAction",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ParseMode",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ParseMode",
         "importPath": "pyrogram.enums",
         "description": "pyrogram.enums",
         "isExtraImport": true,
@@ -627,7 +651,23 @@
         "documentation": {}
     },
     {
+        "label": "ParseMode",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
         "label": "ChatAction",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ParseMode",
         "importPath": "pyrogram.enums",
         "description": "pyrogram.enums",
         "isExtraImport": true,

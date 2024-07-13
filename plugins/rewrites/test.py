@@ -1,11 +1,10 @@
-import time
 import base64
 import re
 import os
 import concurrent.futures
 import requests
 from pyrogram import Client, filters
-from pyrogram.enums import ChatAction
+from pyrogram.enums import ChatAction, ParseMode
 
 test_server = os.getenv("TEST_SERVER")
 
@@ -107,19 +106,21 @@ def litespeedtest(c, m):
             result_gather = result_good + result_none
             s_text = (
                 f"{url}"
-                + f"\n__Test bởi **[{m.from_user.first_name}](tg://user?id={m.from_user.id})**__"
-                + "```\n"
+                + f"\nTest bởi <b>[{m.from_user.first_name}](tg://user?id={m.from_user.id})</b>"
+                + "<code>"
                 + result_gather
-                + "```"
+                + "</code>"
             )
             if count > 1:
-                s_text = "**" + str(count) + "**" + "```\n" + result_gather + "```"
+                s_text = (
+                    "<b>" + str(count) + "</b>" + "<code>" + result_gather + "</code>"
+                )
             try:
-                s_msg.edit(s_text)
+                s_msg.edit(s_text, parse_mode=ParseMode.HTML)
             except Exception as e:
                 print(e)
                 result_gather = result + "\n"
-                s_msg = first_msg.reply(s_text, quote=True)
+                s_msg = first_msg.reply(s_text, quote=True, parse_mode=ParseMode.HTML)
                 count += 1
                 if count == 1:
                     first_msg = s_msg

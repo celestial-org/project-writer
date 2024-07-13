@@ -1,7 +1,7 @@
 import re
 import time
 from pyrogram import Client, filters
-from pyrogram.enums import ChatAction
+from pyrogram.enums import ChatAction, ParseMode
 from database import Turso
 
 
@@ -24,7 +24,7 @@ def delete_url(c, m):
         text,
     )
     if not urls:
-        err = m.reply_text("Vui lòng cung cấp URL")
+        err = m.reply("Vui lòng cung cấp URL")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)
         m.delete()
@@ -35,11 +35,11 @@ def delete_url(c, m):
         if notes.delete(filename, url, m.from_user.id):
             worked = True
         else:
-            err = m.reply_text("Error: Subscription khong ton tai trong kho luu tru")
+            err = m.reply("Error: Subscription khong ton tai trong kho luu tru")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     if worked:
-        done = m.reply_text(f"Đã xoá {len(urls)} URL")
+        done = m.reply(f"Đã xoá {len(urls)} URL", parse_mode=ParseMode.HTML, quote=True)
         time.sleep(10)
         c.delete_messages(m.chat.id, done.id)
     m.delete()
@@ -57,7 +57,7 @@ def delete_share_url(c, m):
         text,
     )
     if not urls:
-        err = m.reply_text("Vui lòng cung cấp URL")
+        err = m.reply("Vui lòng cung cấp URL")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)
         m.delete()
@@ -68,11 +68,11 @@ def delete_share_url(c, m):
         if notes.delete("share", url, 5665225938):
             worked = True
         else:
-            err = m.reply_text("Error: Subscription khong ton tai trong kho luu tru")
+            err = m.reply("Error: Subscription khong ton tai trong kho luu tru")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     if worked:
-        done = m.reply_text(f"Đã xoá {len(urls)} URL")
+        done = m.reply(f"Đã xoá {len(urls)} URL", parse_mode=ParseMode.HTML, quote=True)
         time.sleep(10)
         c.delete_messages(m.chat.id, done.id)
     m.delete()

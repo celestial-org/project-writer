@@ -1,7 +1,7 @@
 import time
 import requests
 from pyrogram import Client, filters
-from pyrogram.enums import ChatAction
+from pyrogram.enums import ChatAction, ParseMode
 from database import NoteManage, Turso
 
 
@@ -49,13 +49,14 @@ def check_all_urls(c, m):
             m.reply(
                 f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}",
                 quote=True,
+                parse_mode=ParseMode.HTML,
             )
         else:
             err = m.reply("No URLs were removed", quote=True)
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     except Exception as e:
-        err = m.reply_text(f"Error: {e}")
+        err = m.reply(f"Error: {e}")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)
 
@@ -76,13 +77,15 @@ def check_all_share_urls(c, m):
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
             m.reply(
-                f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}", quote=True
+                f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}",
+                quote=True,
+                parse_mode=ParseMode.HTML,
             )
         else:
             err = m.reply("No URLs were removed", quote=True)
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
     except Exception as e:
-        err = m.reply_text(f"Error: {e}")
+        err = m.reply(f"Error: {e}")
         time.sleep(10)
         c.delete_messages(m.chat.id, err.id)
