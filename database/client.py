@@ -8,7 +8,9 @@ from .model import Base, Manager, Note
 class Turso:
     def __init__(self) -> None:
         DB_URL = os.environ.get("DB_URL")
-        engine = create_engine(DB_URL)
+        engine = create_engine(
+            DB_URL, connect_args={"check_same_thread": False}, echo=True
+        )
         Base.metadata.create_all(engine)
         self.session = Session(engine)
 

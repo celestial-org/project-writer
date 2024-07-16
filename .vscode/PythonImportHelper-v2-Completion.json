@@ -895,7 +895,7 @@
         "kind": 6,
         "importPath": "database.client",
         "description": "database.client",
-        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"DB_URL\")\n        engine = create_engine(DB_URL)\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, name: str, url: str, user_id: int) -> bool:\n        note = self.get(name, user_id)\n        if note:\n            urls = note.urls.splitlines()",
+        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"DB_URL\")\n        engine = create_engine(\n            DB_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, name: str, url: str, user_id: int) -> bool:\n        note = self.get(name, user_id)",
         "detail": "database.client",
         "documentation": {}
     },
@@ -1381,7 +1381,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1390,7 +1390,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1399,7 +1399,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1408,7 +1408,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"DB_URL\"] = res[\"postgres\"][\"neon\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
         "detail": "environment",
         "documentation": {}
     },
