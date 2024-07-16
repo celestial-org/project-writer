@@ -27,3 +27,13 @@ class Note(Base):
             user_id=self.user_id,
         )
         return str(obj)
+
+
+class BotOptions(Base):
+    __tablename__ = "bot_options"
+    name: Mapped[str] = mapped_column(String, primary_key=True)
+    value: Mapped[str] = mapped_column(String)
+
+    def __repr__(self) -> str:
+        obj = dict(name=self.name, value=self.value)
+        return str(obj)

@@ -1,50 +1,41 @@
 import time
+import os
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ChatType, ParseMode
-from database import NoteManage, Turso
+from database import NoteDB
 
 
-@Client.on_message(filters.command("getmylist"))
+@Client.on_message(filters.command("note"))
 def get_all_urls(c, m):
-    notes = Turso()
+    owner = int(os.getenv("OWNER_ID"))
+    managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
+    notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
+    user_id = m.from_user.id
     if m.chat.type != ChatType.PRIVATE:
         m.reply("Vui lòng thực hiện thao tác này ở khu vực riêng tư!", quote=True)
         return
-    if len(m.command) > 1 and m.command[1].startswith(":"):
-        filename = m.command[1].replace(":", "")
-    elif m.from_user.id == 5665225938:
+    if len(m.command) > 1:
+        filename = m.command[1]
+    elif m.from_user.id == owner:
         filename = "v2ray"
     else:
-        m.reply("Vui lòng cung cấp tên ghi", quote=True)
+        m.reply("Vui lòng cung cấp tên ghi <pre>/note example_note_name</pre>", quote=True)
         return
-    urls = notes.list(filename, m.from_user.id)
-    if urls:
-        urls_str = "\n".join(urls)
-        m.reply(
-            f"Tìm thấy {len(urls)} URL:\n{urls_str}",
-            quote=True,
-            parse_mode=ParseMode.HTML,
-        )
+    note = notes.get_note(filename)
+    if filename == "share":
+        if m.from_user.id not in [owner, *managers]:
+            m.reply("**You don't have permission to access this note**", quote=True)
+            return
     else:
-        err = m.reply("No URLs found")
-        time.sleep(10)
-        c.delete_messages(m.chat.id, err.id)
-
-
-@Client.on_message(filters.command("getsharelist"))
-def get_all_share_urls(c, m):
-    notes = Turso()
-    managers = NoteManage()
-    m.reply_chat_action(ChatAction.TYPING)
-    if m.from_user.id != 5665225938 and not managers.get(m.from_user):
-        m.reply("`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`", quote=True)
-        return
-    urls = notes.list("share", 5665225938)
+        if user_id not in [note.user_id, owner]:
+            m.reply("<b>You don't have permission to access this note</b>", quote=True)
+            return
+    urls = notes.list_links(filename)
     if urls:
         urls_str = "\n".join(urls)
         m.reply(
-            f"Tìm thấy {len(urls)} URL:\n{urls_str}",
+            f"Found {len(urls)} URL in <b>{filename}</b>:\n{urls_str}",
             quote=True,
             parse_mode=ParseMode.HTML,
         )

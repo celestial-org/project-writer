@@ -106,12 +106,19 @@
         "documentation": {}
     },
     {
-        "label": "subprocess",
-        "kind": 6,
+        "label": "Client",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
         "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
+        "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
         "documentation": {}
     },
     {
@@ -579,6 +586,14 @@
         "documentation": {}
     },
     {
+        "label": "ChatAction",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
         "label": "ParseMode",
         "importPath": "pyrogram.enums",
         "description": "pyrogram.enums",
@@ -715,7 +730,7 @@
         "documentation": {}
     },
     {
-        "label": "NoteManage",
+        "label": "Options",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -731,14 +746,6 @@
         "documentation": {}
     },
     {
-        "label": "Turso",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
         "label": "NoteManage",
         "importPath": "database",
         "description": "database",
@@ -755,7 +762,7 @@
         "documentation": {}
     },
     {
-        "label": "Turso",
+        "label": "NoteDB",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -763,7 +770,31 @@
         "documentation": {}
     },
     {
-        "label": "Turso",
+        "label": "NoteDB",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "NoteDB",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SSH",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -787,19 +818,20 @@
         "documentation": {}
     },
     {
-        "label": "SSH",
-        "importPath": "database",
-        "description": "database",
+        "label": "subprocess",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "database",
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
         "documentation": {}
     },
     {
-        "label": "SSH",
-        "importPath": "database",
-        "description": "database",
+        "label": "reload_managers",
+        "importPath": "load_options",
+        "description": "load_options",
         "isExtraImport": true,
-        "detail": "database",
+        "detail": "load_options",
         "documentation": {}
     },
     {
@@ -891,29 +923,70 @@
         "documentation": {}
     },
     {
+        "label": "Thread",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
+        "importPath": "database.client",
+        "description": "database.client",
+        "isExtraImport": true,
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
+        "label": "NoteDB",
+        "importPath": "database.client",
+        "description": "database.client",
+        "isExtraImport": true,
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
+        "label": "ManagerDB",
+        "importPath": "database.client",
+        "description": "database.client",
+        "isExtraImport": true,
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
         "label": "Turso",
         "kind": 6,
         "importPath": "database.client",
         "description": "database.client",
-        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"DB_URL\")\n        engine = create_engine(\n            DB_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, name: str, url: str, user_id: int) -> bool:\n        note = self.get(name, user_id)",
+        "peekOfCode": "class Turso:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"DB_URL\")\n        engine = create_engine(\n            DB_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\nclass Options(Turso):\n    def get_option(self, name: str) -> str:",
         "detail": "database.client",
         "documentation": {}
     },
     {
-        "label": "NoteManage",
+        "label": "Options",
         "kind": 6,
         "importPath": "database.client",
         "description": "database.client",
-        "peekOfCode": "class NoteManage:\n    def __init__(self) -> None:\n        DB_URL = os.environ.get(\"DB_URL\")\n        engine = create_engine(DB_URL)\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)\n    def add(self, user: User):\n        manager = Manager(user_id=user.id, data=str(User))\n        self.session.merge(manager)\n        self.session.commit()",
+        "peekOfCode": "class Options(Turso):\n    def get_option(self, name: str) -> str:\n        \"\"\"\n        Get option by name.\n        Args:\n            name (str): name of option\n        Returns:\n            str: Value of option\n        \"\"\"\n        sql = select(BotOptions).where(BotOptions.name == name)",
         "detail": "database.client",
         "documentation": {}
     },
     {
-        "label": "Machine",
+        "label": "NoteDB",
         "kind": 6,
         "importPath": "database.client",
         "description": "database.client",
-        "peekOfCode": "class Machine:\n    def __init__(self) -> None:\n        TURSO_URL = os.environ.get(\"TURSO_URL\")\n        engine = create_engine(\n            TURSO_URL, connect_args={\"check_same_thread\": False}, echo=True\n        )\n        Base.metadata.create_all(engine)\n        self.session = Session(engine)",
+        "peekOfCode": "class NoteDB(Turso):\n    def add_link(self, note_name: str, url: str, user_id: int) -> bool:\n        \"\"\"\n        Add url to note or create new note if not exist.\n        Args:\n            note_name (str): name of note\n            url (str): url to add\n            user_id (int): telegram user id\n        Returns:\n            bool: True if success, False if failed",
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
+        "label": "ManagerDB",
+        "kind": 6,
+        "importPath": "database.client",
+        "description": "database.client",
+        "peekOfCode": "class ManagerDB(Turso):\n    def add(self, user: User):\n        \"\"\"\n        Add manager to database.\n        Args:\n            user (User): User object\n        Returns:\n            User: User object\n        \"\"\"\n        manager = Manager(user_id=user.id, data=str(User))",
         "detail": "database.client",
         "documentation": {}
     },
@@ -941,6 +1014,15 @@
         "importPath": "database.model",
         "description": "database.model",
         "peekOfCode": "class Note(Base):\n    __tablename__ = \"notes\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    urls: Mapped[str] = mapped_column(String)\n    content: Mapped[str] = mapped_column(String, default=\"\")\n    user_id: Mapped[int] = mapped_column(BigInteger)\n    def __repr__(self) -> str:\n        obj = dict(\n            name=self.name,\n            urls=self.urls.splitlines(),",
+        "detail": "database.model",
+        "documentation": {}
+    },
+    {
+        "label": "BotOptions",
+        "kind": 6,
+        "importPath": "database.model",
+        "description": "database.model",
+        "peekOfCode": "class BotOptions(Base):\n    __tablename__ = \"bot_options\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    value: Mapped[str] = mapped_column(String)\n    def __repr__(self) -> str:\n        obj = dict(name=self.name, value=self.value)\n        return str(obj)",
         "detail": "database.model",
         "documentation": {}
     },
@@ -996,6 +1078,24 @@
         "description": "plugins.admin.admin",
         "peekOfCode": "admin = os.getenv(\"ADMIN_ID\", \"5665225938\")\nif admin.isdigit():\n    if not admin.startswith(\"0\"):\n        admin = int(admin)",
         "detail": "plugins.admin.admin",
+        "documentation": {}
+    },
+    {
+        "label": "set_interval",
+        "kind": 2,
+        "importPath": "plugins.admin.advance",
+        "description": "plugins.admin.advance",
+        "peekOfCode": "def set_interval(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != owner:\n        m.reply(\"You don't have permission to use this command\", quote=True)\n        return\n    if len(m.command) > 1:\n        interval = m.command[1]\n        db = Options()\n        db.set_option(\"interval\", interval)\n    else:",
+        "detail": "plugins.admin.advance",
+        "documentation": {}
+    },
+    {
+        "label": "owner",
+        "kind": 5,
+        "importPath": "plugins.admin.advance",
+        "description": "plugins.admin.advance",
+        "peekOfCode": "owner = int(os.getenv(\"OWNER_ID\"))\n@Client.on_message(filters.command(\"set_interval\"))\ndef set_interval(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != owner:\n        m.reply(\"You don't have permission to use this command\", quote=True)\n        return\n    if len(m.command) > 1:\n        interval = m.command[1]\n        db = Options()",
+        "detail": "plugins.admin.advance",
         "documentation": {}
     },
     {
@@ -1282,16 +1382,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get_list",
         "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_urls(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"",
-        "detail": "plugins.writing.get_list",
-        "documentation": {}
-    },
-    {
-        "label": "get_all_share_urls",
-        "kind": 2,
-        "importPath": "plugins.writing.get_list",
-        "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_share_urls(c, m):\n    notes = Turso()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Vì vấn đề bảo mật, bạn không có quyền sử dụng lệnh này.`\", quote=True)\n        return\n    urls = notes.list(\"share\", 5665225938)\n    if urls:\n        urls_str = \"\\n\".join(urls)",
+        "peekOfCode": "def get_all_urls(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1:",
         "detail": "plugins.writing.get_list",
         "documentation": {}
     },
@@ -1300,16 +1391,7 @@
         "kind": 2,
         "importPath": "plugins.writing.remove_from_list",
         "description": "plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
-        "detail": "plugins.writing.remove_from_list",
-        "documentation": {}
-    },
-    {
-        "label": "delete_share_url",
-        "kind": 2,
-        "importPath": "plugins.writing.remove_from_list",
-        "description": "plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_share_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
+        "peekOfCode": "def delete_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        filename = m.command[1]\n    elif m.from_user.id == owner:\n        filename = \"v2ray\"\n    else:",
         "detail": "plugins.writing.remove_from_list",
         "documentation": {}
     },
@@ -1318,7 +1400,7 @@
         "kind": 2,
         "importPath": "plugins.writing.share_and_add",
         "description": "plugins.writing.share_and_add",
-        "peekOfCode": "def add_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        filename = \"share\"",
+        "peekOfCode": "def add_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1:\n        filename = m.command[1]\n    elif m.from_user.id == owner:\n        filename = \"v2ray\"",
         "detail": "plugins.writing.share_and_add",
         "documentation": {}
     },
@@ -1327,7 +1409,7 @@
         "kind": 2,
         "importPath": "plugins.writing.share_and_add",
         "description": "plugins.writing.share_and_add",
-        "peekOfCode": "def share_url(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
+        "peekOfCode": "def share_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
         "detail": "plugins.writing.share_and_add",
         "documentation": {}
     },
@@ -1437,6 +1519,33 @@
         "description": "helloworld",
         "peekOfCode": "app = Flask(__name__)\n@app.route(\"/\")\ndef hello():\n    return \"Hello World!\"",
         "detail": "helloworld",
+        "documentation": {}
+    },
+    {
+        "label": "load_options",
+        "kind": 2,
+        "importPath": "load_options",
+        "description": "load_options",
+        "peekOfCode": "def load_options():\n    db = Options()\n    options = db.list_options()\n    update_interval = options.get(\"update-interval\", 3600)\n    owner = options.get(\"owner_id\", 5665225938)\n    os.environ[\"OWNER_ID\"] = str(owner)\n    Thread(target=update_notes, args=(update_interval,)).start()\n    reload_managers()\ndef reload_managers():\n    db = ManagerDB()",
+        "detail": "load_options",
+        "documentation": {}
+    },
+    {
+        "label": "reload_managers",
+        "kind": 2,
+        "importPath": "load_options",
+        "description": "load_options",
+        "peekOfCode": "def reload_managers():\n    db = ManagerDB()\n    managers = []\n    for manager in db.list_managers():\n        managers.append(manager.user_id)\n    managers = \",\".join(map(str, managers))\n    os.environ[\"MANAGERS\"] = managers\n    print(\"Managers updated\")\ndef update_notes(interval, call=False):\n    db = NoteDB()",
+        "detail": "load_options",
+        "documentation": {}
+    },
+    {
+        "label": "update_notes",
+        "kind": 2,
+        "importPath": "load_options",
+        "description": "load_options",
+        "peekOfCode": "def update_notes(interval, call=False):\n    db = NoteDB()\n    while True:\n        def handle_note(note):\n            links = []\n            def handle(text):\n                for url in text.split(None):\n                    if any(scheme in url for scheme in [\"http://\", \"https://\"]):\n                        links.extend(text.split())\n            for url in note.urls.splitlines():",
+        "detail": "load_options",
         "documentation": {}
     }
 ]

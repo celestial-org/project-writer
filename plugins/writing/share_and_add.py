@@ -1,22 +1,24 @@
 import re
+import os
 import time
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-from database import Turso
+from database import NoteDB
 
 
 @Client.on_message(filters.command("add"))
 def add_url(c, m):
-    notes = Turso()
+    owner = int(os.getenv("OWNER_ID"))
+    managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
+    notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
-    if len(m.command) > 1 and m.command[1].startswith(":"):
-        filename = m.command[1].replace(":", "")
-    elif m.from_user.id == 5665225938:
+    if len(m.command) > 1:
+        filename = m.command[1]
+    elif m.from_user.id == owner:
         filename = "v2ray"
     else:
         filename = "share"
-        user_id = 5665225938
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text
@@ -31,8 +33,13 @@ def add_url(c, m):
         m.delete()
         return
     li = 0
+    note = notes.get_note(filename)
+    if note:
+        if user_id not in [note.user_id, owner, *managers]:
+            m.reply("**You don't have permission to access this note**", quote=True)
+            return
     for url in urls:
-        if notes.add(filename, url, user_id):
+        if notes.add_link(filename, url, user_id):
             li += 1
         else:
             print("Existing")
@@ -49,7 +56,7 @@ def add_url(c, m):
 
 @Client.on_message(filters.command("share"))
 def share_url(c, m):
-    notes = Turso()
+    notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
     text = m.text
     if m.reply_to_message:
@@ -65,7 +72,7 @@ def share_url(c, m):
         return
     li = 0
     for url in urls:
-        if notes.add("share", url, 5665225938):
+        if notes.add_link("share", url, 0):
             li += 1
         else:
             print("Existing")

@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
 from database import NoteManage
+from load_options import reload_managers
 from .admin import admin
 
 
@@ -15,6 +16,7 @@ def add_manager(c, m):
         user = c.get_users(m.command[1])
         db.add(user)
     m.reply("Xong", quote=True)
+    reload_managers()
 
 
 @Client.on_message(filters.user(admin) & filters.command("del_manager"))
@@ -28,3 +30,4 @@ def remove_manager(c, m):
         user = c.get_users(m.command[1])
         db.remove(user)
     m.reply("Xong", quote=True)
+    reload_managers()

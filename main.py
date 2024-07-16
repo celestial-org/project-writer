@@ -2,6 +2,7 @@ import os
 
 if __name__ == "__main__":
     from pyrogram import Client, idle
+    from load_options import load_options
     from environment import bot_token
 
     bot = Client(
@@ -13,6 +14,8 @@ if __name__ == "__main__":
         in_memory=True,
     )
     bot.start()
+    load_options()
+
     if os.path.exists("reset.txt"):
         with open("reset.txt", "r") as f:
             chat_id, m_id = f.read().split(":")
