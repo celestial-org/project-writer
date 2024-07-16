@@ -10,19 +10,17 @@ __Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả
 
 **Note Writing**
     
-/get - Lấy liên kết tổng hợp
+/get - Lấy liên kết note **share**
 
-/add - Thêm subscription
+/add - Thêm subscription vào note/thêm vào note **share** nếu không chỉ định tên note
 
-/share - Chia sẻ subscription
+/share - Chia sẻ subscription/thêm vào note **share**
 
-/getmylist - Lấy danh sách subscription
+/note - Kiểm tra danh sách link trong note chỉ định (yêu cầu quyền truy cập), có thể chỉ định `share"` để truy cập note **share**
 
-/delete - Xoá subscription khỏi danh sách
+/delete - Xoá subscription khỏi note chỉ định (yêu cầu quyền truy cập)
 
 /check_alive - Tự kiểm tra và xoá subscription bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
-
-/getsharelist - Lấy các subscription từ danh sách chia sẻ
 
 /deleteshare - Xoá subscription khỏi danh sách chia sẻ 
 
