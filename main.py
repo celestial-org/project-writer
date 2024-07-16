@@ -5,6 +5,7 @@ if __name__ == "__main__":
     from load_options import load_options
     from environment import bot_token
 
+    load_options()
     bot = Client(
         "writer",
         21021245,
@@ -14,7 +15,6 @@ if __name__ == "__main__":
         in_memory=True,
     )
     bot.start()
-    load_options()
 
     if os.path.exists("reset.txt"):
         with open("reset.txt", "r") as f:

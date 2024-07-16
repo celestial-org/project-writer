@@ -8,7 +8,10 @@ from database import NoteDB
 @Client.on_message(filters.command("note"))
 def get_all_urls(c, m):
     owner = int(os.getenv("OWNER_ID"))
-    managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
+    if os.getenv("MANAGERS"):
+        managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
+    else:
+        managers = set()
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id

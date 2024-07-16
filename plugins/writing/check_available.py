@@ -1,8 +1,9 @@
 import time
+import os
 import requests
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ParseMode
-from database import NoteManage, Turso
+from database import NoteDB
 
 
 def check_urls(urls: list) -> list:
@@ -28,52 +29,37 @@ def check_urls(urls: list) -> list:
     return removed_urls
 
 
-@Client.on_message(filters.command("check_alive"))
+@Client.on_message(filters.command("checklive"))
 def check_all_urls(c, m):
-    notes = Turso()
+    owner = int(os.getenv("OWNER_ID"))
+    if os.getenv("MANAGERS"):
+        managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
+    else:
+        managers = set()
+    user_id = m.from_user.id
+    notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
-    if len(m.command) > 1 and m.command[1].startswith(":"):
-        filename = m.command[1].replace(":", "")
-    elif m.from_user.id == 5665225938:
+    if len(m.command) > 1:
+        filename = m.command[1]
+    elif m.from_user.id == owner:
         filename = "v2ray"
     else:
         m.reply("Vui lòng cung cấp tên ghi", quote=True)
         return
+    if filename == "share":
+        if m.from_user.id not in [owner, *managers]:
+            m.reply("**You don't have permission to access this note**", quote=True)
+            return
+    else:
+        note = notes.get_note(filename)
+        if user_id not in [note.user_id, owner]:
+            m.reply("<b>You don't have permission to access this note</b>", quote=True)
+            return
     try:
-        urls = notes.list(filename, m.from_user.id)
+        urls = notes.list_links(filename)
         removed_urls = check_urls(urls)
         for url in removed_urls:
-            notes.delete(filename, url, m.from_user.id)
-        if removed_urls:
-            removed_urls_str = "\n".join(removed_urls)
-            m.reply(
-                f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}",
-                quote=True,
-                parse_mode=ParseMode.HTML,
-            )
-        else:
-            err = m.reply("No URLs were removed", quote=True)
-            time.sleep(10)
-            c.delete_messages(m.chat.id, err.id)
-    except Exception as e:
-        err = m.reply(f"Error: {e}")
-        time.sleep(10)
-        c.delete_messages(m.chat.id, err.id)
-
-
-@Client.on_message(filters.command("check_share"))
-def check_all_share_urls(c, m):
-    notes = Turso()
-    managers = NoteManage()
-    m.reply_chat_action(ChatAction.TYPING)
-    if m.from_user.id != 5665225938 and not managers.get(m.from_user):
-        m.reply("`Forbidden`", quote=True)
-        return
-    try:
-        urls = notes.list("share", m.from_user.id)
-        removed_urls = check_urls(urls)
-        for url in removed_urls:
-            notes.delete("share", url, 5665225938)
+            notes.delete_link(filename, url)
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
             m.reply(

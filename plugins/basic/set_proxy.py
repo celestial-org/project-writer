@@ -1,6 +1,7 @@
 import os
 import time
 from pyrogram import Client, filters
+from database import Options
 
 
 @Client.on_message(filters.command("set_proxy") & filters.user(5665225938))
@@ -13,3 +14,5 @@ def set_proxy(c, m):
     time.sleep(10)
     stt.delete()
     os.environ["http_proxy"] = os.environ["https_proxy"] = "http://127.0.0.1:6868"
+    db = Options()
+    db.set_option("proxy", proxy)

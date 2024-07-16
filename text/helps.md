@@ -20,11 +20,10 @@ __Xin chào **{first_name}**(`{uid}`), dưới đây là danh sách lệnh khả
 
 /delete - Xoá subscription khỏi note chỉ định (yêu cầu quyền truy cập)
 
-/check_alive - Tự kiểm tra và xoá subscription bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
+/checklive - Tự kiểm tra và xoá subscription bị lỗi (không bao gồm subscribe hết lưu lượng truy cập)
 
-/deleteshare - Xoá subscription khỏi danh sách chia sẻ 
+/update_note - Cập nhật note chỉ định
 
-/check_share - Kiểm tra và xoá subscription bị lỗi khỏi danh sách chia sẻ
 
 **Khác**
 

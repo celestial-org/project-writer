@@ -450,6 +450,22 @@
         "documentation": {}
     },
     {
+        "label": "filters",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
         "label": "enums",
         "importPath": "pyrogram",
         "description": "pyrogram",
@@ -730,6 +746,14 @@
         "documentation": {}
     },
     {
+        "label": "ChatAction",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
         "label": "Options",
         "importPath": "database",
         "description": "database",
@@ -738,7 +762,7 @@
         "documentation": {}
     },
     {
-        "label": "NoteManage",
+        "label": "ManagerDB",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -746,7 +770,7 @@
         "documentation": {}
     },
     {
-        "label": "NoteManage",
+        "label": "Options",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -754,7 +778,15 @@
         "documentation": {}
     },
     {
-        "label": "Turso",
+        "label": "NoteDB",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "NoteDB",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -828,6 +860,14 @@
     },
     {
         "label": "reload_managers",
+        "importPath": "load_options",
+        "description": "load_options",
+        "isExtraImport": true,
+        "detail": "load_options",
+        "documentation": {}
+    },
+    {
+        "label": "update_note",
         "importPath": "load_options",
         "description": "load_options",
         "isExtraImport": true,
@@ -1112,7 +1152,7 @@
         "kind": 2,
         "importPath": "plugins.admin.notemanage",
         "description": "plugins.admin.notemanage",
-        "peekOfCode": "def add_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.add(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.add(user)\n    m.reply(\"Xong\", quote=True)",
+        "peekOfCode": "def add_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = ManagerDB()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.add(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.add(user)\n    m.reply(\"Xong\", quote=True)",
         "detail": "plugins.admin.notemanage",
         "documentation": {}
     },
@@ -1121,7 +1161,7 @@
         "kind": 2,
         "importPath": "plugins.admin.notemanage",
         "description": "plugins.admin.notemanage",
-        "peekOfCode": "def remove_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = NoteManage()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.remove(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.remove(user)\n    m.reply(\"Xong\", quote=True)",
+        "peekOfCode": "def remove_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = ManagerDB()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.remove(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.remove(user)\n    m.reply(\"Xong\", quote=True)",
         "detail": "plugins.admin.notemanage",
         "documentation": {}
     },
@@ -1211,7 +1251,7 @@
         "kind": 2,
         "importPath": "plugins.basic.set_proxy",
         "description": "plugins.basic.set_proxy",
-        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()\n    os.environ[\"http_proxy\"] = os.environ[\"https_proxy\"] = \"http://127.0.0.1:6868\"",
+        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()\n    os.environ[\"http_proxy\"] = os.environ[\"https_proxy\"] = \"http://127.0.0.1:6868\"\n    db = Options()",
         "detail": "plugins.basic.set_proxy",
         "documentation": {}
     },
@@ -1346,16 +1386,7 @@
         "kind": 2,
         "importPath": "plugins.writing.check_available",
         "description": "plugins.writing.check_available",
-        "peekOfCode": "def check_all_urls(c, m):\n    notes = Turso()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1].startswith(\":\"):\n        filename = m.command[1].replace(\":\", \"\")\n    elif m.from_user.id == 5665225938:\n        filename = \"v2ray\"\n    else:\n        m.reply(\"Vui lòng cung cấp tên ghi\", quote=True)\n        return",
-        "detail": "plugins.writing.check_available",
-        "documentation": {}
-    },
-    {
-        "label": "check_all_share_urls",
-        "kind": 2,
-        "importPath": "plugins.writing.check_available",
-        "description": "plugins.writing.check_available",
-        "peekOfCode": "def check_all_share_urls(c, m):\n    notes = Turso()\n    managers = NoteManage()\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != 5665225938 and not managers.get(m.from_user):\n        m.reply(\"`Forbidden`\", quote=True)\n        return\n    try:\n        urls = notes.list(\"share\", m.from_user.id)\n        removed_urls = check_urls(urls)",
+        "peekOfCode": "def check_all_urls(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    user_id = m.from_user.id\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:",
         "detail": "plugins.writing.check_available",
         "documentation": {}
     },
@@ -1382,7 +1413,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get_list",
         "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_urls(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1:",
+        "peekOfCode": "def get_all_urls(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if m.chat.type != ChatType.PRIVATE:",
         "detail": "plugins.writing.get_list",
         "documentation": {}
     },
@@ -1391,7 +1422,7 @@
         "kind": 2,
         "importPath": "plugins.writing.remove_from_list",
         "description": "plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        filename = m.command[1]\n    elif m.from_user.id == owner:\n        filename = \"v2ray\"\n    else:",
+        "peekOfCode": "def delete_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        filename = m.command[1]",
         "detail": "plugins.writing.remove_from_list",
         "documentation": {}
     },
@@ -1400,7 +1431,7 @@
         "kind": 2,
         "importPath": "plugins.writing.share_and_add",
         "description": "plugins.writing.share_and_add",
-        "peekOfCode": "def add_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1:\n        filename = m.command[1]\n    elif m.from_user.id == owner:\n        filename = \"v2ray\"",
+        "peekOfCode": "def add_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1:",
         "detail": "plugins.writing.share_and_add",
         "documentation": {}
     },
@@ -1411,6 +1442,15 @@
         "description": "plugins.writing.share_and_add",
         "peekOfCode": "def share_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    text = m.text\n    if m.reply_to_message:\n        text = m.reply_to_message.text\n    urls = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        text,\n    )",
         "detail": "plugins.writing.share_and_add",
+        "documentation": {}
+    },
+    {
+        "label": "update_note_content",
+        "kind": 2,
+        "importPath": "plugins.writing.update",
+        "description": "plugins.writing.update",
+        "peekOfCode": "def update_note_content(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    user_id = m.from_user.id\n    notes = NoteDB()\n    if len(m.command) > 1:",
+        "detail": "plugins.writing.update",
         "documentation": {}
     },
     {
@@ -1526,7 +1566,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def load_options():\n    db = Options()\n    options = db.list_options()\n    update_interval = options.get(\"update-interval\", 3600)\n    owner = options.get(\"owner_id\", 5665225938)\n    os.environ[\"OWNER_ID\"] = str(owner)\n    Thread(target=update_notes, args=(update_interval,)).start()\n    reload_managers()\ndef reload_managers():\n    db = ManagerDB()",
+        "peekOfCode": "def load_options():\n    db = Options()\n    try:\n        options = db.list_options()\n        update_interval = options.get(\"update-interval\", 3600)\n        owner = options.get(\"owner_id\", 5665225938)\n        proxy = options.get(\"proxy\")\n    except Exception:\n        update_interval = 3600\n        owner = 5665225938",
         "detail": "load_options",
         "documentation": {}
     },
@@ -1535,7 +1575,16 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def reload_managers():\n    db = ManagerDB()\n    managers = []\n    for manager in db.list_managers():\n        managers.append(manager.user_id)\n    managers = \",\".join(map(str, managers))\n    os.environ[\"MANAGERS\"] = managers\n    print(\"Managers updated\")\ndef update_notes(interval, call=False):\n    db = NoteDB()",
+        "peekOfCode": "def reload_managers():\n    db = ManagerDB()\n    managers = []\n    for manager in db.list_managers():\n        managers.append(manager.user_id)\n    managers = \",\".join(map(str, managers))\n    os.environ[\"MANAGERS\"] = managers\n    print(\"Managers updated\")\ndef update_note(note, db):\n    links = []",
+        "detail": "load_options",
+        "documentation": {}
+    },
+    {
+        "label": "update_note",
+        "kind": 2,
+        "importPath": "load_options",
+        "description": "load_options",
+        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(scheme in url for scheme in [\"http://\", \"https://\"]):\n                links.extend(text.split())\n    for url in note.urls.splitlines():\n        req = requests.get(\n            url,\n            timeout=20,",
         "detail": "load_options",
         "documentation": {}
     },
@@ -1544,7 +1593,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def update_notes(interval, call=False):\n    db = NoteDB()\n    while True:\n        def handle_note(note):\n            links = []\n            def handle(text):\n                for url in text.split(None):\n                    if any(scheme in url for scheme in [\"http://\", \"https://\"]):\n                        links.extend(text.split())\n            for url in note.urls.splitlines():",
+        "peekOfCode": "def update_notes(interval, call=False):\n    db = NoteDB()\n    while True:\n        time.sleep(interval)\n        for note in db.list_notes():\n            update_note(note, db)\n            print(note.name, \" updated\")\n        if call:\n            break",
         "detail": "load_options",
         "documentation": {}
     }
