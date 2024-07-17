@@ -8,14 +8,15 @@ import requests
 def load_options():
     db = Options()
     try:
-        options = db.list_options()
-        update_interval = options.get("update-interval", 3600)
-        owner = options.get("owner_id", 5665225938)
-        proxy = options.get("proxy")
+        update_interval = db.get_option("update-interval")
+        owner = db.get_option("owner_id")
+        proxy = db.get_option("proxy")
     except Exception:
         update_interval = 3600
         owner = 5665225938
         proxy = None
+        db.set_option("update-interval", update_interval)
+        db.set_option("owner_id", owner)
     if proxy:
         os.system("pkill -9 lite")
         os.system(f"./lite -p 6868 {proxy} &")
@@ -44,18 +45,20 @@ def update_note(note, db):
                 links.extend(text.split())
 
     for url in note.urls.splitlines():
-        req = requests.get(
-            url,
-            timeout=20,
-            headers={"User-Agent": "v2rayNG"},
-            proxies={
-                "http": "http://127.0.0.1:6868",
-                "https": "http://127.0.0.1:6868",
-            },
-        )
-        if req.status_code == 200:
-            handle(req.text)
-
+        try:
+            req = requests.get(
+                url,
+                timeout=20,
+                headers={"User-Agent": "v2rayNG"},
+                proxies={
+                    "http": "http://127.0.0.1:6868",
+                    "https": "http://127.0.0.1:6868",
+                },
+            )
+            if req.status_code == 200:
+                handle(req.text)
+        except Exception as e:
+            print(e)
     if links:
         note.content = "\n".join(links)
         db.update_note(note)

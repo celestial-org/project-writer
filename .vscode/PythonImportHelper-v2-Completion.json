@@ -1566,7 +1566,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def load_options():\n    db = Options()\n    try:\n        options = db.list_options()\n        update_interval = options.get(\"update-interval\", 3600)\n        owner = options.get(\"owner_id\", 5665225938)\n        proxy = options.get(\"proxy\")\n    except Exception:\n        update_interval = 3600\n        owner = 5665225938",
+        "peekOfCode": "def load_options():\n    db = Options()\n    try:\n        update_interval = db.get_option(\"update-interval\")\n        owner = db.get_option(\"owner_id\")\n        proxy = db.get_option(\"proxy\")\n    except Exception:\n        update_interval = 3600\n        owner = 5665225938\n        proxy = None",
         "detail": "load_options",
         "documentation": {}
     },
@@ -1584,7 +1584,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(scheme in url for scheme in [\"http://\", \"https://\"]):\n                links.extend(text.split())\n    for url in note.urls.splitlines():\n        req = requests.get(\n            url,\n            timeout=20,",
+        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(scheme in url for scheme in [\"http://\", \"https://\"]):\n                links.extend(text.split())\n    for url in note.urls.splitlines():\n        try:\n            req = requests.get(\n                url,",
         "detail": "load_options",
         "documentation": {}
     },
