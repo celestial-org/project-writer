@@ -44,7 +44,10 @@ def check_all_urls(c, m):
     elif m.from_user.id == owner:
         filename = "v2ray"
     else:
-        m.reply("Vui lòng cung cấp tên ghi", quote=True)
+        m.reply(
+            "Vui lòng cung cấp tên note <pre>/checklive example_note_name</pre>",
+            quote=True,
+        )
         return
     if filename == "share":
         if m.from_user.id not in [owner, *managers]:

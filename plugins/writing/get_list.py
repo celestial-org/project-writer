@@ -23,7 +23,9 @@ def get_all_urls(c, m):
     elif m.from_user.id == owner:
         filename = "v2ray"
     else:
-        m.reply("Vui lòng cung cấp tên ghi <pre>/note example_note_name</pre>", quote=True)
+        m.reply(
+            "Vui lòng cung cấp tên note <pre>/note example_note_name</pre>", quote=True
+        )
         return
     note = notes.get_note(filename)
     if filename == "share":

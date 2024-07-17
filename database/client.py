@@ -121,7 +121,7 @@ class NoteDB(Turso):
         Args:
             note_name (str): name of note
             url (str): url to delete
-            
+
         Returns:
             bool: True if success, False if failed
         """
@@ -240,7 +240,7 @@ class ManagerDB(Turso):
         Returns:
             Manager: Manager object
         """
-        sql = select(Manager).where(user_id=user.id)
+        sql = select(Manager).where(Manager.user_id == user.id)
         return self.session.scalars(sql).first()
 
     def remove(self, user: User):

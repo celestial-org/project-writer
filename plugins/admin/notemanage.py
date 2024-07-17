@@ -19,7 +19,7 @@ def add_manager(c, m):
     reload_managers()
 
 
-@Client.on_message(filters.user(admin) & filters.command("del_manager"))
+@Client.on_message(filters.user(admin) & filters.command("remove_manager"))
 def remove_manager(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     db = ManagerDB()
