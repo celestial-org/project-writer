@@ -251,7 +251,7 @@ class ManagerDB(Turso):
             user (User): User object
         """
         manager = self.get(user)
-        self.session.remove(manager)
+        self.session.delete(manager)
         self.session.commit()
 
     def list_managers(self):
