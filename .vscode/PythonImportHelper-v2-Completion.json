@@ -884,15 +884,6 @@
         "documentation": {}
     },
     {
-        "label": "platform",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "platform",
-        "description": "platform",
-        "detail": "platform",
-        "documentation": {}
-    },
-    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -1242,7 +1233,7 @@
         "kind": 2,
         "importPath": "plugins.basic.server_info",
         "description": "plugins.basic.server_info",
-        "peekOfCode": "def bot_server_info(c, m):\n    ver = platform.version()\n    name = platform.uname()\n    system = platform.system()\n    server = server_info()\n    msg_text = (\n        f\"```{system}\\n\" f\"INFO:\\n{name}\\n\\n\" f\"VERSION:\\n{ver}\\n\\n\" f\"{server}\\n\" \"```\"\n    )\n    m.reply(msg_text, quote=True)",
+        "peekOfCode": "def bot_server_info(c, m):\n    server = server_info()\n    msg_text = f\"```\\n{server}```\"\n    m.reply(msg_text, quote=True)",
         "detail": "plugins.basic.server_info",
         "documentation": {}
     },

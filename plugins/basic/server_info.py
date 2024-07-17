@@ -1,4 +1,3 @@
-import platform
 import requests
 from pyrogram import Client, filters
 
@@ -23,12 +22,7 @@ def server_info():
 
 @Client.on_message(filters.command("server"))
 def bot_server_info(c, m):
-    ver = platform.version()
-    name = platform.uname()
-    system = platform.system()
     server = server_info()
-    msg_text = (
-        f"```{system}\n" f"INFO:\n{name}\n\n" f"VERSION:\n{ver}\n\n" f"{server}\n" "```"
-    )
+    msg_text = f"```\n{server}```"
 
     m.reply(msg_text, quote=True)
