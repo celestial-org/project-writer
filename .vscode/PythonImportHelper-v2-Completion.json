@@ -1557,7 +1557,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def load_options():\n    db = Options()\n    try:\n        update_interval = db.get_option(\"update-interval\")\n        owner = db.get_option(\"owner_id\")\n        proxy = db.get_option(\"proxy\")\n    except Exception:\n        update_interval = 3600\n        owner = 5665225938\n        proxy = None",
+        "peekOfCode": "def load_options():\n    db = Options()\n    update_interval = db.get_option(\"update-interval\")\n    owner = 5665225938\n    proxy = db.get_option(\"proxy\")\n    if not update_interval:\n        update_interval = 3600\n        db.set_option(\"update-interval\", update_interval)\n    if proxy:\n        os.system(\"pkill -9 lite\")",
         "detail": "load_options",
         "documentation": {}
     },

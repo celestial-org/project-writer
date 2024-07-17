@@ -78,7 +78,6 @@ class Options(Turso):
         options = {
             "update-interval": self.get_option("update-interval"),
             "proxy": self.get_option("proxy"),
-            "owner_id": self.get_option("owner_id"),
         }
         return options
 

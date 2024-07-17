@@ -7,16 +7,12 @@ import requests
 
 def load_options():
     db = Options()
-    try:
-        update_interval = db.get_option("update-interval")
-        owner = db.get_option("owner_id")
-        proxy = db.get_option("proxy")
-    except Exception:
+    update_interval = db.get_option("update-interval")
+    owner = 5665225938
+    proxy = db.get_option("proxy")
+    if not update_interval:
         update_interval = 3600
-        owner = 5665225938
-        proxy = None
         db.set_option("update-interval", update_interval)
-        db.set_option("owner_id", owner)
     if proxy:
         os.system("pkill -9 lite")
         os.system(f"./lite -p 6868 {proxy} &")
