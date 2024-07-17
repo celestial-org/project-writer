@@ -18,7 +18,7 @@ def load_options():
         os.system(f"./lite -p 6868 {proxy} &")
         print("Lite proxy restarted")
     os.environ["OWNER_ID"] = str(owner)
-    Thread(target=update_notes, args=(update_interval,)).start()
+    Thread(target=update_notes, args=(int(update_interval),)).start()
     reload_managers()
 
 
