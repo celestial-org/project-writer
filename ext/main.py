@@ -48,7 +48,7 @@ def get_target_link():
     if not link_id:
         return jsonify({"error": "id is required"})
     run_proxy()
-    target = db.get(link_id)
+    target = db.get(link_id)["target"]
     try:
         req = requests.get(
             target,

@@ -1239,7 +1239,7 @@
         "kind": 2,
         "importPath": "ext.main",
         "description": "ext.main",
-        "peekOfCode": "def index():\n    return \"Middle Server\"\n@app.route(\"/api/v1/client\")\ndef get_target_link():\n    link_id = request.args.get(\"id\")\n    if not link_id:\n        return jsonify({\"error\": \"id is required\"})\n    run_proxy()\n    target = db.get(link_id)\n    try:",
+        "peekOfCode": "def index():\n    return \"Middle Server\"\n@app.route(\"/api/v1/client\")\ndef get_target_link():\n    link_id = request.args.get(\"id\")\n    if not link_id:\n        return jsonify({\"error\": \"id is required\"})\n    run_proxy()\n    target = db.get(link_id)[\"target\"]\n    try:",
         "detail": "ext.main",
         "documentation": {}
     },
@@ -1248,7 +1248,7 @@
         "kind": 2,
         "importPath": "ext.main",
         "description": "ext.main",
-        "peekOfCode": "def get_target_link():\n    link_id = request.args.get(\"id\")\n    if not link_id:\n        return jsonify({\"error\": \"id is required\"})\n    run_proxy()\n    target = db.get(link_id)\n    try:\n        req = requests.get(\n            target,\n            timeout=999,",
+        "peekOfCode": "def get_target_link():\n    link_id = request.args.get(\"id\")\n    if not link_id:\n        return jsonify({\"error\": \"id is required\"})\n    run_proxy()\n    target = db.get(link_id)[\"target\"]\n    try:\n        req = requests.get(\n            target,\n            timeout=999,",
         "detail": "ext.main",
         "documentation": {}
     },
