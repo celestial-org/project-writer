@@ -194,6 +194,7 @@ def publish_link(c, m):
             short_id = generate_id()
             db.put({"key": short_id, "target": url})
             url = f"{reverse_link}/api/v1/client?id={short_id}"
+            m.delete()
         if info and all(
             key in info
             for key in ["total", "upload", "download", "available", "expire"]
