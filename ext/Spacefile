@@ -1,0 +1,14 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: ext
+    src: ./
+    engine: python3.9
+    primary: true
+    public: true
+    presets:
+      env:
+        - name: PROXY_URL
+          default: https://note.mywire.org/proxy
+        - name: DETA_KEY
+          default: c0kEEGmHJte_YjH9AKDzdmP4tm6Zyge3Fme9KyMRNwXB
