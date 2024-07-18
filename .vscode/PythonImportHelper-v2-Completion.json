@@ -171,30 +171,6 @@
         "documentation": {}
     },
     {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
-        "isExtraImport": true,
-        "detail": "pyrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
-        "isExtraImport": true,
-        "detail": "pyrogram",
-        "documentation": {}
-    },
-    {
         "label": "Client",
         "importPath": "pyrogram",
         "description": "pyrogram",
@@ -700,14 +676,6 @@
     },
     {
         "label": "ParseMode",
-        "importPath": "pyrogram.enums",
-        "description": "pyrogram.enums",
-        "isExtraImport": true,
-        "detail": "pyrogram.enums",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
         "importPath": "pyrogram.enums",
         "description": "pyrogram.enums",
         "isExtraImport": true,
@@ -1547,15 +1515,6 @@
         "description": "plugins.rewrites.checks",
         "peekOfCode": "def publish_link(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    deta = Deta(deta_key)\n    db = deta.Base(\"reverse\")\n    if m.reply_to_message and m.reply_to_message.text:\n        text = m.reply_to_message.text\n    elif m.text:\n        text = m.text\n    else:\n        m.reply(\"Không tìm thấy tin nhắn\", quote=True)",
         "detail": "plugins.rewrites.checks",
-        "documentation": {}
-    },
-    {
-        "label": "publish",
-        "kind": 2,
-        "importPath": "plugins.rewrites.publish",
-        "description": "plugins.rewrites.publish",
-        "peekOfCode": "def publish(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    deta = Deta()\n    db = deta.Base(\"reverse\")\n    link = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        m.text,\n    )\n    if not link:\n        m.reply(\"Vui long nhap link\", quote=True)",
-        "detail": "plugins.rewrites.publish",
         "documentation": {}
     },
     {
