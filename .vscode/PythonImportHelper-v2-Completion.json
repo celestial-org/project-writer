@@ -466,6 +466,22 @@
         "documentation": {}
     },
     {
+        "label": "filters",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
         "label": "enums",
         "importPath": "pyrogram",
         "description": "pyrogram",
@@ -611,6 +627,14 @@
     },
     {
         "label": "ParseMode",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
         "importPath": "pyrogram.enums",
         "description": "pyrogram.enums",
         "isExtraImport": true,
@@ -902,6 +926,24 @@
         "documentation": {}
     },
     {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
         "label": "base64",
         "kind": 6,
         "isExtraImport": true,
@@ -925,6 +967,38 @@
         "importPath": "pytz",
         "description": "pytz",
         "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
+        "isExtraImport": true,
+        "detail": "deta",
+        "documentation": {}
+    },
+    {
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
+        "isExtraImport": true,
+        "detail": "deta",
+        "documentation": {}
+    },
+    {
+        "label": "deta_key",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "reverse_link",
+        "importPath": "environment",
+        "description": "environment",
+        "isExtraImport": true,
+        "detail": "environment",
         "documentation": {}
     },
     {
@@ -1283,6 +1357,15 @@
         "documentation": {}
     },
     {
+        "label": "generate_id",
+        "kind": 2,
+        "importPath": "plugins.rewrites.checks",
+        "description": "plugins.rewrites.checks",
+        "peekOfCode": "def generate_id(length=12):\n    characters = string.ascii_letters + string.digits\n    random_string = \"\".join(random.choice(characters) for i in range(length))\n    return random_string\ndef convert_bytes_to_human_readable(bytes_value):\n    units = [\"B\", \"KB\", \"MB\", \"GB\", \"TB\"]\n    unit_index = 0\n    while bytes_value >= 1024 and unit_index < len(units) - 1:\n        bytes_value /= 1024.0\n        unit_index += 1",
+        "detail": "plugins.rewrites.checks",
+        "documentation": {}
+    },
+    {
         "label": "convert_bytes_to_human_readable",
         "kind": 2,
         "importPath": "plugins.rewrites.checks",
@@ -1316,6 +1399,24 @@
         "description": "plugins.rewrites.checks",
         "peekOfCode": "def check_sub(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message and m.reply_to_message.text:\n        text = m.reply_to_message.text\n    elif m.text:\n        text = m.text\n    else:\n        m.reply(\"Không tìm thấy tin nhắn\", quote=True)\n        return False\n    urls = [",
         "detail": "plugins.rewrites.checks",
+        "documentation": {}
+    },
+    {
+        "label": "publish_link",
+        "kind": 2,
+        "importPath": "plugins.rewrites.checks",
+        "description": "plugins.rewrites.checks",
+        "peekOfCode": "def publish_link(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    deta = Deta(deta_key)\n    db = deta.Base(\"reverse\")\n    if m.reply_to_message and m.reply_to_message.text:\n        text = m.reply_to_message.text\n    elif m.text:\n        text = m.text\n    else:\n        m.reply(\"Không tìm thấy tin nhắn\", quote=True)",
+        "detail": "plugins.rewrites.checks",
+        "documentation": {}
+    },
+    {
+        "label": "publish",
+        "kind": 2,
+        "importPath": "plugins.rewrites.publish",
+        "description": "plugins.rewrites.publish",
+        "peekOfCode": "def publish(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    deta = Deta()\n    db = deta.Base(\"reverse\")\n    link = re.findall(\n        r\"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\",\n        m.text,\n    )\n    if not link:\n        m.reply(\"Vui long nhap link\", quote=True)",
+        "detail": "plugins.rewrites.publish",
         "documentation": {}
     },
     {
@@ -1494,7 +1595,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nos.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]\nreverse_link = res[\"api\"][\"reverse\"]\ndeta_key = res[\"deta\"][\"sm\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1503,7 +1604,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"V2TOOL\"] = res[\"api\"][\"v2tool\"]\nos.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]\nreverse_link = res[\"api\"][\"reverse\"]\ndeta_key = res[\"deta\"][\"sm\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1512,7 +1613,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"TEST_SERVER\"] = res[\"api\"][\"test\"]\nos.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]\nreverse_link = res[\"api\"][\"reverse\"]\ndeta_key = res[\"deta\"][\"sm\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1521,7 +1622,7 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "os.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "os.environ[\"DB_URL\"] = res[\"sql\"][\"turso\"]\nbot_token = res[\"bot\"][\"writer\"]\nreverse_link = res[\"api\"][\"reverse\"]\ndeta_key = res[\"deta\"][\"sm\"]",
         "detail": "environment",
         "documentation": {}
     },
@@ -1530,7 +1631,25 @@
         "kind": 5,
         "importPath": "environment",
         "description": "environment",
-        "peekOfCode": "bot_token = res[\"bot\"][\"writer\"]",
+        "peekOfCode": "bot_token = res[\"bot\"][\"writer\"]\nreverse_link = res[\"api\"][\"reverse\"]\ndeta_key = res[\"deta\"][\"sm\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "reverse_link",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "reverse_link = res[\"api\"][\"reverse\"]\ndeta_key = res[\"deta\"][\"sm\"]",
+        "detail": "environment",
+        "documentation": {}
+    },
+    {
+        "label": "deta_key",
+        "kind": 5,
+        "importPath": "environment",
+        "description": "environment",
+        "peekOfCode": "deta_key = res[\"deta\"][\"sm\"]",
         "detail": "environment",
         "documentation": {}
     },

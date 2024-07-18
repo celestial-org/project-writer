@@ -57,7 +57,7 @@ def add_url(c, m):
     m.delete()
 
 
-@Client.on_message(filters.command("share"))
+@Client.on_message(filters.command(["share", "publish"]), group=2)
 def share_url(c, m):
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
