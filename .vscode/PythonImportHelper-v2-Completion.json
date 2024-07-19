@@ -1792,7 +1792,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(scheme in url for scheme in [\"http://\", \"https://\"]):\n                links.extend(text.split())\n    for url in note.urls.splitlines():\n        try:\n            req = requests.get(\n                url,",
+        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(\n                scheme in url\n                for scheme in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]\n            ):\n                links.extend(text.split())\n    for url in note.urls.splitlines():",
         "detail": "load_options",
         "documentation": {}
     },

@@ -37,7 +37,10 @@ def update_note(note, db):
 
     def handle(text):
         for url in text.split(None):
-            if any(scheme in url for scheme in ["http://", "https://"]):
+            if any(
+                scheme in url
+                for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
+            ):
                 links.extend(text.split())
 
     for url in note.urls.splitlines():
