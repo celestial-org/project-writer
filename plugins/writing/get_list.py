@@ -19,16 +19,16 @@ def get_all_urls(c, m):
         m.reply("Vui lòng thực hiện thao tác này ở khu vực riêng tư!", quote=True)
         return
     if len(m.command) > 1:
-        filename = m.command[1]
+        note_name = m.command[1]
     elif m.from_user.id == owner:
-        filename = "v2ray"
+        note_name = "v2ray"
     else:
         m.reply(
             "Vui lòng cung cấp tên note <pre>/note example_note_name</pre>", quote=True
         )
         return
-    note = notes.get_note(filename)
-    if filename == "share":
+    note = notes.get_note(note_name)
+    if note_name == "share":
         if m.from_user.id not in [owner, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
@@ -36,11 +36,11 @@ def get_all_urls(c, m):
         if user_id not in [note.user_id, owner]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
-    urls = notes.list_links(filename)
+    urls = notes.list_links(note_name)
     if urls:
         urls_str = "\n".join(urls)
         m.reply(
-            f"Found {len(urls)} URL in <b>{filename}</b>:\n{urls_str}",
+            f"Found {len(urls)} URL in <b>{note_name}</b>:\n{urls_str}",
             quote=True,
             parse_mode=ParseMode.HTML,
         )

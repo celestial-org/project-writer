@@ -24,38 +24,38 @@ class NotesDB:
         self.db = self.client.mo9973_notes
         self.collection = self.db.notes
 
-    def add(self, filename: str, url: str):
-        existing_entry = self.collection.find_one({"_id": filename})
+    def add(self, note_name: str, url: str):
+        existing_entry = self.collection.find_one({"_id": note_name})
         if existing_entry:
             if url not in existing_entry["urls"]:
-                self.collection.update_one({"_id": filename}, {"$push": {"urls": url}})
+                self.collection.update_one({"_id": note_name}, {"$push": {"urls": url}})
             else:
                 raise UrlExistsError("Url đã tồn tại")
         else:
-            self.collection.insert_one({"_id": filename, "urls": [url]})
+            self.collection.insert_one({"_id": note_name, "urls": [url]})
 
-    def remove(self, filename: str, url: str):
-        existing_entry = self.collection.find_one({"_id": filename})
+    def remove(self, note_name: str, url: str):
+        existing_entry = self.collection.find_one({"_id": note_name})
         if existing_entry:
             if url in existing_entry["urls"]:
                 updated_urls = [u for u in existing_entry["urls"] if u != url]
                 self.collection.update_one(
-                    {"_id": filename}, {"$set": {"urls": updated_urls}}
+                    {"_id": note_name}, {"$set": {"urls": updated_urls}}
                 )
             else:
                 raise UrlNotFoundError("URL không tồn tại trong kho lưu trữ")
         else:
             raise DatabaseNotFoundError("Không tìm thấy dữ liệu")
 
-    def all(self, filename: str):
-        existing_entry = self.collection.find_one({"_id": filename})
+    def all(self, note_name: str):
+        existing_entry = self.collection.find_one({"_id": note_name})
         if existing_entry:
             return existing_entry["urls"]
         else:
             raise DatabaseNotFoundError("Không tìm thấy dữ liệu")
 
-    def check(self, filename: str):
-        existing_entry = self.collection.find_one({"_id": filename})
+    def check(self, note_name: str):
+        existing_entry = self.collection.find_one({"_id": note_name})
         if existing_entry:
             removed_urls = []
             for url in existing_entry["urls"]:
@@ -81,7 +81,7 @@ class NotesDB:
                     removed_urls.append(url)
             updated_urls = [u for u in existing_entry["urls"] if u not in removed_urls]
             self.collection.update_one(
-                {"_id": filename}, {"$set": {"urls": updated_urls}}
+                {"_id": note_name}, {"$set": {"urls": updated_urls}}
             )
             return removed_urls
         else:

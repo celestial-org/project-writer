@@ -17,11 +17,11 @@ def add_url(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
     if len(m.command) > 1:
-        filename = m.command[1]
+        note_name = m.command[1]
     elif m.from_user.id == owner:
-        filename = "v2ray"
+        note_name = "v2ray"
     else:
-        filename = "share"
+        note_name = "share"
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text
@@ -36,13 +36,13 @@ def add_url(c, m):
         m.delete()
         return
     li = 0
-    note = notes.get_note(filename)
+    note = notes.get_note(note_name)
     if note:
         if user_id not in [note.user_id, owner, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
     for url in urls:
-        if notes.add_link(filename, url, user_id):
+        if notes.add_link(note_name, url, user_id):
             li += 1
         else:
             print("Existing")
@@ -75,7 +75,11 @@ def share_url(c, m):
         return
     li = 0
     for url in urls:
-        if notes.add_link("share", url, 0):
+        if "api/v1/client" in url:
+            note_name = "share"
+        else:
+            note_name = "misc"
+        if notes.add_link(note_name, url, 0):
             li += 1
         else:
             print("Existing")

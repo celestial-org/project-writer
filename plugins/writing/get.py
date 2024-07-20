@@ -10,6 +10,7 @@ def get_urls(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     text = [
         f"**Shared Link:** {v2tool}/get/share",
+        f"**Misc Link:** {v2tool}/get/misc",
         "Các server sẽ tự động được làm mới.",
     ]
     m.reply(

@@ -1153,7 +1153,7 @@
         "kind": 6,
         "importPath": "database.notes",
         "description": "database.notes",
-        "peekOfCode": "class UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, filename: str, url: str):",
+        "peekOfCode": "class UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, note_name: str, url: str):",
         "detail": "database.notes",
         "documentation": {}
     },
@@ -1162,7 +1162,7 @@
         "kind": 6,
         "importPath": "database.notes",
         "description": "database.notes",
-        "peekOfCode": "class UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, filename: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": filename})\n        if existing_entry:",
+        "peekOfCode": "class UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, note_name: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": note_name})\n        if existing_entry:",
         "detail": "database.notes",
         "documentation": {}
     },
@@ -1171,7 +1171,7 @@
         "kind": 6,
         "importPath": "database.notes",
         "description": "database.notes",
-        "peekOfCode": "class NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, filename: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": filename})\n        if existing_entry:\n            if url not in existing_entry[\"urls\"]:\n                self.collection.update_one({\"_id\": filename}, {\"$push\": {\"urls\": url}})",
+        "peekOfCode": "class NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, note_name: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": note_name})\n        if existing_entry:\n            if url not in existing_entry[\"urls\"]:\n                self.collection.update_one({\"_id\": note_name}, {\"$push\": {\"urls\": url}})",
         "detail": "database.notes",
         "documentation": {}
     },
@@ -1585,7 +1585,7 @@
         "kind": 2,
         "importPath": "plugins.writing.get",
         "description": "plugins.writing.get",
-        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        \"Các server sẽ tự động được làm mới.\",\n    ]\n    m.reply(\n        \"\\n\\n\".join(text),\n        quote=True,\n    )",
+        "peekOfCode": "def get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        f\"**Misc Link:** {v2tool}/get/misc\",\n        \"Các server sẽ tự động được làm mới.\",\n    ]\n    m.reply(\n        \"\\n\\n\".join(text),\n        quote=True,",
         "detail": "plugins.writing.get",
         "documentation": {}
     },
@@ -1594,7 +1594,7 @@
         "kind": 5,
         "importPath": "plugins.writing.get",
         "description": "plugins.writing.get",
-        "peekOfCode": "v2tool = os.getenv(\"V2TOOL\")\n@Client.on_message(filters.command(\"get\"))\ndef get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        \"Các server sẽ tự động được làm mới.\",\n    ]\n    m.reply(\n        \"\\n\\n\".join(text),",
+        "peekOfCode": "v2tool = os.getenv(\"V2TOOL\")\n@Client.on_message(filters.command(\"get\"))\ndef get_urls(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    text = [\n        f\"**Shared Link:** {v2tool}/get/share\",\n        f\"**Misc Link:** {v2tool}/get/misc\",\n        \"Các server sẽ tự động được làm mới.\",\n    ]\n    m.reply(",
         "detail": "plugins.writing.get",
         "documentation": {}
     },
@@ -1612,7 +1612,7 @@
         "kind": 2,
         "importPath": "plugins.writing.remove_from_list",
         "description": "plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        filename = m.command[1]",
+        "peekOfCode": "def delete_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        note_name = m.command[1]",
         "detail": "plugins.writing.remove_from_list",
         "documentation": {}
     },

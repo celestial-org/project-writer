@@ -40,29 +40,29 @@ def check_all_urls(c, m):
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
     if len(m.command) > 1:
-        filename = m.command[1]
+        note_name = m.command[1]
     elif m.from_user.id == owner:
-        filename = "v2ray"
+        note_name = "v2ray"
     else:
         m.reply(
             "Vui lòng cung cấp tên note <pre>/checklive example_note_name</pre>",
             quote=True,
         )
         return
-    if filename == "share":
+    if note_name == "share":
         if m.from_user.id not in [owner, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
     else:
-        note = notes.get_note(filename)
+        note = notes.get_note(note_name)
         if user_id not in [note.user_id, owner]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     try:
-        urls = notes.list_links(filename)
+        urls = notes.list_links(note_name)
         removed_urls = check_urls(urls)
         for url in removed_urls:
-            notes.delete_link(filename, url)
+            notes.delete_link(note_name, url)
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
             m.reply(
