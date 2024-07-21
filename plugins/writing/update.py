@@ -1,23 +1,23 @@
-import os
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-from load_options import update_note
+from assets.note_util import update_note
 from database import NoteDB
+from database.local import kv
+
+
+owners = kv["owners"]
+managers = kv["managers"]
 
 
 @Client.on_message(filters.command("update_note"))
 def update_note_content(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    owner = int(os.getenv("OWNER_ID"))
-    if os.getenv("MANAGERS"):
-        managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
-    else:
-        managers = set()
+
     user_id = m.from_user.id
     notes = NoteDB()
     if len(m.command) > 1:
         note_name = m.command[1]
-    elif m.from_user.id == owner:
+    elif m.from_user.id in owners:
         note_name = "v2ray"
     else:
         m.reply(
@@ -25,13 +25,8 @@ def update_note_content(c, m):
             quote=True,
         )
         return
-    if note_name == "share":
-        if m.from_user.id not in [owner, *managers]:
-            m.reply("**You don't have permission to access this note**", quote=True)
-            return
-    else:
-        note = notes.get_note(note_name)
-        if user_id not in [note.user_id, owner]:
+    if note_name == "v2ray":
+        if user_id not in owners:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     note = notes.get_note(note_name)

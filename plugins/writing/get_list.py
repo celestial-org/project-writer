@@ -3,15 +3,15 @@ import os
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ChatType, ParseMode
 from database import NoteDB
+from database.local import kv
+
+
+owners = kv["owners"]
+managers = kv["managers"]
 
 
 @Client.on_message(filters.command("note"))
 def get_all_urls(c, m):
-    owner = int(os.getenv("OWNER_ID"))
-    if os.getenv("MANAGERS"):
-        managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
-    else:
-        managers = set()
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
@@ -20,7 +20,7 @@ def get_all_urls(c, m):
         return
     if len(m.command) > 1:
         note_name = m.command[1]
-    elif m.from_user.id == owner:
+    elif m.from_user.id in owners:
         note_name = "v2ray"
     else:
         m.reply(
@@ -28,12 +28,16 @@ def get_all_urls(c, m):
         )
         return
     note = notes.get_note(note_name)
-    if note_name == "share":
-        if m.from_user.id not in [owner, *managers]:
+    if note_name in ["share", "misc"]:
+        if m.from_user.id not in [*owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
+    elif note_name == "v2ray":
+        if user_id not in owners:
+            m.reply("<b>You don't have permission to access this note</b>", quote=True)
+            return
     else:
-        if user_id not in [note.user_id, owner]:
+        if user_id not in [note.user_id, *owners, *managers]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     urls = notes.list_links(note_name)

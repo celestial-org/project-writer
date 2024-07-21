@@ -9,6 +9,24 @@
         "documentation": {}
     },
     {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "base64",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "base64",
+        "description": "base64",
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
         "label": "create_engine",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
@@ -89,20 +107,12 @@
         "documentation": {}
     },
     {
-        "label": "requests",
+        "label": "shelve",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
-        "documentation": {}
-    },
-    {
-        "label": "MongoClient",
-        "importPath": "pymongo",
-        "description": "pymongo",
-        "isExtraImport": true,
-        "detail": "pymongo",
+        "importPath": "shelve",
+        "description": "shelve",
+        "detail": "shelve",
         "documentation": {}
     },
     {
@@ -171,35 +181,12 @@
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
+        "label": "subprocess",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "pyrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
-        "isExtraImport": true,
-        "detail": "pyrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
-        "isExtraImport": true,
-        "detail": "pyrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
-        "isExtraImport": true,
-        "detail": "pyrogram",
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
         "documentation": {}
     },
     {
@@ -659,22 +646,6 @@
         "documentation": {}
     },
     {
-        "label": "ChatAction",
-        "importPath": "pyrogram.enums",
-        "description": "pyrogram.enums",
-        "isExtraImport": true,
-        "detail": "pyrogram.enums",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
-        "importPath": "pyrogram.enums",
-        "description": "pyrogram.enums",
-        "isExtraImport": true,
-        "detail": "pyrogram.enums",
-        "documentation": {}
-    },
-    {
         "label": "ParseMode",
         "importPath": "pyrogram.enums",
         "description": "pyrogram.enums",
@@ -819,11 +790,91 @@
         "documentation": {}
     },
     {
-        "label": "Options",
-        "importPath": "database",
-        "description": "database",
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
         "isExtraImport": true,
-        "detail": "database",
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
+        "label": "kv",
+        "importPath": "database.local",
+        "description": "database.local",
+        "isExtraImport": true,
+        "detail": "database.local",
         "documentation": {}
     },
     {
@@ -915,31 +966,6 @@
         "documentation": {}
     },
     {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
-        "label": "reload_managers",
-        "importPath": "load_options",
-        "description": "load_options",
-        "isExtraImport": true,
-        "detail": "load_options",
-        "documentation": {}
-    },
-    {
-        "label": "update_note",
-        "importPath": "load_options",
-        "description": "load_options",
-        "isExtraImport": true,
-        "detail": "load_options",
-        "documentation": {}
-    },
-    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -949,12 +975,52 @@
         "documentation": {}
     },
     {
+        "label": "set_proxy",
+        "importPath": "assets.note_util",
+        "description": "assets.note_util",
+        "isExtraImport": true,
+        "detail": "assets.note_util",
+        "documentation": {}
+    },
+    {
+        "label": "update_note",
+        "importPath": "assets.note_util",
+        "description": "assets.note_util",
+        "isExtraImport": true,
+        "detail": "assets.note_util",
+        "documentation": {}
+    },
+    {
+        "label": "update_note",
+        "importPath": "assets.note_util",
+        "description": "assets.note_util",
+        "isExtraImport": true,
+        "detail": "assets.note_util",
+        "documentation": {}
+    },
+    {
         "label": "concurrent.futures",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "concurrent.futures",
         "description": "concurrent.futures",
         "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "get_config",
+        "importPath": "assets.util",
+        "description": "assets.util",
+        "isExtraImport": true,
+        "detail": "assets.util",
+        "documentation": {}
+    },
+    {
+        "label": "get_config",
+        "importPath": "assets.util",
+        "description": "assets.util",
+        "isExtraImport": true,
+        "detail": "assets.util",
         "documentation": {}
     },
     {
@@ -973,15 +1039,6 @@
         "importPath": "string",
         "description": "string",
         "detail": "string",
-        "documentation": {}
-    },
-    {
-        "label": "base64",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "base64",
-        "description": "base64",
-        "detail": "base64",
         "documentation": {}
     },
     {
@@ -1044,14 +1101,6 @@
         "documentation": {}
     },
     {
-        "label": "Options",
-        "importPath": "database.client",
-        "description": "database.client",
-        "isExtraImport": true,
-        "detail": "database.client",
-        "documentation": {}
-    },
-    {
         "label": "NoteDB",
         "importPath": "database.client",
         "description": "database.client",
@@ -1065,6 +1114,33 @@
         "description": "database.client",
         "isExtraImport": true,
         "detail": "database.client",
+        "documentation": {}
+    },
+    {
+        "label": "set_proxy",
+        "kind": 2,
+        "importPath": "assets.note_util",
+        "description": "assets.note_util",
+        "peekOfCode": "def set_proxy(proxy):\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    os.environ[\"http_proxy\"] = os.environ[\"https_proxy\"] = \"http://127.0.0.1:6868\"\n    print(\"proxy set\")\ndef update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(",
+        "detail": "assets.note_util",
+        "documentation": {}
+    },
+    {
+        "label": "update_note",
+        "kind": 2,
+        "importPath": "assets.note_util",
+        "description": "assets.note_util",
+        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(\n                scheme in url\n                for scheme in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]\n            ):\n                links.extend(text.split())\n    for url in note.urls.splitlines():",
+        "detail": "assets.note_util",
+        "documentation": {}
+    },
+    {
+        "label": "get_config",
+        "kind": 2,
+        "importPath": "assets.util",
+        "description": "assets.util",
+        "peekOfCode": "def get_config(data):\n    url = data\n    if any(\n        data.startswith(sche) for sche in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]\n    ):\n        url = requests.post(\n            \"https://paste.rs\",\n            data=data,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},",
+        "detail": "assets.util",
         "documentation": {}
     },
     {
@@ -1104,6 +1180,15 @@
         "documentation": {}
     },
     {
+        "label": "kv",
+        "kind": 5,
+        "importPath": "database.local",
+        "description": "database.local",
+        "peekOfCode": "kv = shelve.open(\"local.database\")",
+        "detail": "database.local",
+        "documentation": {}
+    },
+    {
         "label": "Base",
         "kind": 6,
         "importPath": "database.model",
@@ -1137,51 +1222,6 @@
         "description": "database.model",
         "peekOfCode": "class BotOptions(Base):\n    __tablename__ = \"bot_options\"\n    name: Mapped[str] = mapped_column(String, primary_key=True)\n    value: Mapped[str] = mapped_column(String)\n    def __repr__(self) -> str:\n        obj = dict(name=self.name, value=self.value)\n        return str(obj)",
         "detail": "database.model",
-        "documentation": {}
-    },
-    {
-        "label": "DatabaseNotFoundError",
-        "kind": 6,
-        "importPath": "database.notes",
-        "description": "database.notes",
-        "peekOfCode": "class DatabaseNotFoundError(Exception):\n    pass\nclass UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes",
-        "detail": "database.notes",
-        "documentation": {}
-    },
-    {
-        "label": "UrlNotFoundError",
-        "kind": 6,
-        "importPath": "database.notes",
-        "description": "database.notes",
-        "peekOfCode": "class UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, note_name: str, url: str):",
-        "detail": "database.notes",
-        "documentation": {}
-    },
-    {
-        "label": "UrlExistsError",
-        "kind": 6,
-        "importPath": "database.notes",
-        "description": "database.notes",
-        "peekOfCode": "class UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, note_name: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": note_name})\n        if existing_entry:",
-        "detail": "database.notes",
-        "documentation": {}
-    },
-    {
-        "label": "NotesDB",
-        "kind": 6,
-        "importPath": "database.notes",
-        "description": "database.notes",
-        "peekOfCode": "class NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)\n        self.db = self.client.mo9973_notes\n        self.collection = self.db.notes\n    def add(self, note_name: str, url: str):\n        existing_entry = self.collection.find_one({\"_id\": note_name})\n        if existing_entry:\n            if url not in existing_entry[\"urls\"]:\n                self.collection.update_one({\"_id\": note_name}, {\"$push\": {\"urls\": url}})",
-        "detail": "database.notes",
-        "documentation": {}
-    },
-    {
-        "label": "mongo_url",
-        "kind": 5,
-        "importPath": "database.notes",
-        "description": "database.notes",
-        "peekOfCode": "mongo_url = os.getenv(\"MONGO_URL\")\nclass DatabaseNotFoundError(Exception):\n    pass\nclass UrlNotFoundError(Exception):\n    pass\nclass UrlExistsError(Exception):\n    pass\nclass NotesDB:\n    def __init__(self):\n        self.client = MongoClient(mongo_url)",
-        "detail": "database.notes",
         "documentation": {}
     },
     {
@@ -1284,30 +1324,12 @@
         "documentation": {}
     },
     {
-        "label": "admin",
-        "kind": 5,
-        "importPath": "plugins.admin.admin",
-        "description": "plugins.admin.admin",
-        "peekOfCode": "admin = os.getenv(\"ADMIN_ID\", \"5665225938\")\nif admin.isdigit():\n    if not admin.startswith(\"0\"):\n        admin = int(admin)",
-        "detail": "plugins.admin.admin",
-        "documentation": {}
-    },
-    {
-        "label": "set_interval",
+        "label": "is_owner",
         "kind": 2,
-        "importPath": "plugins.admin.advance",
-        "description": "plugins.admin.advance",
-        "peekOfCode": "def set_interval(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != owner:\n        m.reply(\"You don't have permission to use this command\", quote=True)\n        return\n    if len(m.command) > 1:\n        interval = m.command[1]\n        db = Options()\n        db.set_option(\"interval\", interval)\n    else:",
-        "detail": "plugins.admin.advance",
-        "documentation": {}
-    },
-    {
-        "label": "owner",
-        "kind": 5,
-        "importPath": "plugins.admin.advance",
-        "description": "plugins.admin.advance",
-        "peekOfCode": "owner = int(os.getenv(\"OWNER_ID\"))\n@Client.on_message(filters.command(\"set_interval\"))\ndef set_interval(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.id != owner:\n        m.reply(\"You don't have permission to use this command\", quote=True)\n        return\n    if len(m.command) > 1:\n        interval = m.command[1]\n        db = Options()",
-        "detail": "plugins.admin.advance",
+        "importPath": "plugins.admin.bash",
+        "description": "plugins.admin.bash",
+        "peekOfCode": "def is_owner(_, __, m):\n    return m.from_user.id in kv.get(\"owners\")\n@Client.on_message(filters.command(\"bash\") & filters.create(is_owner))\ndef run_shell_bash(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    command = m.text.replace(\"/bash \", \"\")\n    result = subprocess.run(\n        command,\n        stdout=subprocess.PIPE,\n        stderr=subprocess.STDOUT,",
+        "detail": "plugins.admin.bash",
         "documentation": {}
     },
     {
@@ -1315,26 +1337,71 @@
         "kind": 2,
         "importPath": "plugins.admin.bash",
         "description": "plugins.admin.bash",
-        "peekOfCode": "def run_shell_bash(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    command = m.text.replace(\"/bash \", \"\")\n    result = subprocess.run(\n        command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True\n    )\n    m.reply(f\"```bash\\n{result.stdout}\\n```\")",
+        "peekOfCode": "def run_shell_bash(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    command = m.text.replace(\"/bash \", \"\")\n    result = subprocess.run(\n        command,\n        stdout=subprocess.PIPE,\n        stderr=subprocess.STDOUT,\n        text=True,\n        shell=True,\n        check=True,",
         "detail": "plugins.admin.bash",
+        "documentation": {}
+    },
+    {
+        "label": "is_owner",
+        "kind": 2,
+        "importPath": "plugins.admin.managers",
+        "description": "plugins.admin.managers",
+        "peekOfCode": "def is_owner(_, __, m):\n    return m.from_user.id in kv.get(\"owners\")\n@Client.on_message(filters.command(\"add_manager\") & filters.create(is_owner))\ndef add_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = ManagerDB()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.add(user)\n    if len(m.command) > 1:",
+        "detail": "plugins.admin.managers",
         "documentation": {}
     },
     {
         "label": "add_manager",
         "kind": 2,
-        "importPath": "plugins.admin.notemanage",
-        "description": "plugins.admin.notemanage",
+        "importPath": "plugins.admin.managers",
+        "description": "plugins.admin.managers",
         "peekOfCode": "def add_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = ManagerDB()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.add(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.add(user)\n    m.reply(\"Xong\", quote=True)",
-        "detail": "plugins.admin.notemanage",
+        "detail": "plugins.admin.managers",
         "documentation": {}
     },
     {
         "label": "remove_manager",
         "kind": 2,
-        "importPath": "plugins.admin.notemanage",
-        "description": "plugins.admin.notemanage",
+        "importPath": "plugins.admin.managers",
+        "description": "plugins.admin.managers",
         "peekOfCode": "def remove_manager(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    db = ManagerDB()\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        db.remove(user)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        db.remove(user)\n    m.reply(\"Xong\", quote=True)",
-        "detail": "plugins.admin.notemanage",
+        "detail": "plugins.admin.managers",
+        "documentation": {}
+    },
+    {
+        "label": "is_owner",
+        "kind": 2,
+        "importPath": "plugins.admin.owner",
+        "description": "plugins.admin.owner",
+        "peekOfCode": "def is_owner(_, __, m):\n    return m.from_user.id in kv.get(\"owners\")\n@Client.on_message(filters.command(\"add_owner\") & filters.create(is_owner))\ndef add_owner(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        kv[\"owners\"].add(user.id)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])",
+        "detail": "plugins.admin.owner",
+        "documentation": {}
+    },
+    {
+        "label": "add_owner",
+        "kind": 2,
+        "importPath": "plugins.admin.owner",
+        "description": "plugins.admin.owner",
+        "peekOfCode": "def add_owner(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        kv[\"owners\"].add(user.id)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        kv[\"owners\"].add(user.id)\n    m.reply(\"Xong\", quote=True)\n@Client.on_message(filters.command(\"remove_owner\") & filters.create(is_owner))",
+        "detail": "plugins.admin.owner",
+        "documentation": {}
+    },
+    {
+        "label": "remove_owner",
+        "kind": 2,
+        "importPath": "plugins.admin.owner",
+        "description": "plugins.admin.owner",
+        "peekOfCode": "def remove_owner(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message:\n        user = m.reply_to_message.from_user\n        kv[\"owners\"].remove(user.id)\n    if len(m.command) > 1:\n        user = c.get_users(m.command[1])\n        kv[\"owners\"].remove(user.id)\n    m.reply(\"Xong\", quote=True)",
+        "detail": "plugins.admin.owner",
+        "documentation": {}
+    },
+    {
+        "label": "is_owner",
+        "kind": 2,
+        "importPath": "plugins.admin.reset",
+        "description": "plugins.admin.reset",
+        "peekOfCode": "def is_owner(m):\n    return m.from_user.id in kv[\"owners\"]\n@Client.on_message(filters.command(\"reset\") & filters.create(is_owner))\ndef reset_program(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    md = m.reply(\"Đang khởi động lại chương trình Client...\")\n    with open(\"reset.txt\", \"w\", encoding=\"utf-8\") as f:\n        f.write(str(m.chat.id) + \":\" + str(md.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
+        "detail": "plugins.admin.reset",
         "documentation": {}
     },
     {
@@ -1342,8 +1409,17 @@
         "kind": 2,
         "importPath": "plugins.admin.reset",
         "description": "plugins.admin.reset",
-        "peekOfCode": "def reset_program(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    md = m.reply(\"Đang khởi động lại chương trình Client...\")\n    with open(\"reset.txt\", \"w\") as f:\n        f.write(str(m.chat.id) + \":\" + str(md.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
+        "peekOfCode": "def reset_program(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    md = m.reply(\"Đang khởi động lại chương trình Client...\")\n    with open(\"reset.txt\", \"w\", encoding=\"utf-8\") as f:\n        f.write(str(m.chat.id) + \":\" + str(md.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
         "detail": "plugins.admin.reset",
+        "documentation": {}
+    },
+    {
+        "label": "is_owner",
+        "kind": 2,
+        "importPath": "plugins.admin.update",
+        "description": "plugins.admin.update",
+        "peekOfCode": "def is_owner(_, __, m):\n    return m.from_user.id in kv.get(\"owners\")\n@Client.on_message(filters.command(\"update\") & filters.create(is_owner))\ndef update_server(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    mp = m.reply(\"Đang cập nhật hệ thống...\")\n    os.system(\"git stash\")\n    os.system(\"git pull\")\n    md = m.reply(\"Đã cập nhật xong đang khởi động lại...\")\n    mp.delete()",
+        "detail": "plugins.admin.update",
         "documentation": {}
     },
     {
@@ -1351,8 +1427,35 @@
         "kind": 2,
         "importPath": "plugins.admin.update",
         "description": "plugins.admin.update",
-        "peekOfCode": "def update_server(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    mp = m.reply(\"Đang cập nhật hệ thống...\")\n    os.system(\"git stash\")\n    os.system(\"git pull\")\n    md = m.reply(\"Đã cập nhật xong đang khởi động lại...\")\n    mp.delete()\n    with open(\"reset.txt\", \"w\") as f:\n        f.write(str(m.chat.id) + \":\" + str(md.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
+        "peekOfCode": "def update_server(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    mp = m.reply(\"Đang cập nhật hệ thống...\")\n    os.system(\"git stash\")\n    os.system(\"git pull\")\n    md = m.reply(\"Đã cập nhật xong đang khởi động lại...\")\n    mp.delete()\n    with open(\"reset.txt\", \"w\", encoding=\"utf-8\") as f:\n        f.write(str(m.chat.id) + \":\" + str(md.id))\n    os.execl(sys.executable, sys.executable, *sys.argv)",
         "detail": "plugins.admin.update",
+        "documentation": {}
+    },
+    {
+        "label": "send_welcome",
+        "kind": 2,
+        "importPath": "plugins.basic.basic",
+        "description": "plugins.basic.basic",
+        "peekOfCode": "def send_welcome(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply_text(\n        f\"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\",\n        quote=True,\n    )\n@Client.on_message(filters.command(\"helps\"))\ndef help_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    with open(\"text/helps.md\", encoding=\"utf-8\") as f:",
+        "detail": "plugins.basic.basic",
+        "documentation": {}
+    },
+    {
+        "label": "help_list",
+        "kind": 2,
+        "importPath": "plugins.basic.basic",
+        "description": "plugins.basic.basic",
+        "peekOfCode": "def help_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    with open(\"text/helps.md\", encoding=\"utf-8\") as f:\n        text = f.read()\n    text = text.replace(\"{first_name}\", m.from_user.first_name)\n    text = text.replace(\"{uid}\", str(m.from_user.id))\n    m.reply(text, quote=True)\n@Client.on_message(filters.command(\"ext\"))\ndef ext_command_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)",
+        "detail": "plugins.basic.basic",
+        "documentation": {}
+    },
+    {
+        "label": "ext_command_list",
+        "kind": 2,
+        "importPath": "plugins.basic.basic",
+        "description": "plugins.basic.basic",
+        "peekOfCode": "def ext_command_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    with open(\"text/ext.md\", encoding=\"utf-8\") as f:\n        text = f.read()\n    text = text.replace(\"{first_name}\", m.from_user.first_name)\n    text = text.replace(\"{uid}\", str(m.from_user.id))\n    m.reply(text, quote=True)",
+        "detail": "plugins.basic.basic",
         "documentation": {}
     },
     {
@@ -1374,33 +1477,6 @@
         "documentation": {}
     },
     {
-        "label": "send_welcome",
-        "kind": 2,
-        "importPath": "plugins.basic.entry",
-        "description": "plugins.basic.entry",
-        "peekOfCode": "def send_welcome(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply_text(\n        f\"Xin chào {m.from_user.first_name}(`{m.from_user.id}`)\\nDùng lệnh /helps để biết thêm chi tiết\",\n        quote=True,\n    )",
-        "detail": "plugins.basic.entry",
-        "documentation": {}
-    },
-    {
-        "label": "ext_command_list",
-        "kind": 2,
-        "importPath": "plugins.basic.extend",
-        "description": "plugins.basic.extend",
-        "peekOfCode": "def ext_command_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    with open(\"text/ext.md\") as f:\n        text = f.read()\n    text = text.replace(\"{first_name}\", m.from_user.first_name)\n    text = text.replace(\"{uid}\", str(m.from_user.id))\n    m.reply(text, quote=True)",
-        "detail": "plugins.basic.extend",
-        "documentation": {}
-    },
-    {
-        "label": "help_list",
-        "kind": 2,
-        "importPath": "plugins.basic.more_help",
-        "description": "plugins.basic.more_help",
-        "peekOfCode": "def help_list(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    with open(\"text/helps.md\") as f:\n        text = f.read()\n    text = text.replace(\"{first_name}\", m.from_user.first_name)\n    text = text.replace(\"{uid}\", str(m.from_user.id))\n    m.reply(text, quote=True)",
-        "detail": "plugins.basic.more_help",
-        "documentation": {}
-    },
-    {
         "label": "server_info",
         "kind": 2,
         "importPath": "plugins.basic.server_info",
@@ -1419,11 +1495,11 @@
         "documentation": {}
     },
     {
-        "label": "set_proxy",
+        "label": "set_proxy_command",
         "kind": 2,
         "importPath": "plugins.basic.set_proxy",
         "description": "plugins.basic.set_proxy",
-        "peekOfCode": "def set_proxy(c, m):\n    proxy = m.command[1]\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()\n    os.environ[\"http_proxy\"] = os.environ[\"https_proxy\"] = \"http://127.0.0.1:6868\"\n    db = Options()",
+        "peekOfCode": "def set_proxy_command(c, m):\n    proxy = m.command[1]\n    set_proxy(proxy)\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()\n    db = Options()\n    db.set_option(\"proxy\", proxy)",
         "detail": "plugins.basic.set_proxy",
         "documentation": {}
     },
@@ -1432,7 +1508,7 @@
         "kind": 2,
         "importPath": "plugins.rewrites.check_alive",
         "description": "plugins.rewrites.check_alive",
-        "peekOfCode": "def check_alive(config):\n    check_tool = f\"{test_server}/check\"\n    r = requests.get(check_tool, params={\"q\": config})\n    response = r.json()\n    return response.get(\"alive\", False)\ndef generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data)\n    return r.text\n@Client.on_message(filters.command(\"filter_alive\"))",
+        "peekOfCode": "def check_alive(config):\n    check_tool = f\"{test_server}/check\"\n    r = requests.get(check_tool, params={\"q\": config}, timeout=20)\n    response = r.json()\n    return response.get(\"alive\", False)\ndef generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data, timeout=80)\n    return r.text\n@Client.on_message(filters.command(\"filter_alive\"))",
         "detail": "plugins.rewrites.check_alive",
         "documentation": {}
     },
@@ -1441,7 +1517,7 @@
         "kind": 2,
         "importPath": "plugins.rewrites.check_alive",
         "description": "plugins.rewrites.check_alive",
-        "peekOfCode": "def generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data)\n    return r.text\n@Client.on_message(filters.command(\"filter_alive\"))\ndef filter_alive(c, m):\n    \"\"\"\n    command function\n    \"\"\"\n    user = m.from_user.first_name if m.from_user else m.sender_chat.title",
+        "peekOfCode": "def generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data, timeout=80)\n    return r.text\n@Client.on_message(filters.command(\"filter_alive\"))\ndef filter_alive(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user = m.from_user.first_name if m.from_user else m.sender_chat.title\n    if m.reply_to_message:\n        mpath = m.reply_to_message.text.split()",
         "detail": "plugins.rewrites.check_alive",
         "documentation": {}
     },
@@ -1450,7 +1526,7 @@
         "kind": 2,
         "importPath": "plugins.rewrites.check_alive",
         "description": "plugins.rewrites.check_alive",
-        "peekOfCode": "def filter_alive(c, m):\n    \"\"\"\n    command function\n    \"\"\"\n    user = m.from_user.first_name if m.from_user else m.sender_chat.title\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.reply_to_message:\n        mpath = m.reply_to_message.text.split()\n        urls = [\n            part",
+        "peekOfCode": "def filter_alive(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user = m.from_user.first_name if m.from_user else m.sender_chat.title\n    if m.reply_to_message:\n        mpath = m.reply_to_message.text.split()\n        urls = [\n            part\n            for part in mpath\n            if any(part.startswith(scheme) for scheme in [\"http://\", \"https://\"])\n        ]",
         "detail": "plugins.rewrites.check_alive",
         "documentation": {}
     },
@@ -1459,7 +1535,7 @@
         "kind": 5,
         "importPath": "plugins.rewrites.check_alive",
         "description": "plugins.rewrites.check_alive",
-        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef check_alive(config):\n    check_tool = f\"{test_server}/check\"\n    r = requests.get(check_tool, params={\"q\": config})\n    response = r.json()\n    return response.get(\"alive\", False)\ndef generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data)\n    return r.text",
+        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef check_alive(config):\n    check_tool = f\"{test_server}/check\"\n    r = requests.get(check_tool, params={\"q\": config}, timeout=20)\n    response = r.json()\n    return response.get(\"alive\", False)\ndef generate_link(item_list):\n    data = \"\\n\".join(item_list)\n    r = requests.post(\"https://paste.rs/\", data=data, timeout=80)\n    return r.text",
         "detail": "plugins.rewrites.check_alive",
         "documentation": {}
     },
@@ -1518,21 +1594,39 @@
         "documentation": {}
     },
     {
-        "label": "requesting",
+        "label": "get_headers",
         "kind": 2,
         "importPath": "plugins.rewrites.request",
         "description": "plugins.rewrites.request",
-        "peekOfCode": "def requesting(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1 and m.command[1] in [\n            \"GET\",\n            \"get\",\n            \"POST\",\n            \"post\",\n            \"DELETE\",\n            \"delete\",\n    ]:",
+        "peekOfCode": "def get_headers(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) < 2:\n        m.reply(\"Vui long cung cap URL\", quote=True)\n        return\n    url = m.command[1]\n    headers = {}\n    for part in m.command:\n        if \"url=\" in part:\n            url = part.split(\"url=\")[1]",
         "detail": "plugins.rewrites.request",
         "documentation": {}
     },
     {
-        "label": "get_config",
+        "label": "get_body",
         "kind": 2,
-        "importPath": "plugins.rewrites.test",
-        "description": "plugins.rewrites.test",
-        "peekOfCode": "def get_config(data):\n    url = data\n    if any(data.startswith(sche) for sche in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]):\n        url = requests.post(\n            \"https://paste.rs\",\n            data=data,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},\n        ).text\n    elif any(data.startswith(sche) for sche in [\"http\", \"https\"]):",
-        "detail": "plugins.rewrites.test",
+        "importPath": "plugins.rewrites.request",
+        "description": "plugins.rewrites.request",
+        "peekOfCode": "def get_body(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) < 2:\n        m.reply(\"Vui long cung cap URL\", quote=True)\n        return\n    url = m.command[1]\n    headers = {}\n    for part in m.command:\n        if \"url=\" in part:\n            url = part.split(\"url=\")[1]",
+        "detail": "plugins.rewrites.request",
+        "documentation": {}
+    },
+    {
+        "label": "request_post",
+        "kind": 2,
+        "importPath": "plugins.rewrites.request",
+        "description": "plugins.rewrites.request",
+        "peekOfCode": "def request_post(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) < 2:\n        m.reply(\"Vui long cung cap URL\", quote=True)\n        return\n    url = m.command[1]\n    headers = {}\n    for part in m.command:\n        if \"url=\" in part:\n            url = part.split(\"url=\")[1]",
+        "detail": "plugins.rewrites.request",
+        "documentation": {}
+    },
+    {
+        "label": "request_delete",
+        "kind": 2,
+        "importPath": "plugins.rewrites.request",
+        "description": "plugins.rewrites.request",
+        "peekOfCode": "def request_delete(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) < 2:\n        m.reply(\"Vui long cung cap URL\", quote=True)\n        return\n    url = m.command[1]\n    headers = {}\n    for part in m.command:\n        if \"url=\" in part:\n            url = part.split(\"url=\")[1]",
+        "detail": "plugins.rewrites.request",
         "documentation": {}
     },
     {
@@ -1558,7 +1652,7 @@
         "kind": 5,
         "importPath": "plugins.rewrites.test",
         "description": "plugins.rewrites.test",
-        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef get_config(data):\n    url = data\n    if any(data.startswith(sche) for sche in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]):\n        url = requests.post(\n            \"https://paste.rs\",\n            data=data,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},\n        ).text",
+        "peekOfCode": "test_server = os.getenv(\"TEST_SERVER\")\ndef start_test(config):\n    try:\n        r = requests.post(test_server, json={\"q\": config}, timeout=60)\n        return r.text\n    except Exception as e:\n        print(e)\n        return \"\"\n@Client.on_message(filters.command(\"test\"))\ndef litespeedtest(c, m):",
         "detail": "plugins.rewrites.test",
         "documentation": {}
     },
@@ -1576,7 +1670,25 @@
         "kind": 2,
         "importPath": "plugins.writing.check_available",
         "description": "plugins.writing.check_available",
-        "peekOfCode": "def check_all_urls(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    user_id = m.from_user.id\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:",
+        "peekOfCode": "def check_all_urls(c, m):\n    user_id = m.from_user.id\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"\n    else:\n        m.reply(",
+        "detail": "plugins.writing.check_available",
+        "documentation": {}
+    },
+    {
+        "label": "owners",
+        "kind": 5,
+        "importPath": "plugins.writing.check_available",
+        "description": "plugins.writing.check_available",
+        "peekOfCode": "owners = kv[\"owners\"]\nmanagers = kv[\"managers\"]\ndef check_urls(urls: list) -> list:\n    removed_urls = []\n    for url in urls:\n        try:\n            response = requests.get(\n                url,\n                headers={\"User-Agent\": \"v2rayNG\"},\n                proxies={",
+        "detail": "plugins.writing.check_available",
+        "documentation": {}
+    },
+    {
+        "label": "managers",
+        "kind": 5,
+        "importPath": "plugins.writing.check_available",
+        "description": "plugins.writing.check_available",
+        "peekOfCode": "managers = kv[\"managers\"]\ndef check_urls(urls: list) -> list:\n    removed_urls = []\n    for url in urls:\n        try:\n            response = requests.get(\n                url,\n                headers={\"User-Agent\": \"v2rayNG\"},\n                proxies={\n                    \"http\": \"http://127.0.0.1:6868\",",
         "detail": "plugins.writing.check_available",
         "documentation": {}
     },
@@ -1603,7 +1715,25 @@
         "kind": 2,
         "importPath": "plugins.writing.get_list",
         "description": "plugins.writing.get_list",
-        "peekOfCode": "def get_all_urls(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if m.chat.type != ChatType.PRIVATE:",
+        "peekOfCode": "def get_all_urls(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:",
+        "detail": "plugins.writing.get_list",
+        "documentation": {}
+    },
+    {
+        "label": "owners",
+        "kind": 5,
+        "importPath": "plugins.writing.get_list",
+        "description": "plugins.writing.get_list",
+        "peekOfCode": "owners = kv[\"owners\"]\nmanagers = kv[\"managers\"]\n@Client.on_message(filters.command(\"note\"))\ndef get_all_urls(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return",
+        "detail": "plugins.writing.get_list",
+        "documentation": {}
+    },
+    {
+        "label": "managers",
+        "kind": 5,
+        "importPath": "plugins.writing.get_list",
+        "description": "plugins.writing.get_list",
+        "peekOfCode": "managers = kv[\"managers\"]\n@Client.on_message(filters.command(\"note\"))\ndef get_all_urls(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if m.chat.type != ChatType.PRIVATE:\n        m.reply(\"Vui lòng thực hiện thao tác này ở khu vực riêng tư!\", quote=True)\n        return\n    if len(m.command) > 1:",
         "detail": "plugins.writing.get_list",
         "documentation": {}
     },
@@ -1612,7 +1742,25 @@
         "kind": 2,
         "importPath": "plugins.writing.remove_from_list",
         "description": "plugins.writing.remove_from_list",
-        "peekOfCode": "def delete_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        note_name = m.command[1]",
+        "peekOfCode": "def delete_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"\n    else:\n        m.reply(\n            \"Vui lòng cung cấp tên note <pre>/delete example_note_name</pre>\",",
+        "detail": "plugins.writing.remove_from_list",
+        "documentation": {}
+    },
+    {
+        "label": "owners",
+        "kind": 5,
+        "importPath": "plugins.writing.remove_from_list",
+        "description": "plugins.writing.remove_from_list",
+        "peekOfCode": "owners = kv[\"owners\"]\nmanagers = kv[\"managers\"]\n@Client.on_message(filters.command(\"delete\"))\ndef delete_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"",
+        "detail": "plugins.writing.remove_from_list",
+        "documentation": {}
+    },
+    {
+        "label": "managers",
+        "kind": 5,
+        "importPath": "plugins.writing.remove_from_list",
+        "description": "plugins.writing.remove_from_list",
+        "peekOfCode": "managers = kv[\"managers\"]\n@Client.on_message(filters.command(\"delete\"))\ndef delete_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"\n    else:",
         "detail": "plugins.writing.remove_from_list",
         "documentation": {}
     },
@@ -1621,7 +1769,7 @@
         "kind": 2,
         "importPath": "plugins.writing.share_and_add",
         "description": "plugins.writing.share_and_add",
-        "peekOfCode": "def add_url(c, m):\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1:",
+        "peekOfCode": "def add_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"\n    else:\n        note_name = \"share\"",
         "detail": "plugins.writing.share_and_add",
         "documentation": {}
     },
@@ -1635,11 +1783,47 @@
         "documentation": {}
     },
     {
+        "label": "owners",
+        "kind": 5,
+        "importPath": "plugins.writing.share_and_add",
+        "description": "plugins.writing.share_and_add",
+        "peekOfCode": "owners = kv[\"owners\"]\nmanagers = kv[\"managers\"]\n@Client.on_message(filters.command(\"add\"))\ndef add_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:",
+        "detail": "plugins.writing.share_and_add",
+        "documentation": {}
+    },
+    {
+        "label": "managers",
+        "kind": 5,
+        "importPath": "plugins.writing.share_and_add",
+        "description": "plugins.writing.share_and_add",
+        "peekOfCode": "managers = kv[\"managers\"]\n@Client.on_message(filters.command(\"add\"))\ndef add_url(c, m):\n    notes = NoteDB()\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"",
+        "detail": "plugins.writing.share_and_add",
+        "documentation": {}
+    },
+    {
         "label": "update_note_content",
         "kind": 2,
         "importPath": "plugins.writing.update",
         "description": "plugins.writing.update",
-        "peekOfCode": "def update_note_content(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    owner = int(os.getenv(\"OWNER_ID\"))\n    if os.getenv(\"MANAGERS\"):\n        managers = {int(i) for i in os.getenv(\"MANAGERS\").split(\",\")}\n    else:\n        managers = set()\n    user_id = m.from_user.id\n    notes = NoteDB()\n    if len(m.command) > 1:",
+        "peekOfCode": "def update_note_content(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    notes = NoteDB()\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"\n    else:\n        m.reply(",
+        "detail": "plugins.writing.update",
+        "documentation": {}
+    },
+    {
+        "label": "owners",
+        "kind": 5,
+        "importPath": "plugins.writing.update",
+        "description": "plugins.writing.update",
+        "peekOfCode": "owners = kv[\"owners\"]\nmanagers = kv[\"managers\"]\n@Client.on_message(filters.command(\"update_note\"))\ndef update_note_content(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    notes = NoteDB()\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:",
+        "detail": "plugins.writing.update",
+        "documentation": {}
+    },
+    {
+        "label": "managers",
+        "kind": 5,
+        "importPath": "plugins.writing.update",
+        "description": "plugins.writing.update",
+        "peekOfCode": "managers = kv[\"managers\"]\n@Client.on_message(filters.command(\"update_note\"))\ndef update_note_content(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    user_id = m.from_user.id\n    notes = NoteDB()\n    if len(m.command) > 1:\n        note_name = m.command[1]\n    elif m.from_user.id in owners:\n        note_name = \"v2ray\"",
         "detail": "plugins.writing.update",
         "documentation": {}
     },
@@ -1774,7 +1958,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def load_options():\n    db = Options()\n    update_interval = db.get_option(\"update-interval\")\n    owner = 5665225938\n    proxy = db.get_option(\"proxy\")\n    if not update_interval:\n        update_interval = 3600\n        db.set_option(\"update-interval\", update_interval)\n    if proxy:\n        os.system(\"pkill -9 lite\")",
+        "peekOfCode": "def load_options():\n    kv[\"owners\"] = set(5665225938)\n    Thread(target=update_notes, args=(3600,)).start()\n    reload_managers()\ndef reload_managers():\n    db = ManagerDB()\n    managers = set()\n    for manager in db.list_managers():\n        managers.add(manager.user_id)\n    kv[\"managers\"] = managers",
         "detail": "load_options",
         "documentation": {}
     },
@@ -1783,16 +1967,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def reload_managers():\n    db = ManagerDB()\n    managers = []\n    for manager in db.list_managers():\n        managers.append(manager.user_id)\n    managers = \",\".join(map(str, managers))\n    os.environ[\"MANAGERS\"] = managers\n    print(\"Managers updated\")\ndef update_note(note, db):\n    links = []",
-        "detail": "load_options",
-        "documentation": {}
-    },
-    {
-        "label": "update_note",
-        "kind": 2,
-        "importPath": "load_options",
-        "description": "load_options",
-        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.split(None):\n            if any(\n                scheme in url\n                for scheme in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]\n            ):\n                links.extend(text.split())\n    for url in note.urls.splitlines():",
+        "peekOfCode": "def reload_managers():\n    db = ManagerDB()\n    managers = set()\n    for manager in db.list_managers():\n        managers.add(manager.user_id)\n    kv[\"managers\"] = managers\n    print(\"Managers updated\")\ndef update_notes(interval, call=False):\n    db = NoteDB()\n    while True:",
         "detail": "load_options",
         "documentation": {}
     },

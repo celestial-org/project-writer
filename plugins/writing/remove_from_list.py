@@ -1,23 +1,22 @@
 import re
-import os
 import time
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ParseMode
 from database import NoteDB
+from database.local import kv
+
+
+owners = kv["owners"]
+managers = kv["managers"]
 
 
 @Client.on_message(filters.command("delete"))
 def delete_url(c, m):
-    owner = int(os.getenv("OWNER_ID"))
-    if os.getenv("MANAGERS"):
-        managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
-    else:
-        managers = set()
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
     if len(m.command) > 1:
         note_name = m.command[1]
-    elif m.from_user.id == owner:
+    elif m.from_user.id in owners:
         note_name = "v2ray"
     else:
         m.reply(
@@ -25,9 +24,13 @@ def delete_url(c, m):
             quote=True,
         )
         return
-    if note_name == "share":
-        if m.from_user.id not in [owner, *managers]:
+    if note_name in ["share", "misc"]:
+        if m.from_user.id not in [*owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
+            return
+    elif note_name == "v2ray":
+        if m.from_user.id not in owners:
+            m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     text = m.text
     if m.reply_to_message:

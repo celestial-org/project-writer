@@ -1,43 +1,12 @@
-import base64
 import re
 import os
 import concurrent.futures
 import requests
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ParseMode
+from assets.util import get_config
 
 test_server = os.getenv("TEST_SERVER")
-
-
-def get_config(data):
-    url = data
-    if any(data.startswith(sche) for sche in ["vmess://", "trojan://", "vless://", "ss://"]):
-        url = requests.post(
-            "https://paste.rs",
-            data=data,
-            timeout=20,
-            headers={"Content-Type": "text/plain"},
-        ).text
-    elif any(data.startswith(sche) for sche in ["http", "https"]):
-        req = requests.get(
-            data,
-            headers={"User-Agent": "v2rayNG/1"},
-            proxies={
-                "http": "http://127.0.0.1:6868",
-                "https": "http://127.0.0.1:6868",
-            },
-            timeout=20,
-        )
-        data = req.text
-        if not any(
-            data.startswith(sche) for sche in ["vmess", "trojan", "vless", "ss:"]
-        ):
-            data = base64.b64decode(data).decode()
-    else:
-        data = base64.b64decode(data).decode()
-    data = data.split()
-    count = len(data)
-    return url, data, count
 
 
 def start_test(config):
@@ -113,7 +82,12 @@ def litespeedtest(c, m):
             )
             if count > 1:
                 s_text = (
-                    "<b>" + str(count) + "</b>" + "<pre><code>" + result_gather + "</code></pre>"
+                    "<b>"
+                    + str(count)
+                    + "</b>"
+                    + "<pre><code>"
+                    + result_gather
+                    + "</code></pre>"
                 )
             try:
                 s_msg.edit(s_text, parse_mode=ParseMode.HTML)

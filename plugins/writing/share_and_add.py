@@ -4,21 +4,21 @@ import time
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
 from database import NoteDB
+from database.local import kv
+
+
+owners = kv["owners"]
+managers = kv["managers"]
 
 
 @Client.on_message(filters.command("add"))
 def add_url(c, m):
-    owner = int(os.getenv("OWNER_ID"))
-    if os.getenv("MANAGERS"):
-        managers = {int(i) for i in os.getenv("MANAGERS").split(",")}
-    else:
-        managers = set()
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
     if len(m.command) > 1:
         note_name = m.command[1]
-    elif m.from_user.id == owner:
+    elif m.from_user.id in owners:
         note_name = "v2ray"
     else:
         note_name = "share"
@@ -29,6 +29,10 @@ def add_url(c, m):
         r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+",
         text,
     )
+    if note_name == "v2ray":
+        if user_id not in owners:
+            m.reply("**You don't have permission to access this note**", quote=True)
+            return
     if not urls:
         err = m.reply_text("Vui lòng cung cấp URL")
         time.sleep(10)
@@ -38,7 +42,7 @@ def add_url(c, m):
     li = 0
     note = notes.get_note(note_name)
     if note:
-        if user_id not in [note.user_id, owner, *managers]:
+        if user_id not in [note.user_id, *owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
     for url in urls:

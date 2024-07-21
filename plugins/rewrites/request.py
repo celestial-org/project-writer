@@ -1,47 +1,98 @@
+import requests
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-import requests
 
 
-@Client.on_message(filters.command("request"))
-def requesting(c, m):
+@Client.on_message(filters.command("get_headers"))
+def get_headers(c, m):
     m.reply_chat_action(ChatAction.TYPING)
-    if len(m.command) > 1 and m.command[1] in [
-            "GET",
-            "get",
-            "POST",
-            "post",
-            "DELETE",
-            "delete",
-    ]:
-        method = m.command[1].upper()
-    else:
-        method = "GET"
-    if any(part in ["headers", "body", "picture"] for part in m.command):
-        req = [
-            part.replace("...", "") for part in m.command
-            if any(part in ["headers", "body", "picture"])
-        ][0]
-    else:
-        req = "headers"
-    if any(sche in m.text for sche in ["http://", "https://"]):
-        text = m.text
-    elif any(sche in m.reply_to_message.text
-             for sche in ["http://", "https://"]):
-        text = m.reply_to_message.text
-    for url in [
-            url for url in text.split(None)
-            if any(scheme in url for scheme in ["http://", "https://"])
-    ]:
-        r = requests.request(
-            method,
-            url,
-            headers={"User-Agent": "Writer/1"},
-            proxies={
-                "http": "http://127.0.0.1:8888",
-                "https": "http://127.0.0.1:8888"
-            },
-        )
-        headers = "\n".join(
-            [f"{k.upper()}: {v}" for k, v in r.headers.items()])
-        m.reply(f"```json\n{headers}```", quote=True)
+    if len(m.command) < 2:
+        m.reply("Vui long cung cap URL", quote=True)
+        return
+    url = m.command[1]
+    headers = {}
+    for part in m.command:
+        if "url=" in part:
+            url = part.split("url=")[1]
+        if "headers=" in part:
+            pre_headers = part.split("headers=")[1]
+            for header in pre_headers.split(","):
+                key, value = header.split(":")
+                headers[key] = value
+        if "params=" in part:
+            params = part.split("params=")[1]
+            params = dict(pair.split(":") for pair in params.split(","))
+
+    r = requests.get(url, headers=headers, params=params, timeout=80)
+    res_headers = {}
+    response = r.headers
+    for key, value in response.items():
+        res_headers[key] = value
+    m.reply(f"{url}```headers\n{res_headers}```", quote=True)
+
+
+@Client.on_message(filters.command("get_body"))
+def get_body(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
+    if len(m.command) < 2:
+        m.reply("Vui long cung cap URL", quote=True)
+        return
+    url = m.command[1]
+    headers = {}
+    for part in m.command:
+        if "url=" in part:
+            url = part.split("url=")[1]
+        if "headers=" in part:
+            pre_headers = part.split("headers=")[1]
+            for header in pre_headers.split(","):
+                key, value = header.split(":")
+                headers[key] = value
+        if "params=" in part:
+            params = part.split("params=")[1]
+            params = dict(pair.split(":") for pair in params.split(","))
+
+    r = requests.get(url, headers=headers, params=params, timeout=80)
+    m.reply(f"{url}```body\n{r.text}```", quote=True)
+
+
+@Client.on_message(filters.command("request_post"))
+def request_post(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
+    if len(m.command) < 2:
+        m.reply("Vui long cung cap URL", quote=True)
+        return
+    url = m.command[1]
+    headers = {}
+    for part in m.command:
+        if "url=" in part:
+            url = part.split("url=")[1]
+        if "headers=" in part:
+            pre_headers = part.split("headers=")[1]
+            for header in pre_headers.split(","):
+                key, value = header.split(":")
+                headers[key] = value
+        if "json=" in part:
+            data = part.split("data=")[1]
+            data = dict(pair.split(":") for pair in data.split(","))
+    r = requests.post(url, headers=headers, json=data, timeout=80)
+    m.reply(f"{url}```body\n{r.text}```", quote=True)
+
+
+@Client.on_message(filters.command("request_delete"))
+def request_delete(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
+    if len(m.command) < 2:
+        m.reply("Vui long cung cap URL", quote=True)
+        return
+    url = m.command[1]
+    headers = {}
+    for part in m.command:
+        if "url=" in part:
+            url = part.split("url=")[1]
+        if "headers=" in part:
+            pre_headers = part.split("headers=")[1]
+            for header in pre_headers.split(","):
+                key, value = header.split(":")
+                headers[key] = value
+    r = requests.delete(url, headers=headers, timeout=80)
+    m.reply(f"{url}```body\n{r.text}```", quote=True)
