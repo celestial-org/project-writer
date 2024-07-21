@@ -107,30 +107,6 @@
         "documentation": {}
     },
     {
-        "label": "InlineKeyboardMarkup",
-        "importPath": "pyrogram.types",
-        "description": "pyrogram.types",
-        "isExtraImport": true,
-        "detail": "pyrogram.types",
-        "documentation": {}
-    },
-    {
-        "label": "InlineKeyboardButton",
-        "importPath": "pyrogram.types",
-        "description": "pyrogram.types",
-        "isExtraImport": true,
-        "detail": "pyrogram.types",
-        "documentation": {}
-    },
-    {
-        "label": "Message",
-        "importPath": "pyrogram.types",
-        "description": "pyrogram.types",
-        "isExtraImport": true,
-        "detail": "pyrogram.types",
-        "documentation": {}
-    },
-    {
         "label": "shelve",
         "kind": 6,
         "isExtraImport": true,
@@ -211,22 +187,6 @@
         "importPath": "subprocess",
         "description": "subprocess",
         "detail": "subprocess",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
-        "isExtraImport": true,
-        "detail": "pyrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "pyrogram",
-        "description": "pyrogram",
-        "isExtraImport": true,
-        "detail": "pyrogram",
         "documentation": {}
     },
     {
@@ -1023,6 +983,14 @@
         "documentation": {}
     },
     {
+        "label": "set_proxy",
+        "importPath": "assets.note_util",
+        "description": "assets.note_util",
+        "isExtraImport": true,
+        "detail": "assets.note_util",
+        "documentation": {}
+    },
+    {
         "label": "concurrent.futures",
         "kind": 6,
         "isExtraImport": true,
@@ -1134,6 +1102,14 @@
     },
     {
         "label": "ManagerDB",
+        "importPath": "database.client",
+        "description": "database.client",
+        "isExtraImport": true,
+        "detail": "database.client",
+        "documentation": {}
+    },
+    {
+        "label": "Options",
         "importPath": "database.client",
         "description": "database.client",
         "isExtraImport": true,
@@ -1525,24 +1501,6 @@
         "description": "plugins.basic.set_proxy",
         "peekOfCode": "def set_proxy_command(c, m):\n    proxy = m.command[1]\n    set_proxy(proxy)\n    stt = m.reply(\"Đã thiết lập proxy\")\n    m.delete()\n    time.sleep(10)\n    stt.delete()\n    db = Options()\n    db.set_option(\"proxy\", proxy)",
         "detail": "plugins.basic.set_proxy",
-        "documentation": {}
-    },
-    {
-        "label": "action",
-        "kind": 2,
-        "importPath": "plugins.group_manage.manage",
-        "description": "plugins.group_manage.manage",
-        "peekOfCode": "def action(client: Client, message: Message):\n    if message.reply_to_message:\n        replied_user = message.reply_to_message.from_user\n    else:\n        # Nếu không có tin nhắn trả lời, kiểm tra nếu có username trong lệnh\n        username = (\n            message.text.split(\" \", 1)[1] if len(message.text.split(\" \")) > 1 else None\n        )\n        replied_user = None\n        if username:",
-        "detail": "plugins.group_manage.manage",
-        "documentation": {}
-    },
-    {
-        "label": "handle_callback_query",
-        "kind": 2,
-        "importPath": "plugins.group_manage.manage",
-        "description": "plugins.group_manage.manage",
-        "peekOfCode": "def handle_callback_query(client: Client, callback_query):\n    data = callback_query.data\n    user_id = int(data.split(\"_\")[1])\n    if data.startswith(\"ban_\"):\n        # Xử lý lệnh ban người dùng\n        callback_query.message.reply_text(f\"Người dùng {user_id} đã bị cấm.\")\n    elif data.startswith(\"kick_\"):\n        # Xử lý lệnh kick người dùng\n        callback_query.message.reply_text(f\"Người dùng {user_id} đã bị đá khỏi nhóm.\")\n    elif data.startswith(\"mute_\"):",
-        "detail": "plugins.group_manage.manage",
         "documentation": {}
     },
     {
@@ -2000,7 +1958,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def load_options():\n    kv[\"owners\"] = set(5665225938)\n    Thread(target=update_notes, args=(3600,)).start()\n    reload_managers()\ndef reload_managers():\n    db = ManagerDB()\n    managers = set()\n    for manager in db.list_managers():\n        managers.add(manager.user_id)\n    kv[\"managers\"] = managers",
+        "peekOfCode": "def load_options():\n    db = Options()\n    proxy = db.get_option(\"proxy\")\n    if proxy:\n        set_proxy(proxy)\n    kv[\"owners\"] = {\n        5665225938,\n    }\n    Thread(target=update_notes, args=(3600,)).start()\n    reload_managers()",
         "detail": "load_options",
         "documentation": {}
     },

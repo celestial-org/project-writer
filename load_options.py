@@ -1,12 +1,18 @@
 import time
 from threading import Thread
-from database.client import NoteDB, ManagerDB
+from database.client import NoteDB, ManagerDB, Options
 from database.local import kv
-from assets.note_util import update_note
+from assets.note_util import update_note, set_proxy
 
 
 def load_options():
-    kv["owners"] = set(5665225938)
+    db = Options()
+    proxy = db.get_option("proxy")
+    if proxy:
+        set_proxy(proxy)
+    kv["owners"] = {
+        5665225938,
+    }
     Thread(target=update_notes, args=(3600,)).start()
     reload_managers()
 

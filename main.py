@@ -17,7 +17,7 @@ if __name__ == "__main__":
     bot.start()
 
     if os.path.exists("reset.txt"):
-        with open("reset.txt", "r") as f:
+        with open("reset.txt", "r", encoding="utf-8") as f:
             chat_id, m_id = f.read().split(":")
             bot.delete_messages(int(chat_id), int(m_id))
         os.remove("reset.txt")
