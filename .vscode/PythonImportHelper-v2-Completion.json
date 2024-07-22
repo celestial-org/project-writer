@@ -181,12 +181,63 @@
         "documentation": {}
     },
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "subprocess",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "subprocess",
         "description": "subprocess",
         "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "concurrent.futures",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
+        "label": "idle",
+        "importPath": "pyrogram",
+        "description": "pyrogram",
+        "isExtraImport": true,
+        "detail": "pyrogram",
         "documentation": {}
     },
     {
@@ -563,6 +614,22 @@
         "description": "pyrogram",
         "isExtraImport": true,
         "detail": "pyrogram",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ParseMode",
+        "importPath": "pyrogram.enums",
+        "description": "pyrogram.enums",
+        "isExtraImport": true,
+        "detail": "pyrogram.enums",
         "documentation": {}
     },
     {
@@ -991,15 +1058,6 @@
         "documentation": {}
     },
     {
-        "label": "concurrent.futures",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
-        "detail": "concurrent.futures",
-        "documentation": {}
-    },
-    {
         "label": "get_config",
         "importPath": "assets.util",
         "description": "assets.util",
@@ -1064,15 +1122,6 @@
         "description": "environment",
         "isExtraImport": true,
         "detail": "environment",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
         "documentation": {}
     },
     {
@@ -1321,6 +1370,69 @@
         "description": "ext.main",
         "peekOfCode": "db = deta.Base(\"reverse\")\n@app.route(\"/\")\ndef index():\n    return \"Middle Server\"\n@app.route(\"/api/v1/client\")\ndef get_target_link():\n    link_id = request.args.get(\"id\")\n    if not link_id:\n        return jsonify({\"error\": \"id is required\"})\n    run_proxy()",
         "detail": "ext.main",
+        "documentation": {}
+    },
+    {
+        "label": "get_config",
+        "kind": 2,
+        "importPath": "lite-client.main",
+        "description": "lite-client.main",
+        "peekOfCode": "def get_config(data):\n    url = data\n    if any(\n        data.startswith(sche) for sche in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]\n    ):\n        url = requests.post(\n            \"https://paste.rs\",\n            data=data,\n            timeout=20,\n            headers={\"Content-Type\": \"text/plain\"},",
+        "detail": "lite-client.main",
+        "documentation": {}
+    },
+    {
+        "label": "lite",
+        "kind": 2,
+        "importPath": "lite-client.main",
+        "description": "lite-client.main",
+        "peekOfCode": "def lite(config):\n    try:\n        out = subprocess.check_output(\n            [\"./lite\", \"-config\", \"config.json\", \"-test\", config],\n            stderr=subprocess.STDOUT,\n            text=True,\n        )\n        out_lines = out.splitlines()\n        res = [line for line in out_lines if \"gotspeed\" in line]\n        if len(res) > 1:",
+        "detail": "lite-client.main",
+        "documentation": {}
+    },
+    {
+        "label": "start_command",
+        "kind": 2,
+        "importPath": "lite-client.main",
+        "description": "lite-client.main",
+        "peekOfCode": "def start_command(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\"🚀 Lite Speed Test bot\", quote=True)\ndef start_test(config):\n    try:\n        return lite(config)\n    except Exception as e:\n        print(e)\n        return \"N/A\"\n@app.on_message(filters.command(\"test\"))",
+        "detail": "lite-client.main",
+        "documentation": {}
+    },
+    {
+        "label": "start_test",
+        "kind": 2,
+        "importPath": "lite-client.main",
+        "description": "lite-client.main",
+        "peekOfCode": "def start_test(config):\n    try:\n        return lite(config)\n    except Exception as e:\n        print(e)\n        return \"N/A\"\n@app.on_message(filters.command(\"test\"))\ndef litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    url_pattern = re.compile(",
+        "detail": "lite-client.main",
+        "documentation": {}
+    },
+    {
+        "label": "litespeedtest",
+        "kind": 2,
+        "importPath": "lite-client.main",
+        "description": "lite-client.main",
+        "peekOfCode": "def litespeedtest(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    url_pattern = re.compile(\n        r\"((http[s]?|vmess|trojan|vless|ss)://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)\"\n    )\n    if m.reply_to_message:\n        try:\n            text = m.reply_to_message.text\n        except Exception:\n            try:",
+        "detail": "lite-client.main",
+        "documentation": {}
+    },
+    {
+        "label": "bot_token",
+        "kind": 5,
+        "importPath": "lite-client.main",
+        "description": "lite-client.main",
+        "peekOfCode": "bot_token = os.getenv(\"BOT_TOKEN\")\nif not bot_token:\n    print(\"Please provide BOT_TOKEN as an environment variable\", flush=True)\napp = Client(\n    \"lite_client\",\n    21021245,\n    \"7b32ea92719781c5e22ede319c5dbde5\",\n    bot_token=bot_token,\n    in_memory=True,\n)",
+        "detail": "lite-client.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "lite-client.main",
+        "description": "lite-client.main",
+        "peekOfCode": "app = Client(\n    \"lite_client\",\n    21021245,\n    \"7b32ea92719781c5e22ede319c5dbde5\",\n    bot_token=bot_token,\n    in_memory=True,\n)\ndef get_config(data):\n    url = data\n    if any(",
+        "detail": "lite-client.main",
         "documentation": {}
     },
     {
