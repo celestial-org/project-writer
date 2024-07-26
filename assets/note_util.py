@@ -13,7 +13,7 @@ def update_note(note, db):
     links = []
 
     def handle(text):
-        for url in text.split(None):
+        for url in text.splitlines():
             if any(
                 scheme in url
                 for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
