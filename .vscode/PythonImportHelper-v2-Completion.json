@@ -9,21 +9,21 @@
         "documentation": {}
     },
     {
-        "label": "requests",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
-        "documentation": {}
-    },
-    {
         "label": "base64",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "base64",
         "description": "base64",
         "detail": "base64",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
         "documentation": {}
     },
     {
@@ -1121,7 +1121,7 @@
         "kind": 2,
         "importPath": "assets.note_util",
         "description": "assets.note_util",
-        "peekOfCode": "def set_proxy(proxy):\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    os.environ[\"http_proxy\"] = os.environ[\"https_proxy\"] = \"http://127.0.0.1:6868\"\n    print(\"proxy set\")\ndef update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.splitlines():\n            if any(",
+        "peekOfCode": "def set_proxy(proxy):\n    os.system(\"pkill -9 lite\")\n    os.system(f\"./lite -p 6868 {proxy} &\")\n    os.environ[\"http_proxy\"] = os.environ[\"https_proxy\"] = \"http://127.0.0.1:6868\"\n    print(\"proxy set\")\ndef update_note(note, db):\n    links = []\n    def handle(text):\n        if not any(\n            scheme in text for scheme in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]",
         "detail": "assets.note_util",
         "documentation": {}
     },
@@ -1130,7 +1130,7 @@
         "kind": 2,
         "importPath": "assets.note_util",
         "description": "assets.note_util",
-        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        for url in text.splitlines():\n            if any(\n                scheme in url\n                for scheme in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]\n            ):\n                links.extend(text.split())\n    for url in note.urls.splitlines():",
+        "peekOfCode": "def update_note(note, db):\n    links = []\n    def handle(text):\n        if not any(\n            scheme in text for scheme in [\"vmess://\", \"trojan://\", \"vless://\", \"ss://\"]\n        ):\n            try:\n                text = base64.b64decode(text).decode()\n            except Exception:\n                return",
         "detail": "assets.note_util",
         "documentation": {}
     },

@@ -1,4 +1,5 @@
 import os
+import base64
 import requests
 
 
@@ -13,12 +14,19 @@ def update_note(note, db):
     links = []
 
     def handle(text):
+        if not any(
+            scheme in text for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
+        ):
+            try:
+                text = base64.b64decode(text).decode()
+            except Exception:
+                return
         for url in text.splitlines():
             if any(
                 scheme in url
                 for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
             ):
-                links.extend(text.split())
+                links.extend(text.splitlines())
 
     for url in note.urls.splitlines():
         try:
