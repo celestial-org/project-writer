@@ -5,7 +5,7 @@ from pyrogram.enums import ChatAction
 from database.local import kv
 
 
-def is_owner(m):
+def is_owner(_, __, m):
     return m.from_user.id in kv["owners"]
 
 
