@@ -8,10 +8,10 @@ if __name__ == "__main__":
     load_options()
     bot = Client(
         "writer",
-        21021245,
-        "7b32ea92719781c5e22ede319c5dbde5",
+        6,
+        "eb06d4abfb49dc3eeb1aeb98ae0f581e",
         bot_token=bot_token,
-        plugins=dict(root="plugins"),
+        plugins={"root": "plugins"},
         in_memory=True,
     )
     bot.start()

@@ -21,3 +21,4 @@ requests==2.32.3
 SQLAlchemy==2.0.31
 sqlalchemy-libsql==0.1.0
 TgCrypto==1.2.5
+aiofiles
