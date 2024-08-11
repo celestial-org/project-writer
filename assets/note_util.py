@@ -27,7 +27,12 @@ def update_note(note, db):
                 scheme in url
                 for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
             ):
-                links.extend(text.splitlines())
+                for link in text.splitlines():
+                    if any(
+                        link.startswith(scheme)
+                        for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
+                    ):
+                        links.append(link)
 
     urls = note.urls.splitlines()
     random.shuffle(urls)
