@@ -1,5 +1,6 @@
 import os
 import base64
+import random
 import requests
 
 
@@ -28,7 +29,9 @@ def update_note(note, db):
             ):
                 links.extend(text.splitlines())
 
-    for url in note.urls.splitlines():
+    urls = note.urls.splitlines()
+    random.shuffle(urls)
+    for url in urls:
         try:
             req = requests.get(
                 url,
