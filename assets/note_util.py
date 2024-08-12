@@ -34,7 +34,7 @@ def update_note(note, db):
                     ):
                         links.append(link)
 
-    urls = note.urls.splitlines()
+    urls = db.list_links(note.name)
     random.shuffle(urls)
     for url in urls:
         try:

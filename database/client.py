@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from pyrogram.types import User
 from .model import Base, Manager, BotOptions, Note, Subscription
 
+
 class Turso:
     def __init__(self) -> None:
         DB_URL = os.environ.get("DB_URL")
