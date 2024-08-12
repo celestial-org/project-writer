@@ -1,9 +1,16 @@
+
+
+
+
+
+
+
 import os
 import requests
 
 
 res = requests.get(os.getenv("SECRET"), timeout=99).json()
-os.environ["V2TOOL"] = res["api"]["v2tool"]
+os.environ["V3TOOL"] = res["api"]["v3tool"]
 os.environ["TEST_SERVER"] = res["api"]["test"]
 os.environ["DB_URL"] = res["db"]["libsql"][1]
 bot_token = res["access"]["telegram"]["writer"]
