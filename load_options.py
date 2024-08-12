@@ -32,6 +32,6 @@ def update_notes(interval, call=False):
         time.sleep(interval)
         for note in db.list_notes():
             update_note(note, db)
-            print(note.name, " updated")
+            print(note.title, " updated")
         if call:
             break

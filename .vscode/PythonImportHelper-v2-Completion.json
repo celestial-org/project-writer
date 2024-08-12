@@ -1976,7 +1976,7 @@
         "kind": 2,
         "importPath": "load_options",
         "description": "load_options",
-        "peekOfCode": "def update_notes(interval, call=False):\n    db = NoteDB()\n    while True:\n        time.sleep(interval)\n        for note in db.list_notes():\n            update_note(note, db)\n            print(note.name, \" updated\")\n        if call:\n            break",
+        "peekOfCode": "def update_notes(interval, call=False):\n    db = NoteDB()\n    while True:\n        time.sleep(interval)\n        for note in db.list_notes():\n            update_note(note, db)\n            print(note.title, \" updated\")\n        if call:\n            break",
         "detail": "load_options",
         "documentation": {}
     }
