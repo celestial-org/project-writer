@@ -1,9 +1,8 @@
 import os
-from sqlalchemy import create_engine, select, and_
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from pyrogram.types import User
-from .model import Base, Manager, Note, BotOptions
-
+from .model import Base, Manager, BotOptions, Note, Subscription
 
 class Turso:
     def __init__(self) -> None:
@@ -17,64 +16,27 @@ class Turso:
 
 class Options(Turso):
     def get_option(self, name: str) -> str:
-        """
-        Get option by name.
-
-        Args:
-            name (str): name of option
-
-        Returns:
-            str: Value of option
-        """
-        sql = select(BotOptions).where(BotOptions.name == name)
-        return self.session.scalars(sql).first().value
+        option = self.session.query(BotOptions).filter_by(name=name).first()
+        return option.value if option else None
 
     def set_option(self, name: str, value: str) -> bool:
-        """
-        Set option by name.
-
-        Args:
-            name (str): name of option
-            value (str): value of option
-
-        Returns:
-            bool: True if success, False if failed
-        """
-        sql = select(BotOptions).where(BotOptions.name == name)
-        option = self.session.scalars(sql).first()
+        option = self.session.query(BotOptions).filter_by(name=name).first()
         if not option:
-            option = BotOptions(name=name, value=value)
-            self.session.add(option)
+            self.session.add(BotOptions(name=name, value=value))
         else:
             option.value = value
         self.session.commit()
         return True
 
     def delete_option(self, name: str) -> bool:
-        """
-        Delete option by name.
-
-        Args:
-            name (str): name of option
-
-        Returns:
-            bool: True if success, False if failed
-        """
-        sql = select(BotOptions).where(BotOptions.name == name)
-        option = self.session.scalars(sql).first()
-        if not option:
-            return False
-        self.session.delete(option)
-        self.session.commit()
-        return True
+        option = self.session.query(BotOptions).filter_by(name=name).first()
+        if option:
+            self.session.delete(option)
+            self.session.commit()
+            return True
+        return False
 
     def list_options(self):
-        """
-        List options from database.
-
-        Returns:
-            dict: Dictionary of options
-        """
         options = {
             "update-interval": self.get_option("update-interval"),
             "proxy": self.get_option("proxy"),
@@ -84,181 +46,63 @@ class Options(Turso):
 
 class NoteDB(Turso):
     def add_link(self, note_name: str, url: str, user_id: int) -> bool:
-        """
-        Add url to note or create new note if not exist.
-
-        Args:
-            note_name (str): name of note
-            url (str): url to add
-            user_id (int): telegram user id
-
-        Returns:
-            bool: True if success, False if failed
-        """
         note = self.get_note(note_name)
-        if note:
-            urls = note.urls.splitlines()
-        else:
-            urls = []
-        if url in urls:
-            return False
-        urls.append(url)
-        urls = "\n".join(urls)
-        note = Note(name=note_name, urls=urls, user_id=user_id)
-        self.session.merge(note)
+        if not note:
+            note = Note(
+                title=note_name,
+                auth_id=user_id,
+            )
+            self.session.add(note)
+
+        subscription = Subscription(note=note_name, url=url)
+        self.session.merge(subscription)
         self.session.commit()
         return True
 
-    def delete_link(
-        self,
-        note_name: str,
-        url: str,
-    ) -> bool:
-        """
-        Delete url from note.
+    def delete_link(self, note_name: str, url: str) -> bool:
+        self.session.query(Subscription).filter_by(note=note_name, url=url).delete()
+        self.session.commit()
+        return True
 
-        Args:
-            note_name (str): name of note
-            url (str): url to delete
-
-        Returns:
-            bool: True if success, False if failed
-        """
-        note = self.get_note(note_name)
-        if note:
-            urls = note.urls.splitlines()
-            if url in urls:
-                urls.remove(url)
-                urls = "\n".join(urls)
-                note = Note(
-                    name=note.name,
-                    urls=urls,
-                    content=note.content,
-                    user_id=note.user_id,
-                )
-                self.session.merge(note)
-                self.session.commit()
-                return True
-            return False
-        return False
-
-    def get_note(
-        self,
-        note_name: str,
-    ) -> Note | None:
-        """
-        Get note by name and user id.
-
-        Args:
-            note_name (str): name of note
-
-        Returns:
-            Note: Note object
-        """
-        sql = select(Note).where(Note.name == note_name)
-        return self.session.scalars(sql).first()
+    def get_note(self, note_name: str) -> Note | None:
+        return self.session.query(Note).filter_by(title=note_name).first()
 
     def update_note(self, note: Note) -> None:
-        """
-        Update note.
-
-        Args:
-            note (Note): Note object
-        """
-        note = self.get_note(note.name)
-        self.session.merge(note)
-        self.session.commit()
+        existing_note = self.get_note(note.title)
+        if existing_note:
+            existing_note.content = note.content
+            self.session.commit()
 
     def list_links(self, note_name: str) -> list | None:
-        """
-        List links in note.
+        subscriptions = self.session.query(Subscription).filter_by(note=note_name).all()
+        return (
+            [subscription.url for subscription in subscriptions]
+            if subscriptions
+            else None
+        )
 
-        Args:
-            note_name (str): name of note
-            user_id (int): telegram user id
-
-        Returns:
-            list: List of urls
-        """
-        note = self.get_note(note_name)
-        if note:
-            return note.urls.splitlines()
-        return None
-
-    def note_object(
-        self, note_name: str, urls: str, content: str, user_id: int
-    ) -> Note:
-        """
-        Create Note object.
-
-        Args:
-            note_name (str): name of note
-            urls (str): urls to add
-            content (str): content of note
-            user_id (int): telegram user id
-
-        Returns:
-            Note: Note object
-        """
-        return Note(name=note_name, urls=urls, content=content, user_id=user_id)
+    def note_object(self, note_name: str, content: str, user_id: int) -> Note:
+        return Note(title=note_name, content=content, auth_id=user_id)
 
     def list_notes(self) -> list:
-        """
-        List notes by user id.
-
-        Returns:
-            list: List of notes
-        """
-        sql = select(Note)
-        return self.session.scalars(sql).all()
+        return self.session.query(Note).all()
 
 
 class ManagerDB(Turso):
     def add(self, user: User):
-        """
-        Add manager to database.
-
-        Args:
-            user (User): User object
-
-        Returns:
-            User: User object
-        """
-        manager = Manager(user_id=user.id, data=str(User))
+        manager = Manager(user_id=user.id, data=str(user))
         self.session.merge(manager)
         self.session.commit()
         return user
 
     def get(self, user: User):
-        """
-        Get manager from database.
-
-        Args:
-            user (User): User object
-
-        Returns:
-            Manager: Manager object
-        """
-        sql = select(Manager).where(Manager.user_id == user.id)
-        return self.session.scalars(sql).first()
+        return self.session.query(Manager).filter_by(user_id=user.id).first()
 
     def remove(self, user: User):
-        """
-        Remove manager from database.
-
-        Args:
-            user (User): User object
-        """
         manager = self.get(user)
-        self.session.delete(manager)
-        self.session.commit()
+        if manager:
+            self.session.delete(manager)
+            self.session.commit()
 
     def list_managers(self):
-        """
-        List managers from database.
-
-        Returns:
-            list: List of managers
-        """
-        sql = select(Manager)
-        return self.session.scalars(sql)
+        return self.session.query(Manager).all()

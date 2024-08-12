@@ -1,39 +1,35 @@
-from sqlalchemy import String, BigInteger
-from sqlalchemy.orm import Mapped, DeclarativeBase, mapped_column
+from sqlalchemy import String, BigInteger, Column, PrimaryKeyConstraint
+from sqlalchemy.orm import DeclarativeBase
 
 
 class Base(DeclarativeBase):
     pass
 
 
-class Manager(Base):
-    __tablename__ = "managers"
-    user_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
-    data: Mapped[str] = mapped_column(String)
-
-
 class Note(Base):
     __tablename__ = "notes"
-    name: Mapped[str] = mapped_column(String, primary_key=True)
-    urls: Mapped[str] = mapped_column(String)
-    content: Mapped[str] = mapped_column(String, default="")
-    user_id: Mapped[int] = mapped_column(BigInteger)
 
-    def __repr__(self) -> str:
-        obj = dict(
-            name=self.name,
-            urls=self.urls.splitlines(),
-            content=self.content,
-            user_id=self.user_id,
-        )
-        return str(obj)
+    title = Column(String, primary_key=True)
+    auth_id = Column(BigInteger, default=0)
+    content = Column(String, default="")
+
+
+class Subscription(Base):
+    __tablename__ = "notes_subscriptions"
+
+    note = Column(String)
+    url = Column(String)
+
+    __table_args__ = (PrimaryKeyConstraint("note", "url"),)
+
+
+class Manager(Base):
+    __tablename__ = "managers"
+    user_id = Column(BigInteger, primary_key=True)
+    data = Column(String)
 
 
 class BotOptions(Base):
     __tablename__ = "bot_options"
-    name: Mapped[str] = mapped_column(String, primary_key=True)
-    value: Mapped[str] = mapped_column(String)
-
-    def __repr__(self) -> str:
-        obj = dict(name=self.name, value=self.value)
-        return str(obj)
+    name = Column(String, primary_key=True)
+    value = Column(String)
