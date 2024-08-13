@@ -2,7 +2,7 @@ import os
 import sys
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-from database.local import kv
+from boot import kv
 
 
 def is_owner(_, __, m):
