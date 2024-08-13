@@ -13,7 +13,7 @@ def update_note(db, note_title):
             scheme in text for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
         ):
             try:
-                text = base64.b64decode(text.encode()).decode()
+                text = base64.b64decode(text).decode()
                 if not any(
                     scheme in text
                     for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
@@ -45,7 +45,7 @@ def update_note(db, note_title):
             if (
                 req.status_code == 200
                 and "text/plain" in req.headers.get("Content-Type")
-                and req.text
+                and req.text is not None
             ):
                 handle(req.text)
         except Exception as e:
