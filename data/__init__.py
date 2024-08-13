@@ -28,8 +28,11 @@ class Database(Turso):
         return self.session.query(Note).filter_by(title=title).first()
 
     def remove_note(self, title: str) -> None:
-        self.session.query(Note).filter_by(title=title).delete()
-        self.session.commit()
+        try:
+            self.session.query(Note).filter_by(title=title).delete()
+            self.session.commit()
+        except Exception:
+            pass
 
     def list_notes(self) -> list:
         return self.session.query(Note).all()
@@ -44,15 +47,12 @@ class Database(Turso):
             return False
 
     def remove_subscription(self, note_title: str, url: str) -> bool:
-        if (
-            not self.session.query(Subscription)
-            .filter_by(note=note_title, url=url)
-            .first()
-        ):
+        try:
+            self.session.query(Subscription).filter_by(note=note_title, url=url).delete()
+            self.session.commit()
+            return True
+        except Exception:
             return False
-        self.session.query(Subscription).filter_by(note=note_title, url=url).delete()
-        self.session.commit()
-        return True
 
     def list_subscriptions(self, note_title: str) -> list:
         subs = self.session.query(Subscription).filter_by(note=note_title).all()
