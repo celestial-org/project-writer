@@ -25,7 +25,8 @@ def update_note(db, note_title):
     random.shuffle(urls)
     for url in urls:
         if url.startswith("http"):
-            req = requests.get(
+            try:
+                req = requests.get(
                 url,
                 timeout=20,
                 headers={"User-Agent": "v2rayNG"},
@@ -34,8 +35,10 @@ def update_note(db, note_title):
                     "https": "http://127.0.0.1:6868",
                 },
             )
-            if req.status_code == 200 and req.text is not None:
-                handle(req.text)
+                if req.status_code == 200 and req.text is not None:
+                    handle(req.text)
+            except Exception as e:
+                print(e)
     if links:
         note.content = "\n".join(links)
         db.update_note(note)
