@@ -30,7 +30,7 @@ def update_notes(interval, call=False):
 
 def boot():
     db = Database()
-    Thread(target=load_managers, args=(db,)).start()
+    load_managers(db)
     Thread(target=update_notes, args=(3600,)).start()
     
     proxy = db.get_preset("proxy")
