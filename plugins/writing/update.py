@@ -29,6 +29,5 @@ def update_note_content(c, m):
         if user_id not in owners:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
-    note = db.get_note(note_name)
-    update_note(note, db)
+    update_note(db, note_name)
     m.reply("**Note updated**", quote=True)
