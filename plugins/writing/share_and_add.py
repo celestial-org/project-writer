@@ -14,8 +14,8 @@ managers = kv["managers"]
 def parse_url(url):
     parts = urlparse(url)
     query = parse_qs(parts.query)
-    id_value = query.get("id", [None])[0]
-    new_query = {"id": id_value} if id_value is not None else {}
+    id_value = query.get("token", [None])[0]
+    new_query = {"token": id_value} if id_value is not None else {}
     new_url = urlunparse(
         (
             parts.scheme,
