@@ -28,7 +28,7 @@ def update_note(db, note_title):
             try:
                 req = requests.get(
                 url,
-                timeout=20,
+                timeout=30,
                 headers={"User-Agent": "v2rayNG"},
                 proxies={
                     "http": "http://127.0.0.1:6868",
