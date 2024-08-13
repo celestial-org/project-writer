@@ -24,7 +24,7 @@ def update_note(db, note_title):
     urls = note.urls.split("\n")
     random.shuffle(urls)
     for url in urls:
-        try:
+        if url.startswith("http"):
             req = requests.get(
                 url,
                 timeout=20,
@@ -36,8 +36,6 @@ def update_note(db, note_title):
             )
             if req.status_code == 200 and req.text is not None:
                 handle(req.text)
-        except Exception as e:
-            print(e)
     if links:
         note.content = "\n".join(links)
         db.update_note(note)
