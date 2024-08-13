@@ -1,6 +1,6 @@
 import re
-import os
 import time
+from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
 from database import NoteDB
@@ -9,6 +9,24 @@ from database.local import kv
 
 owners = kv["owners"]
 managers = kv["managers"]
+
+
+def parse_url(url):
+    parts = urlparse(url)
+    query = parse_qs(parts.query)
+    id_value = query.get("id", [None])[0]
+    new_query = {"id": id_value} if id_value is not None else {}
+    new_url = urlunparse(
+        (
+            parts.scheme,
+            parts.netloc,
+            parts.path,
+            parts.params,
+            urlencode(new_query, doseq=True),
+            parts.fragment,
+        )
+    )
+    return new_url
 
 
 @Client.on_message(filters.command("add"))
@@ -46,6 +64,8 @@ def add_url(c, m):
             m.reply("**You don't have permission to access this note**", quote=True)
             return
     for url in urls:
+        if "api/v1/client" in url:
+            url = parse_url(url)
         if notes.add_link(note_name, url, user_id):
             li += 1
         else:
@@ -61,7 +81,7 @@ def add_url(c, m):
     m.delete()
 
 
-@Client.on_message(filters.command(["default", "publish"]), group=2)
+@Client.on_message(filters.command("share"))
 def share_url(c, m):
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
@@ -80,6 +100,7 @@ def share_url(c, m):
     li = 0
     for url in urls:
         if "api/v1/client" in url:
+            url = parse_url(url)
             note_name = "default"
         else:
             note_name = "misc"

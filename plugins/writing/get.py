@@ -9,7 +9,7 @@ v3tool = os.getenv("V3TOOL")
 async def get_urls(c, m):
     await m.reply_chat_action(ChatAction.TYPING)
     text = [
-        f"**Shared Link:** {v3tool}/share",
+        f"**Shared Link:** {v3tool}",
         f"**Misc Link:** {v3tool}/misc",
         "Các server sẽ tự động được làm mới.",
     ]
