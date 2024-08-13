@@ -1,16 +1,13 @@
-import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from .models import Base, Manager, Preset, Note, Subscription
-
-
-DB_URL = os.environ.get("DB_URL")
+from environment import db_url
 
 
 class Database:
     def __init__(self) -> None:
         engine = create_engine(
-            DB_URL, connect_args={"check_same_thread": False}, echo=True
+            db_url, connect_args={"check_same_thread": False}, echo=True
         )
         Base.metadata.create_all(engine)
         self.session = sessionmaker(bind=engine)()
@@ -36,7 +33,11 @@ class Database:
         return self.session.query(Note).all()
 
     def add_subscription(self, note_title: str, url: str) -> bool:
-        if not self.session.query(Subscription).filter_by(note=note_title, url=url).first():
+        if (
+            not self.session.query(Subscription)
+            .filter_by(note=note_title, url=url)
+            .first()
+        ):
             subscription = Subscription(note=note_title, url=url)
             self.session.add(subscription)
             self.session.commit()
@@ -44,7 +45,11 @@ class Database:
         return False
 
     def remove_subscription(self, note_title: str, url: str) -> bool:
-        if not self.session.query(Subscription).filter_by(note=note_title, url=url).first():
+        if (
+            not self.session.query(Subscription)
+            .filter_by(note=note_title, url=url)
+            .first()
+        ):
             return False
         self.session.query(Subscription).filter_by(note=note_title, url=url).delete()
         self.session.commit()
