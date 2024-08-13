@@ -112,6 +112,9 @@ def share_url(c, m):
         else:
             note_name = "misc"
         note = db.get_note(note_name)
+        if not note:
+            db.add_note(note_name, 0)
+            note = db.get_note(note_name)
         note_urls = note.urls.split("\n")
         if url not in note_urls:
             note_urls.append(url)
