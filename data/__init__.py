@@ -14,7 +14,7 @@ class Turso:
 
 
 class Database(Turso):
-    def add_note(self, title: str, auth_id: int, content: str="",, urls: str="") -> None:
+    def add_note(self, title: str, auth_id: int, content: str="", urls: str="") -> None:
         note = Note(title=title, auth_id=auth_id, content=content, urls=urls)
         self.session.add(note)
         self.session.commit()
