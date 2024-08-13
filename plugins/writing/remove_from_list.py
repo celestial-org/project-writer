@@ -24,7 +24,7 @@ def delete_url(c, m):
             quote=True,
         )
         return
-    if note_name in ["share", "misc"]:
+    if note_name in ["default", "misc"]:
         if m.from_user.id not in [*owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return

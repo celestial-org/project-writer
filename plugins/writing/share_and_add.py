@@ -21,7 +21,7 @@ def add_url(c, m):
     elif m.from_user.id in owners:
         note_name = "v2ray"
     else:
-        note_name = "share"
+        note_name = "default"
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text
@@ -61,7 +61,7 @@ def add_url(c, m):
     m.delete()
 
 
-@Client.on_message(filters.command(["share", "publish"]), group=2)
+@Client.on_message(filters.command(["default", "publish"]), group=2)
 def share_url(c, m):
     notes = NoteDB()
     m.reply_chat_action(ChatAction.TYPING)
@@ -80,7 +80,7 @@ def share_url(c, m):
     li = 0
     for url in urls:
         if "api/v1/client" in url:
-            note_name = "share"
+            note_name = "default"
         else:
             note_name = "misc"
         if notes.add_link(note_name, url, 0):
