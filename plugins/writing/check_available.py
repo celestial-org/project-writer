@@ -1,10 +1,9 @@
 import time
-import os
 import requests
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ParseMode
-from database import NoteDB
-from database.local import kv
+from data import Database
+from boot import kv
 
 owners = kv["owners"]
 managers = kv["managers"]
@@ -36,7 +35,7 @@ def check_urls(urls: list) -> list:
 @Client.on_message(filters.command("checklive"))
 def check_all_urls(c, m):
     user_id = m.from_user.id
-    notes = NoteDB()
+    db = Database()
     m.reply_chat_action(ChatAction.TYPING)
     if len(m.command) > 1:
         note_name = m.command[1]
@@ -57,15 +56,15 @@ def check_all_urls(c, m):
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     else:
-        note = notes.get_note(note_name)
+        note = db.get_note(note_name)
         if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     try:
-        urls = notes.list_links(note_name)
+        urls = db.list_subscriptions(note_name)
         removed_urls = check_urls(urls)
         for url in removed_urls:
-            notes.delete_link(note_name, url)
+            db.remove_subscription(note_name, url)
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
             m.reply(

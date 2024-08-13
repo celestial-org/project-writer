@@ -1,9 +1,8 @@
 import time
-import os
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ChatType, ParseMode
-from database import NoteDB
-from database.local import kv
+from data import Database
+from boot import kv
 
 
 owners = kv["owners"]
@@ -12,7 +11,7 @@ managers = kv["managers"]
 
 @Client.on_message(filters.command("note"))
 def get_all_urls(c, m):
-    notes = NoteDB()
+    db = Database()
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
     if m.chat.type != ChatType.PRIVATE:
@@ -27,7 +26,7 @@ def get_all_urls(c, m):
             "Vui lòng cung cấp tên note <pre>/note example_note_name</pre>", quote=True
         )
         return
-    note = notes.get_note(note_name)
+    note = db.get_note(note_name)
     if note_name in ["default", "misc"]:
         if m.from_user.id not in [*owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
@@ -40,7 +39,7 @@ def get_all_urls(c, m):
         if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
-    urls = notes.list_links(note_name)
+    urls = db.list_subscriptions(note_name)
     if urls:
         urls_str = "\n".join(urls)
         m.reply(

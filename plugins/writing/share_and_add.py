@@ -3,8 +3,8 @@ import time
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-from database import NoteDB
-from database.local import kv
+from data import Database
+from boot import kv
 
 
 owners = kv["owners"]
@@ -31,7 +31,7 @@ def parse_url(url):
 
 @Client.on_message(filters.command("add"))
 def add_url(c, m):
-    notes = NoteDB()
+    db = Database()
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
     if len(m.command) > 1:
@@ -58,7 +58,7 @@ def add_url(c, m):
         m.delete()
         return
     li = 0
-    note = notes.get_note(note_name)
+    note = db.get_note(note_name)
     if note:
         if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
@@ -66,7 +66,7 @@ def add_url(c, m):
     for url in urls:
         if "api/v1/client" in url:
             url = parse_url(url)
-        if notes.add_link(note_name, url, user_id):
+        if db.add_subscription(note_name, url):
             li += 1
         else:
             print("Existing")
@@ -83,7 +83,7 @@ def add_url(c, m):
 
 @Client.on_message(filters.command("share"))
 def share_url(c, m):
-    notes = NoteDB()
+    db = Database()
     m.reply_chat_action(ChatAction.TYPING)
     text = m.text
     if m.reply_to_message:
@@ -104,7 +104,7 @@ def share_url(c, m):
             note_name = "default"
         else:
             note_name = "misc"
-        if notes.add_link(note_name, url, 0):
+        if db.add_subscription(note_name, url):
             li += 1
         else:
             print("Existing")

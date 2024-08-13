@@ -35,3 +35,5 @@ def update_notes(interval, call=False):
             print(note.title, " updated")
         if call:
             break
+
+#  

@@ -3,7 +3,7 @@ import concurrent.futures
 import requests
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-from assets.util import get_config
+from utils.other import get_config
 
 test_server = os.getenv("TEST_SERVER")
 

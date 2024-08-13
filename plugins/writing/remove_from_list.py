@@ -2,8 +2,8 @@ import re
 import time
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ParseMode
-from database import NoteDB
-from database.local import kv
+from data import Database
+from boot import kv
 
 
 owners = kv["owners"]
@@ -12,7 +12,7 @@ managers = kv["managers"]
 
 @Client.on_message(filters.command("delete"))
 def delete_url(c, m):
-    notes = NoteDB()
+    db = Database()
     m.reply_chat_action(ChatAction.TYPING)
     if len(m.command) > 1:
         note_name = m.command[1]
@@ -48,7 +48,7 @@ def delete_url(c, m):
     worked = None
     for url in urls:
         worked = False
-        if notes.delete_link(note_name, url):
+        if db.remove_subscription(note_name, url):
             worked = True
         else:
             err = m.reply("**Error: Subscription khong ton tai trong kho luu tru**")

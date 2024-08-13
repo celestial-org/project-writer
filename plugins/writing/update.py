@@ -1,8 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-from assets.note_util import update_note
-from database import NoteDB
-from database.local import kv
+from utils.updater import update_note
+from data import Database
+from boot import kv
 
 
 owners = kv["owners"]
@@ -14,7 +14,7 @@ def update_note_content(c, m):
     m.reply_chat_action(ChatAction.TYPING)
 
     user_id = m.from_user.id
-    notes = NoteDB()
+    db = Database()
     if len(m.command) > 1:
         note_name = m.command[1]
     elif m.from_user.id in owners:
@@ -29,6 +29,6 @@ def update_note_content(c, m):
         if user_id not in owners:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
-    note = notes.get_note(note_name)
-    update_note(note, notes)
+    note = db.get_note(note_name)
+    update_note(note, db)
     m.reply("**Note updated**", quote=True)

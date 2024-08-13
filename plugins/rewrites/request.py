@@ -11,6 +11,7 @@ def get_headers(c, m):
         return
     url = m.command[1]
     headers = {}
+    params = {}
     for part in m.command:
         if "url=" in part:
             url = part.split("url=")[1]

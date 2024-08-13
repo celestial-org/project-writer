@@ -1,7 +1,7 @@
 import time
 from pyrogram import Client, filters
-from database import Options
-from assets.note_util import set_proxy
+from data import Database
+from utils.set_proxy import set_proxy
 
 
 @Client.on_message(filters.command("proxy"))
@@ -12,5 +12,5 @@ def set_proxy_command(c, m):
     m.delete()
     time.sleep(10)
     stt.delete()
-    db = Options()
-    db.set_option("proxy", proxy)
+    db = Database()
+    db.add_preset("proxy", proxy)
