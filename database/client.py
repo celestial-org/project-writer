@@ -55,6 +55,8 @@ class NoteDB(Turso):
             )
             self.session.add(note)
 
+        if self.session.query(Subscription).filter_by(note=note_name, url=url).first():
+            return False
         subscription = Subscription(note=note_name, url=url)
         self.session.merge(subscription)
         self.session.commit()
