@@ -44,7 +44,7 @@ def update_note(db, note_title):
             )
             if (
                 req.status_code == 200
-                and req.headers.get("Content-Type") == "text/plain"
+                and "text/plain" in req.headers.get("Content-Type")
                 and req.text
             ):
                 handle(req.text)
