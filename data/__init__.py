@@ -35,11 +35,7 @@ class Database(Turso):
         return self.session.query(Note).all()
 
     def add_subscription(self, note_title: str, url: str) -> bool:
-        if (
-            not self.session.query(Subscription)
-            .filter_by(note=note_title, url=url)
-            .first()
-        ):
+        if self.session.query(Subscription).filter_by(note=note_title, url=url).first():
             return False
         subscription = Subscription(note=note_title, url=url)
         self.session.add(subscription)
@@ -57,9 +53,11 @@ class Database(Turso):
         self.session.commit()
         return True
 
-    def list_subscriptions(self, note_title: str) -> list | None:
+    def list_subscriptions(self, note_title: str) -> list:
         subs = self.session.query(Subscription).filter_by(note=note_title).all()
-        return [sub.url for sub in subs]
+        if isinstance(subs, list):
+            return [sub.url for sub in subs]
+        return []
 
     def get_preset(self, name: str) -> Preset | None:
         return self.session.query(Preset).filter_by(name=name).first()
