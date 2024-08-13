@@ -5,7 +5,7 @@ import requests
 
 
 def update_note(db, note_title):
-    links = []
+    links = set()
     note = db.get_note(note_title)
 
     def handle(text):
@@ -13,7 +13,7 @@ def update_note(db, note_title):
             scheme in text for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
         ):
             try:
-                text = base64.b64decode(text).decode()
+                text = base64.b64decode(text.encode()).decode()
                 if not any(
                     scheme in text
                     for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
@@ -27,7 +27,7 @@ def update_note(db, note_title):
                 link.startswith(scheme)
                 for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
             ):
-                links.append(link)
+                links.add(link)
 
     urls = note.urls.split("\n")
     random.shuffle(urls)
