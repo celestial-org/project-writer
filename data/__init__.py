@@ -3,8 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from .models import Base, Manager, Preset, Note, Subscription
 from environment import db_url
 
-
-class Database:
+class Turso:
     def __init__(self) -> None:
         engine = create_engine(
             db_url, connect_args={"check_same_thread": False}, echo=True
@@ -12,6 +11,8 @@ class Database:
         Base.metadata.create_all(engine)
         self.session = sessionmaker(bind=engine)()
 
+
+class Database(Turso):
     def add_note(self, title: str, auth_id: int) -> None:
         if not self.session.query(Note).filter_by(title=title).first():
             note = Note(title=title, auth_id=auth_id)
