@@ -34,16 +34,12 @@ class Database(Turso):
         return self.session.query(Note).all()
 
     def add_subscription(self, note_title: str, url: str) -> bool:
-        if (
-            not self.session.query(Subscription)
-            .filter_by(note=note_title, url=url)
-            .first()
-        ):
-            subscription = Subscription(note=note_title, url=url)
-            self.session.add(subscription)
-            self.session.commit()
-            return True
-        return False
+        if not self.session.query(Subscription).filter_by(note=note_title, url=url).first():
+            return False
+        subscription = Subscription(note=note_title, url=url)
+        self.session.add(subscription)
+        self.session.commit()
+        return True
 
     def remove_subscription(self, note_title: str, url: str) -> bool:
         if (
