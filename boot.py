@@ -35,5 +35,5 @@ def boot():
     
     proxy = db.get_preset("proxy")
     if proxy:
-        set_proxy(proxy)
+        set_proxy(proxy.value)
     kv["owners"] = {5665225938}
