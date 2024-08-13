@@ -63,6 +63,8 @@ def add_url(c, m):
         if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
+    else:
+        db.add_note(note_name, user_id)
     for url in urls:
         if "api/v1/client" in url:
             url = parse_url(url)
