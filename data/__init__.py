@@ -14,6 +14,11 @@ class Turso:
 
 
 class Database(Turso):
+    def add_note(self, title: str, auth_id: int, content: str="",, urls: str="") -> None:
+        note = Note(title=title, auth_id=auth_id, content=content, urls=urls)
+        self.session.add(note)
+        self.session.commit()
+        
     def update_note(self, note: Note) -> None:
         self.session.merge(note)
         self.session.commit()
@@ -27,39 +32,6 @@ class Database(Turso):
 
     def list_notes(self) -> list:
         return self.session.query(Note).all()
-
-    def add_url(self, note_title: str, url: str) -> bool:
-        note = self.get_note(note_title)
-        if note:
-            urls = note.urls.split("\n")
-            if url not in urls:
-                urls.append(url)
-                note.urls = "\n".join(urls)
-                self.session.merge(note)
-                self.session.commit()
-                return True
-            return False
-        return False
-        
-
-    def remove_url(self, note_title: str, url: str) -> bool:
-        note = self.get_note(note_title)
-        if note:
-            urls = note.urls.split("\n")
-            if url in urls:
-                urls.remove(url)
-                note.urls = "\n".join(urls)
-                self.session.merge(note)
-                self.session.commit()
-                return True
-            return False
-        return False
-
-    def list_urls(self, note_title: str) -> list:
-        note = self.get_note(note_title)
-        if note:
-            return note.urls.split("\n")
-        return []
 
     def get_preset(self, name: str) -> Preset | None:
         return self.session.query(Preset).filter_by(name=name).first()

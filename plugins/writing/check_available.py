@@ -61,11 +61,13 @@ def check_all_urls(c, m):
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     try:
-        urls = db.list_urls(note_name)
+        note = db.get_note(note_name)
+        urls = note.urls.split("\n")
         removed_urls = check_urls(urls)
         for url in removed_urls:
-            db.remove_url(note_name, url)
+            urls.remove(url)
         if removed_urls:
+            db.update_note_urls(note_name, "\n".join(urls))
             removed_urls_str = "\n".join(removed_urls)
             m.reply(
                 f" Đã xoá {len(removed_urls)} URL(s):\n{removed_urls_str}",

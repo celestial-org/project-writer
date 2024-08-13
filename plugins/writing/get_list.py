@@ -9,7 +9,7 @@ owners = kv["owners"]
 managers = kv["managers"]
 
 
-@Client.on_message(filters.command("note"))
+@Client.on_message(filters.command(["list", "note"]))
 def get_all_urls(c, m):
     db = Database()
     m.reply_chat_action(ChatAction.TYPING)
@@ -39,7 +39,13 @@ def get_all_urls(c, m):
         if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
-    urls = db.list_urls(note_name)
+    note = db.get_note(note_name)
+    if not note:
+        err = m.reply("Note not found")
+        time.sleep(10)
+        c.delete_messages(m.chat.id, err.id)
+        return
+    urls = note.urls.split("\n")
     if urls:
         urls_str = "\n".join(urls)
         m.reply(

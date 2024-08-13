@@ -46,14 +46,19 @@ def delete_url(c, m):
         m.delete()
         return
     worked = None
+    note = db.get_note(note_name)
+    note_urls = note.urls.split("\n")
     for url in urls:
         worked = False
-        if db.remove_url(note_name, url):
+        if url in note_urls:
+            note_urls.remove(url)
             worked = True
         else:
             err = m.reply("**Error: Subscription khong ton tai trong kho luu tru**")
             time.sleep(10)
             c.delete_messages(m.chat.id, err.id)
+    note.urls = "\n".join(note_urls)
+    db.update_note(note)
     if worked:
         done = m.reply(f"Đã xoá {len(urls)} URL", parse_mode=ParseMode.HTML, quote=True)
         time.sleep(10)

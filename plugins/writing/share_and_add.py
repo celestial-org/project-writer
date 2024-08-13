@@ -65,13 +65,18 @@ def add_url(c, m):
             return
     else:
         db.add_note(note_name, user_id)
+        note = db.get_note(note_name)
+    note_urls = note.urls.split("\n")
     for url in urls:
         if "api/v1/client" in url:
             url = parse_url(url)
-        if db.add_url(note_name, url):
+        if url not in note_urls:
+            note_urls.append(url)
             li += 1
         else:
             print("Existing")
+    note.urls = "\n".join(note_urls)
+    db.update_note(note)
     if li != len(urls):
         x = len(urls) - li
         temp = m.reply(f"{x} URL trùng lặp sẽ không được thêm lại")
@@ -106,10 +111,15 @@ def share_url(c, m):
             note_name = "default"
         else:
             note_name = "misc"
-        if db.add_url(note_name, url):
+        note = db.get_note(note_name)
+        note_urls = note.urls.split("\n")
+        if url not in note_urls:
+            note_urls.append(url)
             li += 1
         else:
             print("Existing")
+        note.urls = "\n".join(note_urls)
+        db.update_note(note)
     if li != len(urls):
         x = len(urls) - li
         temp = m.reply(f"{x} URL trùng lặp sẽ không được thêm lại")
