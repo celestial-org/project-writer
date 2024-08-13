@@ -29,7 +29,7 @@ def update_note(db, note_title):
             ):
                 links.append(link)
 
-    urls = db.list_links(note_title)
+    urls = db.list_subscriptions(note_title)
     random.shuffle(urls)
     for url in urls:
         try:

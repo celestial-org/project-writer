@@ -68,7 +68,7 @@ class Database(Turso):
 
     def add_preset(self, name: str, data: str) -> None:
         if not self.session.query(Preset).filter_by(name=name).first():
-            preset = Preset(name=name, data=data)
+            preset = Preset(name=name, value=data)
             self.session.add(preset)
             self.session.commit()
 
