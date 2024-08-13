@@ -37,7 +37,7 @@ def get_all_urls(c, m):
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     else:
-        if user_id not in [note.user_id, *owners, *managers]:
+        if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     urls = notes.list_links(note_name)

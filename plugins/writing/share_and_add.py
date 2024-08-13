@@ -60,7 +60,7 @@ def add_url(c, m):
     li = 0
     note = notes.get_note(note_name)
     if note:
-        if user_id not in [note.user_id, *owners, *managers]:
+        if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
     for url in urls:

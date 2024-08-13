@@ -58,7 +58,7 @@ def check_all_urls(c, m):
             return
     else:
         note = notes.get_note(note_name)
-        if user_id not in [note.user_id, *owners, *managers]:
+        if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     try:
