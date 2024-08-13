@@ -48,7 +48,7 @@ def delete_url(c, m):
     worked = None
     for url in urls:
         worked = False
-        if db.remove_subscription(note_name, url):
+        if db.remove_url(note_name, url):
             worked = True
         else:
             err = m.reply("**Error: Subscription khong ton tai trong kho luu tru**")

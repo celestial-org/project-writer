@@ -68,7 +68,7 @@ def add_url(c, m):
     for url in urls:
         if "api/v1/client" in url:
             url = parse_url(url)
-        if db.add_subscription(note_name, url):
+        if db.add_url(note_name, url):
             li += 1
         else:
             print("Existing")
@@ -106,7 +106,7 @@ def share_url(c, m):
             note_name = "default"
         else:
             note_name = "misc"
-        if db.add_subscription(note_name, url):
+        if db.add_url(note_name, url):
             li += 1
         else:
             print("Existing")

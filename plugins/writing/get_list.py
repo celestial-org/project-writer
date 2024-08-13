@@ -39,7 +39,7 @@ def get_all_urls(c, m):
         if user_id not in [note.auth_id, *owners, *managers]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
-    urls = db.list_subscriptions(note_name)
+    urls = db.list_urls(note_name)
     if urls:
         urls_str = "\n".join(urls)
         m.reply(

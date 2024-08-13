@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .models import Base, Manager, Preset, Note, Subscription
+from .models import Base, Manager, Preset, Note
 from environment import db_url
 
 
@@ -14,12 +14,6 @@ class Turso:
 
 
 class Database(Turso):
-    def add_note(self, title: str, auth_id: int) -> None:
-        if not self.session.query(Note).filter_by(title=title).first():
-            note = Note(title=title, auth_id=auth_id)
-            self.session.add(note)
-            self.session.commit()
-
     def update_note(self, note: Note) -> None:
         self.session.merge(note)
         self.session.commit()
@@ -28,36 +22,43 @@ class Database(Turso):
         return self.session.query(Note).filter_by(title=title).first()
 
     def remove_note(self, title: str) -> None:
-        try:
-            self.session.query(Note).filter_by(title=title).delete()
-            self.session.commit()
-        except Exception:
-            pass
+        self.session.query(Note).filter_by(title=title).delete()
+        self.session.commit()
 
     def list_notes(self) -> list:
         return self.session.query(Note).all()
 
-    def add_subscription(self, note_title: str, url: str) -> bool:
-        try:
-            subscription = Subscription(note=note_title, url=url)
-            self.session.add(subscription)
-            self.session.commit()
-            return True
-        except Exception:
+    def add_url(self, note_title: str, url: str) -> bool:
+        note = self.get_note(note_title)
+        if note:
+            urls = note.urls.split("\n")
+            if url not in urls:
+                urls.append(url)
+                note.urls = "\n".join(urls)
+                self.session.merge(note)
+                self.session.commit()
+                return True
             return False
+        return False
+        
 
-    def remove_subscription(self, note_title: str, url: str) -> bool:
-        try:
-            self.session.query(Subscription).filter_by(note=note_title, url=url).delete()
-            self.session.commit()
-            return True
-        except Exception:
+    def remove_url(self, note_title: str, url: str) -> bool:
+        note = self.get_note(note_title)
+        if note:
+            urls = note.urls.split("\n")
+            if url in urls:
+                urls.remove(url)
+                note.urls = "\n".join(urls)
+                self.session.merge(note)
+                self.session.commit()
+                return True
             return False
+        return False
 
-    def list_subscriptions(self, note_title: str) -> list:
-        subs = self.session.query(Subscription).filter_by(note=note_title).all()
-        if isinstance(subs, list):
-            return [sub.url for sub in subs]
+    def list_urls(self, note_title: str) -> list:
+        note = self.get_note(note_title)
+        if note:
+            return note.urls.split("\n")
         return []
 
     def get_preset(self, name: str) -> Preset | None:

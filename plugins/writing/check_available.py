@@ -61,10 +61,10 @@ def check_all_urls(c, m):
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     try:
-        urls = db.list_subscriptions(note_name)
+        urls = db.list_urls(note_name)
         removed_urls = check_urls(urls)
         for url in removed_urls:
-            db.remove_subscription(note_name, url)
+            db.remove_url(note_name, url)
         if removed_urls:
             removed_urls_str = "\n".join(removed_urls)
             m.reply(

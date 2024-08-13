@@ -20,6 +20,9 @@ def update_notes(interval, call=False):
     while True:
         time.sleep(interval)
         db = Database()
+        notes = db.list_notes()
+        if not notes:
+            continue
         for note in db.list_notes():
             update_note(note, db)
             print(note.title, " updated")
