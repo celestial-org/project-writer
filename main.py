@@ -4,6 +4,7 @@ if __name__ == "__main__":
     from pyrogram import Client, idle
     from environment import bot_token
     from boot import boot
+    boot()
 
     bot = Client(
         "writer",
@@ -14,7 +15,6 @@ if __name__ == "__main__":
         in_memory=True,
     )
     bot.start()
-    boot()
 
     if os.path.exists("reset.txt"):
         with open("reset.txt", "r", encoding="utf-8") as f:
