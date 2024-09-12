@@ -8,8 +8,6 @@ import pytz
 import requests
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ParseMode
-from deta import Deta
-from environment import deta_key, reverse_link
 
 
 def generate_id(length=12):
@@ -122,79 +120,6 @@ def check_sub(c, m):
             message = f"{url}\nCheck bởi <b>{user}</b>\n<b>Subscription lỗi</b>"
             m.reply(message, quote=True)
             return True
-        if info and all(
-            key in info
-            for key in ["total", "upload", "download", "available", "expire"]
-        ):
-            total = info.get("total", "N/A")
-            upl = info.get("upload", "N/A")
-            downl = info.get("download", "N/A")
-            avail = info.get("available", "N/A")
-            expire = info.get("expire", "N/A")
-
-            message = (
-                f"{url}\n"
-                f"Check bởi <b>{user}</b>\n"
-                f"Số lượng cấu hình: <b>{count}</b>\n"
-                f"Tổng: <b>{total}</b>\n"
-                f"Đã dùng: <b>↑{upl}, ↓{downl}</b>\n"
-                f"Còn lại: <b>{avail}</b>\n"
-                f"Hết hạn: <b>{expire}</b>"
-            )
-        else:
-            message = (
-                f"{url}\nCheck bởi <b>{user}</b>\nSố lượng cấu hình: <b>{count}</b>"
-            )
-
-        m.reply(message, quote=True, parse_mode=ParseMode.HTML)
-
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(handler, urls)
-
-
-@Client.on_message(filters.command("publish"))
-def publish_link(c, m):
-    m.reply_chat_action(ChatAction.TYPING)
-    deta = Deta(deta_key)
-    db = deta.Base("reverse")
-    if m.reply_to_message and m.reply_to_message.text:
-        text = m.reply_to_message.text
-    elif m.text:
-        text = m.text
-    else:
-        m.reply("Không tìm thấy tin nhắn", quote=True)
-        return False
-    urls = [
-        url
-        for url in text.split(None)
-        if any(scheme in url for scheme in ["http://", "https://"])
-    ]
-    if not urls:
-        m.reply("URL là cần thiết để kiểm tra", quote=True)
-        return False
-    try:
-        user = m.from_user.first_name
-    except Exception as e:
-        print(e)
-        user = m.sender_chat.title
-    sleep = 1
-
-    def handler(url):
-        nonlocal sleep
-        time.sleep(sleep)
-        sleep += 1
-        m.reply_chat_action(ChatAction.TYPING)
-        try:
-            info, count = parse_url(url)
-        except Exception:
-            message = f"{url}\nCheck bởi <b>{user}</b>\n<b>Subscription lỗi</b>"
-            m.reply(message, quote=True)
-            return True
-        if "api/v1/client" in url:
-            short_id = generate_id()
-            db.put({"key": short_id, "target": url})
-            url = f"{reverse_link}/api/v1/client?id={short_id}"
-            m.delete()
         if info and all(
             key in info
             for key in ["total", "upload", "download", "available", "expire"]
