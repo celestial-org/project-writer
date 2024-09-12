@@ -4,6 +4,7 @@ import string
 import base64
 import concurrent.futures
 from datetime import datetime
+
 import pytz
 import requests
 from pyrogram import Client, filters
@@ -17,7 +18,7 @@ def generate_id(length=12):
 
 
 def convert_bytes_to_human_readable(bytes_value):
-    units = ["B", "KB", "MB", "GB", "TB"]
+    units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
     unit_index = 0
 
     while bytes_value >= 1024 and unit_index < len(units) - 1:
