@@ -1,11 +1,11 @@
 import time
+import zoneinfo
 import random
 import string
 import base64
 import concurrent.futures
 from datetime import datetime
 
-import pytz
 import requests
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction, ParseMode
@@ -30,8 +30,8 @@ def convert_bytes_to_human_readable(bytes_value):
 
 
 def convert_timestamp_to_datetime(timestamp, timezone="UTC"):
-    utc_datetime = datetime.utcfromtimestamp(timestamp).replace(tzinfo=pytz.utc)
-    local_datetime = utc_datetime.astimezone(pytz.timezone(timezone))
+    utc_datetime = datetime.fromtimestamp(timestamp, tz=zoneinfo.ZoneInfo("UTC"))
+    local_datetime = utc_datetime.astimezone(zoneinfo.ZoneInfo(timezone))
     return local_datetime.strftime("%Y-%m-%d %H:%M:%S %Z")
 
 
