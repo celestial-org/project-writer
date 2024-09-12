@@ -14,9 +14,12 @@ def update_note(db, note_title):
             text = base64.b64decode(text).decode()
         pre_links = text.splitlines()
         for link in pre_links:
-            if any(
-                link.startswith(scheme)
-                for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
+            if (
+                any(
+                    link.startswith(scheme)
+                    for scheme in ["vmess://", "trojan://", "vless://", "ss://"]
+                )
+                and link.split("//")[1] is not None
             ):
                 links.add(link)
 
