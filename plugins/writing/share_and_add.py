@@ -4,7 +4,7 @@ from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
 from data import Database
-from boot import kv
+from sub_task import kv
 
 
 owners = kv["owners"]

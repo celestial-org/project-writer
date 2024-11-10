@@ -8,14 +8,6 @@ from utils.set_proxy import set_proxy
 kv = shelve.open("local.shelve")
 
 
-def load_managers(db: Database):
-    managers = set()
-    for manager in db.list_managers():
-        managers.add(manager.user_id)
-    kv["managers"] = managers
-    print("Managers updated")
-
-
 def update_notes():
     while True:
         time.sleep(60)
@@ -28,14 +20,12 @@ def update_notes():
             print(note.title, " updated")
 
 
-def boot():
+def run_sub_task():
     db = Database()
-    load_managers(db)
     proxy = db.get_preset("proxy")
     if proxy:
         set_proxy(proxy.value)
     kv["owners"] = {5665225938}
-
     scheduler = AsyncIOScheduler()
     scheduler.add_job(update_notes, "interval", minutes=60)
     scheduler.start()
