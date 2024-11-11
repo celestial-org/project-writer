@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.12
 
 RUN useradd -m -u 1000 user
 COPY . /home/user/bot
