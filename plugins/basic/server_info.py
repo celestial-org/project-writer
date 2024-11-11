@@ -14,7 +14,6 @@ def server_info():
         ip_info = (
             f"City: {city}\nRegion: {region}\nCountry: {country}\nProvider: {provider}"
         )
-
     except Exception as e:
         ip_info = f"Error: {e}"
 
