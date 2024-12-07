@@ -6,7 +6,6 @@ from sub_task import kv
 
 
 owners = kv["owners"]
-managers = kv["managers"]
 
 
 @Client.on_message(filters.command("update_note"))

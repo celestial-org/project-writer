@@ -7,7 +7,6 @@ from sub_task import kv
 
 
 owners = kv["owners"]
-managers = kv["managers"]
 
 
 @Client.on_message(filters.command("delete"))
@@ -24,14 +23,11 @@ def delete_url(c, m):
             quote=True,
         )
         return
-    if note_name in ["default", "misc"]:
-        if m.from_user.id not in [*owners, *managers]:
+    if note_name in ["default", "misc", "v2ray"]:
+        if m.from_user.id not in owners:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
-    elif note_name == "v2ray":
-        if m.from_user.id not in owners:
-            m.reply("<b>You don't have permission to access this note</b>", quote=True)
-            return
+
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text

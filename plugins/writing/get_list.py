@@ -6,7 +6,6 @@ from sub_task import kv
 
 
 owners = kv["owners"]
-managers = kv["managers"]
 
 
 @Client.on_message(filters.command(["list", "note"]))
@@ -28,7 +27,7 @@ def get_all_urls(c, m):
         return
     note = db.get_note(note_name)
     if note_name in ["default", "misc"]:
-        if m.from_user.id not in [*owners, *managers]:
+        if m.from_user.id not in owners:
             m.reply("**You don't have permission to access this note**", quote=True)
             return
     elif note_name == "v2ray":
@@ -36,7 +35,7 @@ def get_all_urls(c, m):
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     else:
-        if user_id not in [note.auth_id, *owners, *managers]:
+        if user_id not in [note.auth_id, *owners]:
             m.reply("<b>You don't have permission to access this note</b>", quote=True)
             return
     note = db.get_note(note_name)
