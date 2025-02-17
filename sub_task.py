@@ -18,9 +18,7 @@ def update_notes():
     for note in notes:
         update_note(db, note)
         print(note.title, " updated")
-    kv["last_update"] = datetime.now(tz=ZoneInfo("Asia/Ho_Chi_Minh")).strftime(
-        "%Y-%m-%d %H:%M:%S"
-    )
+    kv["last_update"] = datetime.now()
 
 
 def run_sub_task():

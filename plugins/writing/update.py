@@ -48,6 +48,4 @@ def update_all_note_content(c, m):
         update_note(db, note)
         m.reply(f"Đã cập nhật note {note.title}", quote=True)
     m.reply("**Xong**", quote=True)
-    kv["last_update"] = datetime.now(tz=ZoneInfo("Asia/Ho_Chi_Minh")).strftime(
-        "%Y-%m-%d %H:%M:%S"
-    )
+    kv["last_update"] = datetime.now()
