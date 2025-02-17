@@ -9,7 +9,7 @@ def is_owner(_, __, m):
     return m.from_user.id in kv.get("owners")
 
 
-@Client.on_message(filters.command("update") & filters.create(is_owner))
+@Client.on_message(filters.command("update_system") & filters.create(is_owner))
 def update_server(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     mp = m.reply("Đang cập nhật hệ thống...")

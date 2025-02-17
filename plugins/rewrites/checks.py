@@ -84,7 +84,7 @@ def parse_url(url):
 
 
 @Client.on_message(
-    (filters.command("check") & filters.private) | filters.regex("check@writerplus_bot")
+    filters.command("check")
 )
 def check_sub(c, m):
     m.reply_chat_action(ChatAction.TYPING)

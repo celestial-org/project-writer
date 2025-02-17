@@ -1,23 +1,26 @@
-import time
 import shelve
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
 from data import Database
-from utils.updater import update_note
 from utils.set_proxy import set_proxy
+from utils.updater import update_note
+
 
 kv = shelve.open("local.shelve")
 
 
 def update_notes():
-    while True:
-        time.sleep(60)
-        db = Database()
-        notes = db.list_notes()
-        if not notes:
-            continue
-        for note in db.list_notes():
-            update_note(note, db)
-            print(note.title, " updated")
+    db = Database()
+    notes = db.list_notes()
+    for note in notes:
+        update_note(db, note)
+        print(note.title, " updated")
+    kv["last_update"] = datetime.now(tz=ZoneInfo("Asia/Ho_Chi_Minh")).strftime(
+        "%Y-%m-%d %H:%M:%S"
+    )
 
 
 def run_sub_task():
@@ -25,7 +28,7 @@ def run_sub_task():
     proxy = db.get_preset("proxy")
     if proxy:
         set_proxy(proxy.value)
-    kv["owners"] = {5665225938}
+    kv["owners"] = {5665225938, 7642104102}
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(update_notes, "interval", minutes=60)
+    scheduler.add_job(update_notes, "interval", minutes=300)
     scheduler.start()

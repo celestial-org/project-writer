@@ -9,6 +9,7 @@ from sub_task import kv
 
 owners = kv["owners"]
 
+
 def parse_url(url):
     parts = urlparse(url)
     query = parse_qs(parts.query)
@@ -32,9 +33,7 @@ def add_url(c, m):
     db = Database()
     m.reply_chat_action(ChatAction.TYPING)
     user_id = m.from_user.id
-    if len(m.command) > 1:
-        note_name = m.command[1]
-    elif m.from_user.id in owners:
+    if m.from_user.id in owners:
         note_name = "v2ray"
     else:
         note_name = "default"

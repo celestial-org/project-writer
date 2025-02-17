@@ -13,21 +13,15 @@ owners = kv["owners"]
 def delete_url(c, m):
     db = Database()
     m.reply_chat_action(ChatAction.TYPING)
-    if len(m.command) > 1:
-        note_name = m.command[1]
-    elif m.from_user.id in owners:
-        note_name = "v2ray"
-    else:
-        m.reply(
-            "Vui lòng cung cấp tên note <pre>/delete example_note_name</pre>",
-            quote=True,
-        )
+    if m.from_user.id not in owners:
+        m.reply("You don't have permission to access this content", quote=True)
         return
-    if note_name in ["default", "misc", "v2ray"]:
-        if m.from_user.id not in owners:
-            m.reply("**You don't have permission to access this note**", quote=True)
-            return
-
+    for part in m.text.split():
+        if part.startswith("note="):
+            note_name = m.text.split("note=")[1]
+            break
+        else:
+            note_name = "v2ray"
     text = m.text
     if m.reply_to_message:
         text = m.reply_to_message.text

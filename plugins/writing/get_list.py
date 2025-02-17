@@ -46,6 +46,7 @@ def get_all_urls(c, m):
         return
     urls = note.urls.split("\n")
     if urls:
+        urls = list(filter(None, urls))
         urls_str = "\n".join(urls)
         m.reply(
             f"Found {len(urls)} URL in <b>{note_name}</b>:\n{urls_str}",

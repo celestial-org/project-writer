@@ -9,7 +9,8 @@ def is_owner(_, __, m):
     return m.from_user.id in kv["owners"]
 
 
-@Client.on_message(filters.command("reset") & filters.create(is_owner))
+
+@Client.on_message(filters.command("reset_system") & filters.create(is_owner))
 def reset_program(c, m):
     m.reply_chat_action(ChatAction.TYPING)
     md = m.reply("Đang khởi động lại chương trình Client...")

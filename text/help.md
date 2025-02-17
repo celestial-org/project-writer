@@ -4,7 +4,7 @@
 
 /test - Ngừng hoạt động
 
-/checks - Kiểm tra subscription
+/check - Kiểm tra subscription
 
 **Note Writing**
 
@@ -18,4 +18,4 @@
 
 /delete - Xoá subscription khỏi note chỉ định (yêu cầu quyền truy cập)
 
-/update_note - Cập nhật note chỉ định
+/update - Cập nhật note chỉ định
