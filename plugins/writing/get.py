@@ -13,7 +13,7 @@ async def get_urls(c, m):
     last_update = kv.get("last_update")
     now = datetime.now()
     diff = now - last_update
-    
+
     if diff.days > 0:
         time_text = f"{diff.days} ngày trước"
     elif diff.seconds >= 3600:
@@ -24,7 +24,7 @@ async def get_urls(c, m):
         time_text = f"{minutes} phút trước"
     else:
         time_text = f"{diff.seconds} giây trước"
-    
+
     text = [
         f"**Link Chuẩn:** {v2tool}/get/default",
         f"**Link Rác:** {v2tool}/get/misc",

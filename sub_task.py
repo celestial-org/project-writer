@@ -1,6 +1,5 @@
 import shelve
 from datetime import datetime
-from zoneinfo import ZoneInfo
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
