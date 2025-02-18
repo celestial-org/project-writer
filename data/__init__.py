@@ -7,18 +7,23 @@ from environment import db_url
 class Turso:
     def __init__(self) -> None:
         engine = create_engine(
-            db_url, connect_args={"check_same_thread": False}, echo=True
+            db_url,
+            connect_args={"check_same_thread": False},
+            echo=True,
+            pool_pre_ping=True,
         )
         Base.metadata.create_all(engine)
         self.session = sessionmaker(bind=engine)()
 
 
 class Database(Turso):
-    def add_note(self, title: str, auth_id: int, content: str="", urls: str="") -> None:
+    def add_note(
+        self, title: str, auth_id: int, content: str = "", urls: str = ""
+    ) -> None:
         note = Note(title=title, auth_id=auth_id, content=content, urls=urls)
         self.session.add(note)
         self.session.commit()
-        
+
     def update_note(self, note: Note) -> None:
         self.session.merge(note)
         self.session.commit()
