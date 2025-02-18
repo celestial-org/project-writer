@@ -1,3 +1,4 @@
+import asyncio
 import os
 
 from pyrogram import Client, idle
@@ -18,12 +19,12 @@ bot = Client(
 
 
 async def main():
+    await run_sub_task()
     await bot.start()
     print("V2Writer", flush=True)
-    run_sub_task()
     await idle()
     await bot.stop()
 
 
 if __name__ == "__main__":
-    bot.run(main())
+    asyncio.run(main())
