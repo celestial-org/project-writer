@@ -6,7 +6,6 @@ from sub_task import run_sub_task
 
 bot_token = os.getenv("BOT_TOKEN")
 
-run_sub_task()
 
 bot = Client(
     "writer",
@@ -18,8 +17,13 @@ bot = Client(
 )
 
 
-if __name__ == "__main__":
-    bot.start()
+async def main():
+    await bot.start()
     print("V2Writer", flush=True)
-    idle()
-    bot.stop()
+    run_sub_task()
+    await idle()
+    await bot.stop()
+
+
+if __name__ == "__main__":
+    bot.run(main())
