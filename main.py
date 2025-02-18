@@ -1,4 +1,3 @@
-import asyncio
 import os
 
 from pyrogram import Client, idle
@@ -33,4 +32,4 @@ async def main():
 
 if __name__ == "__main__":
     while not is_running:
-        asyncio.run(main())
+        bot.run(main())
