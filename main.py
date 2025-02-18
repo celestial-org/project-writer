@@ -17,19 +17,13 @@ bot = Client(
 )
 
 
-is_running = False
-
-
-async def main():
-    global is_running
-    await run_sub_task()
-    await bot.start()
+def main():
+    run_sub_task()
+    bot.start()
     print("V2Writer", flush=True)
-    is_running = True
-    await idle()
-    await bot.stop()
+    idle()
+    bot.stop()
 
 
 if __name__ == "__main__":
-    while not is_running:
-        bot.run(main())
+    main()
