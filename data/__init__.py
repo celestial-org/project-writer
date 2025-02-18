@@ -1,7 +1,11 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .models import Base, Manager, Preset, Note
-from environment import db_url
+
+from .models import Base, Manager, Note, Preset
+
+db_url = os.environ["DATABASE_URL"]
 
 
 class Turso:

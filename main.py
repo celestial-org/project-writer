@@ -1,7 +1,10 @@
+import os
+
 from pyrogram import Client, idle
-from environment import bot_token
+
 from sub_task import run_sub_task
 
+bot_token = os.getenv("BOT_TOKEN")
 
 run_sub_task()
 
